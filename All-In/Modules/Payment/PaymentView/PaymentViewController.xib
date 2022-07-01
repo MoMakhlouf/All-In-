@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -10,17 +10,56 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentViewController" customModule="All_In" customModuleProvider="target">
             <connections>
+                <outlet property="continueButton" destination="yTe-If-ebU" id="fCq-UL-tkS"/>
+                <outlet property="couponTextField" destination="Cmm-AP-110" id="zuT-fP-mqh"/>
+                <outlet property="discountLabel" destination="424-rb-PgF" id="oBn-fc-Mh0"/>
+                <outlet property="subTotalPriceLabel" destination="Hlm-4c-pB8" id="eDV-MA-Gg0"/>
+                <outlet property="totalPriceAfterDiscountLabel" destination="9jN-OG-Ad4" id="g1w-e2-wT6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dg4-qh-KGP">
-                    <rect key="frame" x="157" y="257" width="158" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sub Total" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hlm-4c-pB8">
+                    <rect key="frame" x="20" y="74" width="350" height="20.666666666666671"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apply Coupon" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cmm-AP-110">
+                    <rect key="frame" x="20" y="144.66666666666666" width="350" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="aCT-Kd-9Sn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total after coupon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jN-OG-Ad4">
+                    <rect key="frame" x="20" y="325" width="350" height="20.666666666666686"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTe-If-ebU">
+                    <rect key="frame" x="108" y="690" width="182" height="60"/>
+                    <color key="backgroundColor" red="0.44313725490196076" green="0.16078431372549018" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="jFM-8N-YR1"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Continue ">
+                        <fontDescription key="titleFontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="continueToPaymentButtonPressed:" destination="-1" eventType="touchUpInside" id="SV7-ir-vdb"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="424-rb-PgF">
+                    <rect key="frame" x="20" y="244.66666666666666" width="350" height="20.333333333333343"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -28,7 +67,24 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="-42.028985507246382" y="120.53571428571428"/>
+            <constraints>
+                <constraint firstItem="424-rb-PgF" firstAttribute="top" secondItem="Cmm-AP-110" secondAttribute="bottom" constant="40" id="0JN-rU-evg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9jN-OG-Ad4" secondAttribute="trailing" constant="20" id="38b-Nq-K5p"/>
+                <constraint firstItem="yTe-If-ebU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="108" id="Cc4-1u-CbR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Cmm-AP-110" secondAttribute="trailing" constant="20" id="E0K-aV-6KP"/>
+                <constraint firstItem="9jN-OG-Ad4" firstAttribute="top" secondItem="424-rb-PgF" secondAttribute="bottom" constant="60" id="Hgs-Rz-4X6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yTe-If-ebU" secondAttribute="trailing" constant="100" id="JbW-Tx-2xF"/>
+                <constraint firstItem="Hlm-4c-pB8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="MYw-5w-Kri"/>
+                <constraint firstItem="Hlm-4c-pB8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="NPV-ll-Ru3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hlm-4c-pB8" secondAttribute="trailing" constant="20" id="SPz-D1-GHG"/>
+                <constraint firstItem="Cmm-AP-110" firstAttribute="top" secondItem="Hlm-4c-pB8" secondAttribute="bottom" constant="50" id="VRX-83-swt"/>
+                <constraint firstItem="Cmm-AP-110" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="czV-bB-lqM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yTe-If-ebU" secondAttribute="bottom" constant="60" id="frH-Mw-uKC"/>
+                <constraint firstItem="424-rb-PgF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="t5q-bT-KED"/>
+                <constraint firstItem="9jN-OG-Ad4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tHx-1M-DSj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="424-rb-PgF" secondAttribute="trailing" constant="20" id="tcb-Ps-X9x"/>
+            </constraints>
+            <point key="canvasLocation" x="154" y="112"/>
         </view>
     </objects>
     <resources>

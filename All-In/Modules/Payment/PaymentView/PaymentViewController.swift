@@ -8,22 +8,31 @@
 import UIKit
 
 class PaymentViewController: UIViewController {
-
+    @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var subTotalPriceLabel: UILabel!
+    @IBOutlet weak var discountLabel: UILabel!
+    @IBOutlet weak var totalPriceAfterDiscountLabel: UILabel!
+    @IBOutlet weak var couponTextField: UITextField!
+    
+    var subtotal = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        continueButton.layer.cornerRadius = 15
+        
+        subTotalPriceLabel.text = "Sub Total : \(subtotal)"
+        
+        
     }
+    
+    
 
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func continueToPaymentButtonPressed(_ sender: Any) {
+        let paymentMethod = PaymentMethodsViewController()
+        
+        navigationController?.pushViewController(paymentMethod, animated: true)
     }
-    */
-
+    
 }

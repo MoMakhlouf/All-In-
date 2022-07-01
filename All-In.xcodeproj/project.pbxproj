@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		133301A67BDB4333FD7D4B63 /* Pods_All_InTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07741E7A7B4311F2E38A5931 /* Pods_All_InTests.framework */; };
+		A84A19B9286CF4D8002CEFC3 /* shoppingCartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A84A19B8286CF4D8002CEFC3 /* shoppingCartItem.swift */; };
+		A8973CFB286E22DD001A3A8D /* PaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8973CF9286E22DD001A3A8D /* PaymentMethodsViewController.swift */; };
+		A8973CFC286E22DD001A3A8D /* PaymentMethodsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8973CFA286E22DD001A3A8D /* PaymentMethodsViewController.xib */; };
 		A8D6E90D286C31B400AF555B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E90C286C31B400AF555B /* AppDelegate.swift */; };
 		A8D6E90F286C31B400AF555B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E90E286C31B400AF555B /* SceneDelegate.swift */; };
 		A8D6E911286C31B400AF555B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E910286C31B400AF555B /* ViewController.swift */; };
@@ -25,6 +28,8 @@
 		A8D6E95B286C82B500AF555B /* ShoppingCartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D6E959286C82B500AF555B /* ShoppingCartViewController.xib */; };
 		A8D6E95F286CA34900AF555B /* ProductInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E95D286CA34900AF555B /* ProductInfoViewController.swift */; };
 		A8D6E960286CA34900AF555B /* ProductInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D6E95E286CA34900AF555B /* ProductInfoViewController.xib */; };
+		A8D6E972286CDBB500AF555B /* ShoppingCartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E970286CDBB500AF555B /* ShoppingCartTableViewCell.swift */; };
+		A8D6E973286CDBB500AF555B /* ShoppingCartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8D6E971286CDBB500AF555B /* ShoppingCartTableViewCell.xib */; };
 		BB1FFBC87161AAB7DD096417 /* Pods_All_In.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE839D0F83352AE12F2CD405 /* Pods_All_In.framework */; };
 		F90D99C9ECACBC9E2C36CD78 /* Pods_All_In_All_InUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70B47B04EC7F46A915E97F4C /* Pods_All_In_All_InUITests.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +56,9 @@
 		07741E7A7B4311F2E38A5931 /* Pods_All_InTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_InTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FE5CE26FCFDC3CAF6DB6A18 /* Pods-All-In-All-InUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-In-All-InUITests.debug.xcconfig"; path = "Target Support Files/Pods-All-In-All-InUITests/Pods-All-In-All-InUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		70B47B04EC7F46A915E97F4C /* Pods_All_In_All_InUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_In_All_InUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A84A19B8286CF4D8002CEFC3 /* shoppingCartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shoppingCartItem.swift; sourceTree = "<group>"; };
+		A8973CF9286E22DD001A3A8D /* PaymentMethodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewController.swift; sourceTree = "<group>"; };
+		A8973CFA286E22DD001A3A8D /* PaymentMethodsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentMethodsViewController.xib; sourceTree = "<group>"; };
 		A8D6E909286C31B400AF555B /* All-In.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "All-In.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D6E90C286C31B400AF555B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D6E90E286C31B400AF555B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +83,8 @@
 		A8D6E964286CA4E200AF555B /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A8D6E965286CA4E200AF555B /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		A8D6E966286CA4E200AF555B /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		A8D6E970286CDBB500AF555B /* ShoppingCartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartTableViewCell.swift; sourceTree = "<group>"; };
+		A8D6E971286CDBB500AF555B /* ShoppingCartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingCartTableViewCell.xib; sourceTree = "<group>"; };
 		B6482C8FE3ABBB6DA8DA5BE8 /* Pods-All-In.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-In.debug.xcconfig"; path = "Target Support Files/Pods-All-In/Pods-All-In.debug.xcconfig"; sourceTree = "<group>"; };
 		CE839D0F83352AE12F2CD405 /* Pods_All_In.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_In.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7A85BC16B24DAD4443D49F4 /* Pods-All-InTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-InTests.release.xcconfig"; path = "Target Support Files/Pods-All-InTests/Pods-All-InTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,7 +140,6 @@
 				EAF6D7B615256161B6D10F1C /* Pods-All-InTests.debug.xcconfig */,
 				D7A85BC16B24DAD4443D49F4 /* Pods-All-InTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -297,6 +306,8 @@
 			children = (
 				A8D6E951286C713900AF555B /* PaymentViewController.swift */,
 				A8D6E952286C713900AF555B /* PaymentViewController.xib */,
+				A8973CF9286E22DD001A3A8D /* PaymentMethodsViewController.swift */,
+				A8973CFA286E22DD001A3A8D /* PaymentMethodsViewController.xib */,
 			);
 			path = PaymentView;
 			sourceTree = "<group>";
@@ -321,6 +332,8 @@
 			children = (
 				A8D6E958286C82B500AF555B /* ShoppingCartViewController.swift */,
 				A8D6E959286C82B500AF555B /* ShoppingCartViewController.xib */,
+				A8D6E970286CDBB500AF555B /* ShoppingCartTableViewCell.swift */,
+				A8D6E971286CDBB500AF555B /* ShoppingCartTableViewCell.xib */,
 			);
 			path = ShoppingCartView;
 			sourceTree = "<group>";
@@ -328,6 +341,7 @@
 		A8D6E956286C826000AF555B /* ShoppingCartModel */ = {
 			isa = PBXGroup;
 			children = (
+				A84A19B8286CF4D8002CEFC3 /* shoppingCartItem.swift */,
 			);
 			path = ShoppingCartModel;
 			sourceTree = "<group>";
@@ -471,6 +485,8 @@
 				A8D6E91C286C31B500AF555B /* LaunchScreen.storyboard in Resources */,
 				A8D6E919286C31B500AF555B /* Assets.xcassets in Resources */,
 				A8D6E914286C31B400AF555B /* Main.storyboard in Resources */,
+				A8973CFC286E22DD001A3A8D /* PaymentMethodsViewController.xib in Resources */,
+				A8D6E973286CDBB500AF555B /* ShoppingCartTableViewCell.xib in Resources */,
 				A8D6E954286C713900AF555B /* PaymentViewController.xib in Resources */,
 				A8D6E95B286C82B500AF555B /* ShoppingCartViewController.xib in Resources */,
 			);
@@ -600,11 +616,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8D6E972286CDBB500AF555B /* ShoppingCartTableViewCell.swift in Sources */,
 				A8D6E950286C6C0E00AF555B /* TabBarController.swift in Sources */,
 				A8D6E95A286C82B500AF555B /* ShoppingCartViewController.swift in Sources */,
 				A8D6E953286C713900AF555B /* PaymentViewController.swift in Sources */,
 				A8D6E911286C31B400AF555B /* ViewController.swift in Sources */,
+				A8973CFB286E22DD001A3A8D /* PaymentMethodsViewController.swift in Sources */,
 				A8D6E90D286C31B400AF555B /* AppDelegate.swift in Sources */,
+				A84A19B9286CF4D8002CEFC3 /* shoppingCartItem.swift in Sources */,
 				A8D6E917286C31B400AF555B /* All_In.xcdatamodeld in Sources */,
 				A8D6E95F286CA34900AF555B /* ProductInfoViewController.swift in Sources */,
 				A8D6E90F286C31B400AF555B /* SceneDelegate.swift in Sources */,

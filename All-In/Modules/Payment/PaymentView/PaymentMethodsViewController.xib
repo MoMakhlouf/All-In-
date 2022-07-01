@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PaymentMethodsViewController" customModule="All_In" customModuleProvider="target">
+            <connections>
+                <outlet property="crediCardDetailsView" destination="XtO-aE-TGB" id="24K-pR-B2Y"/>
+                <outlet property="placeOrderButton" destination="dFO-hU-Ahy" id="tXq-3T-2IU"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="viewIsHiddenConstraints" destination="dku-2m-pdY" id="EkP-22-KEg"/>
+                <outlet property="viewIsVisibleConstraint" destination="MyH-uS-0Af" id="v0s-SS-yQP"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-TX-cBZ">
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCz-az-n2G">
+                            <rect key="frame" x="20" y="30" width="374" height="60"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="31i-Tp-SRM"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Cash On Delivery">
+                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="cashOnDeliveryButton:" destination="-1" eventType="touchUpInside" id="O4d-Bf-qZ4"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LKO-5s-4KY">
+                            <rect key="frame" x="20" y="110" width="374" height="60"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="VX8-zf-RJE"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Credit Card">
+                                <fontDescription key="titleFontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="17"/>
+                                <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="creditCardButton:" destination="-1" eventType="touchUpInside" id="eTs-eA-sOM"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NBP-F5-pUT">
+                            <rect key="frame" x="20" y="200" width="374" height="130"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeR-FT-mdz">
+                                    <rect key="frame" x="286.5" y="8" width="79.5" height="32"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Change">
+                                        <fontDescription key="titleFontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address details here address details hereaddress details hereaddress details " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WnY-3S-FYm">
+                                    <rect key="frame" x="8" y="45" width="358" height="70"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="70" id="S0u-Mo-pyw"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bu7-Ed-8Cu">
+                                    <rect key="frame" x="8" y="8" width="70" height="29"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Address">
+                                        <fontDescription key="titleFontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemYellowColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="eeR-FT-mdz" secondAttribute="trailing" constant="8" id="Ne3-9E-wPG"/>
+                                <constraint firstItem="WnY-3S-FYm" firstAttribute="top" secondItem="Bu7-Ed-8Cu" secondAttribute="bottom" constant="8" id="Szi-8O-1tw"/>
+                                <constraint firstItem="eeR-FT-mdz" firstAttribute="top" secondItem="NBP-F5-pUT" secondAttribute="top" constant="8" id="a6C-Eq-Qdl"/>
+                                <constraint firstItem="Bu7-Ed-8Cu" firstAttribute="leading" secondItem="NBP-F5-pUT" secondAttribute="leading" constant="8" id="dD9-8y-HHR"/>
+                                <constraint firstAttribute="trailing" secondItem="WnY-3S-FYm" secondAttribute="trailing" constant="8" id="k5C-zq-tBf"/>
+                                <constraint firstAttribute="height" constant="130" id="mzL-vF-IPA"/>
+                                <constraint firstItem="Bu7-Ed-8Cu" firstAttribute="top" secondItem="NBP-F5-pUT" secondAttribute="top" constant="8" id="nYZ-X4-J3V"/>
+                                <constraint firstItem="WnY-3S-FYm" firstAttribute="leading" secondItem="NBP-F5-pUT" secondAttribute="leading" constant="8" id="vc9-IB-Gpr"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XtO-aE-TGB">
+                            <rect key="frame" x="20" y="360" width="374" height="300"/>
+                            <color key="backgroundColor" systemColor="systemTealColor"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="300" id="5xX-9N-Pyt"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-hU-Ahy">
+                            <rect key="frame" x="100" y="380" width="214" height="60"/>
+                            <color key="backgroundColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="60" id="eRr-vQ-dj8"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" title="Place Order">
+                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </buttonConfiguration>
+                            <connections>
+                                <action selector="placeOrderButtonPressed:" destination="-1" eventType="touchUpInside" id="OBX-cs-swR"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="XtO-aE-TGB" secondAttribute="trailing" constant="20" id="1M1-qz-89x"/>
+                        <constraint firstItem="NBP-F5-pUT" firstAttribute="leading" secondItem="pMi-TX-cBZ" secondAttribute="leading" constant="20" id="1iU-n8-KGi"/>
+                        <constraint firstItem="LKO-5s-4KY" firstAttribute="leading" secondItem="pMi-TX-cBZ" secondAttribute="leading" constant="20" id="4LM-jX-R59"/>
+                        <constraint firstItem="NCz-az-n2G" firstAttribute="top" secondItem="pMi-TX-cBZ" secondAttribute="top" constant="30" id="5Ty-Cs-8KW"/>
+                        <constraint firstItem="NCz-az-n2G" firstAttribute="leading" secondItem="pMi-TX-cBZ" secondAttribute="leading" constant="20" id="5q7-m8-Wyq"/>
+                        <constraint firstAttribute="trailing" secondItem="LKO-5s-4KY" secondAttribute="trailing" constant="20" id="8mH-RS-zio"/>
+                        <constraint firstItem="NCz-az-n2G" firstAttribute="centerX" secondItem="pMi-TX-cBZ" secondAttribute="centerX" id="Bao-Fh-48Y"/>
+                        <constraint firstItem="NBP-F5-pUT" firstAttribute="top" secondItem="LKO-5s-4KY" secondAttribute="bottom" constant="30" id="FUo-DM-noo"/>
+                        <constraint firstAttribute="trailing" secondItem="NCz-az-n2G" secondAttribute="trailing" constant="20" id="FWd-fR-och"/>
+                        <constraint firstItem="dFO-hU-Ahy" firstAttribute="leading" secondItem="pMi-TX-cBZ" secondAttribute="leading" constant="100" id="FwS-J9-d84"/>
+                        <constraint firstAttribute="trailing" secondItem="dFO-hU-Ahy" secondAttribute="trailing" constant="100" id="LS0-Le-oaS"/>
+                        <constraint firstItem="dFO-hU-Ahy" firstAttribute="top" secondItem="XtO-aE-TGB" secondAttribute="bottom" priority="997" constant="63" id="MyH-uS-0Af"/>
+                        <constraint firstItem="LKO-5s-4KY" firstAttribute="top" secondItem="NCz-az-n2G" secondAttribute="bottom" constant="20" id="YeR-si-UrD"/>
+                        <constraint firstItem="dFO-hU-Ahy" firstAttribute="top" secondItem="NBP-F5-pUT" secondAttribute="bottom" priority="900" constant="50" id="dku-2m-pdY"/>
+                        <constraint firstItem="XtO-aE-TGB" firstAttribute="top" secondItem="NBP-F5-pUT" secondAttribute="bottom" constant="30" id="h1Y-H9-tdz"/>
+                        <constraint firstAttribute="bottom" secondItem="dFO-hU-Ahy" secondAttribute="bottom" constant="69" id="hS5-U6-3pl"/>
+                        <constraint firstItem="XtO-aE-TGB" firstAttribute="leading" secondItem="pMi-TX-cBZ" secondAttribute="leading" constant="20" id="jvK-79-XDU"/>
+                        <constraint firstAttribute="trailing" secondItem="NBP-F5-pUT" secondAttribute="trailing" constant="20" id="snS-0k-eT7"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="MyH-uS-0Af"/>
+                        </mask>
+                    </variation>
+                </scrollView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemGray6Color"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="pMi-TX-cBZ" secondAttribute="bottom" id="GDP-6w-Zar"/>
+                <constraint firstItem="pMi-TX-cBZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RXd-TY-5Wl"/>
+                <constraint firstItem="pMi-TX-cBZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Z9g-05-F9v"/>
+                <constraint firstItem="pMi-TX-cBZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="tR9-Xo-Ul1"/>
+            </constraints>
+            <point key="canvasLocation" x="178" y="56"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
