@@ -32,6 +32,10 @@ class PaymentMethodsViewController: UIViewController {
     
     @IBAction func placeOrderButtonPressed(_ sender: UIButton) {
         
+        let address = AddNewAddressViewController()
+        
+        navigationController?.pushViewController(address, animated: true)
+        
     }
     
     

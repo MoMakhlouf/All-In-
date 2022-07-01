@@ -22,7 +22,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-TX-cBZ">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-TX-cBZ">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NCz-az-n2G">
@@ -104,7 +104,7 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-hU-Ahy">
-                            <rect key="frame" x="100" y="380" width="214" height="60"/>
+                            <rect key="frame" x="100" y="400" width="214" height="60"/>
                             <color key="backgroundColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="eRr-vQ-dj8"/>
@@ -132,7 +132,7 @@
                         <constraint firstAttribute="trailing" secondItem="dFO-hU-Ahy" secondAttribute="trailing" constant="100" id="LS0-Le-oaS"/>
                         <constraint firstItem="dFO-hU-Ahy" firstAttribute="top" secondItem="XtO-aE-TGB" secondAttribute="bottom" priority="997" constant="63" id="MyH-uS-0Af"/>
                         <constraint firstItem="LKO-5s-4KY" firstAttribute="top" secondItem="NCz-az-n2G" secondAttribute="bottom" constant="20" id="YeR-si-UrD"/>
-                        <constraint firstItem="dFO-hU-Ahy" firstAttribute="top" secondItem="NBP-F5-pUT" secondAttribute="bottom" priority="900" constant="50" id="dku-2m-pdY"/>
+                        <constraint firstItem="dFO-hU-Ahy" firstAttribute="top" secondItem="NBP-F5-pUT" secondAttribute="bottom" priority="900" constant="70" id="dku-2m-pdY"/>
                         <constraint firstItem="XtO-aE-TGB" firstAttribute="top" secondItem="NBP-F5-pUT" secondAttribute="bottom" constant="30" id="h1Y-H9-tdz"/>
                         <constraint firstAttribute="bottom" secondItem="dFO-hU-Ahy" secondAttribute="bottom" constant="69" id="hS5-U6-3pl"/>
                         <constraint firstItem="XtO-aE-TGB" firstAttribute="leading" secondItem="pMi-TX-cBZ" secondAttribute="leading" constant="20" id="jvK-79-XDU"/>
