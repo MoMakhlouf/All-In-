@@ -19,6 +19,7 @@ class ShoppingCartViewController: UIViewController {
         shoppingCartTableView.delegate = self
         shoppingCartTableView.dataSource = self
         
+        
         shoppingCartTableView.register(UINib(nibName: "ShoppingCartTableViewCell", bundle: nil), forCellReuseIdentifier: "shopCartCell")
         proceedToCheckoutButton.layer.cornerRadius = 12
         

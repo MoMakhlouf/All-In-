@@ -25,6 +25,10 @@ class AddNewAddressViewController: UIViewController {
     }
 
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
+        
+        let addressesList = ListOfAddressesViewController()
+        
+        navigationController?.pushViewController(addressesList, animated: true)
     }
     
     /*

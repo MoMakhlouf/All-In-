@@ -17,6 +17,8 @@
 		A8BD82B3286F35B8000DA1E6 /* AddNewAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BD82B1286F35B8000DA1E6 /* AddNewAddressViewController.xib */; };
 		A8BD82B6286F35DB000DA1E6 /* ListOfAddressesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD82B4286F35DB000DA1E6 /* ListOfAddressesViewController.swift */; };
 		A8BD82B7286F35DB000DA1E6 /* ListOfAddressesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BD82B5286F35DB000DA1E6 /* ListOfAddressesViewController.xib */; };
+		A8BD82BA286F5525000DA1E6 /* addressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD82B8286F5525000DA1E6 /* addressTableViewCell.swift */; };
+		A8BD82BB286F5525000DA1E6 /* addressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BD82B9286F5525000DA1E6 /* addressTableViewCell.xib */; };
 		A8D6E90D286C31B400AF555B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E90C286C31B400AF555B /* AppDelegate.swift */; };
 		A8D6E90F286C31B400AF555B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E90E286C31B400AF555B /* SceneDelegate.swift */; };
 		A8D6E911286C31B400AF555B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E910286C31B400AF555B /* ViewController.swift */; };
@@ -71,6 +73,8 @@
 		A8BD82B1286F35B8000DA1E6 /* AddNewAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewAddressViewController.xib; sourceTree = "<group>"; };
 		A8BD82B4286F35DB000DA1E6 /* ListOfAddressesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfAddressesViewController.swift; sourceTree = "<group>"; };
 		A8BD82B5286F35DB000DA1E6 /* ListOfAddressesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOfAddressesViewController.xib; sourceTree = "<group>"; };
+		A8BD82B8286F5525000DA1E6 /* addressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressTableViewCell.swift; sourceTree = "<group>"; };
+		A8BD82B9286F5525000DA1E6 /* addressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressTableViewCell.xib; sourceTree = "<group>"; };
 		A8D6E909286C31B400AF555B /* All-In.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "All-In.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D6E90C286C31B400AF555B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D6E90E286C31B400AF555B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +168,8 @@
 				A8BD82B1286F35B8000DA1E6 /* AddNewAddressViewController.xib */,
 				A8BD82B4286F35DB000DA1E6 /* ListOfAddressesViewController.swift */,
 				A8BD82B5286F35DB000DA1E6 /* ListOfAddressesViewController.xib */,
+				A8BD82B8286F5525000DA1E6 /* addressTableViewCell.swift */,
+				A8BD82B9286F5525000DA1E6 /* addressTableViewCell.xib */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -513,6 +519,7 @@
 				A8BD82AF286F3588000DA1E6 /* SettingsViewController.xib in Resources */,
 				A8D6E91C286C31B500AF555B /* LaunchScreen.storyboard in Resources */,
 				A8D6E919286C31B500AF555B /* Assets.xcassets in Resources */,
+				A8BD82BB286F5525000DA1E6 /* addressTableViewCell.xib in Resources */,
 				A8D6E914286C31B400AF555B /* Main.storyboard in Resources */,
 				A8973CFC286E22DD001A3A8D /* PaymentMethodsViewController.xib in Resources */,
 				A8D6E973286CDBB500AF555B /* ShoppingCartTableViewCell.xib in Resources */,
@@ -653,6 +660,7 @@
 				A8BD82B2286F35B8000DA1E6 /* AddNewAddressViewController.swift in Sources */,
 				A8D6E911286C31B400AF555B /* ViewController.swift in Sources */,
 				A8973CFB286E22DD001A3A8D /* PaymentMethodsViewController.swift in Sources */,
+				A8BD82BA286F5525000DA1E6 /* addressTableViewCell.swift in Sources */,
 				A8D6E90D286C31B400AF555B /* AppDelegate.swift in Sources */,
 				A84A19B9286CF4D8002CEFC3 /* shoppingCartItem.swift in Sources */,
 				A8D6E917286C31B400AF555B /* All_In.xcdatamodeld in Sources */,
