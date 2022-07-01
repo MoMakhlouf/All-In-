@@ -32,6 +32,9 @@ class ListOfAddressesViewController: UIViewController {
 
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
         
+        let settings = SettingsViewController()
+        navigationController?.pushViewController(settings, animated: true)
+        
     }
     
 
