@@ -1,8 +1,8 @@
 //
 //  Reachability.swift
-//  SportsApp
+//  All-In
 //
-//  Created by Mohamed Makhlouf Ahmed on 20/06/2022.
+//  Created by Mohamed Makhlouf Ahmed on 03/07/2022.
 //
 
 import Foundation

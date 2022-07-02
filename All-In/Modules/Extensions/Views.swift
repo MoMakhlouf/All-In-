@@ -1,8 +1,8 @@
 //
 //  Views.swift
-//  SportsApp
+//  All-In
 //
-//  Created by Mohamed Makhlouf Ahmed on 23/06/2022.
+//  Created by Mohamed Makhlouf Ahmed on 03/07/2022.
 //
 
 import Foundation
@@ -10,7 +10,7 @@ import UIKit
 
 extension UIImageView{
     
-    func makeCircular(){
+    func makeCircularImage(){
         layer.borderWidth = 1
         layer.masksToBounds = false
         layer.borderColor = UIColor.clear.cgColor
@@ -22,7 +22,7 @@ extension UIImageView{
 
 extension UIView{
   
-    func make(){
+    func makeCornerRauisView(){
         let cornerRadius: CGFloat = 15.0
 
         layer.cornerRadius = cornerRadius
@@ -34,13 +34,6 @@ extension UIView{
 }
 
 
-extension UIView{
-    func makeCorner(){
-        let cornerRadius: CGFloat = 7.0
-        layer.cornerRadius = cornerRadius
-                layer.masksToBounds = false
-    }
-}
 
 extension UIImageView{
     func makeImageCorner(){
@@ -51,9 +44,5 @@ extension UIImageView{
         clipsToBounds = true
 
     }
-    
-  
-    
-    
     
 }

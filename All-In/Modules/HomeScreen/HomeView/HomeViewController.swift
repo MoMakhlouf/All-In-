@@ -17,18 +17,24 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var adsView: UIView!
     var array = [SmartCollection]()
-  
+   var adsPhotos = [UIImage(named: "adidas") , UIImage(named: "nike") , UIImage(named: "timberland") , UIImage(named: "adidas") ,  UIImage(named: "nike")]
+    var timer : Timer?
+    var currentCellIndex = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//MARK:- bransHomeCollection
+    
+//MARK: - bransHomeCollection
         brandsHomeCollection.dataSource = self
         brandsHomeCollection.delegate = self
         brandsHomeCollection.register(UINib(nibName: "BrandsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "brandCell")
-//MARK:- salesCollectionView
+//MARK: - salesCollectionView
         adsCollectionView.dataSource = self
         adsCollectionView.delegate = self
         adsCollectionView.register(UINib(nibName: "AdsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "adsCell")
-//MARK:- brands & Sales border
+        
+        startTimer()
+//MARK: - brands & Sales border
         brandsView.layer.borderWidth = 1
         brandsView.layer.masksToBounds = true
         brandsView.layer.cornerRadius = 15
@@ -38,7 +44,7 @@ class HomeViewController: UIViewController {
         adsView.layer.borderColor = UIColor.black.cgColor
         adsView.layer.cornerRadius = 15
        
-// MARK:- navigationBar
+// MARK: - navigationBar
         
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         navigationController?.navigationBar.topItem?.backButtonTitle = " "
@@ -72,8 +78,6 @@ class HomeViewController: UIViewController {
         
 
         
-        
-        
         if let url = URL(string: "https:// 7d67dd63dc90e18fce08d1f7746e9f41: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@ios-q3-mansoura.myshopify.com/admin/api/2022-01/smart_collections.json"){
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
@@ -86,6 +90,25 @@ class HomeViewController: UIViewController {
                 }
             }.resume()
         }
+        
+        
+    }
+    
+    
+    //MARK: - Timer section for scrollable collectionView
+    
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(nextIndex), userInfo: nil, repeats: true)
+        
+    }
+    
+   @objc func nextIndex(){
+       if currentCellIndex < adsPhotos.count - 1 {
+           currentCellIndex += 1
+       } else{
+           currentCellIndex = 0
+       }
+       adsCollectionView.scrollToItem(at: IndexPath(item: currentCellIndex, section: 0), at: .centeredHorizontally, animated: true)
     }
 
     
@@ -120,7 +143,7 @@ extension HomeViewController: UICollectionViewDelegate{
 extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == adsCollectionView{
-            return 5
+            return adsPhotos.count
         }
         
         return 6
@@ -129,6 +152,8 @@ extension HomeViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == adsCollectionView{
             let cell2 = adsCollectionView.dequeueReusableCell(withReuseIdentifier: "adsCell", for: indexPath) as! AdsCollectionViewCell
+            
+            cell2.adsImage.image = adsPhotos[indexPath.row]
             return cell2
             
         }
@@ -157,6 +182,8 @@ extension HomeViewController{
     
     @objc func shoppingBagButton(){
         
+        let shoppingCart = ShoppingCartViewController()
+        navigationController?.pushViewController(shoppingCart, animated: true)
         
     }
     

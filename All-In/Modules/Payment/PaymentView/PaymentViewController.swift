@@ -27,7 +27,6 @@ class PaymentViewController: UIViewController {
     
     
     @IBAction func applyCoupon(_ sender: UIButton) {
-    
         
     }
     
