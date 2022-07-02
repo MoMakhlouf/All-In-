@@ -30,7 +30,6 @@ class Alert {
 
 
 
-
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //
 //        if segue.identifier == "detailsSegue"{
