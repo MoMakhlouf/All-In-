@@ -34,7 +34,7 @@ class ShoppingCartTableViewCell: UITableViewCell {
         itemPrice.text = String(item.itemPrice)
         quantityLabel.text = String(item.itemQuantity)
         
-        itemImage.sd_setImage(with: URL(string: item.itemImage), placeholderImage: UIImage(systemName: "heart"))
+       // itemImage.sd_setImage(with: URL(string: item.itemImage), placeholderImage: UIImage(systemName: "heart"))
     }
     
     @IBAction func minusButtonPressed(_ sender: Any) {

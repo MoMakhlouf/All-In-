@@ -26,7 +26,12 @@ class PaymentViewController: UIViewController {
     }
     
     
-
+    @IBAction func applyCoupon(_ sender: UIButton) {
+    
+        
+    }
+    
+    
 
 
     @IBAction func continueToPaymentButtonPressed(_ sender: Any) {

@@ -11,6 +11,8 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = "Settings"
 
         // Do any additional setup after loading the view.
     }

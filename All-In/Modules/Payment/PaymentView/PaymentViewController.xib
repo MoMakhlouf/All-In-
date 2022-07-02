@@ -29,7 +29,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Apply Coupon" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cmm-AP-110">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entre Coupon Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cmm-AP-110">
                     <rect key="frame" x="20" y="144.66666666666666" width="350" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="aCT-Kd-9Sn"/>
@@ -38,7 +38,7 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total after coupon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9jN-OG-Ad4">
-                    <rect key="frame" x="20" y="325" width="350" height="20.666666666666686"/>
+                    <rect key="frame" x="20" y="370.33333333333331" width="350" height="20.666666666666686"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -59,24 +59,38 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="424-rb-PgF">
-                    <rect key="frame" x="20" y="244.66666666666666" width="350" height="20.333333333333343"/>
+                    <rect key="frame" x="20" y="290" width="350" height="20.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fzi-t8-JUn">
+                    <rect key="frame" x="133" y="214" width="125" height="36"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Apply">
+                        <fontDescription key="titleFontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="19"/>
+                        <color key="baseForegroundColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="applyCoupon:" destination="-1" eventType="touchUpInside" id="0pF-aC-Lh9"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="424-rb-PgF" firstAttribute="top" secondItem="Cmm-AP-110" secondAttribute="bottom" constant="40" id="0JN-rU-evg"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9jN-OG-Ad4" secondAttribute="trailing" constant="20" id="38b-Nq-K5p"/>
                 <constraint firstItem="yTe-If-ebU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="108" id="Cc4-1u-CbR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Cmm-AP-110" secondAttribute="trailing" constant="20" id="E0K-aV-6KP"/>
+                <constraint firstItem="Fzi-t8-JUn" firstAttribute="top" secondItem="Cmm-AP-110" secondAttribute="bottom" constant="9.3333333333333428" id="For-B0-otQ"/>
                 <constraint firstItem="9jN-OG-Ad4" firstAttribute="top" secondItem="424-rb-PgF" secondAttribute="bottom" constant="60" id="Hgs-Rz-4X6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yTe-If-ebU" secondAttribute="trailing" constant="100" id="JbW-Tx-2xF"/>
                 <constraint firstItem="Hlm-4c-pB8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="MYw-5w-Kri"/>
                 <constraint firstItem="Hlm-4c-pB8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="30" id="NPV-ll-Ru3"/>
+                <constraint firstItem="424-rb-PgF" firstAttribute="top" secondItem="Fzi-t8-JUn" secondAttribute="bottom" constant="40" id="Nwd-o3-BeM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hlm-4c-pB8" secondAttribute="trailing" constant="20" id="SPz-D1-GHG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Fzi-t8-JUn" secondAttribute="trailing" constant="132" id="Ur9-qL-43f"/>
+                <constraint firstItem="Fzi-t8-JUn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="133" id="Utt-ay-crq"/>
                 <constraint firstItem="Cmm-AP-110" firstAttribute="top" secondItem="Hlm-4c-pB8" secondAttribute="bottom" constant="50" id="VRX-83-swt"/>
                 <constraint firstItem="Cmm-AP-110" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="czV-bB-lqM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yTe-If-ebU" secondAttribute="bottom" constant="60" id="frH-Mw-uKC"/>
@@ -84,7 +98,7 @@
                 <constraint firstItem="9jN-OG-Ad4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tHx-1M-DSj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="424-rb-PgF" secondAttribute="trailing" constant="20" id="tcb-Ps-X9x"/>
             </constraints>
-            <point key="canvasLocation" x="154" y="112"/>
+            <point key="canvasLocation" x="-178.46153846153845" y="103.7914691943128"/>
         </view>
     </objects>
     <resources>

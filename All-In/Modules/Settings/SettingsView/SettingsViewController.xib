@@ -39,39 +39,28 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="go6-Uc-mzV">
-                            <rect key="frame" x="263" y="26" width="51" height="31"/>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="WLt-V2-A1d">
+                            <rect key="frame" x="266" y="20" width="93" height="41"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <color key="onTintColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFa-Va-7jx">
-                            <rect key="frame" x="323" y="12" width="42" height="56"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCf-f1-aYl">
-                            <rect key="frame" x="213" y="12" width="42" height="56"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="7rO-hM-43W"/>
+                            </constraints>
+                            <segments>
+                                <segment title="EGP"/>
+                                <segment title="USD"/>
+                            </segments>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="selectedSegmentTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="go6-Uc-mzV" firstAttribute="top" secondItem="pp4-Ie-keg" secondAttribute="top" constant="26" id="58f-iy-5lI"/>
                         <constraint firstItem="Oyj-h9-MIL" firstAttribute="leading" secondItem="pp4-Ie-keg" secondAttribute="leading" constant="12" id="6vm-CH-5H6"/>
-                        <constraint firstItem="TFa-Va-7jx" firstAttribute="leading" secondItem="go6-Uc-mzV" secondAttribute="trailing" constant="11" id="I10-EI-vHu"/>
-                        <constraint firstAttribute="trailing" secondItem="TFa-Va-7jx" secondAttribute="trailing" constant="9" id="SZX-E9-E97"/>
                         <constraint firstItem="Oyj-h9-MIL" firstAttribute="top" secondItem="pp4-Ie-keg" secondAttribute="top" constant="10" id="SiV-PT-HFr"/>
-                        <constraint firstAttribute="bottom" secondItem="yCf-f1-aYl" secondAttribute="bottom" constant="12" id="VN9-de-VbT"/>
+                        <constraint firstItem="WLt-V2-A1d" firstAttribute="top" secondItem="pp4-Ie-keg" secondAttribute="top" constant="20" id="T4h-WW-QaS"/>
                         <constraint firstAttribute="height" constant="80" id="Xi2-cT-x7x"/>
+                        <constraint firstAttribute="trailing" secondItem="WLt-V2-A1d" secondAttribute="trailing" constant="15" id="YJP-Eh-0AZ"/>
                         <constraint firstAttribute="bottom" secondItem="Oyj-h9-MIL" secondAttribute="bottom" constant="10" id="YoI-aN-DBh"/>
-                        <constraint firstAttribute="bottom" secondItem="TFa-Va-7jx" secondAttribute="bottom" constant="12" id="ZmP-OF-qPL"/>
-                        <constraint firstItem="yCf-f1-aYl" firstAttribute="top" secondItem="pp4-Ie-keg" secondAttribute="top" constant="12" id="mTe-vl-sdK"/>
-                        <constraint firstItem="go6-Uc-mzV" firstAttribute="leading" secondItem="yCf-f1-aYl" secondAttribute="trailing" constant="8" symbolic="YES" id="owB-um-yvo"/>
-                        <constraint firstItem="TFa-Va-7jx" firstAttribute="top" secondItem="pp4-Ie-keg" secondAttribute="top" constant="12" id="qo5-Jt-tGA"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oOc-8s-xY6">

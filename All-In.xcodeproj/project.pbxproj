@@ -19,6 +19,7 @@
 		A8BD82B7286F35DB000DA1E6 /* ListOfAddressesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BD82B5286F35DB000DA1E6 /* ListOfAddressesViewController.xib */; };
 		A8BD82BA286F5525000DA1E6 /* addressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD82B8286F5525000DA1E6 /* addressTableViewCell.swift */; };
 		A8BD82BB286F5525000DA1E6 /* addressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BD82B9286F5525000DA1E6 /* addressTableViewCell.xib */; };
+		A8CB524828706191000366BE /* ShoppingCartDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CB524728706191000366BE /* ShoppingCartDBManager.swift */; };
 		A8D6E90D286C31B400AF555B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E90C286C31B400AF555B /* AppDelegate.swift */; };
 		A8D6E90F286C31B400AF555B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E90E286C31B400AF555B /* SceneDelegate.swift */; };
 		A8D6E911286C31B400AF555B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E910286C31B400AF555B /* ViewController.swift */; };
@@ -75,6 +76,7 @@
 		A8BD82B5286F35DB000DA1E6 /* ListOfAddressesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOfAddressesViewController.xib; sourceTree = "<group>"; };
 		A8BD82B8286F5525000DA1E6 /* addressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressTableViewCell.swift; sourceTree = "<group>"; };
 		A8BD82B9286F5525000DA1E6 /* addressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressTableViewCell.xib; sourceTree = "<group>"; };
+		A8CB524728706191000366BE /* ShoppingCartDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartDBManager.swift; sourceTree = "<group>"; };
 		A8D6E909286C31B400AF555B /* All-In.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "All-In.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D6E90C286C31B400AF555B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8D6E90E286C31B400AF555B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,14 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
+		A8CB5246287060A8000366BE /* ShoppingCartDB */ = {
+			isa = PBXGroup;
+			children = (
+				A8CB524728706191000366BE /* ShoppingCartDBManager.swift */,
+			);
+			path = ShoppingCartDB;
+			sourceTree = "<group>";
+		};
 		A8D6E900286C31B400AF555B = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				A8D6E942286C326800AF555B /* Modules */,
+				A8D6E963286CA4E200AF555B /* Extensions */,
 				A8D6E90C286C31B400AF555B /* AppDelegate.swift */,
 				A8D6E90E286C31B400AF555B /* SceneDelegate.swift */,
 				A8D6E910286C31B400AF555B /* ViewController.swift */,
@@ -246,7 +257,6 @@
 		A8D6E942286C326800AF555B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				A8D6E963286CA4E200AF555B /* Extensions */,
 				A8D6E94E286C6B9D00AF555B /* Tabbar */,
 				A8D6E94A286C667100AF555B /* Auth */,
 				A8D6E949286C666200AF555B /* Favorites */,
@@ -279,6 +289,7 @@
 		A8D6E945286C661700AF555B /* ShoppingCart */ = {
 			isa = PBXGroup;
 			children = (
+				A8CB5246287060A8000366BE /* ShoppingCartDB */,
 				A8D6E957286C826F00AF555B /* ShoppingCartViewModel */,
 				A8D6E956286C826000AF555B /* ShoppingCartModel */,
 				A8D6E955286C824E00AF555B /* ShoppingCartView */,
@@ -661,6 +672,7 @@
 				A8D6E911286C31B400AF555B /* ViewController.swift in Sources */,
 				A8973CFB286E22DD001A3A8D /* PaymentMethodsViewController.swift in Sources */,
 				A8BD82BA286F5525000DA1E6 /* addressTableViewCell.swift in Sources */,
+				A8CB524828706191000366BE /* ShoppingCartDBManager.swift in Sources */,
 				A8D6E90D286C31B400AF555B /* AppDelegate.swift in Sources */,
 				A84A19B9286CF4D8002CEFC3 /* shoppingCartItem.swift in Sources */,
 				A8D6E917286C31B400AF555B /* All_In.xcdatamodeld in Sources */,
