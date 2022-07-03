@@ -70,6 +70,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="addressView" destination="Agl-H0-PFg" id="hL0-mB-Ggp"/>
+                <outlet property="fullAddress" destination="I4K-PH-aRg" id="haf-f6-HVp"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="129.91071428571428"/>
         </tableViewCell>

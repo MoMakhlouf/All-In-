@@ -17,7 +17,11 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func AddressesButtonPressed(_ sender: UIButton) {
+        let adresses = ListOfAddressesViewController()
+        navigationController?.pushViewController(adresses, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

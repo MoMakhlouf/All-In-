@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 protocol ApiServices {
     
+    func getDiscountCode( priceRule : String , completion : @escaping ( ([Discount_codes]? , Error?) -> Void))
+
     
 }

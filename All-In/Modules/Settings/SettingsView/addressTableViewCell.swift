@@ -9,6 +9,7 @@ import UIKit
 
 class addressTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var fullAddress: UILabel!
     @IBOutlet weak var addressView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
