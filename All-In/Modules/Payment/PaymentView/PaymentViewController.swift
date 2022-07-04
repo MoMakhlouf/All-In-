@@ -13,11 +13,19 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var discountLabel: UILabel!
     @IBOutlet weak var totalPriceAfterDiscountLabel: UILabel!
     @IBOutlet weak var couponTextField: UITextField!
+    @IBOutlet weak var congratsView: UIView!
+    @IBOutlet weak var congratsViewLabel: UILabel!
     
+    
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     var subtotal = 0.0
     var discountCodesArray = [Discount_codes]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        congratsView.isHidden = true
+        view.addSubview(congratsView)
+        congratsView.center = view.center
+        indicatorView.hidesWhenStopped = true
         continueButton.layer.cornerRadius = 15
         
         subTotalPriceLabel.text = "Sub Total : \(subtotal)"
@@ -37,29 +45,45 @@ class PaymentViewController: UIViewController {
         }
         totalPriceAfterDiscountLabel.text = " Total : \(subtotal) "
 
-      //  couponTextField.text = discountCodesArray[1].code
         print(discountCodesArray.count)
     }
     
     @IBAction func applyCoupon(_ sender: UIButton) {
         
         if couponTextField.text == discountCodesArray[0].code  {
-            let discountAmount = String(format: "%.2f", subtotal * (5/100))
-            let totalAfterDiscount = String(format: "%.2f", subtotal - subtotal * (5/100))
-            discountLabel.text = " \(discountAmount) EGP Discount"
-            totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
+            indicatorView.startAnimating()
+            Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
+                self.indicatorView.stopAnimating()
+                let discountAmount = String(format: "%.2f", self.subtotal * (5/100))
+                let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (5/100))
+                self.discountLabel.text = " \(discountAmount) EGP Discount"
+                self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
+            }
             
+            congratsView.isHidden = false
+            self.congratsViewLabel.text = "You Won a 5% OFF"
+            Timer.scheduledTimer(withTimeInterval: 1 , repeats: false) { timer in
+                self.congratsView.isHidden = true
+            }
             
-        } else if couponTextField.text == discountCodesArray[1].code {
-        
-            let discountAmount = String(format: "%.2f", subtotal * (10/100))
-            let totalAfterDiscount = String(format: "%.2f", subtotal - subtotal * (10/100))
-            discountLabel.text = " \(discountAmount) EGP Discount"
-            totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
-        
+            } else if couponTextField.text == discountCodesArray[1].code {
+            indicatorView.startAnimating()
+            Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
+                self.indicatorView.stopAnimating()
+
+                let discountAmount = String(format: "%.2f", self.subtotal * (10/100))
+                let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (10/100))
+                self.discountLabel.text = " \(discountAmount) EGP Discount"
+                self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
+            }
+            
+            congratsView.isHidden = false
+            congratsViewLabel.text = "You Won a 10% OFF"
+            Timer.scheduledTimer(withTimeInterval: 1 , repeats: false) { timer in
+                self.congratsView.isHidden = true
+            }
         }else if couponTextField.text == "" {
             discountLabel.text = " "
-
 
             Alert.displayAlert(title: "Enter a coupon", message: "You must enter a valid coupon")
         }else{
@@ -75,7 +99,7 @@ class PaymentViewController: UIViewController {
 
     @IBAction func continueToPaymentButtonPressed(_ sender: Any) {
         let paymentMethod = PaymentMethodsViewController()
-        
+        paymentMethod.totalAmount = totalPriceAfterDiscountLabel.text ?? ""
         navigationController?.pushViewController(paymentMethod, animated: true)
     }
     

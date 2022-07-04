@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+ platform :ios, '9.0'
 
 target 'All-In' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -8,6 +8,9 @@ target 'All-In' do
   # Pods for All-In
 
     pod 'SDWebImage', '~> 5.0'
+    pod 'Braintree'
+    pod 'BraintreeDropIn'
+
 
   target 'All-InTests' do
     inherit! :search_paths

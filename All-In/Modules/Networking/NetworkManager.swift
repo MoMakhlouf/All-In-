@@ -19,7 +19,7 @@ class NetworkManager : ApiServices{
                 if let data = data {
                     if let decodedData = try? JSONDecoder().decode(DiscountCode.self, from: data){
                         completion(decodedData.discount_codes , nil)
-                        print("ddd\(decodedData.discount_codes)")
+                        print("123\(decodedData.discount_codes)")
                 }
             }
         }

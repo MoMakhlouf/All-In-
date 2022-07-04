@@ -1,18 +1,63 @@
 PODS:
+  - Braintree (4.38.0):
+    - Braintree/Card (= 4.38.0)
+    - Braintree/Core (= 4.38.0)
+    - Braintree/PayPal (= 4.38.0)
+    - Braintree/UI (= 4.38.0)
+  - Braintree/Card (4.38.0):
+    - Braintree/Core
+  - Braintree/Core (4.38.0)
+  - Braintree/PaymentFlow (4.38.0):
+    - Braintree/Card
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPal (4.38.0):
+    - Braintree/Core
+    - Braintree/PayPalOneTouch
+  - Braintree/PayPalDataCollector (4.38.0):
+    - Braintree/Core
+    - Braintree/PayPalUtils
+  - Braintree/PayPalOneTouch (4.38.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+    - Braintree/PayPalUtils
+  - Braintree/PayPalUtils (4.38.0)
+  - Braintree/UI (4.38.0):
+    - Braintree/Card
+    - Braintree/Core
+  - Braintree/UnionPay (4.38.0):
+    - Braintree/Card
+    - Braintree/Core
+  - BraintreeDropIn (8.2.0):
+    - BraintreeDropIn/DropIn (= 8.2.0)
+  - BraintreeDropIn/DropIn (8.2.0):
+    - Braintree/Card (~> 4.32)
+    - Braintree/Core (~> 4.32)
+    - Braintree/PaymentFlow (~> 4.32)
+    - Braintree/PayPal (~> 4.32)
+    - Braintree/UnionPay (~> 4.32)
+    - BraintreeDropIn/UIKit
+  - BraintreeDropIn/UIKit (8.2.0)
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
 
 DEPENDENCIES:
+  - Braintree
+  - BraintreeDropIn
   - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
+    - Braintree
+    - BraintreeDropIn
     - SDWebImage
 
 SPEC CHECKSUMS:
+  Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
+  BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
 
-PODFILE CHECKSUM: 7920e6e565e086d027d0b59f3988232bb396dd58
+PODFILE CHECKSUM: 409fa21e517bb56bfef30edf0b9b1ee1e040c3cd
 
 COCOAPODS: 1.11.3

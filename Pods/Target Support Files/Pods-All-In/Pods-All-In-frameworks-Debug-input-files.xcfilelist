@@ -1,2 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-All-In/Pods-All-In-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework
+${PODS_ROOT}/Braintree/Frameworks/CardinalMobile.framework
+${BUILT_PRODUCTS_DIR}/BraintreeDropIn/BraintreeDropIn.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
