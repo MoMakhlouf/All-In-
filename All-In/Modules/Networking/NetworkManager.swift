@@ -10,6 +10,29 @@ import Foundation
 class NetworkManager : ApiServices{
     
     
+    
+  
+    
+    
+    
+    //MARK: - Mohamed - Get Address
+    func getAddress(customerId: String, completion: @escaping (([Address]?, Error?) -> Void)) {
+        if let url = URL(string: Urls(customerId: customerId).addressUrl){
+            let task = URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data{
+                    if let decodedData = try? JSONDecoder().decode(Customer.self, from: data){
+                        completion(decodedData.addresses , nil)
+                        print(decodedData.addresses)
+                    }
+
+                 }
+            }
+            task.resume()
+        }
+    }
+    
+    
+    
     //MARK: - Mohamed - Get discount Code
     func getDiscountCode( priceRule : String , completion: @escaping (([Discount_codes]?, Error?) -> Void)) {
         
@@ -19,7 +42,7 @@ class NetworkManager : ApiServices{
                 if let data = data {
                     if let decodedData = try? JSONDecoder().decode(DiscountCode.self, from: data){
                         completion(decodedData.discount_codes , nil)
-                        print("123\(decodedData.discount_codes)")
+                     print("123\(decodedData.discount_codes)")
                 }
             }
         }

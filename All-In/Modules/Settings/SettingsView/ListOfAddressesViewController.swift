@@ -23,9 +23,28 @@ class ListOfAddressesViewController: UIViewController {
             addNewAddressButton.layer.cornerRadius = 15
         }
     }
+    var addressesArray = [Address]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let addressViewModel = AddressViewModel()
+        addressViewModel.getAdderss(customerId: "6261211300054")
+        addressViewModel.bindingData = { addresses , error in
+            
+            if let addresses = addresses{
+                self.addressesArray = addresses
+            }
+            if let error = error {
+                print(error)
+                DispatchQueue.main.async {
+                    Alert.displayAlert(title: "Error", message: "Failed To Apply Coupon")
+                }
+            }
+            
+        }
 
+        
+        
 
     }
 
@@ -43,13 +62,13 @@ class ListOfAddressesViewController: UIViewController {
 
 extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        addressesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = addressTableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! addressTableViewCell
-                
         
+        cell.fullAddress.text = addressesArray[indexPath.row].address1
         return cell
     }
     

@@ -9,15 +9,31 @@ import XCTest
 @testable import All_In
 
 class All_InTests: XCTestCase {
+    
+    var network : NetworkManagerMock!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+     network = NetworkManagerMock(shouldReturnError: false)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+      network = nil
     }
 
+    
+    func testFetchingCodes(){
+        network.fetchCodes { discountCodes, error in
+            print(discountCodes?.count)
+            XCTAssertEqual(discountCodes?.count ?? 0, 2)
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

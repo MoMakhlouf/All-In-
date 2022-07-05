@@ -37,6 +37,7 @@
 		A8AB2D142871B2EA00808A59 /* CustomersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AB2D132871B2EA00808A59 /* CustomersModel.swift */; };
 		A8AB2D162871EA1100808A59 /* discountCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AB2D152871EA1100808A59 /* discountCodeModel.swift */; };
 		A8AB2D182871EF8100808A59 /* discountCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8AB2D172871EF8100808A59 /* discountCodeViewModel.swift */; };
+		A8B4A713287472B00090E387 /* NetworkManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B4A712287472B00090E387 /* NetworkManagerMock.swift */; };
 		A8BD82AE286F3588000DA1E6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD82AC286F3588000DA1E6 /* SettingsViewController.swift */; };
 		A8BD82AF286F3588000DA1E6 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BD82AD286F3588000DA1E6 /* SettingsViewController.xib */; };
 		A8BD82B2286F35B8000DA1E6 /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD82B0286F35B8000DA1E6 /* AddNewAddressViewController.swift */; };
@@ -45,6 +46,7 @@
 		A8BD82B7286F35DB000DA1E6 /* ListOfAddressesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BD82B5286F35DB000DA1E6 /* ListOfAddressesViewController.xib */; };
 		A8BD82BA286F5525000DA1E6 /* addressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD82B8286F5525000DA1E6 /* addressTableViewCell.swift */; };
 		A8BD82BB286F5525000DA1E6 /* addressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BD82B9286F5525000DA1E6 /* addressTableViewCell.xib */; };
+		A8BF41572873786300317979 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41562873786300317979 /* AddressViewModel.swift */; };
 		A8CB524828706191000366BE /* ShoppingCartDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CB524728706191000366BE /* ShoppingCartDBManager.swift */; };
 		A8D6E90D286C31B400AF555B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E90C286C31B400AF555B /* AppDelegate.swift */; };
 		A8D6E90F286C31B400AF555B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8D6E90E286C31B400AF555B /* SceneDelegate.swift */; };
@@ -120,6 +122,7 @@
 		A8AB2D132871B2EA00808A59 /* CustomersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomersModel.swift; sourceTree = "<group>"; };
 		A8AB2D152871EA1100808A59 /* discountCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discountCodeModel.swift; sourceTree = "<group>"; };
 		A8AB2D172871EF8100808A59 /* discountCodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = discountCodeViewModel.swift; sourceTree = "<group>"; };
+		A8B4A712287472B00090E387 /* NetworkManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerMock.swift; sourceTree = "<group>"; };
 		A8BD82AC286F3588000DA1E6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		A8BD82AD286F3588000DA1E6 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		A8BD82B0286F35B8000DA1E6 /* AddNewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		A8BD82B5286F35DB000DA1E6 /* ListOfAddressesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListOfAddressesViewController.xib; sourceTree = "<group>"; };
 		A8BD82B8286F5525000DA1E6 /* addressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressTableViewCell.swift; sourceTree = "<group>"; };
 		A8BD82B9286F5525000DA1E6 /* addressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressTableViewCell.xib; sourceTree = "<group>"; };
+		A8BF41562873786300317979 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
 		A8CB524728706191000366BE /* ShoppingCartDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartDBManager.swift; sourceTree = "<group>"; };
 		A8D6E909286C31B400AF555B /* All-In.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "All-In.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8D6E90C286C31B400AF555B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -331,8 +335,17 @@
 		A8AB2D122871B2CD00808A59 /* SettingsViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A8BF41562873786300317979 /* AddressViewModel.swift */,
 			);
 			path = SettingsViewModel;
+			sourceTree = "<group>";
+		};
+		A8B4A7112874725F0090E387 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				A8B4A712287472B00090E387 /* NetworkManagerMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		A8BD82AB286F3539000DA1E6 /* SettingsView */ = {
@@ -400,6 +413,7 @@
 		A8D6E925286C31B500AF555B /* All-InTests */ = {
 			isa = PBXGroup;
 			children = (
+				A8B4A7112874725F0090E387 /* Mocks */,
 				A8D6E926286C31B500AF555B /* All_InTests.swift */,
 			);
 			path = "All-InTests";
@@ -895,6 +909,7 @@
 				A8D6E90F286C31B400AF555B /* SceneDelegate.swift in Sources */,
 				A889F1A42870F87600B5DF34 /* Reachability.swift in Sources */,
 				43C28FB428711DF10014FE16 /* OrdersViewController.swift in Sources */,
+				A8BF41572873786300317979 /* AddressViewModel.swift in Sources */,
 				A8AB2D162871EA1100808A59 /* discountCodeModel.swift in Sources */,
 				43EF41FD286ECB3B00B7770C /* BrandsViewController.swift in Sources */,
 				A8BD82AE286F3588000DA1E6 /* SettingsViewController.swift in Sources */,
@@ -905,6 +920,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8B4A713287472B00090E387 /* NetworkManagerMock.swift in Sources */,
 				A8D6E927286C31B500AF555B /* All_InTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

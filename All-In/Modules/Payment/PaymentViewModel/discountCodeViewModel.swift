@@ -34,8 +34,10 @@ init(apiServices : ApiServices = NetworkManager()){
                 print("getDiscountCodeFunction")
             }
             if let error = error {
-                print("errorrr")
-                self.error = error
+                DispatchQueue.main.async {
+                    //Alert.displayAlert(title: "", message: <#T##String#>)
+                }
+            self.error = error
             }
             
         }

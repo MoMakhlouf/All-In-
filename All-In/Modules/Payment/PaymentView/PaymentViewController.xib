@@ -32,7 +32,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Entre Coupon Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cmm-AP-110">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="SUMMERSALE100FF" borderStyle="roundedRect" placeholder="Entre Coupon Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cmm-AP-110">
                     <rect key="frame" x="20" y="144.66666666666666" width="350" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="aCT-Kd-9Sn"/>
