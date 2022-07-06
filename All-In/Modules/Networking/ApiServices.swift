@@ -19,6 +19,10 @@ protocol ApiServices {
     func deleteAddress(customerID : String  , addressID : Int , completion : @escaping(Error?) ->())
 
     
+    func fetchBrands(completion: @escaping (SmartCollections?  , Error?) -> Void)
+    func fetchProducts(completion: @escaping (Products?  , Error?) -> Void)
+    func fetchCollects(completion: @escaping (Collects?  , Error?) -> Void)
+    func fetchCategories(completion: @escaping (CustomCollections?  , Error?) -> Void)
     
 
 }

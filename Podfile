@@ -6,11 +6,11 @@ target 'All-In' do
   use_frameworks!
 
   # Pods for All-In
-
+  
     pod 'SDWebImage', '~> 5.0'
     pod 'Braintree'
     pod 'BraintreeDropIn'
-
+      pod 'Kingfisher'
 
   target 'All-InTests' do
     inherit! :search_paths

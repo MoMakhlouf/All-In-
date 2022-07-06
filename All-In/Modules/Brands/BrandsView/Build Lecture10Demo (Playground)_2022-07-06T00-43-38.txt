@@ -1,0 +1,60 @@
+
+Showing Recent Messages
+
+Prepare build
+note: Using new build system
+note: Planning
+note: Build preparation complete
+note: Building targets in dependency order
+
+
+Create build description
+Build description signature: 8bd0b3f13f78f3aedca8517dd1848edb
+Build description path: /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/XCBuildData/8bd0b3f13f78f3aedca8517dd1848edb-desc.xcbuild
+
+CreateBuildDirectory /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products
+    cd /Users/marwa/Downloads/Lecture10Demo.playground
+    builtin-create-build-directory /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products
+
+CreateBuildDirectory /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Intermediates.noindex
+    cd /Users/marwa/Downloads/Lecture10Demo.playground
+    builtin-create-build-directory /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Intermediates.noindex
+
+CreateBuildDirectory /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator
+    cd /Users/marwa/Downloads/Lecture10Demo.playground
+    builtin-create-build-directory /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator
+
+
+Build target Lecture10Demo_Sources of project Lecture10Demo_Sources with configuration Debug
+
+MkDir /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework (in target 'Lecture10Demo_Sources' from project 'Lecture10Demo_Sources')
+    cd /Users/marwa/Downloads/Lecture10Demo.playground
+    /bin/mkdir -p /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework
+
+WriteAuxiliaryFile /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Intermediates.noindex/Lecture10Demo_Sources.build/Debug-iphonesimulator/Lecture10Demo_Sources.build/empty-Lecture10Demo_Sources.plist (in target 'Lecture10Demo_Sources' from project 'Lecture10Demo_Sources')
+    cd /Users/marwa/Downloads/Lecture10Demo.playground
+    write-file /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Intermediates.noindex/Lecture10Demo_Sources.build/Debug-iphonesimulator/Lecture10Demo_Sources.build/empty-Lecture10Demo_Sources.plist
+
+ProcessInfoPlistFile /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework/Info.plist /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Intermediates.noindex/Lecture10Demo_Sources.build/Debug-iphonesimulator/Lecture10Demo_Sources.build/empty-Lecture10Demo_Sources.plist (in target 'Lecture10Demo_Sources' from project 'Lecture10Demo_Sources')
+    cd /Users/marwa/Downloads/Lecture10Demo.playground
+    builtin-infoPlistUtility /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Intermediates.noindex/Lecture10Demo_Sources.build/Debug-iphonesimulator/Lecture10Demo_Sources.build/empty-Lecture10Demo_Sources.plist -producttype com.apple.product-type.framework -expandbuildsettings -format binary -platform iphonesimulator -o /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework/Info.plist
+
+CodeSign /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework (in target 'Lecture10Demo_Sources' from project 'Lecture10Demo_Sources')
+    cd /Users/marwa/Downloads/Lecture10Demo.playground
+    export CODESIGN_ALLOCATE\=/Users/marwa/Desktop/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/codesign_allocate
+    
+    Signing Identity:     "-"
+    
+    /usr/bin/codesign --force --sign - --timestamp\=none --generate-entitlement-der /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework
+
+RegisterExecutionPolicyException /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework (in target 'Lecture10Demo_Sources' from project 'Lecture10Demo_Sources')
+    cd /Users/marwa/Downloads/Lecture10Demo.playground
+    builtin-RegisterExecutionPolicyException /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework
+
+Touch /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework (in target 'Lecture10Demo_Sources' from project 'Lecture10Demo_Sources')
+    cd /Users/marwa/Downloads/Lecture10Demo.playground
+    /usr/bin/touch -c /Users/marwa/Library/Developer/Xcode/DerivedData/Lecture10Demo-bxyxoyxkmxyvyefmastcpboglyki/Build/Intermediates.noindex/Playgrounds/Lecture10Demo/Products/Debug-iphonesimulator/Lecture10Demo_Sources.framework
+
+
+
+Build succeeded    06/07/2022, 12:43 AM    0.7 seconds

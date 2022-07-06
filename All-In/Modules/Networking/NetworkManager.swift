@@ -8,13 +8,82 @@
 import Foundation
 
 class NetworkManager : ApiServices{
+  
     
   static let shared = NetworkManager()
   
     
     
+    func fetchCategories(completion: @escaping (CustomCollections?, Error?) -> Void) {
+        if let url = URL(string: "https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/custom_collections.json?access_token=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"){
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data{
+                    let decodJson = JSONDecoder()
+                    let decodedArray = try? decodJson.decode(CustomCollections.self, from: data)
+                    completion(decodedArray, nil)
+                }
+                if let error = error {
+                    completion(nil, error)
+                }
+            }.resume()
+        }
+    }
     
+    func fetchCollects(completion: @escaping (Collects?, Error?) -> Void) {
+        if let url = URL(string: "https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/collects.json?access_token=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"){
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data{
+                    let decodJson = JSONDecoder()
+                    let decodedArray = try? decodJson.decode(Collects.self, from: data)
+                    completion(decodedArray, nil)
+                }
+                if let error = error {
+                    completion(nil, error)
+                }
+            }.resume()
+        }
+    }
     
+    func fetchProducts(completion: @escaping (Products?, Error?) -> Void) {
+        if let url = URL(string:"https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/products.json?access_token=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"){
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    let decodJson = JSONDecoder()
+                    let decodedArray = try? decodJson.decode(Products.self, from: data)
+                   // let decodedArray: SmartCollections = convertFromJson(data: data)!
+                    completion(decodedArray,nil)
+                }
+                if let error = error {
+                    completion(nil,error)
+                }
+            }.resume()
+        }
+    }
+
+
+
+        
+ 
+    func fetchBrands(completion: @escaping (SmartCollections?, Error?) -> Void) {
+  //  https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/smart_collections.json?7d67dd63dc90e18fce08d1f7746e9f41-Shopfiy-access_token=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
+        if let url = URL(string:"https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/smart_collections.json?access_token=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"){
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let data = data {
+                    let decodJson = JSONDecoder()
+                    let decodedArray = try? decodJson.decode(SmartCollections.self, from: data)
+                    //print(decodedArray?.smart_collections)
+                   // let decodedArray: SmartCollections = convertFromJson(data: data)!
+                    completion(decodedArray,nil)
+                   
+                }
+                if let error = error {
+                    completion(nil,error)
+                }
+            }.resume()
+        }
+    }
+
+
 //MARK: - Mohamed - Post Address
     
     func postAddress(customerID: String, address: Address, completion: @escaping (Date?, URLResponse?, Error?) -> ()) {

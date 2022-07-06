@@ -38,6 +38,7 @@ PODS:
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
+  - Kingfisher (4.10.1)
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
@@ -45,19 +46,22 @@ PODS:
 DEPENDENCIES:
   - Braintree
   - BraintreeDropIn
+  - Kingfisher
   - SDWebImage (~> 5.0)
 
 SPEC REPOS:
   trunk:
     - Braintree
     - BraintreeDropIn
+    - Kingfisher
     - SDWebImage
 
 SPEC CHECKSUMS:
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
 
-PODFILE CHECKSUM: 409fa21e517bb56bfef30edf0b9b1ee1e040c3cd
+PODFILE CHECKSUM: 45aba1cc1957b2a04171828397ba826e9ace6cf3
 
 COCOAPODS: 1.11.3

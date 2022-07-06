@@ -2,4 +2,5 @@ ${PODS_ROOT}/Target Support Files/Pods-All-In-All-InUITests/Pods-All-In-All-InUI
 ${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework
 ${PODS_ROOT}/Braintree/Frameworks/CardinalMobile.framework
 ${BUILT_PRODUCTS_DIR}/BraintreeDropIn/BraintreeDropIn.framework
+${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework

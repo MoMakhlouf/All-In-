@@ -34,12 +34,11 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="32"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <segments>
-                        <segment title="All"/>
-                        <segment title="Men"/>
-                        <segment title=""/>
-                        <segment title=""/>
-                        <segment title=""/>
-                        <segment title=""/>
+                        <segment title="Home page"/>
+                        <segment title="MEN"/>
+                        <segment title="WOMEN"/>
+                        <segment title="KID"/>
+                        <segment title="SALE"/>
                     </segments>
                     <color key="tintColor" systemColor="tertiarySystemGroupedBackgroundColor"/>
                     <color key="selectedSegmentTintColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -60,6 +59,13 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tHh-O7-Cp2" secondAttribute="trailing" id="oK3-al-cH0"/>
             </constraints>
             <point key="canvasLocation" x="34.782608695652179" y="-101.11607142857143"/>
+        </view>
+        <view contentMode="scaleToFill" id="RhN-A7-PVf">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <viewLayoutGuide key="safeArea" id="axb-cY-lwV"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <point key="canvasLocation" x="-1426" y="-55"/>
         </view>
     </objects>
     <resources>

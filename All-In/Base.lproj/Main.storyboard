@@ -9,7 +9,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TabBarController" customModule="All_In" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="tab" hidesBottomBarWhenPushed="YES" id="BYZ-38-t0r" customClass="TabBarController" customModule="All_In" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="9JY-Pf-tHF">
                         <barButtonItem key="leftBarButtonItem" image="magnifyingglass" catalog="system" id="V3f-OI-GD9"/>
                         <rightBarButtonItems>
@@ -17,9 +17,6 @@
                             <barButtonItem image="cart" catalog="system" id="At2-cu-zIz"/>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <connections>
-                        <segue destination="XWi-fX-NJs" kind="custom" id="BiC-JZ-yph"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

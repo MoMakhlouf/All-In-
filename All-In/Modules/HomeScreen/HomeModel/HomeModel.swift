@@ -8,8 +8,8 @@
 import Foundation
 
 // MARK: - Collects
-struct Collects: Codable {
-    var smartCollections: [SmartCollection]
+struct SmartCollections: Codable {
+    var smart_collections: [SmartCollection]
 }
 
 // MARK: - SmartCollection

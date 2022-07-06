@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+//import Kingfisher
 
 class HomeViewController: UIViewController {
 
@@ -16,11 +17,13 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var adsView: UIView!
-    var array = [SmartCollection]()
+
+    var brandsArray = [SmartCollection]()
    var adsPhotos = [UIImage(named: "adidas") , UIImage(named: "nike") , UIImage(named: "timberland") , UIImage(named: "adidas") ,  UIImage(named: "nike")]
     var timer : Timer?
     var currentCellIndex = 0
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -48,10 +51,11 @@ class HomeViewController: UIViewController {
         
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         navigationController?.navigationBar.topItem?.backButtonTitle = " "
-        self.navigationController?.navigationBar.barTintColor = .blue
+        self.navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.backgroundColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
-       // self.navigationController?.navigationBar.largeContentTitle = "marwa"
         
+        tabBarController?.tabBarController?.hidesBottomBarWhenPushed = true
         title = "Home"
         let favoriteBtn = UIBarButtonItem()
         favoriteBtn.image = UIImage(systemName: "heart.fill")
@@ -73,25 +77,21 @@ class HomeViewController: UIViewController {
         
         
       
-        
-     //   self.navigationController?.navigationBar.largeTitleTextAttributes =
-        
 
-        
-        if let url = URL(string: "https:// 7d67dd63dc90e18fce08d1f7746e9f41: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@ios-q3-mansoura.myshopify.com/admin/api/2022-01/smart_collections.json"){
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    let jsonDecoder = JSONDecoder()
-                    let jeson = try? jsonDecoder.decode(Collects.self , from: data)
-                    self.array = jeson?.smartCollections ?? []
-                    DispatchQueue.main.async {
-                        self.brandsHomeCollection.reloadData()
-                    }
+    
+        let homeViewModel = HomeViewModel()
+        homeViewModel.fetchData()
+        homeViewModel.bindingData = { brands , error in
+            if let brands = brands{
+                self.brandsArray = brands.smart_collections
+                DispatchQueue.main.async {
+                    self.brandsHomeCollection.reloadData()
                 }
-            }.resume()
+            }
+            if let error = error{
+                print(error.localizedDescription)
+            }
         }
-        
-        
     }
     
     
@@ -109,6 +109,8 @@ class HomeViewController: UIViewController {
            currentCellIndex = 0
        }
        adsCollectionView.scrollToItem(at: IndexPath(item: currentCellIndex, section: 0), at: .centeredHorizontally, animated: true)
+
+       
     }
 
     
@@ -128,16 +130,17 @@ class HomeViewController: UIViewController {
     }
     */
 
+
 }
 
 extension HomeViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView == brandsHomeCollection{
             let brandsVC = BrandsViewController()
-            navigationController?.pushViewController(brandsVC, animated: false)
+            brandsVC.brandName = brandsArray[indexPath.row].title
+            navigationController?.pushViewController(brandsVC, animated: true)
         }
     }
-    
 }
  
 extension HomeViewController: UICollectionViewDataSource{
@@ -146,7 +149,7 @@ extension HomeViewController: UICollectionViewDataSource{
             return adsPhotos.count
         }
         
-        return 6
+        return brandsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -158,8 +161,13 @@ extension HomeViewController: UICollectionViewDataSource{
             
         }
         let cell = brandsHomeCollection.dequeueReusableCell(withReuseIdentifier: "brandCell", for: indexPath) as! BrandsCollectionViewCell
-        cell.brandName.text = "Adidas"
-       // cell.brandImg.sd_setImage(with: URL(string: array[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
+        cell.brandName.text = brandsArray[indexPath.row].title
+      //  cell.brandImg.sd_setImage(with: URL(string: brandsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "fireworks.png"))
+        
+     //   cell.brandImg.sd_setImage(with: URL(string: brandsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "fireworks.png"))
+        
+        cell.brandImg.kf.setImage(with: URL(string: brandsArray[indexPath.row].image.src))
+
         return cell
         
     }
