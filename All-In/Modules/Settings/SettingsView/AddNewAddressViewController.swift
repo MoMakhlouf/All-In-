@@ -54,9 +54,17 @@ class AddNewAddressViewController: UIViewController {
             }
             task.resume()
         }
+        
     
         let addressesList = ListOfAddressesViewController()
-       navigationController?.pushViewController(addressesList, animated: true)
+        navigationController?.pushViewController(addressesList, animated: true)
+        
+        countryTextField.text = ""
+        cityTextField.text = ""
+        governorateTextField.text = ""
+        mobileNumberTextField.text = ""
+        moreDetailsAddressTextField.text = ""
+    
     }
     
     func validData() {
