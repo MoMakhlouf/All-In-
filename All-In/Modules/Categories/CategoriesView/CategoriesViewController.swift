@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import SDWebImage
+import Kingfisher
 
 class CategoriesViewController: UIViewController {
     var array: Array<Int> = []
