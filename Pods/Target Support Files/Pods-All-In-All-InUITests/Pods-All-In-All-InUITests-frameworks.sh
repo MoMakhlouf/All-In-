@@ -180,14 +180,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${PODS_ROOT}/Braintree/Frameworks/CardinalMobile.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BraintreeDropIn/BraintreeDropIn.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/Braintree/Braintree.framework"
   install_framework "${PODS_ROOT}/Braintree/Frameworks/CardinalMobile.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/BraintreeDropIn/BraintreeDropIn.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import SDWebImage
-//import Kingfisher
+//import SDWebImage
+import Kingfisher
 
 class HomeViewController: UIViewController {
 
@@ -164,7 +164,7 @@ extension HomeViewController: UICollectionViewDataSource{
         cell.brandName.text = brandsArray[indexPath.row].title
       //  cell.brandImg.sd_setImage(with: URL(string: brandsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "fireworks.png"))
         
-     //   cell.brandImg.sd_setImage(with: URL(string: brandsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "fireworks.png"))
+        //cell.brandImg.sd_setImage(with: URL(string: brandsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "fireworks.png"))
         
         cell.brandImg.kf.setImage(with: URL(string: brandsArray[indexPath.row].image.src))
 

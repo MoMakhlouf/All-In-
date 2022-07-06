@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+//import SDWebImage
 
 class CategoriesViewController: UIViewController {
     var array: Array<Int> = []
@@ -134,7 +134,7 @@ extension CategoriesViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
         cell.categoryPriceLbl.text = menArray[indexPath.row].title
-        cell.categoryImg.sd_setImage(with: URL(string: menArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
+       // cell.categoryImg.sd_setImage(with: URL(string: menArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
         return cell
     }
     

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Kingfisher
 
 class ShoppingCartTableViewCell: UITableViewCell {
     @IBOutlet weak var shoppingCartCellView: UIView!

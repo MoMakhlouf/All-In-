@@ -7,7 +7,6 @@ target 'All-In' do
 
   # Pods for All-In
   
-    pod 'SDWebImage', '~> 5.0'
     pod 'Braintree'
     pod 'BraintreeDropIn'
       pod 'Kingfisher'

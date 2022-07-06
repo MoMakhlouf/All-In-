@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SDWebImage
+//import SDWebImage
 
 class BrandsViewController: UIViewController{
     
@@ -105,7 +105,7 @@ extension BrandsViewController: UICollectionViewDataSource{
         cell.nameProductLbl.text = productsArray[indexPath.row].title + " \\" + productsArray[indexPath.row].variants[0].option2
         
         cell.priceProductLbl.text = productsArray[indexPath.row].variants[0].price + " EGP"
-        cell.prouctImg.sd_setImage(with: URL(string: productsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
+        //cell.prouctImg.sd_setImage(with: URL(string: productsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
         
         return cell
     }
