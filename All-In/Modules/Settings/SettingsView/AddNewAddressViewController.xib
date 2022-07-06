@@ -11,11 +11,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddNewAddressViewController" customModule="All_In" customModuleProvider="target">
             <connections>
                 <outlet property="addNewAddressButton" destination="ZK1-6p-ckO" id="xlc-Yt-hui"/>
-                <outlet property="cityTextField" destination="Mez-bf-UVR" id="raz-4a-6ox"/>
-                <outlet property="governorateTextField" destination="vX9-ln-NDi" id="Jk6-D5-iJ5"/>
+                <outlet property="cityTextField" destination="6kY-qu-e37" id="8Wc-hP-GeZ"/>
+                <outlet property="countryTextField" destination="vX9-ln-NDi" id="Jk6-D5-iJ5"/>
+                <outlet property="governorateTextField" destination="Mez-bf-UVR" id="raz-4a-6ox"/>
                 <outlet property="mobileNumberTextField" destination="wLu-kQ-I91" id="9jg-gy-7ZW"/>
                 <outlet property="moreDetailsAddressTextField" destination="pgt-2J-rGH" id="oVu-t2-zgh"/>
-                <outlet property="streetTextField" destination="6kY-qu-e37" id="8Wc-hP-GeZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -27,7 +27,7 @@
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dp-li-D77">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Governorate" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vX9-ln-NDi">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vX9-ln-NDi">
                             <rect key="frame" x="32" y="78" width="350" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Cpt-KD-O0K"/>
@@ -35,7 +35,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mez-bf-UVR">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Governorate" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mez-bf-UVR">
                             <rect key="frame" x="32" y="157" width="350" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="vxy-vV-pby"/>
@@ -43,7 +43,7 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6kY-qu-e37">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6kY-qu-e37">
                             <rect key="frame" x="32" y="237" width="350" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="Raf-4i-2ea"/>

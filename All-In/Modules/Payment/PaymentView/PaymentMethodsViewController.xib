@@ -16,6 +16,7 @@
                 <outlet property="crediCardButton" destination="LKO-5s-4KY" id="Vq7-WP-MYj"/>
                 <outlet property="crediCardDetailsView" destination="XtO-aE-TGB" id="14W-0p-cYh"/>
                 <outlet property="creditCardWebView" destination="ItK-cd-nFL" id="Z8k-xS-dnN"/>
+                <outlet property="orderPlacedView" destination="rWF-MX-mz1" id="NPj-8O-Yqm"/>
                 <outlet property="paymentScrollView" destination="pMi-TX-cBZ" id="drK-Xc-3FY"/>
                 <outlet property="placeOrderButton" destination="dFO-hU-Ahy" id="tXq-3T-2IU"/>
                 <outlet property="placeOrderIndicator" destination="Oi7-LQ-xF5" id="C0m-O4-dA6"/>
@@ -30,48 +31,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWF-MX-mz1">
-                    <rect key="frame" x="0.0" y="30" width="414" height="836"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fireworks" translatesAutoresizingMaskIntoConstraints="NO" id="niw-5g-ujf">
-                            <rect key="frame" x="114" y="169" width="172" height="180"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="180" id="2Hq-YZ-1C1"/>
-                                <constraint firstAttribute="width" constant="172" id="Pue-4U-VOr"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Order Seccessfully Placed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egy-HL-dia">
-                            <rect key="frame" x="89" y="386" width="265" height="23"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAH-Gz-ZZM">
-                            <rect key="frame" x="82" y="521" width="253" height="54"/>
-                            <color key="backgroundColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="54" id="3fV-AD-m9h"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" title="Continue Shopping">
-                                <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </buttonConfiguration>
-                            <connections>
-                                <action selector="continueShoppingButtonPressed:" destination="-1" eventType="touchUpInside" id="7Yn-9K-bYI"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstItem="egy-HL-dia" firstAttribute="top" secondItem="niw-5g-ujf" secondAttribute="bottom" constant="37" id="4VS-PN-NBe"/>
-                        <constraint firstItem="GAH-Gz-ZZM" firstAttribute="leading" secondItem="rWF-MX-mz1" secondAttribute="leading" constant="82" id="DV8-PW-eBs"/>
-                        <constraint firstItem="niw-5g-ujf" firstAttribute="leading" secondItem="rWF-MX-mz1" secondAttribute="leading" constant="114" id="Huy-WY-1mz"/>
-                        <constraint firstAttribute="bottom" secondItem="GAH-Gz-ZZM" secondAttribute="bottom" constant="261" id="Ofb-jc-dwk"/>
-                        <constraint firstItem="niw-5g-ujf" firstAttribute="top" secondItem="rWF-MX-mz1" secondAttribute="top" constant="169" id="YuX-4Y-fRo"/>
-                        <constraint firstAttribute="trailing" secondItem="GAH-Gz-ZZM" secondAttribute="trailing" constant="79" id="bji-I5-YUX"/>
-                        <constraint firstItem="egy-HL-dia" firstAttribute="leading" secondItem="rWF-MX-mz1" secondAttribute="leading" constant="89" id="lX8-Sv-dBO"/>
-                    </constraints>
-                </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMi-TX-cBZ">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
@@ -197,6 +156,51 @@
                                 <constraint firstAttribute="width" constant="20" id="yTw-Y1-zaK"/>
                             </constraints>
                         </activityIndicatorView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rWF-MX-mz1">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orderPlaced" translatesAutoresizingMaskIntoConstraints="NO" id="niw-5g-ujf">
+                                    <rect key="frame" x="121" y="153" width="172" height="180"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="172" id="Im2-91-MKc"/>
+                                        <constraint firstAttribute="height" constant="180" id="ktL-oT-S0B"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Order Seccessfully Placed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="egy-HL-dia">
+                                    <rect key="frame" x="20" y="363" width="374" height="25.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GAH-Gz-ZZM">
+                                    <rect key="frame" x="105" y="692" width="204" height="60"/>
+                                    <color key="backgroundColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="204" id="23t-sX-WqZ"/>
+                                        <constraint firstAttribute="height" constant="60" id="Pim-Ok-z5X"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Continue Shopping">
+                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="continueShoppingButtonPressed:" destination="-1" eventType="touchUpInside" id="7Yn-9K-bYI"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="niw-5g-ujf" firstAttribute="leading" secondItem="rWF-MX-mz1" secondAttribute="leading" constant="121" id="CDK-AK-1Uc"/>
+                                <constraint firstAttribute="trailing" secondItem="egy-HL-dia" secondAttribute="trailing" constant="20" id="Hcu-rk-70h"/>
+                                <constraint firstItem="egy-HL-dia" firstAttribute="top" secondItem="niw-5g-ujf" secondAttribute="bottom" constant="30" id="S84-Hl-xCQ"/>
+                                <constraint firstItem="GAH-Gz-ZZM" firstAttribute="leading" secondItem="rWF-MX-mz1" secondAttribute="leading" constant="105" id="T8c-En-JIP"/>
+                                <constraint firstItem="niw-5g-ujf" firstAttribute="top" secondItem="rWF-MX-mz1" secondAttribute="top" constant="153" id="U4o-Bv-1p5"/>
+                                <constraint firstAttribute="bottom" secondItem="GAH-Gz-ZZM" secondAttribute="bottom" constant="100" id="eZf-hC-FxG"/>
+                                <constraint firstItem="egy-HL-dia" firstAttribute="leading" secondItem="rWF-MX-mz1" secondAttribute="leading" constant="20" id="jvi-vh-Fow"/>
+                                <constraint firstAttribute="trailing" secondItem="GAH-Gz-ZZM" secondAttribute="trailing" constant="105" id="rvL-23-WW2"/>
+                                <constraint firstAttribute="trailing" secondItem="niw-5g-ujf" secondAttribute="trailing" constant="121" id="xDZ-X9-Bh3"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
@@ -210,10 +214,13 @@
                         <constraint firstItem="NBP-F5-pUT" firstAttribute="top" secondItem="LKO-5s-4KY" secondAttribute="bottom" constant="30" id="FUo-DM-noo"/>
                         <constraint firstAttribute="trailing" secondItem="NCz-az-n2G" secondAttribute="trailing" constant="20" id="FWd-fR-och"/>
                         <constraint firstItem="dFO-hU-Ahy" firstAttribute="leading" secondItem="pMi-TX-cBZ" secondAttribute="leading" constant="100" id="FwS-J9-d84"/>
+                        <constraint firstItem="rWF-MX-mz1" firstAttribute="centerY" secondItem="Oi7-LQ-xF5" secondAttribute="centerY" id="Hwg-vi-gc6"/>
                         <constraint firstItem="ZSA-Xp-0S6" firstAttribute="leading" secondItem="pMi-TX-cBZ" secondAttribute="leading" constant="20" id="Kzj-TY-B4G"/>
                         <constraint firstAttribute="trailing" secondItem="dFO-hU-Ahy" secondAttribute="trailing" constant="100" id="LS0-Le-oaS"/>
                         <constraint firstItem="dFO-hU-Ahy" firstAttribute="top" secondItem="XtO-aE-TGB" secondAttribute="bottom" priority="997" constant="63" id="MyH-uS-0Af"/>
+                        <constraint firstItem="rWF-MX-mz1" firstAttribute="top" secondItem="pMi-TX-cBZ" secondAttribute="top" id="PmN-cR-jgu"/>
                         <constraint firstItem="LKO-5s-4KY" firstAttribute="top" secondItem="NCz-az-n2G" secondAttribute="bottom" constant="20" id="YeR-si-UrD"/>
+                        <constraint firstItem="rWF-MX-mz1" firstAttribute="centerX" secondItem="dFO-hU-Ahy" secondAttribute="centerX" id="ZIa-ut-Sao"/>
                         <constraint firstItem="dFO-hU-Ahy" firstAttribute="top" secondItem="NBP-F5-pUT" secondAttribute="bottom" priority="900" constant="70" id="dku-2m-pdY"/>
                         <constraint firstItem="ZSA-Xp-0S6" firstAttribute="top" secondItem="pMi-TX-cBZ" secondAttribute="top" constant="30" id="gSJ-5s-DdR"/>
                         <constraint firstItem="XtO-aE-TGB" firstAttribute="top" secondItem="NBP-F5-pUT" secondAttribute="bottom" constant="30" id="h1Y-H9-tdz"/>
@@ -232,22 +239,18 @@
                 </scrollView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemGray6Color"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="rWF-MX-mz1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="30" id="7r9-Lj-FSR"/>
-                <constraint firstItem="rWF-MX-mz1" firstAttribute="leading" secondItem="pMi-TX-cBZ" secondAttribute="leading" id="Bup-gM-ZW0"/>
                 <constraint firstAttribute="bottom" secondItem="pMi-TX-cBZ" secondAttribute="bottom" id="GDP-6w-Zar"/>
                 <constraint firstItem="pMi-TX-cBZ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RXd-TY-5Wl"/>
-                <constraint firstItem="rWF-MX-mz1" firstAttribute="trailing" secondItem="pMi-TX-cBZ" secondAttribute="trailing" id="V6T-ZE-jtY"/>
                 <constraint firstItem="pMi-TX-cBZ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Z9g-05-F9v"/>
-                <constraint firstItem="rWF-MX-mz1" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="iw4-vu-GYu"/>
                 <constraint firstItem="pMi-TX-cBZ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="tR9-Xo-Ul1"/>
             </constraints>
             <point key="canvasLocation" x="176.81159420289856" y="55.580357142857139"/>
         </view>
     </objects>
     <resources>
-        <image name="fireworks" width="128" height="128"/>
+        <image name="orderPlaced" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

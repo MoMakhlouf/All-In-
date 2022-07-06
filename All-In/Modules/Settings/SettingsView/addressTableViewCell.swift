@@ -9,6 +9,7 @@ import UIKit
 
 class addressTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var fullName: UILabel!
     @IBOutlet weak var fullAddress: UILabel!
     @IBOutlet weak var addressView: UIView!
     override func awakeFromNib() {
@@ -23,5 +24,12 @@ class addressTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func getFullAddress(address : Address){
+        
+        fullAddress.text =  "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")"
+        fullName.text = "\(address.first_name ?? "") \(address.last_name ?? "")"
+    }
+    
     
 }

@@ -21,7 +21,7 @@
                         <rect key="frame" x="10" y="10" width="300" height="110"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="wrC-SQ-rqC">
-                                <rect key="frame" x="10" y="8" width="150" height="31"/>
+                                <rect key="frame" x="15" y="15" width="150" height="19.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="GCa-5J-Df5"/>
                                 </constraints>
@@ -29,33 +29,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cA7-sP-x8Z">
-                                <rect key="frame" x="225" y="8" width="65" height="31"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Select">
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="all detail in one label interpolation to be here bla bla bla " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="I4K-PH-aRg">
-                                <rect key="frame" x="8" y="47" width="284" height="50"/>
+                                <rect key="frame" x="20" y="36.5" width="272" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Puy-Jc-Wax"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.25197730819282299" green="0.26005192059979643" blue="0.26828286082474229" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wrC-SQ-rqC" firstAttribute="top" secondItem="Agl-H0-PFg" secondAttribute="top" constant="8" id="7zC-Ad-QjF"/>
-                            <constraint firstAttribute="trailing" secondItem="cA7-sP-x8Z" secondAttribute="trailing" constant="10" id="E4P-8W-jly"/>
-                            <constraint firstItem="cA7-sP-x8Z" firstAttribute="centerY" secondItem="wrC-SQ-rqC" secondAttribute="centerY" id="LcW-gO-5Nb"/>
-                            <constraint firstItem="cA7-sP-x8Z" firstAttribute="top" secondItem="Agl-H0-PFg" secondAttribute="top" constant="8" id="UoX-bA-t4e"/>
-                            <constraint firstItem="I4K-PH-aRg" firstAttribute="top" secondItem="wrC-SQ-rqC" secondAttribute="bottom" constant="8" id="Z6h-Bi-fmD"/>
-                            <constraint firstItem="wrC-SQ-rqC" firstAttribute="leading" secondItem="Agl-H0-PFg" secondAttribute="leading" constant="10" id="dfX-Hg-1hw"/>
+                            <constraint firstItem="wrC-SQ-rqC" firstAttribute="top" secondItem="Agl-H0-PFg" secondAttribute="top" constant="15" id="7zC-Ad-QjF"/>
+                            <constraint firstItem="I4K-PH-aRg" firstAttribute="top" secondItem="wrC-SQ-rqC" secondAttribute="bottom" constant="2" id="Z6h-Bi-fmD"/>
+                            <constraint firstItem="wrC-SQ-rqC" firstAttribute="leading" secondItem="Agl-H0-PFg" secondAttribute="leading" constant="15" id="dfX-Hg-1hw"/>
                             <constraint firstAttribute="trailing" secondItem="I4K-PH-aRg" secondAttribute="trailing" constant="8" id="l1L-Fl-qhW"/>
-                            <constraint firstItem="I4K-PH-aRg" firstAttribute="leading" secondItem="Agl-H0-PFg" secondAttribute="leading" constant="8" id="tAN-zh-1k5"/>
+                            <constraint firstItem="I4K-PH-aRg" firstAttribute="leading" secondItem="Agl-H0-PFg" secondAttribute="leading" constant="20" id="tAN-zh-1k5"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -71,6 +61,7 @@
             <connections>
                 <outlet property="addressView" destination="Agl-H0-PFg" id="hL0-mB-Ggp"/>
                 <outlet property="fullAddress" destination="I4K-PH-aRg" id="haf-f6-HVp"/>
+                <outlet property="fullName" destination="wrC-SQ-rqC" id="10l-BU-TGT"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="129.91071428571428"/>
         </tableViewCell>

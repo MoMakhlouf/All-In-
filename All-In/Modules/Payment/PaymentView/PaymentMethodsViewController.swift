@@ -32,10 +32,11 @@ class PaymentMethodsViewController: UIViewController {
     
     @IBOutlet weak var placeOrderIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var orderPlacedView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         btApiClient = BTAPIClient(authorization: authorization)
-
+        orderPlacedView.isHidden = true
         totalAmountLabel.text = totalAmount
         placeOrderButton.layer.cornerRadius = 15
         continueShoppingButton.layer.cornerRadius = 15
@@ -193,7 +194,7 @@ class PaymentMethodsViewController: UIViewController {
         placeOrderIndicator.startAnimating()
         Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
             self.placeOrderIndicator.stopAnimating()
-            self.paymentScrollView.isHidden = true
+            self.orderPlacedView.isHidden = false
         }
     }
     

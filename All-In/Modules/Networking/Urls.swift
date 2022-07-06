@@ -26,9 +26,10 @@ struct Urls {
         return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-04/customers/\(customerId)/addresses.json"
     }
     
-
-
-
+    var postAddressUrl : String {
+        return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-04/customers/\(customerId)/addresses.json"
+    }
+        
 
 
 }

@@ -23,7 +23,7 @@ class All_InTests: XCTestCase {
     
     func testFetchingCodes(){
         network.fetchCodes { discountCodes, error in
-            print(discountCodes?.count)
+           // print(discountCodes?.count)
             XCTAssertEqual(discountCodes?.count ?? 0, 2)
         }
     }

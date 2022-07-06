@@ -24,15 +24,19 @@ class ListOfAddressesViewController: UIViewController {
         }
     }
     var addressesArray = [Address]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         let addressViewModel = AddressViewModel()
         addressViewModel.getAdderss(customerId: "6261211300054")
         addressViewModel.bindingData = { addresses , error in
             
             if let addresses = addresses{
                 self.addressesArray = addresses
+                DispatchQueue.main.async {
+                    self.addressTableView.reloadData()
+                }
             }
             if let error = error {
                 print(error)
@@ -42,18 +46,19 @@ class ListOfAddressesViewController: UIViewController {
             }
             
         }
-
-        
-        
-
+        print(addressesArray.count)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        addressTableView.reloadData()
+    }
 
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
         
-        let settings = SettingsViewController()
-        navigationController?.pushViewController(settings, animated: true)
-        
+       // let settings = SettingsViewController()
+       // navigationController?.pushViewController(settings, animated: true)
+        let add = AddNewAddressViewController()
+        navigationController?.pushViewController(add, animated: true)
     }
     
 
@@ -68,7 +73,8 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = addressTableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! addressTableViewCell
         
-        cell.fullAddress.text = addressesArray[indexPath.row].address1
+        cell.getFullAddress(address: addressesArray[indexPath.row])
+        
         return cell
     }
     
@@ -76,8 +82,6 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
         
        
     }
-    
-    
     
     
 }
