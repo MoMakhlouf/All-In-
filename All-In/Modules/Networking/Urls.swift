@@ -11,6 +11,7 @@ struct Urls {
     
     var priceRule = ""
     var customerId = ""
+    var addressId = 0
 
     var baseUrl  : String {
         
@@ -28,6 +29,10 @@ struct Urls {
     
     var postAddressUrl : String {
         return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-04/customers/\(customerId)/addresses.json"
+    }
+    
+    var deleteAddressUrl : String {
+        return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-04/customers/\(customerId)/addresses/\(addressId).json"
     }
         
 

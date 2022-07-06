@@ -8,6 +8,8 @@
 import Foundation
 
 class NetworkManager : ApiServices{
+    
+  static let shared = NetworkManager()
   
     
     
@@ -44,32 +46,6 @@ class NetworkManager : ApiServices{
             task.resume()
         }
         
-        
-//        if let url = URL(string: Urls(customerId: customerID).postAddressUrl){
-//            var request = URLRequest(url: url)
-//            request.httpMethod = "POST"
-//            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//            request.httpShouldHandleCookies = false
-//            if let httpBody = try? JSONSerialization.data(withJSONObject: address.asDictionary(), options: []) {
-//                request.httpBody = httpBody
-//            }
-//
-//            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//
-//                if let data = data {
-//                    do{
-//                        let json = try JSONSerialization.jsonObject(with: data, options: [])
-//
-//                        print(json)
-//                        print("pooost")
-//                    }catch{
-//                        print("Errrrorrrrrrrr")
-//                    }
-//                }
-//            }
-//            task.resume()
-//
-//        }
     }
     
     
@@ -80,7 +56,7 @@ class NetworkManager : ApiServices{
                 if let data = data{
                     if let decodedData = try? JSONDecoder().decode(Customer.self, from: data){
                         completion(decodedData.addresses , nil)
-                       // print("123\(decodedData.addresses)")
+                        print("123\(decodedData.addresses)")
                     }
                  }
             }
@@ -89,6 +65,28 @@ class NetworkManager : ApiServices{
     }
     
     
+    
+    //MARK: - Mohamed - Delete Address
+    
+    func deleteAddress(customerID: String, addressID: Int, completion: @escaping (Error?) -> ()) {
+        
+        if let url = URL(string: Urls(customerId: customerID , addressId: addressID).deleteAddressUrl){
+            var request = URLRequest(url: url)
+            request.httpMethod = "DELETE"
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        completion(error)
+                        return
+                    }
+                completion(nil)
+                }
+            }
+            task.resume()
+        }
+        
+    }
     
     //MARK: - Mohamed - Get discount Code
     func getDiscountCode( priceRule : String , completion: @escaping (([Discount_codes]?, Error?) -> Void)) {
@@ -109,12 +107,14 @@ class NetworkManager : ApiServices{
    // 1191661535446
 }
 
-extension Encodable {
-    func asDictionary() throws -> [String: Any] {
-        let data = try JSONEncoder().encode(self)
-        guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-            throw NSError()
-        }
-        return dictionary
-    }
-}
+
+//
+//extension Encodable {
+//    func asDictionary() throws -> [String: Any] {
+//        let data = try JSONEncoder().encode(self)
+//        guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+//            throw NSError()
+//        }
+//        return dictionary
+//    }
+//}

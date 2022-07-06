@@ -61,8 +61,10 @@ class ListOfAddressesViewController: UIViewController {
         navigationController?.pushViewController(add, animated: true)
     }
     
-
 }
+
+
+
 
 
 extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataSource {
@@ -72,7 +74,7 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = addressTableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! addressTableViewCell
-        
+        cell.selectionStyle = .none
         cell.getFullAddress(address: addressesArray[indexPath.row])
         
         return cell
@@ -80,8 +82,26 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       
     }
     
     
+    //MARK: - DELETE AN ADDRESS
+     
+     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+                print("delete Address")
+                let address =  addressesArray[indexPath.row].id
+                NetworkManager.shared.deleteAddress(customerID:"6261211300054" , addressID: address ?? 0 ) { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                        print("error")
+                        return
+                    }
+                    print("DELETEDDDD")
+                    self.addressesArray.remove(at: indexPath.row)
+                    self.addressTableView.deleteRows(at: [indexPath], with: .fade)
+                }
+        }
+    }
+
 }
