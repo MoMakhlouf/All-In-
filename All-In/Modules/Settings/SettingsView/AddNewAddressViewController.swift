@@ -56,8 +56,10 @@ class AddNewAddressViewController: UIViewController {
         }
         
     
-        let addressesList = ListOfAddressesViewController()
-        navigationController?.pushViewController(addressesList, animated: true)
+     //   let addressesList = ListOfAddressesViewController()
+       // navigationController?.pushViewController(addressesList, animated: true)
+        
+        navigationController?.popViewController(animated: true)
         
         countryTextField.text = ""
         cityTextField.text = ""

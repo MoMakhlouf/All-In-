@@ -15,6 +15,15 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var couponTextField: UITextField!
     @IBOutlet weak var congratsView: UIView!
     @IBOutlet weak var congratsViewLabel: UILabel!
+    @IBOutlet weak var applyButton: UIButton!
+    @IBOutlet weak var itemsCollectionView: UICollectionView!{
+        didSet{
+            itemsCollectionView.delegate = self
+            itemsCollectionView.dataSource = self
+            itemsCollectionView.register(UINib(nibName: "ItemsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "itemsCell")
+            
+        }
+    }
     
     
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
@@ -56,7 +65,9 @@ class PaymentViewController: UIViewController {
                 self.indicatorView.stopAnimating()
                 let discountAmount = String(format: "%.2f", self.subtotal * (5/100))
                 let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (5/100))
-                self.discountLabel.text = " \(discountAmount) EGP Discount"
+             //   self.discountLabel.text = " \(discountAmount) EGP Discount"
+                self.applyButton.titleLabel?.text = "\(discountAmount) EGP Discount"
+                self.applyButton.isEnabled = false
                 self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
             }
             
@@ -73,7 +84,11 @@ class PaymentViewController: UIViewController {
 
                 let discountAmount = String(format: "%.2f", self.subtotal * (10/100))
                 let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (10/100))
-                self.discountLabel.text = " \(discountAmount) EGP Discount"
+                self.applyButton.isEnabled = false
+                self.applyButton.titleLabel?.text = "\(discountAmount) EGP Discount"
+
+
+            //    self.discountLabel.text = " \(discountAmount) EGP Discount"
                 self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
             }
             
@@ -103,4 +118,27 @@ class PaymentViewController: UIViewController {
         navigationController?.pushViewController(paymentMethod, animated: true)
     }
     
+}
+
+extension PaymentViewController : UICollectionViewDelegate , UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = itemsCollectionView.dequeueReusableCell(withReuseIdentifier: "itemsCell", for: indexPath)
+        
+        
+        return cell
+        
+    }
+}
+
+
+extension PaymentViewController: UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      
+        return CGSize(width: collectionView.frame.width , height: collectionView.frame.height )
+    }
 }

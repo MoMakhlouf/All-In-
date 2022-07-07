@@ -27,6 +27,28 @@ class ListOfAddressesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let addressViewModel = AddressViewModel()
+//        addressViewModel.getAdderss(customerId: "6261211300054")
+//        addressViewModel.bindingData = { addresses , error in
+//
+//            if let addresses = addresses{
+//                self.addressesArray = addresses
+//                DispatchQueue.main.async {
+//                    self.addressTableView.reloadData()
+//                }
+//            }
+//            if let error = error {
+//                print(error)
+//                DispatchQueue.main.async {
+//                    Alert.displayAlert(title: "Error", message: "Failed To Apply Coupon")
+//                }
+//            }
+//
+//        }
+        print(addressesArray.count)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         let addressViewModel = AddressViewModel()
         addressViewModel.getAdderss(customerId: "6261211300054")
         addressViewModel.bindingData = { addresses , error in
@@ -45,13 +67,9 @@ class ListOfAddressesViewController: UIViewController {
             }
             
         }
-        print(addressesArray.count)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        addressTableView.reloadData()
-    }
-
+  
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
         
         let add = AddNewAddressViewController()
@@ -90,9 +108,13 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
                         print("error")
                         return
                     }
+                    if self.addressesArray.count == 1{
+                        Alert.displayAlert(title: "", message: "Cant't delete the only address")
+                    } else{
                     print("DELETED")
                     self.addressesArray.remove(at: indexPath.row)
                     self.addressTableView.deleteRows(at: [indexPath], with: .fade)
+                    }
                 }
         }
     }

@@ -68,6 +68,8 @@
 		A8BD82BA286F5525000DA1E6 /* addressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BD82B8286F5525000DA1E6 /* addressTableViewCell.swift */; };
 		A8BD82BB286F5525000DA1E6 /* addressTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8BD82B9286F5525000DA1E6 /* addressTableViewCell.xib */; };
 		A8BF41572873786300317979 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41562873786300317979 /* AddressViewModel.swift */; };
+		A8C051E6287708DA00C08A45 /* ItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C051E4287708DA00C08A45 /* ItemsCollectionViewCell.swift */; };
+		A8C051E7287708DA00C08A45 /* ItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C051E5287708DA00C08A45 /* ItemsCollectionViewCell.xib */; };
 		A8CB524828706191000366BE /* ShoppingCartDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CB524728706191000366BE /* ShoppingCartDBManager.swift */; };
 		A8CCBC8128764AD900E32B4B /* FavoutiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8CCBC7928764AD900E32B4B /* FavoutiteViewController.xib */; };
 		A8CCBC8228764AD900E32B4B /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CCBC7A28764AD900E32B4B /* CollectionViewCell.swift */; };
@@ -188,6 +190,8 @@
 		A8BD82B8286F5525000DA1E6 /* addressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addressTableViewCell.swift; sourceTree = "<group>"; };
 		A8BD82B9286F5525000DA1E6 /* addressTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = addressTableViewCell.xib; sourceTree = "<group>"; };
 		A8BF41562873786300317979 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
+		A8C051E4287708DA00C08A45 /* ItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewCell.swift; sourceTree = "<group>"; };
+		A8C051E5287708DA00C08A45 /* ItemsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsCollectionViewCell.xib; sourceTree = "<group>"; };
 		A8CB524728706191000366BE /* ShoppingCartDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartDBManager.swift; sourceTree = "<group>"; };
 		A8CCBC7928764AD900E32B4B /* FavoutiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoutiteViewController.xib; sourceTree = "<group>"; };
 		A8CCBC7A28764AD900E32B4B /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
@@ -662,6 +666,8 @@
 				A8D6E952286C713900AF555B /* PaymentViewController.xib */,
 				A8973CF9286E22DD001A3A8D /* PaymentMethodsViewController.swift */,
 				A8973CFA286E22DD001A3A8D /* PaymentMethodsViewController.xib */,
+				A8C051E4287708DA00C08A45 /* ItemsCollectionViewCell.swift */,
+				A8C051E5287708DA00C08A45 /* ItemsCollectionViewCell.xib */,
 			);
 			path = PaymentView;
 			sourceTree = "<group>";
@@ -840,6 +846,7 @@
 				A8BD82AF286F3588000DA1E6 /* SettingsViewController.xib in Resources */,
 				438E57E0287525EE00531469 /* ProuctsBrandCollectionViewCell.xib in Resources */,
 				A8D6E91C286C31B500AF555B /* LaunchScreen.storyboard in Resources */,
+				A8C051E7287708DA00C08A45 /* ItemsCollectionViewCell.xib in Resources */,
 				A8CCBC9028764B7200E32B4B /* RgisterViewController.xib in Resources */,
 				43EF41F3286E99CD00B7770C /* CategoriesViewController.xib in Resources */,
 				A8CCBC8E28764B7200E32B4B /* LoginViewController.xib in Resources */,
@@ -1023,6 +1030,7 @@
 				43FDEB26286D7A24005C93B9 /* HomeViewController.swift in Sources */,
 				A889F19C2870F63500B5DF34 /* NetworkManager.swift in Sources */,
 				A8973CFB286E22DD001A3A8D /* PaymentMethodsViewController.swift in Sources */,
+				A8C051E6287708DA00C08A45 /* ItemsCollectionViewCell.swift in Sources */,
 				A8BD82BA286F5525000DA1E6 /* addressTableViewCell.swift in Sources */,
 				A8CB524828706191000366BE /* ShoppingCartDBManager.swift in Sources */,
 				4329D9102872F8580033A36F /* OrdersTableViewCell.swift in Sources */,
