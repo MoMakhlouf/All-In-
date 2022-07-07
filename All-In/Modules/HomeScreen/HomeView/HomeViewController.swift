@@ -185,6 +185,10 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
 extension HomeViewController{
     @objc func favoriteButton(){
         
+        let favorite = FavouriteViewController()
+        
+        navigationController?.pushViewController(favorite, animated: true)
+        
     }
     
     @objc func shoppingBagButton(){

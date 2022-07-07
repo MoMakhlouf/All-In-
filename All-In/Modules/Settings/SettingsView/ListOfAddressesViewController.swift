@@ -25,7 +25,6 @@ class ListOfAddressesViewController: UIViewController {
     }
     var addressesArray = [Address]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let addressViewModel = AddressViewModel()
@@ -55,17 +54,11 @@ class ListOfAddressesViewController: UIViewController {
 
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
         
-       // let settings = SettingsViewController()
-       // navigationController?.pushViewController(settings, animated: true)
         let add = AddNewAddressViewController()
         navigationController?.pushViewController(add, animated: true)
     }
     
 }
-
-
-
-
 
 extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -76,7 +69,7 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
         let cell = addressTableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! addressTableViewCell
         cell.selectionStyle = .none
         cell.getFullAddress(address: addressesArray[indexPath.row])
-        
+      
         return cell
     }
     
@@ -84,11 +77,11 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
         
     }
     
-    
     //MARK: - DELETE AN ADDRESS
      
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
                 print("delete Address")
                 let address =  addressesArray[indexPath.row].id
                 NetworkManager.shared.deleteAddress(customerID:"6261211300054" , addressID: address ?? 0 ) { error in
@@ -97,7 +90,7 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
                         print("error")
                         return
                     }
-                    print("DELETEDDDD")
+                    print("DELETED")
                     self.addressesArray.remove(at: indexPath.row)
                     self.addressTableView.deleteRows(at: [indexPath], with: .fade)
                 }

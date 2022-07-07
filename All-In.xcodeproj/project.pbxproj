@@ -25,7 +25,6 @@
 		438E57E0287525EE00531469 /* ProuctsBrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438E57DE287525ED00531469 /* ProuctsBrandCollectionViewCell.xib */; };
 		438E57E32875312E00531469 /* BrandNameCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E57E12875312E00531469 /* BrandNameCollectionReusableView.swift */; };
 		438E57E42875312E00531469 /* BrandNameCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438E57E22875312E00531469 /* BrandNameCollectionReusableView.xib */; };
-		438E57E628753FFC00531469 /* Alert2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E57E528753FFC00531469 /* Alert2.swift */; };
 		438E57F12875457D00531469 /* FillterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E57EF2875457D00531469 /* FillterTableViewCell.swift */; };
 		438E57F22875457D00531469 /* FillterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 438E57F02875457D00531469 /* FillterTableViewCell.xib */; };
 		438E57F528755F9600531469 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438E57F328755F9600531469 /* FilterViewController.swift */; };
@@ -144,7 +143,6 @@
 		438E57DE287525ED00531469 /* ProuctsBrandCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProuctsBrandCollectionViewCell.xib; sourceTree = "<group>"; };
 		438E57E12875312E00531469 /* BrandNameCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandNameCollectionReusableView.swift; sourceTree = "<group>"; };
 		438E57E22875312E00531469 /* BrandNameCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandNameCollectionReusableView.xib; sourceTree = "<group>"; };
-		438E57E528753FFC00531469 /* Alert2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert2.swift; sourceTree = "<group>"; };
 		438E57EF2875457D00531469 /* FillterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillterTableViewCell.swift; sourceTree = "<group>"; };
 		438E57F02875457D00531469 /* FillterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FillterTableViewCell.xib; sourceTree = "<group>"; };
 		438E57F328755F9600531469 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
@@ -339,7 +337,6 @@
 				438E57DE287525ED00531469 /* ProuctsBrandCollectionViewCell.xib */,
 				438E57E12875312E00531469 /* BrandNameCollectionReusableView.swift */,
 				438E57E22875312E00531469 /* BrandNameCollectionReusableView.xib */,
-				438E57E528753FFC00531469 /* Alert2.swift */,
 				438E57EF2875457D00531469 /* FillterTableViewCell.swift */,
 				438E57F02875457D00531469 /* FillterTableViewCell.xib */,
 				438E57F328755F9600531469 /* FilterViewController.swift */,
@@ -1050,7 +1047,6 @@
 				43EF41FD286ECB3B00B7770C /* BrandsViewController.swift in Sources */,
 				A8CCBC8F28764B7200E32B4B /* RgisterViewController.swift in Sources */,
 				A8CCBC8828764AD900E32B4B /* FavoutiteViewController.swift in Sources */,
-				438E57E628753FFC00531469 /* Alert2.swift in Sources */,
 				434E3E09287415F4000AE2AA /* Products.swift in Sources */,
 				434E3E0D28745AA9000AE2AA /* CategoriesModel.swift in Sources */,
 				432B42AD2873AE3300AEA340 /* HomeViewModel.swift in Sources */,

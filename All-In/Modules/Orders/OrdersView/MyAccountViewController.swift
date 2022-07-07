@@ -20,11 +20,11 @@ class MyAccountViewController: UIViewController {
         loginBtn.layer.borderColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) //UIColor.black.cgColor
         
         loginBtn.layer.borderWidth = 2
-        loginBtn.layer.cornerRadius = 30
+        loginBtn.layer.cornerRadius = 15
         
         registerBtn.layer.borderColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         registerBtn.layer.borderWidth = 2
-        registerBtn.layer.cornerRadius = 30
+        registerBtn.layer.cornerRadius = 15
         
         title = "My Account"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]

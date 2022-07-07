@@ -60,7 +60,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
                     <constraints>
                         <constraint firstItem="HC3-D8-fig" firstAttribute="top" secondItem="d2d-PY-WDD" secondAttribute="bottom" constant="50" id="4VQ-9U-bI3"/>
                         <constraint firstItem="HC3-D8-fig" firstAttribute="trailing" secondItem="d2d-PY-WDD" secondAttribute="trailing" id="AKh-ob-dLc"/>
@@ -89,9 +89,6 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

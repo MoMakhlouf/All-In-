@@ -9,10 +9,12 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.title = "Settings"
+        logoutButton.layer.cornerRadius = 15
 
         // Do any additional setup after loading the view.
     }
@@ -20,6 +22,11 @@ class SettingsViewController: UIViewController {
     @IBAction func AddressesButtonPressed(_ sender: UIButton) {
         let adresses = ListOfAddressesViewController()
         navigationController?.pushViewController(adresses, animated: true)
+    }
+    
+    
+    @IBAction func logOutButtonPressed(_ sender: UIButton) {
+        
     }
     
     /*

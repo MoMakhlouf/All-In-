@@ -106,8 +106,14 @@ extension BrandsViewController: UICollectionViewDataSource{
         
         cell.priceProductLbl.text = productsArray[indexPath.row].variants[0].price + " EGP"
         //cell.prouctImg.sd_setImage(with: URL(string: productsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
-        
+        cell.prouctImg.kf.setImage(with: URL(string: productsArray[indexPath.row].image.src))
         return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let productDetails = ProductInfoViewController()
+        navigationController?.pushViewController(productDetails, animated: true)
     }
 }
 

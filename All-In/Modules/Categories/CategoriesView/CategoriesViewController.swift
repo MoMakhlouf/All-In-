@@ -31,13 +31,13 @@ class CategoriesViewController: UIViewController {
         let Home = HomeViewController()
         let favoriteBtn = UIBarButtonItem()
         favoriteBtn.image = UIImage(systemName: "heart.fill")
-        favoriteBtn.action = #selector(Home.favoriteButton)
+        favoriteBtn.action = #selector(favoriteButton)
         favoriteBtn.target = self
  
         
         let shoppingBagBtn = UIBarButtonItem()
         shoppingBagBtn.image = UIImage(systemName: "bag.fill")
-        shoppingBagBtn.action = #selector(Home.shoppingBagButton)
+        shoppingBagBtn.action = #selector(shoppingBagButton)
         shoppingBagBtn.target = self
         navigationItem.rightBarButtonItems = [favoriteBtn, shoppingBagBtn]
         
@@ -88,6 +88,25 @@ class CategoriesViewController: UIViewController {
         }
     }
     
+    
+    @objc func favoriteButton(){
+        
+        let favorite = FavouriteViewController()
+        
+        navigationController?.pushViewController(favorite, animated: true)
+        
+    }
+    
+    @objc func shoppingBagButton(){
+        
+        let shoppingCart = ShoppingCartViewController()
+        navigationController?.pushViewController(shoppingCart, animated: true)
+        
+    }
+    
+    
+    
+    
     override func viewWillAppear(_ animated: Bool) {
    
     }
@@ -112,9 +131,17 @@ class CategoriesViewController: UIViewController {
     }
     */
 
+    
+    
 }
 
 extension CategoriesViewController: UICollectionViewDelegate{
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let productInfo = ProductInfoViewController()
+        navigationController?.pushViewController(productInfo, animated: true)
+        
+    }
     
 }
 extension CategoriesViewController: UICollectionViewDataSource{
@@ -134,12 +161,16 @@ extension CategoriesViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
         cell.categoryPriceLbl.text = menArray[indexPath.row].title
-       // cell.categoryImg.sd_setImage(with: URL(string: menArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
+       
+        cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))
         return cell
     }
     
     
 }
+
+
+
 
 extension CategoriesViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

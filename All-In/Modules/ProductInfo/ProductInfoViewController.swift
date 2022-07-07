@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Kingfisher
 class ProductInfoViewController: UIViewController {
     
 var CurrentCellIndex = 0
