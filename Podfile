@@ -10,7 +10,8 @@ target 'All-In' do
     pod 'Braintree'
     pod 'BraintreeDropIn'
     pod 'Kingfisher'
-    
+    pod 'Cosmos', '~> 23.0'
+
 
   target 'All-InTests' do
     inherit! :search_paths

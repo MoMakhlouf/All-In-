@@ -33,10 +33,10 @@ class LoginViewController: UIViewController {
       
         signIn.layer.cornerRadius = 15
         SignUp.layer.cornerRadius = 15
-        let emailImage = UIImage(named: "mail")
-        textFieldSetup(textfield: txtEmail,  Image: emailImage!)
-        let PasswordImage = UIImage(named: "pass")
-        textFieldSetup(textfield: txtPassword,  Image: PasswordImage!)
+       // let emailImage = UIImage(named: "mail")
+       // textFieldSetup(textfield: txtEmail,  Image: emailImage!)
+//        let PasswordImage = UIImage(named: "pass")
+//        textFieldSetup(textfield: txtPassword,  Image: PasswordImage!)
     }
     
 
@@ -45,6 +45,8 @@ class LoginViewController: UIViewController {
     
  
     @IBAction func signUpButton(_ sender: UIButton) {
+        let register = RgisterViewController()
+        navigationController?.pushViewController(register, animated: true)
      
     }
     func textFieldSetup(textfield:UITextField , Image:UIImage)

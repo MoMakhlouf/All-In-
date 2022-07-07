@@ -50,10 +50,13 @@ class MyAccountViewController: UIViewController {
     */
     
     @IBAction func registerBtn(_ sender: Any) {
+        
     }
     
     
     @IBAction func loginBtn(_ sender: Any) {
+    let login = LoginViewController()
+        navigationController?.pushViewController(login, animated: true)
     }
 
 }

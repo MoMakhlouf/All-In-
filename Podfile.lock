@@ -38,24 +38,28 @@ PODS:
     - Braintree/UnionPay (~> 4.32)
     - BraintreeDropIn/UIKit
   - BraintreeDropIn/UIKit (8.2.0)
+  - Cosmos (23.0.0)
   - Kingfisher (4.10.1)
 
 DEPENDENCIES:
   - Braintree
   - BraintreeDropIn
+  - Cosmos (~> 23.0)
   - Kingfisher
 
 SPEC REPOS:
   trunk:
     - Braintree
     - BraintreeDropIn
+    - Cosmos
     - Kingfisher
 
 SPEC CHECKSUMS:
   Braintree: 78a33deb6f6ec617c2c4891fbe352854358b3a8d
   BraintreeDropIn: b57b653d130981aad7ad9bc97a69d3d7ef86f7a1
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
 
-PODFILE CHECKSUM: 598f7cb54485faaa0f63e7e54c48ccada5c89084
+PODFILE CHECKSUM: 287bc4fbb5cb5dd256bd9fbcbecd573f89513c50
 
 COCOAPODS: 1.11.3
