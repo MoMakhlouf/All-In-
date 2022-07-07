@@ -15,30 +15,42 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clearsContextBeforeDrawing="NO" tag="5" contentMode="scaleToFill" id="i5M-Pr-FkT">
+        <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" tag="5" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wYF-sI-ngp">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wYF-sI-ngp">
+                    <rect key="frame" x="0.0" y="125" width="414" height="737"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T4q-EX-I0B">
                         <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="headerReferenceSize" width="50" height="50"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <searchBar contentMode="redraw" placeholder="search" translatesAutoresizingMaskIntoConstraints="NO" id="Msm-nZ-Bkp">
+                    <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemGray6Color"/>
+            <color key="tintColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="wYF-sI-ngp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="QcJ-Db-p1R"/>
+                <constraint firstItem="Msm-nZ-Bkp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="DYv-2d-YHg"/>
+                <constraint firstItem="wYF-sI-ngp" firstAttribute="leading" secondItem="Msm-nZ-Bkp" secondAttribute="leading" id="HKb-PN-M8X"/>
+                <constraint firstItem="Msm-nZ-Bkp" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="N4W-WA-yjb"/>
+                <constraint firstItem="wYF-sI-ngp" firstAttribute="trailing" secondItem="Msm-nZ-Bkp" secondAttribute="trailing" id="PWa-Mp-CJv"/>
+                <constraint firstItem="Msm-nZ-Bkp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Qfx-HO-37w"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wYF-sI-ngp" secondAttribute="trailing" id="b3L-Wu-AhM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wYF-sI-ngp" secondAttribute="bottom" id="brO-Mc-Lxe"/>
                 <constraint firstItem="wYF-sI-ngp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hZd-X2-86B"/>
+                <constraint firstItem="wYF-sI-ngp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="37" id="tgt-bN-mkE"/>
             </constraints>
-            <point key="canvasLocation" x="264" y="-318"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="263.768115942029" y="-318.08035714285711"/>
         </view>
     </objects>
     <resources>

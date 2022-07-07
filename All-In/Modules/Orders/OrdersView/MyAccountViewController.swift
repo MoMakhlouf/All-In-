@@ -1,33 +1,40 @@
+
+
+
+
 //
 //  MyAccountViewController.swift
 //  All-In
 //
-//  Created by Marwa on 02/07/2022.
+//  Created by Marwa on 04/07/2022.
 //
 
 import UIKit
 
-class OrdersViewController: UIViewController {
-    
-   
-    @IBOutlet weak var ordersTable: UITableView!
+class MyAccountViewController: UIViewController {
+
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var registerBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        ordersTable.delegate = self
-        ordersTable.dataSource = self
-        ordersTable.register(UINib(nibName: "OrdersTableViewCell", bundle: nil), forCellReuseIdentifier: "orderCell")
+        loginBtn.layer.borderColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) //UIColor.black.cgColor
         
+        loginBtn.layer.borderWidth = 2
+        loginBtn.layer.cornerRadius = 30
+        
+        registerBtn.layer.borderColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
+        registerBtn.layer.borderWidth = 2
+        registerBtn.layer.cornerRadius = 30
         
         title = "My Account"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
         let settingBtn = UIBarButtonItem()
-        let me = MyAccountViewController()
         settingBtn.image = UIImage(systemName: "gearshape.fill")
-        settingBtn.action = #selector(me.settingButton)
+        settingBtn.action = #selector(settingButton)
         settingBtn.target = self
-        navigationItem.rightBarButtonItem = settingBtn
+        navigationItem.leftBarButtonItem = settingBtn
         
     }
     
@@ -42,31 +49,20 @@ class OrdersViewController: UIViewController {
     }
     */
     
-
-}
-
-extension OrdersViewController: UITableViewDelegate{
-    
-}
-
-extension OrdersViewController: UITableViewDataSource{
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    @IBAction func registerBtn(_ sender: Any) {
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = ordersTable.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as! OrdersTableViewCell
-        cell.numberOfOrder.text = "1234568" + "mdgjk"
-        cell.dateOfOrder.text = "12/5/6"
-        return cell
-    }
     
+    @IBAction func loginBtn(_ sender: Any) {
+    }
+
 }
 
-/*extension MyAccountViewController{
-    @objc func setting_Button(){
+
+extension MyAccountViewController{
+    @objc func settingButton(){
         let settingVC = SettingsViewController()
         navigationController?.pushViewController(settingVC, animated: true)
         
     }
-}*/
+}

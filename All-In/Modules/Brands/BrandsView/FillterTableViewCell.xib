@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="filterCell" rowHeight="198" id="KGk-i7-Jjw" customClass="FillterTableViewCell" customModule="All_In" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="198"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="198"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <slider opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="fill" contentVerticalAlignment="center" value="10" minValue="0.0" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="sLy-LL-lKW">
+                        <rect key="frame" x="29" y="136" width="262" height="34"/>
+                        <color key="tintColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <connections>
+                            <action selector="sliderPrice:" destination="KGk-i7-Jjw" eventType="valueChanged" id="faP-lq-BSl"/>
+                        </connections>
+                    </slider>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aLR-eI-G5r">
+                        <rect key="frame" x="31" y="50.5" width="110" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UbB-Ml-R0W">
+                        <rect key="frame" x="31" y="82" width="110" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="110" id="Qjn-I4-y8L"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="hsD-cU-Q6w"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="fromPrice:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="aUr-C2-5y4"/>
+                        </connections>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v7C-tQ-CjS">
+                        <rect key="frame" x="166" y="82" width="123" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <connections>
+                            <action selector="toPrice:" destination="KGk-i7-Jjw" eventType="editingDidEnd" id="aiY-YV-Tgt"/>
+                        </connections>
+                    </textField>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MT-Qa-Gm5">
+                        <rect key="frame" x="166" y="50.5" width="123" height="21.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="v7C-tQ-CjS" firstAttribute="width" secondItem="UbB-Ml-R0W" secondAttribute="width" multiplier="1.11818" id="21X-9N-wXF"/>
+                    <constraint firstItem="8MT-Qa-Gm5" firstAttribute="leading" secondItem="v7C-tQ-CjS" secondAttribute="leading" id="5Wn-P3-jSg"/>
+                    <constraint firstItem="8MT-Qa-Gm5" firstAttribute="centerY" secondItem="aLR-eI-G5r" secondAttribute="centerY" id="IVy-0k-5fM"/>
+                    <constraint firstItem="sLy-LL-lKW" firstAttribute="trailing" secondItem="v7C-tQ-CjS" secondAttribute="trailing" id="LX7-6N-MbU"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="v7C-tQ-CjS" secondAttribute="trailing" constant="15" id="MTW-Dw-Yat"/>
+                    <constraint firstItem="sLy-LL-lKW" firstAttribute="leading" secondItem="UbB-Ml-R0W" secondAttribute="leading" id="Np5-bJ-GCM"/>
+                    <constraint firstItem="8MT-Qa-Gm5" firstAttribute="top" secondItem="aLR-eI-G5r" secondAttribute="top" id="Srq-Td-tZe"/>
+                    <constraint firstItem="aLR-eI-G5r" firstAttribute="trailing" secondItem="UbB-Ml-R0W" secondAttribute="trailing" id="UIl-Xx-w9y"/>
+                    <constraint firstItem="UbB-Ml-R0W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="15" id="WQv-jf-5qX"/>
+                    <constraint firstItem="UbB-Ml-R0W" firstAttribute="top" secondItem="aLR-eI-G5r" secondAttribute="bottom" constant="10" id="axX-0i-wnB"/>
+                    <constraint firstItem="sLy-LL-lKW" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="dKL-QM-Bzk"/>
+                    <constraint firstItem="8MT-Qa-Gm5" firstAttribute="trailing" secondItem="v7C-tQ-CjS" secondAttribute="trailing" id="dkp-Nh-0Yq"/>
+                    <constraint firstItem="UbB-Ml-R0W" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="eJU-ri-LR6"/>
+                    <constraint firstItem="v7C-tQ-CjS" firstAttribute="leading" secondItem="UbB-Ml-R0W" secondAttribute="trailing" constant="25" id="qvZ-4T-4FY"/>
+                    <constraint firstItem="sLy-LL-lKW" firstAttribute="top" secondItem="UbB-Ml-R0W" secondAttribute="bottom" constant="20" id="uAg-B6-zkV"/>
+                    <constraint firstItem="aLR-eI-G5r" firstAttribute="leading" secondItem="UbB-Ml-R0W" secondAttribute="leading" id="y13-cC-LQa"/>
+                    <constraint firstItem="v7C-tQ-CjS" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="y15-NY-p1E"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="fromLbl" destination="aLR-eI-G5r" id="C9G-AY-8PG"/>
+                <outlet property="fromPriceField" destination="UbB-Ml-R0W" id="IXU-Lh-F5r"/>
+                <outlet property="sliderPrice" destination="sLy-LL-lKW" id="Sv9-SL-OLW"/>
+                <outlet property="toLbl" destination="8MT-Qa-Gm5" id="YSE-eU-A2l"/>
+                <outlet property="toPriceField" destination="v7C-tQ-CjS" id="j8Y-67-G47"/>
+            </connections>
+            <point key="canvasLocation" x="105.79710144927537" y="101.78571428571428"/>
+        </tableViewCell>
+    </objects>
+</document>
