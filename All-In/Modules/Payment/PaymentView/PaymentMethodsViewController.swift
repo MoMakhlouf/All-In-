@@ -7,8 +7,8 @@
 
 import UIKit
 import WebKit
-import Braintree
-import BraintreeDropIn
+//import Braintree
+//import BraintreeDropIn
 
 
 
@@ -27,7 +27,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
     var totalAmount = ""
     @IBOutlet weak var cashOnDeliveryButton: UIButton!
     @IBOutlet weak var crediCardButton: UIButton!
-    var btApiClient:BTAPIClient!
+ //   var btApiClient:BTAPIClient!
     var authorization = "sandbox_hcfpdytt_vkh29jtd6t2q4ys8"
     @IBOutlet weak var creditCardWebView: WKWebView!
     
@@ -36,8 +36,12 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
     @IBOutlet weak var orderPlacedView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        btApiClient = BTAPIClient(authorization: authorization)
+      //  btApiClient = BTAPIClient(authorization: authorization)
+
+    //    btApiClient = BTAPIClient(authorization: authorization)
+
         orderPlacedView.isHidden = true
         totalAmountLabel.text = totalAmount
         placeOrderButton.layer.cornerRadius = 15
@@ -110,7 +114,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
     
     func payPalCheckout (){
 
-        let payPalDriver = BTPayPalDriver(apiClient: btApiClient)
+   /*     let payPalDriver = BTPayPalDriver(apiClient: btApiClient)
         payPalDriver.viewControllerPresentingDelegate = self
         payPalDriver.appSwitchDelegate = self // Optional
         
@@ -138,7 +142,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
             } else {
                 // Buyer canceled payment approval
             }
-        }
+        }*/
 
     }
 
@@ -230,8 +234,8 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
     }
     
 }
-
-
+////
+/*
 extension PaymentMethodsViewController : BTViewControllerPresentingDelegate{
     func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
             
@@ -259,3 +263,5 @@ extension PaymentMethodsViewController : BTAppSwitchDelegate {
     
     
 }
+*/
+///

@@ -16,7 +16,7 @@ class FillterTableViewCell: UITableViewCell{
     @IBOutlet weak var sliderPrice: UISlider!
     @IBOutlet weak var fromPriceField: UITextField!
     @IBOutlet weak var toPriceField: UITextField!
-    
+    var changePrice: (()->())?
     override func awakeFromNib() {
         super.awakeFromNib()
         print(self.sliderPrice.value)
@@ -37,10 +37,11 @@ class FillterTableViewCell: UITableViewCell{
    
     }
     @IBAction func sliderPrice(_ sender: UISlider) {
-        self.fromPriceField.text = String( self.sliderPrice.value)
+    /*    self.fromPriceField.text = String( self.sliderPrice.value)
         self.minmumValue = self.sliderPrice.value
-        print(self.minmumValue)
-
+        print(self.minmumValue)*/
+        
+        changePrice?()
         
     }
    /* func getting(){

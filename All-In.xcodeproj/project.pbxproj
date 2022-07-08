@@ -703,15 +703,13 @@
 				A8D6E905286C31B400AF555B /* Sources */,
 				A8D6E906286C31B400AF555B /* Frameworks */,
 				A8D6E907286C31B400AF555B /* Resources */,
-				3CBFD967B3C553647C6A9B9B /* [CP] Embed Pods Frameworks */,
+				A1223C9706C5CA0FB9825D52 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "All-In";
-			packageProductDependencies = (
-			);
 			productName = "All-In";
 			productReference = A8D6E909286C31B400AF555B /* All-In.app */;
 			productType = "com.apple.product-type.application";
@@ -743,7 +741,7 @@
 				A8D6E928286C31B500AF555B /* Sources */,
 				A8D6E929286C31B500AF555B /* Frameworks */,
 				A8D6E92A286C31B500AF555B /* Resources */,
-				589ACA3689DE8233116AF779 /* [CP] Embed Pods Frameworks */,
+				D9A6BC7E83BC3F372D8A8EFA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -763,7 +761,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					A8D6E908286C31B400AF555B = {
 						CreatedOnToolsVersion = 13.3.1;
@@ -787,8 +785,6 @@
 				Base,
 			);
 			mainGroup = A8D6E900286C31B400AF555B;
-			packageReferences = (
-			);
 			productRefGroup = A8D6E90A286C31B400AF555B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -877,40 +873,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3CBFD967B3C553647C6A9B9B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-All-In/Pods-All-In-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-All-In/Pods-All-In-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-All-In/Pods-All-In-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		589ACA3689DE8233116AF779 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-All-In-All-InUITests/Pods-All-In-All-InUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-All-In-All-InUITests/Pods-All-In-All-InUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-All-In-All-InUITests/Pods-All-In-All-InUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		6283D6FC8C453A9FE90E7FAD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -931,6 +893,40 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A1223C9706C5CA0FB9825D52 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-All-In/Pods-All-In-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-All-In/Pods-All-In-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-All-In/Pods-All-In-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D9A6BC7E83BC3F372D8A8EFA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-All-In-All-InUITests/Pods-All-In-All-InUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-All-In-All-InUITests/Pods-All-In-All-InUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-All-In-All-InUITests/Pods-All-In-All-InUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F39948D071EBE4B08124BA02 /* [CP] Check Pods Manifest.lock */ = {
@@ -995,7 +991,6 @@
 				A8BD82BA286F5525000DA1E6 /* addressTableViewCell.swift in Sources */,
 				A8CB524828706191000366BE /* ShoppingCartDBManager.swift in Sources */,
 				4329D9102872F8580033A36F /* OrdersTableViewCell.swift in Sources */,
-				A8D6E90D286C31B400AF555B /* AppDelegate.swift in Sources */,
 				A889F1A22870F84D00B5DF34 /* Views.swift in Sources */,
 				A84A19B9286CF4D8002CEFC3 /* shoppingCartItem.swift in Sources */,
 				438E57DF287525ED00531469 /* ProuctsBrandCollectionViewCell.swift in Sources */,
@@ -1011,8 +1006,6 @@
 				A8BF41572873786300317979 /* AddressViewModel.swift in Sources */,
 				A8CCBC9828764BD400E32B4B /* ProductInfoViewController.swift in Sources */,
 				A8AB2D162871EA1100808A59 /* discountCodeModel.swift in Sources */,
-				43EF41FD286ECB3B00B7770C /* BrandsViewController.swift in Sources */,
-				43C28FB428711DF10014FE16 /* MyAccountViewController.swift in Sources */,
 				43EF41FD286ECB3B00B7770C /* BrandsViewController.swift in Sources */,
 				A8CCBC8F28764B7200E32B4B /* RgisterViewController.swift in Sources */,
 				434E3E09287415F4000AE2AA /* Products.swift in Sources */,
@@ -1132,6 +1125,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};
@@ -1185,7 +1179,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
+				VALIDATE_PRODUCT = NO;
 			};
 			name = Release;
 		};
@@ -1339,7 +1333,7 @@
 				A8D6E935286C31B500AF555B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		A8D6E936286C31B500AF555B /* Build configuration list for PBXNativeTarget "All-In" */ = {
 			isa = XCConfigurationList;
@@ -1348,7 +1342,7 @@
 				A8D6E938286C31B500AF555B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		A8D6E939286C31B500AF555B /* Build configuration list for PBXNativeTarget "All-InTests" */ = {
 			isa = XCConfigurationList;
@@ -1357,7 +1351,7 @@
 				A8D6E93B286C31B500AF555B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		A8D6E93C286C31B500AF555B /* Build configuration list for PBXNativeTarget "All-InUITests" */ = {
 			isa = XCConfigurationList;
@@ -1366,7 +1360,7 @@
 				A8D6E93E286C31B500AF555B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

@@ -23,12 +23,7 @@ class OrdersViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
-        let settingBtn = UIBarButtonItem()
-        let me = MyAccountViewController()
-        settingBtn.image = UIImage(systemName: "gearshape.fill")
-        settingBtn.action = #selector(me.settingButton)
-        settingBtn.target = self
-        navigationItem.rightBarButtonItem = settingBtn
+
         
     }
     
@@ -64,10 +59,3 @@ extension OrdersViewController: UITableViewDataSource{
     
 }
 
-/*extension MyAccountViewController{
-    @objc func setting_Button(){
-        let settingVC = SettingsViewController()
-        navigationController?.pushViewController(settingVC, animated: true)
-        
-    }
-}*/

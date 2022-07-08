@@ -6,11 +6,9 @@ target 'All-In' do
   use_frameworks!
 
   # Pods for All-In
-  
-    pod 'Braintree'
-    pod 'BraintreeDropIn'
-    pod 'Kingfisher'
-    
+
+
+pod 'Kingfisher'
 
   target 'All-InTests' do
     inherit! :search_paths
@@ -22,5 +20,4 @@ target 'All-In' do
   end
 
 end
-
 

@@ -20,7 +20,13 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         ordersTableView.register(UINib(nibName: "OrdersTableViewCell", bundle: nil), forCellReuseIdentifier: "orderCell")
-
+        
+        
+        let settingBtn = UIBarButtonItem()
+        settingBtn.image = UIImage(systemName: "gearshape.fill")
+        settingBtn.action = #selector(settingButton)
+        settingBtn.target = self
+        navigationItem.rightBarButtonItem = settingBtn
        
     }
     
