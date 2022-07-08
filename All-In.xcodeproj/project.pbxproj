@@ -70,14 +70,6 @@
 		A8BF41572873786300317979 /* AddressViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8BF41562873786300317979 /* AddressViewModel.swift */; };
 		A8C051E6287708DA00C08A45 /* ItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C051E4287708DA00C08A45 /* ItemsCollectionViewCell.swift */; };
 		A8C051E7287708DA00C08A45 /* ItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C051E5287708DA00C08A45 /* ItemsCollectionViewCell.xib */; };
-		A8C0520528773B1800C08A45 /* FavoutiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C051FD28773B1800C08A45 /* FavoutiteViewController.swift */; };
-		A8C0520628773B1800C08A45 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C051FE28773B1800C08A45 /* CollectionViewCell.xib */; };
-		A8C0520728773B1800C08A45 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C051FF28773B1800C08A45 /* FavouriteViewController.swift */; };
-		A8C0520828773B1800C08A45 /* FavouriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0520028773B1800C08A45 /* FavouriteCollectionViewCell.swift */; };
-		A8C0520928773B1800C08A45 /* FavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C0520128773B1800C08A45 /* FavouriteViewController.xib */; };
-		A8C0520A28773B1800C08A45 /* FavouriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C0520228773B1800C08A45 /* FavouriteCollectionViewCell.xib */; };
-		A8C0520B28773B1800C08A45 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0520328773B1800C08A45 /* CollectionViewCell.swift */; };
-		A8C0520C28773B1800C08A45 /* FavoutiteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8C0520428773B1800C08A45 /* FavoutiteViewController.xib */; };
 		A8CB524828706191000366BE /* ShoppingCartDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CB524728706191000366BE /* ShoppingCartDBManager.swift */; };
 		A8CCBC8D28764B7200E32B4B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CCBC8928764B7200E32B4B /* LoginViewController.swift */; };
 		A8CCBC8E28764B7200E32B4B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8CCBC8A28764B7200E32B4B /* LoginViewController.xib */; };
@@ -192,14 +184,6 @@
 		A8BF41562873786300317979 /* AddressViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewModel.swift; sourceTree = "<group>"; };
 		A8C051E4287708DA00C08A45 /* ItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewCell.swift; sourceTree = "<group>"; };
 		A8C051E5287708DA00C08A45 /* ItemsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsCollectionViewCell.xib; sourceTree = "<group>"; };
-		A8C051FD28773B1800C08A45 /* FavoutiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoutiteViewController.swift; sourceTree = "<group>"; };
-		A8C051FE28773B1800C08A45 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
-		A8C051FF28773B1800C08A45 /* FavouriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
-		A8C0520028773B1800C08A45 /* FavouriteCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteCollectionViewCell.swift; sourceTree = "<group>"; };
-		A8C0520128773B1800C08A45 /* FavouriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteViewController.xib; sourceTree = "<group>"; };
-		A8C0520228773B1800C08A45 /* FavouriteCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteCollectionViewCell.xib; sourceTree = "<group>"; };
-		A8C0520328773B1800C08A45 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
-		A8C0520428773B1800C08A45 /* FavoutiteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavoutiteViewController.xib; sourceTree = "<group>"; };
 		A8CB524728706191000366BE /* ShoppingCartDBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartDBManager.swift; sourceTree = "<group>"; };
 		A8CCBC8928764B7200E32B4B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A8CCBC8A28764B7200E32B4B /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -458,21 +442,6 @@
 			path = SettingsView;
 			sourceTree = "<group>";
 		};
-		A8C051FC28773ADE00C08A45 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
-				A8C0520328773B1800C08A45 /* CollectionViewCell.swift */,
-				A8C051FE28773B1800C08A45 /* CollectionViewCell.xib */,
-				A8C0520028773B1800C08A45 /* FavouriteCollectionViewCell.swift */,
-				A8C0520228773B1800C08A45 /* FavouriteCollectionViewCell.xib */,
-				A8C051FF28773B1800C08A45 /* FavouriteViewController.swift */,
-				A8C0520128773B1800C08A45 /* FavouriteViewController.xib */,
-				A8C051FD28773B1800C08A45 /* FavoutiteViewController.swift */,
-				A8C0520428773B1800C08A45 /* FavoutiteViewController.xib */,
-			);
-			path = Favorites;
-			sourceTree = "<group>";
-		};
 		A8CB5246287060A8000366BE /* ShoppingCartDB */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,7 +530,6 @@
 		A8D6E942286C326800AF555B /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				A8C051FC28773ADE00C08A45 /* Favorites */,
 				A8D6E963286CA4E200AF555B /* Extensions */,
 				A889F1982870F5DD00B5DF34 /* Networking */,
 				A8D6E94E286C6B9D00AF555B /* Tabbar */,
@@ -837,7 +805,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8C0520928773B1800C08A45 /* FavouriteViewController.xib in Resources */,
 				43EF41FE286ECB3B00B7770C /* BrandsViewController.xib in Resources */,
 				A8BD82B7286F35DB000DA1E6 /* ListOfAddressesViewController.xib in Resources */,
 				A8BD82B3286F35B8000DA1E6 /* AddNewAddressViewController.xib in Resources */,
@@ -847,7 +814,6 @@
 				438E57E0287525EE00531469 /* ProuctsBrandCollectionViewCell.xib in Resources */,
 				A8D6E91C286C31B500AF555B /* LaunchScreen.storyboard in Resources */,
 				A8C051E7287708DA00C08A45 /* ItemsCollectionViewCell.xib in Resources */,
-				A8C0520C28773B1800C08A45 /* FavoutiteViewController.xib in Resources */,
 				A8CCBC9028764B7200E32B4B /* RgisterViewController.xib in Resources */,
 				43EF41F3286E99CD00B7770C /* CategoriesViewController.xib in Resources */,
 				A8CCBC8E28764B7200E32B4B /* LoginViewController.xib in Resources */,
@@ -855,14 +821,12 @@
 				A8BD82BB286F5525000DA1E6 /* addressTableViewCell.xib in Resources */,
 				A8D6E914286C31B400AF555B /* Main.storyboard in Resources */,
 				A8973CFC286E22DD001A3A8D /* PaymentMethodsViewController.xib in Resources */,
-				A8C0520A28773B1800C08A45 /* FavouriteCollectionViewCell.xib in Resources */,
 				4329D9112872F8580033A36F /* OrdersTableViewCell.xib in Resources */,
 				A8D6E973286CDBB500AF555B /* ShoppingCartTableViewCell.xib in Resources */,
 				438E57E42875312E00531469 /* BrandNameCollectionReusableView.xib in Resources */,
 				A8D6E954286C713900AF555B /* PaymentViewController.xib in Resources */,
 				437BCC3C28700CE900B96CFC /* OrdersViewController.xib in Resources */,
 				43EF41F7286EC40500B7770C /* CategoryCollectionViewCell.xib in Resources */,
-				A8C0520628773B1800C08A45 /* CollectionViewCell.xib in Resources */,
 				43FDEB27286D7A24005C93B9 /* HomeViewController.xib in Resources */,
 				43C28FBE28713A650014FE16 /* AdsCollectionViewCell.xib in Resources */,
 				A8CCBC9528764BD400E32B4B /* ProductInfoViewController.xib in Resources */,
@@ -1036,8 +1000,6 @@
 				A84A19B9286CF4D8002CEFC3 /* shoppingCartItem.swift in Sources */,
 				438E57DF287525ED00531469 /* ProuctsBrandCollectionViewCell.swift in Sources */,
 				A8D6E917286C31B400AF555B /* All_In.xcdatamodeld in Sources */,
-				A8C0520B28773B1800C08A45 /* CollectionViewCell.swift in Sources */,
-				A8C0520728773B1800C08A45 /* FavouriteViewController.swift in Sources */,
 				43EF4200286EE8B900B7770C /* HomeModel.swift in Sources */,
 				437BCC3828700B1900B96CFC /* LayerBorder.swift in Sources */,
 				A889F1A02870F7C900B5DF34 /* Alert.swift in Sources */,
@@ -1051,9 +1013,7 @@
 				A8AB2D162871EA1100808A59 /* discountCodeModel.swift in Sources */,
 				43EF41FD286ECB3B00B7770C /* BrandsViewController.swift in Sources */,
 				43C28FB428711DF10014FE16 /* MyAccountViewController.swift in Sources */,
-				A8C0520828773B1800C08A45 /* FavouriteCollectionViewCell.swift in Sources */,
 				43EF41FD286ECB3B00B7770C /* BrandsViewController.swift in Sources */,
-				A8C0520528773B1800C08A45 /* FavoutiteViewController.swift in Sources */,
 				A8CCBC8F28764B7200E32B4B /* RgisterViewController.swift in Sources */,
 				434E3E09287415F4000AE2AA /* Products.swift in Sources */,
 				434E3E0D28745AA9000AE2AA /* CategoriesModel.swift in Sources */,
