@@ -17,8 +17,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var adsView: UIView!
 
+
     var brandsArray = [SmartCollection]()
     var adsPhotos = [UIImage(named: "adidas") , UIImage(named: "nike") , UIImage(named: "timberland") , UIImage(named: "adidas") ,  UIImage(named: "nike")]
+
+
+
     var timer : Timer?
     var currentCellIndex = 0
     
@@ -185,9 +189,9 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
 extension HomeViewController{
     @objc func favoriteButton(){
         
-       // let favorite = FavouriteViewController()
+        let favorite = FavouriteViewController()
         
-        //navigationController?.pushViewController(favorite, animated: true)
+        navigationController?.pushViewController(favorite, animated: true)
         
     }
     

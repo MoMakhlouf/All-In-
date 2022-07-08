@@ -46,16 +46,18 @@ class MyAccountViewController: UIViewController {
     */
     
     @IBAction func registerBtn(_ sender: Any) {
-        
-        let registerVC = RgisterViewController()
-        navigationController?.pushViewController(registerVC, animated: true)
+
+        let register = RgisterViewController()
+            navigationController?.pushViewController(register, animated: true)
+
     }
     
     
     @IBAction func loginBtn(_ sender: Any) {
-        
-        let loginVC = LoginViewController()
-        navigationController?.pushViewController(loginVC, animated: true)
+
+    let login = LoginViewController()
+        navigationController?.pushViewController(login, animated: true)
+
     }
 
 }

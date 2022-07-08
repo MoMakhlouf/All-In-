@@ -29,14 +29,14 @@ class RgisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         signUpbtn.layer.cornerRadius = 15
-        let emailImage = UIImage(named: "mail")
-        textFieldSetup(textfield: txtEmail1,  Image: emailImage!)
-        let PasswordImage = UIImage(named: "pass")
-        textFieldSetup(textfield: txtPassword1,  Image: PasswordImage!)
-        let NameImage = UIImage(systemName: "person")
-        textFieldSetup(textfield: txtName,  Image: NameImage!)
-        let PhoneImage = UIImage(systemName: "phone")
-         textFieldSetup(textfield: txtPhone,  Image: PhoneImage!)
+//        let emailImage = UIImage(named: "mail")
+//        textFieldSetup(textfield: txtEmail1,  Image: emailImage!)
+//        let PasswordImage = UIImage(named: "pass")
+//        textFieldSetup(textfield: txtPassword1,  Image: PasswordImage!)
+//        let NameImage = UIImage(systemName: "person")
+//        textFieldSetup(textfield: txtName,  Image: NameImage!)
+//        let PhoneImage = UIImage(systemName: "phone")
+//         textFieldSetup(textfield: txtPhone,  Image: PhoneImage!)
       }
 
 

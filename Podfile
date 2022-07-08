@@ -8,7 +8,10 @@ target 'All-In' do
   # Pods for All-In
 
 
-pod 'Kingfisher'
+
+    pod 'Kingfisher'
+
+
 
   target 'All-InTests' do
     inherit! :search_paths

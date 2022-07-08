@@ -113,6 +113,7 @@ extension BrandsViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let productDetails = ProductInfoViewController()
+        productDetails.productInfo = productsArray[indexPath.row]
         navigationController?.pushViewController(productDetails, animated: true)
     }
 }

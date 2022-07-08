@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavoutiteViewController" customModule="All_In" customModuleProvider="target">
+            <connections>
+                <outlet property="FavouriteCollection" destination="GCy-K1-ROf" id="E9E-kS-MEk"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewController id="mkU-2g-AcT">
+            <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="GCy-K1-ROf">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="67A-RY-3Hy" customClass="f">
+                    <size key="itemSize" width="128" height="128"/>
+                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
+                </collectionViewFlowLayout>
+                <cells>
+                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProductsCollectionViewCell" id="Vgf-uh-AMi" customClass="ProductsCollectionViewCell" customModule="All_In" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="180" height="190"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="x0H-5f-d2b">
+                            <rect key="frame" x="0.0" y="0.0" width="180" height="190"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3zQ-aw-yrs">
+                                    <rect key="frame" x="0.0" y="0.0" width="180" height="190"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ErW-fi-Gv5">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="150"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="180" id="nIN-hS-4cG"/>
+                                                <constraint firstAttribute="height" constant="150" id="q9M-cB-mRj"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="bOq-Pf-DZS">
+                                            <rect key="frame" x="5" y="150" width="170" height="40"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2y-Qa-h71">
+                                                    <rect key="frame" x="0.0" y="0.0" width="135" height="40"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xyv-fY-7TY">
+                                                    <rect key="frame" x="140" y="0.0" width="30" height="40"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="xyv-fY-7TY" secondAttribute="height" multiplier="3:4" id="hLW-AF-AGc"/>
+                                                    </constraints>
+                                                    <color key="tintColor" red="0.50020056219999998" green="0.15249949069999999" blue="0.51576310400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" image="heart.fill" catalog="system">
+                                                        <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="s2y-Qa-h71" secondAttribute="bottom" id="3VM-LS-QVc"/>
+                                                <constraint firstItem="s2y-Qa-h71" firstAttribute="top" secondItem="bOq-Pf-DZS" secondAttribute="top" id="GW6-2Y-sbI"/>
+                                                <constraint firstAttribute="height" constant="40" id="HQl-Nx-HFJ"/>
+                                                <constraint firstItem="xyv-fY-7TY" firstAttribute="top" secondItem="bOq-Pf-DZS" secondAttribute="top" id="KTn-ZR-cSV"/>
+                                                <constraint firstAttribute="bottom" secondItem="xyv-fY-7TY" secondAttribute="bottom" id="PZH-YN-ZK4"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="bOq-Pf-DZS" secondAttribute="trailing" constant="5" id="9m0-Y6-7m9"/>
+                                        <constraint firstItem="bOq-Pf-DZS" firstAttribute="leading" secondItem="3zQ-aw-yrs" secondAttribute="leading" constant="5" id="LjD-L4-iaA"/>
+                                    </constraints>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="3zQ-aw-yrs" firstAttribute="top" secondItem="x0H-5f-d2b" secondAttribute="top" id="7zx-6t-8WG"/>
+                                <constraint firstItem="3zQ-aw-yrs" firstAttribute="leading" secondItem="x0H-5f-d2b" secondAttribute="leading" id="LNd-sH-OdJ"/>
+                                <constraint firstAttribute="trailing" secondItem="3zQ-aw-yrs" secondAttribute="trailing" id="Pus-0C-aDY"/>
+                                <constraint firstAttribute="bottom" secondItem="3zQ-aw-yrs" secondAttribute="bottom" id="XNe-84-tVm"/>
+                            </constraints>
+                        </collectionViewCellContentView>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="imageWidth" destination="nIN-hS-4cG" id="zfC-fw-7sd"/>
+                        </connections>
+                    </collectionViewCell>
+                </cells>
+            </collectionView>
+            <point key="canvasLocation" x="364" y="132"/>
+        </collectionViewController>
+    </objects>
+    <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

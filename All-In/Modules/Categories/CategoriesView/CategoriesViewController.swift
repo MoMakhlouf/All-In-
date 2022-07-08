@@ -96,9 +96,9 @@ class CategoriesViewController: UIViewController {
     
     @objc func favoriteButton(){
         
-     //   let favorite = FavouriteViewController()
+        let favorite = FavouriteViewController()
         
-       // navigationController?.pushViewController(favorite, animated: true)
+        navigationController?.pushViewController(favorite, animated: true)
         
     }
     
@@ -146,6 +146,7 @@ class CategoriesViewController: UIViewController {
 extension CategoriesViewController: UICollectionViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let productInfo = ProductInfoViewController()
         navigationController?.pushViewController(productInfo, animated: true)
         
@@ -177,9 +178,6 @@ extension CategoriesViewController: UICollectionViewDataSource{
     
     
 }
-
-
-
 
 extension CategoriesViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
