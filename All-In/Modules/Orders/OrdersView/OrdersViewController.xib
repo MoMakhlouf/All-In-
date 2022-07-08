@@ -32,9 +32,7 @@
                 <constraint firstItem="fHa-Ig-cvA" firstAttribute="trailing" secondItem="3By-Z8-9u7" secondAttribute="trailing" id="l9O-z0-z5l"/>
                 <constraint firstItem="fHa-Ig-cvA" firstAttribute="bottom" secondItem="3By-Z8-9u7" secondAttribute="bottom" id="tJs-3b-K2l"/>
             </constraints>
-
             <point key="canvasLocation" x="133" y="64"/>
-
         </view>
     </objects>
     <resources>

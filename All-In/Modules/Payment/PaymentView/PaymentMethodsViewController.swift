@@ -12,7 +12,8 @@ import BraintreeDropIn
 
 
 
-class PaymentMethodsViewController: UIViewController {
+class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
+  
     @IBOutlet weak var viewIsHiddenConstraints: NSLayoutConstraint!
     @IBOutlet weak var viewIsVisibleConstraint: NSLayoutConstraint!
     
@@ -31,10 +32,11 @@ class PaymentMethodsViewController: UIViewController {
     @IBOutlet weak var creditCardWebView: WKWebView!
     
     @IBOutlet weak var placeOrderIndicator: UIActivityIndicatorView!
-    
+    let userDefaults = UserDefaults()
     @IBOutlet weak var orderPlacedView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         btApiClient = BTAPIClient(authorization: authorization)
         orderPlacedView.isHidden = true
         totalAmountLabel.text = totalAmount
@@ -43,6 +45,11 @@ class PaymentMethodsViewController: UIViewController {
        hideView()
         placeOrderButton.isEnabled = false
         placeOrderIndicator.hidesWhenStopped = true
+        
+      //  if let fullAddress = userDefaults.value(forKey: "fullAddress") as? String{
+        //    addressFullLabel.text = fullAddress
+
+        //}
 
       //  let url = URL(string: "https://www.paypal.com/eg/signin?locale.x=en_EG")
         //creditCardWebView.load(URLRequest(url: url!))
@@ -70,6 +77,10 @@ class PaymentMethodsViewController: UIViewController {
         placeOrderButton.isEnabled = false
 
         //placeOrderButton.isEnabled = true
+    }
+    
+    func didSelectAddress(address: String) {
+        addressFullLabel.text = address
     }
     
     
@@ -185,6 +196,7 @@ class PaymentMethodsViewController: UIViewController {
     @IBAction func changeAddressButton(_ sender: UIButton) {
         let addresses = ListOfAddressesViewController()
         navigationController?.pushViewController(addresses, animated: true)
+        addresses.chooseAddressDelegate = self
     }
     
     

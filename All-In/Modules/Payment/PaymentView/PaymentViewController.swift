@@ -25,12 +25,13 @@ class PaymentViewController: UIViewController {
         }
     }
     
-    
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     var subtotal = 0.0
     var discountCodesArray = [Discount_codes]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
         congratsView.isHidden = true
         view.addSubview(congratsView)
         congratsView.center = view.center
@@ -65,7 +66,7 @@ class PaymentViewController: UIViewController {
                 self.indicatorView.stopAnimating()
                 let discountAmount = String(format: "%.2f", self.subtotal * (5/100))
                 let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (5/100))
-             //   self.discountLabel.text = " \(discountAmount) EGP Discount"
+                self.discountLabel.text = " \(discountAmount) EGP Discount"
                 self.applyButton.titleLabel?.text = "\(discountAmount) EGP Discount"
                 self.applyButton.isEnabled = false
                 self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
@@ -84,11 +85,10 @@ class PaymentViewController: UIViewController {
 
                 let discountAmount = String(format: "%.2f", self.subtotal * (10/100))
                 let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (10/100))
-                self.applyButton.isEnabled = false
                 self.applyButton.titleLabel?.text = "\(discountAmount) EGP Discount"
-
-
-            //    self.discountLabel.text = " \(discountAmount) EGP Discount"
+                self.applyButton.isEnabled = false
+                
+                self.discountLabel.text = " \(discountAmount) EGP Discount"
                 self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
             }
             

@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ChooseAddressDelegate {
+    func didSelectAddress(address : String)
+}
+
 class ListOfAddressesViewController: UIViewController {
 
     @IBOutlet weak var addressTableView: UITableView!{
@@ -24,27 +28,15 @@ class ListOfAddressesViewController: UIViewController {
         }
     }
     var addressesArray = [Address]()
-    
+    var chooseAddressDelegate : ChooseAddressDelegate?
+    let userDefaults = UserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let addressViewModel = AddressViewModel()
-//        addressViewModel.getAdderss(customerId: "6261211300054")
-//        addressViewModel.bindingData = { addresses , error in
-//
-//            if let addresses = addresses{
-//                self.addressesArray = addresses
-//                DispatchQueue.main.async {
-//                    self.addressTableView.reloadData()
-//                }
-//            }
-//            if let error = error {
-//                print(error)
-//                DispatchQueue.main.async {
-//                    Alert.displayAlert(title: "Error", message: "Failed To Apply Coupon")
-//                }
-//            }
-//
-//        }
+       
+       // UserDefaults.standard.removeObject(forKey: "fullAddress")
+
+     //   userDefaults.set("\(addressesArray[1].first_name ?? "NO Address added , Please add one")" , forKey: "fullAddress")
+
         print(addressesArray.count)
     }
     
@@ -69,7 +61,6 @@ class ListOfAddressesViewController: UIViewController {
         }
     }
     
-  
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
         
         let add = AddNewAddressViewController()
@@ -87,11 +78,13 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
         let cell = addressTableView.dequeueReusableCell(withIdentifier: "addressCell", for: indexPath) as! addressTableViewCell
         cell.selectionStyle = .none
         cell.getFullAddress(address: addressesArray[indexPath.row])
-      
+              
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let address = addressesArray[indexPath.row]
+        chooseAddressDelegate?.didSelectAddress(address: "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")")
         
     }
     
