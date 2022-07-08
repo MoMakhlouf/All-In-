@@ -29,7 +29,7 @@ extension ShoppingCartDBManager{
             
             let cartItem = NSManagedObject(entity: entity, insertInto: managedContext)
             cartItem.setValue(title, forKey: "title")
-            cartItem.setValue(quantity, forKey: "quantity")
+            cartItem.setValue(quantity,forKey: "quantity")
             cartItem.setValue(price, forKey: "price")
             cartItem.setValue(itemId, forKey: "itemId")
             cartItem.setValue(image, forKey: "image")

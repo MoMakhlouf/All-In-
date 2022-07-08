@@ -18,8 +18,7 @@ class FavouriteCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var FavouriteView: UIView!
     
-    
-    override func awakeFromNib() {
+     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }

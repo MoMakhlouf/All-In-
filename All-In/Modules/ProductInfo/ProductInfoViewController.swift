@@ -9,8 +9,11 @@ import UIKit
 import Kingfisher
 class ProductInfoViewController: UIViewController {
     
-var CurrentCellIndex = 0
-    
+    var productInfo : Product?
+    var ProductIMGG : Image?
+
+    var CurrentCellIndex = 0
+    var timer :Timer?
     @IBOutlet weak var ProductDetailsCollection: UICollectionView!
     {
         didSet {
@@ -54,11 +57,16 @@ var CurrentCellIndex = 0
         CartBtn.layer.cornerRadius = 15
 
     ProductDetailsCollection.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductDetailsCell")
-        ProductPageControl.numberOfPages = 4
-        
+        ProductPageControl.numberOfPages = (productInfo?.images.count)!
+        ProductName1.text = productInfo?.title
+        ProducrPrice1.text = productInfo?.variants[0].price
+        ProductDiscription.text = productInfo?.body_html
+        startTimer()
     }
 
     @IBAction func AddToCartBtn(_ sender: UIButton) {
+        let cart = ShoppingCartViewController()
+        navigationController?.pushViewController(cart, animated: true)
     }
     
     @IBAction func FavouriteProductDetailsBtn(_ sender: UIButton) {
@@ -69,12 +77,13 @@ var CurrentCellIndex = 0
 extension ProductInfoViewController :UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return (productInfo?.images.count)!
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let ProductCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductDetailsCell", for: indexPath) as! ProductCollectionViewCell
-        ProductCell.ProductDetailsImg.image = UIImage(named: "Bag")
+        ProductCell.ProductDetailsImg.kf.setImage(with: URL(string: productInfo?.images[indexPath.row].src ?? ""))
+        
         return ProductCell
     }
     
@@ -85,15 +94,19 @@ extension ProductInfoViewController :UICollectionViewDelegate,UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    func startTimer()
+    {
+        timer = Timer.scheduledTimer(timeInterval: 2.5, target: self, selector: #selector(moveToNextIndex), userInfo: nil, repeats: true)
+    }
  
     @objc func moveToNextIndex()
     {
-        if CurrentCellIndex < 4
+        if CurrentCellIndex < (productInfo?.images.count)! - 1
         {
             CurrentCellIndex  += 1
 
         }else{
-            CurrentCellIndex   = 1
+            CurrentCellIndex   = 0
 
         }
         ProductDetailsCollection.scrollToItem(at: IndexPath(item: CurrentCellIndex, section: 0), at: .centeredHorizontally, animated: true)

@@ -50,7 +50,8 @@ class MyAccountViewController: UIViewController {
     */
     
     @IBAction func registerBtn(_ sender: Any) {
-        
+        let register = RgisterViewController()
+            navigationController?.pushViewController(register, animated: true)
     }
     
     

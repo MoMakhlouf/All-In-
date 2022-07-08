@@ -64,7 +64,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Cj-VK-SaB">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="125"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgE-kF-mxd">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name :" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgE-kF-mxd">
                                                     <rect key="frame" x="8" y="15" width="394" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="oiz-Eb-M9s"/>
@@ -73,12 +73,22 @@
                                                     <color key="textColor" red="0.50020056219999998" green="0.15249949069999999" blue="0.51576310400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qgu-8n-FiR" customClass="CosmosView" customModule="Cosmos">
-                                                    <rect key="frame" x="223" y="83" width="176" height="29"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTp-61-S5F">
+                                                    <rect key="frame" x="8" y="83" width="200" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="JwO-BW-vlz"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.50020056219999998" green="0.15249949069999999" blue="0.51576310400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="59E-of-jja" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="216" y="76" width="176" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                                            <real key="value" value="2"/>
+                                                            <real key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="starSize">
                                                             <real key="value" value="26"/>
@@ -94,28 +104,15 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wTp-61-S5F">
-                                                    <rect key="frame" x="8" y="83" width="200" height="29"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="200" id="JwO-BW-vlz"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.50020056219999998" green="0.15249949069999999" blue="0.51576310400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGray6Color"/>
                                             <constraints>
                                                 <constraint firstItem="wTp-61-S5F" firstAttribute="top" secondItem="pgE-kF-mxd" secondAttribute="bottom" constant="28" id="1ec-2Z-t5l"/>
-                                                <constraint firstItem="Qgu-8n-FiR" firstAttribute="leading" secondItem="wTp-61-S5F" secondAttribute="trailing" constant="15" id="6LD-U0-U0c"/>
-                                                <constraint firstAttribute="bottom" secondItem="Qgu-8n-FiR" secondAttribute="bottom" constant="13" id="AYH-Nv-gzw"/>
                                                 <constraint firstItem="pgE-kF-mxd" firstAttribute="leading" secondItem="0Cj-VK-SaB" secondAttribute="leading" constant="8" id="CJN-7Y-R5a"/>
                                                 <constraint firstAttribute="trailing" secondItem="pgE-kF-mxd" secondAttribute="trailing" constant="12" id="EXq-Ta-jCV"/>
                                                 <constraint firstItem="wTp-61-S5F" firstAttribute="leading" secondItem="pgE-kF-mxd" secondAttribute="leading" id="VwB-p6-lRI"/>
                                                 <constraint firstAttribute="bottom" secondItem="wTp-61-S5F" secondAttribute="bottom" constant="13" id="Vyf-S3-XBB"/>
                                                 <constraint firstItem="pgE-kF-mxd" firstAttribute="top" secondItem="0Cj-VK-SaB" secondAttribute="top" constant="15" id="bnO-kB-2Ox"/>
-                                                <constraint firstAttribute="trailing" secondItem="Qgu-8n-FiR" secondAttribute="trailing" constant="15" id="ef4-lZ-ZYu"/>
-                                                <constraint firstItem="Qgu-8n-FiR" firstAttribute="top" secondItem="pgE-kF-mxd" secondAttribute="bottom" constant="28" id="lvd-7c-Lch"/>
                                                 <constraint firstItem="wTp-61-S5F" firstAttribute="leading" secondItem="0Cj-VK-SaB" secondAttribute="leading" constant="8" id="vck-yo-X3g"/>
                                             </constraints>
                                         </view>
@@ -133,11 +130,11 @@
                                                     <color key="textColor" red="0.50020056219999998" green="0.15249949069999999" blue="0.51576310400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khc-OK-Twc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Khc-OK-Twc">
                                                     <rect key="frame" x="8" y="53" width="398" height="139"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.50020056219999998" green="0.15249949069999999" blue="0.51576310400000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -263,6 +260,11 @@
             <point key="canvasLocation" x="131.8840579710145" y="93.75"/>
         </view>
     </objects>
+    <designables>
+        <designable name="59E-of-jja">
+            <size key="intrinsicContentSize" width="150" height="26"/>
+        </designable>
+    </designables>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <systemColor name="systemBackgroundColor">

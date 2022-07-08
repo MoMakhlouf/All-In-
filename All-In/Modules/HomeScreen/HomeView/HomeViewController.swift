@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var adsCollectionView: UICollectionView!
     @IBOutlet weak var adsView: UIView!
 
-    var brandsArray = [SmartCollection]()
+var brandsArray = [SmartCollection]()
    var adsPhotos = [UIImage(named: "adidas") , UIImage(named: "nike") , UIImage(named: "timberland") , UIImage(named: "adidas") ,  UIImage(named: "nike")]
     var timer : Timer?
     var currentCellIndex = 0
