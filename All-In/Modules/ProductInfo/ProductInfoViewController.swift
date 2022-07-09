@@ -57,6 +57,8 @@ class ProductInfoViewController: UIViewController {
 //            }
 //        }
     }
+    
+    
 
     @IBAction func AddToCartBtn(_ sender: UIButton) {
         if !isAddedToCart{

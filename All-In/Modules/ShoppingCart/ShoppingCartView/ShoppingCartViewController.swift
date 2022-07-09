@@ -31,28 +31,20 @@ class ShoppingCartViewController: UIViewController {
         proceedToCheckoutButton.layer.cornerRadius = 12
         navigationItem.title = "Shopping Cart"
         
-        
-        for item in cartItems {
-            total += 1
-            let price = Double(item.price ?? "5")
-            total += ( price! * Double(item.itemQuantity))
-            print(item.itemQuantity)
-        }
-    
-
+     
 //        cartItems.forEach({ item in
-//            print("\(item.price)")
 //            let price = Double(item.price ?? "5")
 //            total += (price! * Double(item.itemQuantity))
-//            print( "asasas\(total)")
-//            print(item.itemQuantity)
 //        })
-    
-
-       
-        totalPrice.text = "Total: \(total)"
-        emptyCart()
+  
         getItems()
+        
+        DispatchQueue.main.async {
+            self.totalPrice.text = "Total: \(self.total)"
+        }
+       
+        emptyCart()
+      
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +58,13 @@ class ShoppingCartViewController: UIViewController {
         cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
         print(cartItems.count)
           DispatchQueue.main.async {
+              
+              self.cartItems.forEach({ item in
+                  let price = Double(item.price ?? " ")
+                  self.total += (price! * Double(item.itemQuantity))
+                 
+              })
+              
             self.shoppingCartTableView.reloadData()
       }
     }
@@ -135,29 +134,32 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
        return cell
     }
 
-    
 }
-
-
-
  
 extension ShoppingCartViewController : DeletionDelegate{
     func deleteCartItem(indexPath: IndexPath) {
         
        cartItems.remove(at : indexPath.row)
         self.shoppingCartTableView.reloadData()
+        
+        self.totalPrice.text = "Total: \(self.total)"
+
         emptyCart()
     }
     
-    
       func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+          
             shoppingCartTableView.beginUpdates()
             ShoppingCartDBManager.sharedInstance.deleteFromCart(cartItem: cartItems[indexPath.row], indexPath: indexPath, appDelegate: appDelegate, delegate: self)
+          
             shoppingCartTableView.deleteRows(at: [indexPath] ,with: .automatic)
+
              emptyCart()
             shoppingCartTableView.endUpdates()
+            
+            self.totalPrice.text = "Total: \(self.total)"
+          
         }
     }
-
 }
