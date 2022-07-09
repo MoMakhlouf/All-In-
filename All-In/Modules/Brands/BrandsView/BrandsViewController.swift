@@ -103,8 +103,8 @@ extension BrandsViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = brandsCollectionView.dequeueReusableCell(withReuseIdentifier: "productsBrandCell", for: indexPath) as! ProuctsBrandCollectionViewCell
         cell.nameProductLbl.text = productsArray[indexPath.row].title + " \\" + productsArray[indexPath.row].variants[0].option2
-        
-        cell.priceProductLbl.text = productsArray[indexPath.row].variants[0].price + " EGP"
+        let price: Float = (Float(productsArray[indexPath.row].variants[0].price)! * 20.0)
+        cell.priceProductLbl.text = String(price) + " EGP"
         //cell.prouctImg.sd_setImage(with: URL(string: productsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
         cell.prouctImg.kf.setImage(with: URL(string: productsArray[indexPath.row].image.src))
         return cell

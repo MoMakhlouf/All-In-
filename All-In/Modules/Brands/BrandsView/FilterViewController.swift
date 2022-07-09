@@ -60,6 +60,7 @@ extension FilterViewController: UITableViewDataSource{
         let cell = filterTableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as! FillterTableViewCell
         switch(indexPath.section){
         case 0:
+         
             cell.fromPriceField.text = String(convert.min()!)
             cell.toPriceField.text = String(convert.max()!)
             cell.sliderPrice.maximumValue = convert.max()!
@@ -90,7 +91,7 @@ extension FilterViewController{
     }
     
     @objc func saveFilter(_ sender: UIButton){
-        let cell = filterTableView.dequeueReusableCell(withIdentifier: "filterCell") as! FillterTableViewCell
+   //     let cell = filterTableView.dequeueReusableCell(withIdentifier: "filterCell") as! FillterTableViewCell
 //let minVlaue = self.minNum
      //   let maxValue = self.maxNum
         if let d = delegate2{

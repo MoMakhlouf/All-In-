@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var adsView: UIView!
 
     var brandsArray = [SmartCollection]()
-   var adsPhotos = [UIImage(named: "adidas") , UIImage(named: "nike") , UIImage(named: "timberland") , UIImage(named: "adidas") ,  UIImage(named: "nike")]
+    var adsPhotos = [UIImage(named: "adidas") , UIImage(named: "nike") , UIImage(named: "timberland") , UIImage(named: "adidas") ,  UIImage(named: "nike")]
     var timer : Timer?
     var currentCellIndex = 0
     
@@ -50,8 +50,8 @@ class HomeViewController: UIViewController {
         
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         navigationController?.navigationBar.topItem?.backButtonTitle = " "
-        self.navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.backgroundColor = .white
+        self.navigationController?.navigationBar.barTintColor = .clear
+        navigationController?.navigationBar.backgroundColor = .clear
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
         
         tabBarController?.tabBarController?.hidesBottomBarWhenPushed = true
@@ -198,11 +198,8 @@ extension HomeViewController{
         
     }
     
-    
     @objc func searchButton(){
         
         
     }
-    
-    
 }

@@ -30,11 +30,7 @@ class MyAccountViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
-        let settingBtn = UIBarButtonItem()
-        settingBtn.image = UIImage(systemName: "gearshape.fill")
-        settingBtn.action = #selector(settingButton)
-        settingBtn.target = self
-        navigationItem.leftBarButtonItem = settingBtn
+      
         
     }
     
@@ -50,19 +46,18 @@ class MyAccountViewController: UIViewController {
     */
     
     @IBAction func registerBtn(_ sender: Any) {
+        
+        let registerVC = RgisterViewController()
+        navigationController?.pushViewController(registerVC, animated: true)
     }
     
     
     @IBAction func loginBtn(_ sender: Any) {
-    }
-
-}
-
-
-extension MyAccountViewController{
-    @objc func settingButton(){
-        let settingVC = SettingsViewController()
-        navigationController?.pushViewController(settingVC, animated: true)
         
+        let loginVC = LoginViewController()
+        navigationController?.pushViewController(loginVC, animated: true)
     }
+
 }
+
+

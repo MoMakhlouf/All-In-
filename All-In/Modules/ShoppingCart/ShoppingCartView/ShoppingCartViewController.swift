@@ -69,22 +69,18 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = shoppingCartTableView.dequeueReusableCell(withIdentifier: "shopCartCell", for: indexPath) as! ShoppingCartTableViewCell
-        
-       
-        
+
         cell.itemsInCell(itemData[indexPath.row])
         
         cell.didTapPlus = { [weak self] in
             guard let self = self else {return}
             let item = self.itemData[indexPath.row]
             if item.itemQuantity >= 5 {
-                
                 let alert = UIAlertController(title: "Not Available", message: "maximum Quantity is 5 ", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
                 self.present(alert, animated: true, completion: nil)
                 return}
-            
             self.total += item.itemPrice
             self.itemData[indexPath.row].itemQuantity += 1
             self.totalPrice.text = "\(self.total)"
@@ -108,7 +104,6 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
        return cell
     }
 
-    
     
 }
 

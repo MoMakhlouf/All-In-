@@ -26,15 +26,20 @@ class CategoriesViewController: UIViewController {
         categoriesCollection.dataSource = self
         categoriesCollection.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categoryCell")
         
+        // MARK: - navigationBar
         
         title = "Categories"
-        let Home = HomeViewController()
+        self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
+        navigationController?.navigationBar.topItem?.backButtonTitle = " "
+        self.navigationController?.navigationBar.barTintColor = .clear
+        navigationController?.navigationBar.backgroundColor = .clear
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
+
         let favoriteBtn = UIBarButtonItem()
         favoriteBtn.image = UIImage(systemName: "heart.fill")
         favoriteBtn.action = #selector(favoriteButton)
         favoriteBtn.target = self
- 
-        
+         
         let shoppingBagBtn = UIBarButtonItem()
         shoppingBagBtn.image = UIImage(systemName: "bag.fill")
         shoppingBagBtn.action = #selector(shoppingBagButton)
@@ -43,7 +48,7 @@ class CategoriesViewController: UIViewController {
         
         let searchBtn = UIBarButtonItem()
         searchBtn.image = UIImage(systemName: "magnifyingglass")
-        searchBtn.action = #selector(Home.searchButton)
+        searchBtn.action = #selector(searchButton)
         searchBtn.target = self
         navigationItem.leftBarButtonItem = searchBtn
         
@@ -104,7 +109,10 @@ class CategoriesViewController: UIViewController {
         
     }
     
-    
+    @objc func searchButton(){
+        
+        
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -160,8 +168,9 @@ extension CategoriesViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
-        cell.categoryPriceLbl.text = menArray[indexPath.row].title
        
+        let price: Float = (Float(menArray[indexPath.row].variants[0].price)! * 20.0)
+        cell.categoryPriceLbl.text = String(price) + " EGP"
         cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))
         return cell
     }
