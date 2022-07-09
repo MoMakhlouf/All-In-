@@ -21,18 +21,18 @@ extension ShoppingCartDBManager{
     
     //MARK: - Save Item To Database
 
-    func saveItemToDB( appDelegate : AppDelegate , title : String ,  quantity : Int32 , price : String , itemId : String , image : String , customerId : String ) {
+    func saveItemToDB( appDelegate : AppDelegate , title : String ,  itemQuantity : Int32 , price : String , itemImage : String , itemId : Int32 , customerId : Int64 ) {
         
         let managedContext = appDelegate.persistentContainer.viewContext
         
-        if let entity = NSEntityDescription.entity(forEntityName: "ShoppingCart", in: managedContext){
+        if let entity = NSEntityDescription.entity(forEntityName: "ShoppingCartDB", in: managedContext){
             
             let cartItem = NSManagedObject(entity: entity, insertInto: managedContext)
             cartItem.setValue(title, forKey: "title")
-            cartItem.setValue(quantity,forKey: "quantity")
+            cartItem.setValue(itemQuantity,forKey: "itemQuantity")
             cartItem.setValue(price, forKey: "price")
             cartItem.setValue(itemId, forKey: "itemId")
-            cartItem.setValue(image, forKey: "image")
+            cartItem.setValue(itemImage, forKey: "itemImage")
             cartItem.setValue(customerId, forKey: "customerId")
             do{
             try managedContext.save()
@@ -44,13 +44,13 @@ extension ShoppingCartDBManager{
     }
 
     //MARK: - insert item into cart
-    func getItemToCart(appDelegate : AppDelegate) -> [ShoppingCart]{
+    func getItemToCart(appDelegate : AppDelegate) -> [ShoppingCartDB]{
         
-        var fetchedList : [ShoppingCart] = []
+        var fetchedList : [ShoppingCartDB] = []
         let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ShoppingCart")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ShoppingCartDB")
         do{
-            fetchedList = try managedContext.fetch(fetchRequest) as! [ShoppingCart]
+            fetchedList = try managedContext.fetch(fetchRequest) as! [ShoppingCartDB]
         } catch{
             print("error")
         }
@@ -60,7 +60,7 @@ extension ShoppingCartDBManager{
     
     //MARK: - Delete item from db
 
-    func deleteFromCart( cartItem : ShoppingCart , indexPath : IndexPath , appDelegate : AppDelegate , delegate : DeletionDelegate) {
+    func deleteFromCart( cartItem : ShoppingCartDB , indexPath : IndexPath , appDelegate : AppDelegate , delegate : DeletionDelegate) {
         
         let managedContext = appDelegate.persistentContainer.viewContext
         managedContext.delete(cartItem)

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import Kingfisher
+import Kingfisher
 
 class ShoppingCartTableViewCell: UITableViewCell {
     @IBOutlet weak var shoppingCartCellView: UIView!
@@ -22,6 +22,8 @@ class ShoppingCartTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         shoppingCartCellView.layer.cornerRadius = 15
+        shoppingCartCellView.layer.borderWidth = 0.5
+        shoppingCartCellView.layer.borderColor = UIColor.black.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,12 +31,11 @@ class ShoppingCartTableViewCell: UITableViewCell {
           
     }
     
-    func itemsInCell(_ item : ShoppingCartItem){
-        itemName.text = item.itemName
-        itemPrice.text = String(item.itemPrice)
+    func itemsInCell(_ item : ShoppingCartDB){
+        itemName.text = item.title
+        itemPrice.text = item.price
         quantityLabel.text = String(item.itemQuantity)
-        
-       // itemImage.sd_setImage(with: URL(string: item.itemImage), placeholderImage: UIImage(systemName: "heart"))
+        itemImage.kf.setImage(with: URL(string: item.itemImage ?? ""))
     }
     
     @IBAction func minusButtonPressed(_ sender: Any) {

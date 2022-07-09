@@ -25,13 +25,17 @@ class PaymentViewController: UIViewController {
         }
     }
     
+    var cartItems = [ShoppingCartDB]()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let cartDB = ShoppingCartDBManager.sharedInstance
+    
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     var subtotal = 0.0
     var discountCodesArray = [Discount_codes]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         congratsView.isHidden = true
         view.addSubview(congratsView)
         congratsView.center = view.center
@@ -56,6 +60,16 @@ class PaymentViewController: UIViewController {
         totalPriceAfterDiscountLabel.text = " Total : \(subtotal) "
 
         print(discountCodesArray.count)
+        getItems()
+        print(cartItems.count)
+
+    }
+    
+    
+    func getItems(){
+        cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
+        print(cartItems.count)
+      
     }
     
     @IBAction func applyCoupon(_ sender: UIButton) {
@@ -122,13 +136,15 @@ class PaymentViewController: UIViewController {
 
 extension PaymentViewController : UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return cartItems.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = itemsCollectionView.dequeueReusableCell(withReuseIdentifier: "itemsCell", for: indexPath)
+        let cell = itemsCollectionView.dequeueReusableCell(withReuseIdentifier: "itemsCell", for: indexPath) as! ItemsCollectionViewCell
+       // cell.itemName.text = cartItems[indexPath.row].title
         
+        cell.cartedItems(cartItems[indexPath.row])
         
         return cell
         

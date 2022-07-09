@@ -6,8 +6,14 @@
 //
 
 import UIKit
-//import Kingfisher
+import Kingfisher
+
 class ProductInfoViewController: UIViewController {
+    
+    let cartDB = ShoppingCartDBManager.sharedInstance
+    let appSelegate = UIApplication.shared.delegate as! AppDelegate
+    var isAddedToCart = false
+    var productsArray = [Product]()
     
     var productInfo : Product?
     var ProductIMGG : Image?
@@ -43,12 +49,24 @@ class ProductInfoViewController: UIViewController {
         ProducrPrice1.text = productInfo?.variants[0].price
         ProductDiscription.text = productInfo?.body_html
         startTimer()
+        
+//        for product in productsArray{
+//            if product.id == productInfo?.id {
+//            isAddedToCart = true
+//            CartBtn.isEnabled = false
+//            }
+//        }
     }
 
     @IBAction func AddToCartBtn(_ sender: UIButton) {
+        if !isAddedToCart{
+        let itemImage = productInfo?.image.src
+        cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: 0 , customerId: 6261211300054)
+        
         let cart = ShoppingCartViewController()
         navigationController?.pushViewController(cart, animated: true)
     }
+}
     
     @IBAction func FavouriteProductDetailsBtn(_ sender: UIButton) {
         sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
