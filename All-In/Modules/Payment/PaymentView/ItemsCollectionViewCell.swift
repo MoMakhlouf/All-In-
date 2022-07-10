@@ -32,8 +32,8 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     func cartedItems(_ shopping : ShoppingCartDB){
         itemName.text = shopping.title
         itemPrice.text = shopping.price
+        itemQuantity.text = "\(shopping.itemQuantity)"
         itemImage.kf.setImage(with: URL(string: shopping.itemImage ?? ""))
      
     }
-
 }

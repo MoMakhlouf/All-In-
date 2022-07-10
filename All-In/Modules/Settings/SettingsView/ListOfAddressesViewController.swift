@@ -101,12 +101,20 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
                         print("error")
                         return
                     }
-                    if self.addressesArray.count == 1{
-                        Alert.displayAlert(title: "", message: "Cant't delete the only address")
+                    if indexPath.row == 0{
+                        Alert.displayAlert(title: "", message: "Can't delete the default address")
                     } else{
-                    print("DELETED")
-                    self.addressesArray.remove(at: indexPath.row)
-                    self.addressTableView.deleteRows(at: [indexPath], with: .fade)
+                        
+                        let alert = UIAlertController(title: "Delete Address", message: "Are you want to delete this Address?", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                        alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [self] UIAlertAction in
+                            
+                            print("DELETED")
+                            self.addressesArray.remove(at: indexPath.row)
+                            self.addressTableView.deleteRows(at: [indexPath], with: .fade)
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+         
                     }
                 }
         }

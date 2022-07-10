@@ -87,8 +87,6 @@ class ShoppingCartViewController: UIViewController {
 
 }
 
-
-
 extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -120,7 +118,7 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
             guard let self = self else {return}
             let item = self.cartItems[indexPath.row]
             if item.itemQuantity <= 1  {
-                let alert = UIAlertController(title: " Warning", message: "at least one Item ", preferredStyle: .alert)
+                let alert = UIAlertController(title: " Warning", message: "At least one Item ", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = UIColor.white
                 self.present(alert, animated: true, completion: nil)
@@ -136,6 +134,8 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
 
 }
  
+//MARK: - Delete shopping cart items
+
 extension ShoppingCartViewController : DeletionDelegate{
     func deleteCartItem(indexPath: IndexPath) {
         
@@ -150,16 +150,22 @@ extension ShoppingCartViewController : DeletionDelegate{
       func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
           
-            shoppingCartTableView.beginUpdates()
-            ShoppingCartDBManager.sharedInstance.deleteFromCart(cartItem: cartItems[indexPath.row], indexPath: indexPath, appDelegate: appDelegate, delegate: self)
-          
-            shoppingCartTableView.deleteRows(at: [indexPath] ,with: .automatic)
+            let alert = UIAlertController(title: "Delete Item", message: "Are you want to delete this Item ?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [self] UIAlertAction in
+               
+                shoppingCartTableView.beginUpdates()
+                
+                ShoppingCartDBManager.sharedInstance.deleteFromCart(cartItem: cartItems[indexPath.row], indexPath: indexPath, appDelegate: appDelegate, delegate: self)
+              
+                shoppingCartTableView.deleteRows(at: [indexPath] ,with: .automatic)
+                self.totalPrice.text = "Total: \(self.total)"
+                shoppingCartTableView.endUpdates()
+            }))
+            self.present(alert, animated: true, completion: nil)
 
              emptyCart()
-            shoppingCartTableView.endUpdates()
-            
-            self.totalPrice.text = "Total: \(self.total)"
-          
+
         }
     }
 }
