@@ -7,12 +7,14 @@
 
 import UIKit
 import WebKit
-//import Braintree
+import Braintree
 //import BraintreeDropIn
 
 
 
-class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
+class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
+  
+    
   
     @IBOutlet weak var viewIsHiddenConstraints: NSLayoutConstraint!
     @IBOutlet weak var viewIsVisibleConstraint: NSLayoutConstraint!
@@ -27,8 +29,8 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
     var totalAmount = ""
     @IBOutlet weak var cashOnDeliveryButton: UIButton!
     @IBOutlet weak var crediCardButton: UIButton!
- //   var btApiClient:BTAPIClient!
-    var authorization = "sandbox_hcfpdytt_vkh29jtd6t2q4ys8"
+    var braintreeAPIClient:BTAPIClient!
+    let authorization = "sandbox_w3d87wk7_hc7cj2xjtg337ffs"
     @IBOutlet weak var creditCardWebView: WKWebView!
     
     @IBOutlet weak var placeOrderIndicator: UIActivityIndicatorView!
@@ -39,13 +41,9 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
-      //  btApiClient = BTAPIClient(authorization: authorization)
-
-    //    btApiClient = BTAPIClient(authorization: authorization)
-
+ 
         orderPlacedView.isHidden = true
-        totalAmountLabel.text = totalAmount
+        totalAmountLabel.text = "Total: \(totalAmount)"
         placeOrderButton.layer.cornerRadius = 15
         continueShoppingButton.layer.cornerRadius = 15
        hideView()
@@ -57,9 +55,38 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
 
         //}
 
-      //  let url = URL(string: "https://www.paypal.com/eg/signin?locale.x=en_EG")
-        //creditCardWebView.load(URLRequest(url: url!))
+      
     }
+    
+    func payPalCheckout (amount : String){
+        self.braintreeAPIClient = BTAPIClient(authorization: authorization)
+            let payPalDriver = BTPayPalDriver(apiClient: braintreeAPIClient)
+           
+            let request = BTPayPalCheckoutRequest(amount: amount)
+            request.currencyCode = "USD"
+            
+        var err:Error?
+
+        payPalDriver.tokenizePayPalAccount(with: request) { [weak self] (tokenizedPayPalAccount, error) in
+
+            if tokenizedPayPalAccount != nil {
+
+            } else if let error = error {
+
+                err = error
+
+                print("error is \(error)")
+
+            }
+
+            if err == nil{
+                print("")
+
+            }
+
+        }
+            }
+
 
     @IBAction func cashOnDeliveryButton(_ sender: UIButton) {
         hideView()
@@ -67,13 +94,13 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
         cashOnDeliveryButton.layer.borderColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         crediCardButton.layer.borderWidth = 0
         placeOrderButton.isEnabled = true
-        cartItems.removeAll()
+      
     
     }
          
     @IBAction func creditCardButton(_ sender: UIButton) {
-     
-        
+       
+        payPalCheckout(amount: totalAmount)
         cashOnDeliveryButton.layer.borderWidth = 0
         crediCardButton.layer.borderWidth = 1
         crediCardButton.layer.borderColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
@@ -94,14 +121,13 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
     }
     
     
-    
-    
     @IBAction func placeOrderButtonPressed(_ sender: UIButton) {
         placeOrderIndicator.startAnimating()
         Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
             self.placeOrderIndicator.stopAnimating()
             self.orderPlacedView.isHidden = false
         }
+
     }
     
     
@@ -124,8 +150,8 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate {
     }
     
 }
-////
-/*
+
+
 extension PaymentMethodsViewController : BTViewControllerPresentingDelegate{
     func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
             
@@ -137,21 +163,9 @@ extension PaymentMethodsViewController : BTViewControllerPresentingDelegate{
 }
 
 
-extension PaymentMethodsViewController : BTAppSwitchDelegate {
-    func appSwitcherWillPerformAppSwitch(_ appSwitcher: Any) {
-        
-    }
-    
-    func appSwitcher(_ appSwitcher: Any, didPerformSwitchTo target: BTAppSwitchTarget) {
-        
-    }
-    
-    func appSwitcherWillProcessPaymentInfo(_ appSwitcher: Any) {
-         
-    }
     
     
     
-}
-*/
+
+
 ///

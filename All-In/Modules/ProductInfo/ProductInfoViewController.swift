@@ -13,6 +13,7 @@ class ProductInfoViewController: UIViewController {
     let cartDB = ShoppingCartDBManager.sharedInstance
     let appSelegate = UIApplication.shared.delegate as! AppDelegate
     var isAddedToCart = false
+    var cartItems = [ShoppingCartDB]()
     var productsArray = [Product]()
     
     var productInfo : Product?
@@ -50,24 +51,23 @@ class ProductInfoViewController: UIViewController {
         ProductDiscription.text = productInfo?.body_html
         startTimer()
         
-//        for product in productsArray{
-//            if product.id == productInfo?.id {
-//            isAddedToCart = true
-//            CartBtn.isEnabled = false
-//            }
-//        }
+        
     }
     
     
 
+    
+
     @IBAction func AddToCartBtn(_ sender: UIButton) {
-        if !isAddedToCart{
+      
+    
         let itemImage = productInfo?.image.src
-        cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: 0 , customerId: 6261211300054)
+        cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054)
         
-        let cart = ShoppingCartViewController()
-        navigationController?.pushViewController(cart, animated: true)
-    }
+            let cart = ShoppingCartViewController()
+            navigationController?.pushViewController(cart, animated: true)
+
+
 }
     
     @IBAction func FavouriteProductDetailsBtn(_ sender: UIButton) {

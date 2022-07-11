@@ -111,7 +111,7 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
             let price = Double(item.price ?? "1")
             self.total += price ?? 1
             self.cartItems[indexPath.row].itemQuantity += 1
-            self.totalPrice.text = "\(self.total)"
+            self.totalPrice.text = "Total: \(self.total)"
             tableView.reloadRows(at: [indexPath], with: .none)
         }
         cell.didTapMin = { [weak self] in
@@ -126,7 +126,7 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
             let price = Double(item.price!)
             self.total -= price!
             self.cartItems[indexPath.row].itemQuantity -= 1
-            self.totalPrice.text = "\(self.total)"
+            self.totalPrice.text = "Total: \(self.total)"
             tableView.reloadRows(at: [indexPath], with: .none)
         }
        return cell
@@ -148,7 +148,10 @@ extension ShoppingCartViewController : DeletionDelegate{
     }
     
       func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+          print("before")
         if editingStyle == .delete {
+            print("after")
+            
           
             let alert = UIAlertController(title: "Delete Item", message: "Are you want to delete this Item ?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
@@ -157,12 +160,13 @@ extension ShoppingCartViewController : DeletionDelegate{
                 shoppingCartTableView.beginUpdates()
                 
                 ShoppingCartDBManager.sharedInstance.deleteFromCart(cartItem: cartItems[indexPath.row], indexPath: indexPath, appDelegate: appDelegate, delegate: self)
-              
                 shoppingCartTableView.deleteRows(at: [indexPath] ,with: .automatic)
-                self.totalPrice.text = "Total: \(self.total)"
                 shoppingCartTableView.endUpdates()
             }))
             self.present(alert, animated: true, completion: nil)
+            
+            shoppingCartTableView.reloadData()
+            self.totalPrice.text = "Total: \(self.total)"
 
              emptyCart()
 

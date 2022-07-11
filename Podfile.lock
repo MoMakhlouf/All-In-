@@ -1,16 +1,30 @@
 PODS:
+  - Braintree (5.10.0):
+    - Braintree/Card (= 5.10.0)
+    - Braintree/Core (= 5.10.0)
+    - Braintree/PayPal (= 5.10.0)
+  - Braintree/Card (5.10.0):
+    - Braintree/Core
+  - Braintree/Core (5.10.0)
+  - Braintree/PayPal (5.10.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
+  - Braintree/PayPalDataCollector (5.10.0)
   - Kingfisher (4.10.1)
 
 DEPENDENCIES:
+  - Braintree (~> 5.0)
   - Kingfisher
 
 SPEC REPOS:
   trunk:
+    - Braintree
     - Kingfisher
 
 SPEC CHECKSUMS:
+  Braintree: a4df29b5453664ea01f89a04e0ae97397021c92f
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
 
-PODFILE CHECKSUM: 8eb3df60cc12b2f78a2a3f70c8354cc546a62245
+PODFILE CHECKSUM: ea5458627ca0dc44e01ce1147326cf376b6fc5af
 
 COCOAPODS: 1.11.3

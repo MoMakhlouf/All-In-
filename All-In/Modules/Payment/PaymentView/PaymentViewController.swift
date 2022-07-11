@@ -28,7 +28,7 @@ class PaymentViewController: UIViewController {
     var cartItems = [ShoppingCartDB]()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let cartDB = ShoppingCartDBManager.sharedInstance
-    
+    var finalTotal = ""
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     var subtotal = 0.0
     var discountCodesArray = [Discount_codes]()
@@ -58,6 +58,7 @@ class PaymentViewController: UIViewController {
             }
         }
         totalPriceAfterDiscountLabel.text = " Total : \(subtotal) "
+        self.finalTotal = "\(subtotal) "
 
         print(discountCodesArray.count)
         getItems()
@@ -84,6 +85,7 @@ class PaymentViewController: UIViewController {
                 self.applyButton.titleLabel?.text = "\(discountAmount) EGP Discount"
                 self.applyButton.isEnabled = false
                 self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
+                self.finalTotal = totalAfterDiscount
             }
             
             congratsView.isHidden = false
@@ -104,6 +106,8 @@ class PaymentViewController: UIViewController {
                 
                 self.discountLabel.text = " \(discountAmount) EGP Discount"
                 self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
+                self.finalTotal = totalAfterDiscount
+
             }
             
             congratsView.isHidden = false
@@ -117,8 +121,10 @@ class PaymentViewController: UIViewController {
             Alert.displayAlert(title: "Enter a coupon", message: "You must enter a valid coupon")
         }else{
             discountLabel.text = " "
-
+  
             totalPriceAfterDiscountLabel.text = " Total : \(subtotal) "
+            self.finalTotal = "\(subtotal) "
+
 
             Alert.displayAlert(title: "Invalid Coupon", message: "")
         }
@@ -128,7 +134,7 @@ class PaymentViewController: UIViewController {
 
     @IBAction func continueToPaymentButtonPressed(_ sender: Any) {
         let paymentMethod = PaymentMethodsViewController()
-        paymentMethod.totalAmount = totalPriceAfterDiscountLabel.text ?? ""
+        paymentMethod.totalAmount = finalTotal
         navigationController?.pushViewController(paymentMethod, animated: true)
     }
     

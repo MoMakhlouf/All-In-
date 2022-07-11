@@ -21,7 +21,7 @@ extension ShoppingCartDBManager{
     
     //MARK: - Save Item To Database
 
-    func saveItemToDB( appDelegate : AppDelegate , title : String ,  itemQuantity : Int32 , price : String , itemImage : String , itemId : Int32 , customerId : Int64 ) {
+    func saveItemToDB( appDelegate : AppDelegate , title : String ,  itemQuantity : Int32 , price : String , itemImage : String , itemId : Int64 , customerId : Int64 ) {
         
         let managedContext = appDelegate.persistentContainer.viewContext
         
