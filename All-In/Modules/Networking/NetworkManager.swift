@@ -174,6 +174,65 @@ class NetworkManager : ApiServices{
         }
     }
    // 1191661535446
+    
+    //MARK: - Mahmoud Register
+    
+    
+    func registerCustomer(newCustomer: NewCustomr, completion: @escaping ((NewCustomr?, Error?) -> Void))
+    
+    {
+        print(Urls.registerUser())
+        if let url = URL(string: Urls.registerUser())
+        {
+            print(url)
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            request.httpShouldHandleCookies = false
+                
+            do{
+                request.httpBody =
+                try JSONSerialization.data(withJSONObject: newCustomer.asDictionary(), options: .prettyPrinted)
+            }
+            catch let error {
+                
+                print(error.localizedDescription)
+                
+                 }
+            URLSession.shared.dataTask(with: request){
+                data, response, error in
+                
+                if let error = error {
+                    completion(nil, error)
+                    return
+                }
+                
+                guard let data = data else { return }
+               print(data)
+                
+                let decoder = JSONDecoder()
+                
+                if let decodedData: NewCustomr = convertFromJson(data: data)
+                {
+                    
+                completion(decodedData, nil)
+                    
+                 print(decodedData)
+                    
+                }
+            }.resume()
+            
+            }
+        
+        
+    }
+
+    
 }
 
 

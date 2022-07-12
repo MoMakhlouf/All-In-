@@ -20,8 +20,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DwC-J7-CCX">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6hA-II-fcp">
-                                <rect key="frame" x="25" y="16" width="250" height="190"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6hA-II-fcp">
+                                <rect key="frame" x="20" y="16" width="260" height="190"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atJ-YU-2YT">
@@ -35,14 +35,17 @@
                                 <buttonConfiguration key="configuration" style="plain" image="trash.square.fill" catalog="system" title="">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="25"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="DeleteFavourite:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Ubz-vG-VfR"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a03-cC-WH3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a03-cC-WH3">
                                 <rect key="frame" x="25" y="226" width="182" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="182" id="MY3-91-vMT"/>
                                     <constraint firstAttribute="height" constant="31" id="y9s-XC-msN"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -51,9 +54,9 @@
                         <constraints>
                             <constraint firstItem="atJ-YU-2YT" firstAttribute="top" secondItem="6hA-II-fcp" secondAttribute="bottom" constant="20" id="6Pn-eU-cW3"/>
                             <constraint firstItem="atJ-YU-2YT" firstAttribute="leading" secondItem="a03-cC-WH3" secondAttribute="trailing" constant="5" id="9Hu-xZ-5Wc"/>
-                            <constraint firstItem="6hA-II-fcp" firstAttribute="leading" secondItem="DwC-J7-CCX" secondAttribute="leading" constant="25" id="A1d-a7-igK"/>
+                            <constraint firstItem="6hA-II-fcp" firstAttribute="leading" secondItem="DwC-J7-CCX" secondAttribute="leading" constant="20" id="A1d-a7-igK"/>
                             <constraint firstAttribute="trailing" secondItem="atJ-YU-2YT" secondAttribute="trailing" constant="25" id="S6w-cj-Qbh"/>
-                            <constraint firstAttribute="trailing" secondItem="6hA-II-fcp" secondAttribute="trailing" constant="25" id="VRP-DC-oGi"/>
+                            <constraint firstAttribute="trailing" secondItem="6hA-II-fcp" secondAttribute="trailing" constant="20" id="VRP-DC-oGi"/>
                             <constraint firstItem="6hA-II-fcp" firstAttribute="top" secondItem="DwC-J7-CCX" secondAttribute="top" constant="16" id="Y6b-Ne-lds"/>
                             <constraint firstItem="6hA-II-fcp" firstAttribute="height" secondItem="DwC-J7-CCX" secondAttribute="height" multiplier="0.633333" id="lOr-b3-chD"/>
                             <constraint firstItem="a03-cC-WH3" firstAttribute="leading" secondItem="DwC-J7-CCX" secondAttribute="leading" constant="25" id="nMx-mP-MvE"/>

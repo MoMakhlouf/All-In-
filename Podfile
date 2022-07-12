@@ -10,7 +10,7 @@ target 'All-In' do
 
 
     pod 'Kingfisher'
-
+    pod 'Cosmos', '~> 23.0'
 
 
   target 'All-InTests' do
