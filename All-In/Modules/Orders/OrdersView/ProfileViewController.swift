@@ -53,7 +53,7 @@ class ProfileViewController: UIViewController {
         
     }
     @IBAction func moreBtnFavourite(_ sender: Any) {
-        let favoriteVC = FavouriteViewController()
+        let favoriteVC = FavoriteViewController()
         navigationController?.pushViewController(favoriteVC, animated: true)
     }
 }

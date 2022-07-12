@@ -80,12 +80,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.scheme?.localizedCaseInsensitiveCompare("-.All-In.payments") == .orderedSame {
             return BTAppContextSwitcher.handleOpenURL(url)
         }
         return false
     }
+
+//    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+//        if url.scheme?.localizedCaseInsensitiveCompare("-.All-In.payments") == .orderedSame {
+//      //      return BTAppSwitch.handleOpen(url, options: options)
+//        }
+//        return false
+//    }
+    lazy var PersistentContainer: NSPersistentContainer = {
+
+            let container = NSPersistentContainer(name: "All_In")
+            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            })
+            return container
+        }()
+
+        // MARK: - Core Data Saving support
+
+        func SaveContext () {
+            let context = persistentContainer.viewContext
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
+            }
+        }
+
     
 }
 

@@ -9,6 +9,8 @@ import UIKit
 import Kingfisher
 
 class CategoriesViewController: UIViewController {
+  
+    let searchController = UISearchController()
     var array: Array<Int> = []
     var productsArray = [Product]()
     var collectsArray = [Collect]()
@@ -18,10 +20,6 @@ class CategoriesViewController: UIViewController {
     var kidArray : [String] = []
     
 
-
-    
-    
-    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var categoriesCollection: UICollectionView!
 
@@ -30,6 +28,7 @@ class CategoriesViewController: UIViewController {
         categoriesCollection.delegate = self
         categoriesCollection.dataSource = self
         categoriesCollection.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categoryCell")
+       
         
       //  categoriesCollection.register(UINib(nibName: "ProuctsBrandCollectionViewCell" , bundle: nil), forCellWithReuseIdentifier: "productsBrandCell")
         // MARK: - navigationBar
@@ -103,7 +102,9 @@ class CategoriesViewController: UIViewController {
 
 
     @objc func favoriteButton(){
-        let favorite = FavouriteViewController()
+        
+        let favorite = FavoriteViewController()
+        
         navigationController?.pushViewController(favorite, animated: true)
     }
     
@@ -136,12 +137,18 @@ class CategoriesViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+
+    // MARK: - Search
+    
+
 }
 
 extension CategoriesViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let productInfo = ProductInfoViewController()
+
         productInfo.productInfo = menArray[indexPath.row]
+
         navigationController?.pushViewController(productInfo, animated: true)
     }
 }
@@ -154,7 +161,9 @@ extension CategoriesViewController: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+
+      
+
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
  
      /*   cell.nameProductLbl.text = menArray[indexPath.row].title + " \\" + menArray[indexPath.row].variants[0].option2
@@ -167,9 +176,12 @@ extension CategoriesViewController: UICollectionViewDataSource{
         cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))
         return cell
     }
-    
-    
+     
+
 }
+    
+    
+
 
 extension CategoriesViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -182,6 +194,7 @@ extension CategoriesViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
 }
 
 extension CategoriesViewController{

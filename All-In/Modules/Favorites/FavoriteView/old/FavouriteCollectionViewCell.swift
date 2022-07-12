@@ -23,4 +23,7 @@ class FavouriteCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    @IBAction func DeleteFavourite(_ sender: UIButton) {
+ 
+    }
 }

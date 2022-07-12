@@ -11,7 +11,8 @@ target 'All-In' do
      pod 'Braintree', '~> 5.0'
      pod 'Kingfisher'
 
-    
+   
+
 
 
   target 'All-InTests' do

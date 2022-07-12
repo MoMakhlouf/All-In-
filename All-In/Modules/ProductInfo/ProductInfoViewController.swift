@@ -16,7 +16,8 @@ class ProductInfoViewController: UIViewController {
     var cartItems = [ShoppingCartDB]()
 
     var productInfo : Product?
-    var ProductIMGG : Image?
+    var FavProduct  : FavouriteDB?
+      var Isfavorite  = false
 
     var CurrentCellIndex = 0
     var timer :Timer?
@@ -41,12 +42,18 @@ class ProductInfoViewController: UIViewController {
         
         super.viewDidLoad()
         CartBtn.layer.cornerRadius = 15
+
       fetchItem()
       ProductDetailsCollection.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductDetailsCell")
+
+         
+        //print(FavProduct)
+   // ProductDetailsCollection.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductDetailsCell")
+
         
         ProductPageControl.numberOfPages = (productInfo?.images.count)!
         ProductName1.text = productInfo?.title
-        ProducrPrice1.text = productInfo?.variants[0].price
+        ProducrPrice1.text =  "\(productInfo?.variants[0].price ?? "")"
         ProductDiscription.text = productInfo?.body_html
         startTimer()
         
@@ -92,8 +99,11 @@ class ProductInfoViewController: UIViewController {
             let itemImage = productInfo?.image.src
             cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054)
             
+          
                 let cart = ShoppingCartViewController()
                 navigationController?.pushViewController(cart, animated: true)
+            
+            
               isAddedToCart = true
         }
 }
@@ -101,21 +111,34 @@ class ProductInfoViewController: UIViewController {
     
     
     @IBAction func FavouriteProductDetailsBtn(_ sender: UIButton) {
-        sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-    }
+         
+         sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        let db = DBManager.sharedInstance
+        let  Img = productInfo?.image.src
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        db.addProduct(productName: ProductName1.text ?? "", productImage: Img ?? "", productPrice: ProducrPrice1.text ?? "", productDescription: ProductDiscription.text ?? "", appDelegate: appDelegate)
+        
+            
+        }
     
 }
 extension ProductInfoViewController :UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (productInfo?.images.count)!
+      
+            return (productInfo?.images.count)!
+        
+      
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      
+            
         let ProductCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductDetailsCell", for: indexPath) as! ProductCollectionViewCell
         ProductCell.ProductDetailsImg.kf.setImage(with: URL(string: productInfo?.images[indexPath.row].src ?? ""))
         
         return ProductCell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -132,7 +155,7 @@ extension ProductInfoViewController :UICollectionViewDelegate,UICollectionViewDa
  
     @objc func moveToNextIndex()
     {
-        if CurrentCellIndex < (productInfo?.images.count)! - 1
+        if CurrentCellIndex < (productInfo?.images.count)!   - 1
         {
             CurrentCellIndex  += 1
 
