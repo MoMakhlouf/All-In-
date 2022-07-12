@@ -27,7 +27,12 @@ class ProfileViewController: UIViewController {
         settingBtn.action = #selector(settingButton)
         settingBtn.target = self
         navigationItem.rightBarButtonItem = settingBtn
-       
+        
+        let shoppingBagBtn = UIBarButtonItem()
+        shoppingBagBtn.image = UIImage(systemName: "bag.fill")
+        shoppingBagBtn.action = #selector(shoppingBagButton)
+        shoppingBagBtn.target = self
+        navigationItem.rightBarButtonItems = [settingBtn, shoppingBagBtn]
     }
     
 
@@ -48,6 +53,8 @@ class ProfileViewController: UIViewController {
         
     }
     @IBAction func moreBtnFavourite(_ sender: Any) {
+        let favoriteVC = FavouriteViewController()
+        navigationController?.pushViewController(favoriteVC, animated: true)
     }
 }
 
@@ -82,4 +89,10 @@ extension ProfileViewController{
         navigationController?.pushViewController(settingVC, animated: true)
         
     }
+    
+    @objc func shoppingBagButton(){
+        let shoppingCart = ShoppingCartViewController()
+        navigationController?.pushViewController(shoppingCart, animated: true)
+    }
+    
 }

@@ -92,7 +92,8 @@ class HomeViewController: UIViewController {
                 }
             }
             if let error = error{
-                print(error.localizedDescription)
+                Alert.displayAlert(title: "Error", message: error.localizedDescription)
+                //print(error.localizedDescription)
             }
         }
     }

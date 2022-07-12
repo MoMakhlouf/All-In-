@@ -14,6 +14,7 @@ class FilterViewController: UIViewController {
     var productPriceArray: Array<String> = []
     var convert: Array<Float> = []
     var productArray = [Product]()
+    var productType = [String]()
     var delegate2: delegateFilter?
     @IBOutlet weak var filterTableView: UITableView!
     override func viewDidLoad() {
@@ -22,12 +23,19 @@ class FilterViewController: UIViewController {
         filterTableView.dataSource = self
         filterTableView.register(UINib(nibName: "FillterTableViewCell", bundle: nil), forCellReuseIdentifier: "filterCell")
         
+        filterTableView.register(UINib(nibName: "ProductTypeTableViewCell", bundle: nil), forCellReuseIdentifier: "productType")
+        
         let filterBtn = UIBarButtonItem()
         filterBtn.image = UIImage(systemName: "line.3.horizontal.decrease")
         filterBtn.action = #selector(saveFilter)
         filterBtn.target = self
         navigationItem.rightBarButtonItem = filterBtn
         
+        for product in productArray{
+            if (!productType.contains(product.product_type)){
+                productType.append(product.product_type)
+            }
+        }
     }
 
 
@@ -45,6 +53,28 @@ class FilterViewController: UIViewController {
 }
 
 extension FilterViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height:CGFloat = CGFloat()
+        if indexPath.section == 0{
+            if indexPath.row == 0{
+                height = 200
+            }
+        }
+        else{
+            height = 100
+        }
+      /*  switch(indexPath.section){
+        case 0:
+            height = 200
+        case 1:
+            height = 100
+        default:
+            break
+        }*/
+ 
+        return height
+        
+    }
     
 }
 
@@ -53,29 +83,53 @@ extension FilterViewController: UITableViewDataSource{
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch(section){
+        case 0:
+            return 1
+        case 1:
+            return productType.count
+        default:
+            break
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = filterTableView.dequeueReusableCell(withIdentifier: "filterCell", for: indexPath) as! FillterTableViewCell
+   
         switch(indexPath.section){
         case 0:
-         
-            cell.fromPriceField.text = String(convert.min()!)
-            cell.toPriceField.text = String(convert.max()!)
-            cell.sliderPrice.maximumValue = convert.max()!
-            cell.sliderPrice.minimumValue = convert.min()!
+            cell.fromPriceField.text = String(convert.min()! * 20)
+            cell.toPriceField.text = String(convert.max()! * 20)
+            cell.sliderPrice.maximumValue = convert.max()! * 20
+            cell.sliderPrice.minimumValue = convert.min()! * 20
+            cell.changePrice = { [weak self] in
+                guard let self = self else {return}
+                self.minNum = cell.sliderPrice.value
+               
+            }
             return cell
+        case 1:
+            let cell1 = filterTableView.dequeueReusableCell(withIdentifier: "productType", for: indexPath) as! ProductTypeTableViewCell
+            cell1.productTypeName.text = productType[indexPath.row]
+         /*   cell1.productType = { [weak self] in
+                guard let self = self else {return}
+                cell1.checkMarkBtn(UITableViewCell.AccessoryType.checkmark)
+            }*/
+            cell1.accessoryType = UITableViewCell.AccessoryType.checkmark
+            return cell1
         default: break
             
         }
+        
+        
         return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section){
             case 1:
-                return "Best Seller"
+                return "Product Type"
             default:
                 return "Price"
         }
@@ -85,17 +139,9 @@ extension FilterViewController: UITableViewDataSource{
 }
 
 extension FilterViewController{
-    func saveFilterr(minnum: Float, maxnum: Float){
-        self.minNum = minnum
-        self.maxNum = maxnum
-    }
-    
     @objc func saveFilter(_ sender: UIButton){
-   //     let cell = filterTableView.dequeueReusableCell(withIdentifier: "filterCell") as! FillterTableViewCell
-//let minVlaue = self.minNum
-     //   let maxValue = self.maxNum
         if let d = delegate2{
-          //  d.filterPrice(minn: Float(minVlaue) , maxx: 170.0)
+            d.filterPrice(minn: minNum , maxx: convert.max()! * 20)
         }
         navigationController?.popViewController(animated: true)
     }

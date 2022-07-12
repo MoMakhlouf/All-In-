@@ -16,7 +16,12 @@ class CategoriesViewController: UIViewController {
     var menArray = [Product]()
     var womenArray: [String] = []
     var kidArray : [String] = []
+    
 
+
+    
+    
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var categoriesCollection: UICollectionView!
 
@@ -26,6 +31,7 @@ class CategoriesViewController: UIViewController {
         categoriesCollection.dataSource = self
         categoriesCollection.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categoryCell")
         
+      //  categoriesCollection.register(UINib(nibName: "ProuctsBrandCollectionViewCell" , bundle: nil), forCellWithReuseIdentifier: "productsBrandCell")
         // MARK: - navigationBar
         
         title = "Categories"
@@ -52,15 +58,16 @@ class CategoriesViewController: UIViewController {
         searchBtn.target = self
         navigationItem.leftBarButtonItem = searchBtn
         
-        
-        
+
         
         let productsViewModel = BrandsViewModel()
         productsViewModel.fetchData()
         productsViewModel.bindingData = {products , error in
             if let products = products{
                 self.productsArray = products.products
-                self.menArray = products.products
+                self.fetchProduct(xx: "MEN")
+                
+                //self.menArray = products.products
                 DispatchQueue.main.async {
                     self.categoriesCollection.reloadData()
                 }
@@ -93,30 +100,22 @@ class CategoriesViewController: UIViewController {
         }
     }
     
-    
+
+
     @objc func favoriteButton(){
-        
         let favorite = FavouriteViewController()
-        
         navigationController?.pushViewController(favorite, animated: true)
-        
     }
     
     @objc func shoppingBagButton(){
-        
         let shoppingCart = ShoppingCartViewController()
         navigationController?.pushViewController(shoppingCart, animated: true)
-        
     }
     
     @objc func searchButton(){
-        
-        
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
-   
     }
     
     @IBAction func segmentedDidChange(_ sender: Any) {
@@ -125,7 +124,6 @@ class CategoriesViewController: UIViewController {
            self.menArray = []
            self.fetchProduct(xx: self.segmentedControl.titleForSegment(at: self.segmentedControl.selectedSegmentIndex)!)
            self.categoriesCollection.reloadData()
-            
         }
     }
     
@@ -138,38 +136,32 @@ class CategoriesViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    
-    
 }
 
 extension CategoriesViewController: UICollectionViewDelegate{
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let productInfo = ProductInfoViewController()
+        productInfo.productInfo = menArray[indexPath.row]
         navigationController?.pushViewController(productInfo, animated: true)
-        
     }
-    
 }
+
 extension CategoriesViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-  /*      if segmentedControl.selectedSegmentIndex == 0{
-            return collectsArray.count
-       
-        }
-        
-        if segmentedControl.selectedSegmentIndex == 1{
-            return customCollectionsArray.count
-        }*/
+  
        
         return menArray.count//customCollectionsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
-       
+ 
+     /*   cell.nameProductLbl.text = menArray[indexPath.row].title + " \\" + menArray[indexPath.row].variants[0].option2
+        let price: Float = (Float(menArray[indexPath.row].variants[0].price)! * 20.0)
+        cell.priceProductLbl.text = String(price) + " EGP"
+        cell.prouctImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))*/
+        
         let price: Float = (Float(menArray[indexPath.row].variants[0].price)! * 20.0)
         cell.categoryPriceLbl.text = String(price) + " EGP"
         cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))
@@ -204,7 +196,6 @@ extension CategoriesViewController{
             }
         }
         for n in productsArray{
-           // print(n.id)
             for i in array{
                 if i == n.id{
                     self.menArray.append(n)
