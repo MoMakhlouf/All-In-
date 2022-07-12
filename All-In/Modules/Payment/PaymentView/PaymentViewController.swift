@@ -21,15 +21,13 @@ class PaymentViewController: UIViewController {
             itemsCollectionView.delegate = self
             itemsCollectionView.dataSource = self
             itemsCollectionView.register(UINib(nibName: "ItemsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "itemsCell")
-            
         }
     }
-    
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     var cartItems = [ShoppingCartDB]()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let cartDB = ShoppingCartDBManager.sharedInstance
     var finalTotal = ""
-    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     var subtotal = 0.0
     var discountCodesArray = [Discount_codes]()
     
@@ -45,7 +43,7 @@ class PaymentViewController: UIViewController {
         subTotalPriceLabel.text = "Sub Total : \(subtotal)"
         
         let discountCodeModel = DiscountCodeViewModel()
-        discountCodeModel.getDiscountCode(priceRule: "1191661535446")
+        discountCodeModel.getDiscountCode()
         discountCodeModel.bindingData = { discounts , error in
             if let discounts = discounts{
                 self.discountCodesArray = discounts
@@ -57,6 +55,7 @@ class PaymentViewController: UIViewController {
                 }
             }
         }
+        
         totalPriceAfterDiscountLabel.text = " Total : \(subtotal) "
         self.finalTotal = "\(subtotal) "
 
@@ -66,13 +65,12 @@ class PaymentViewController: UIViewController {
 
     }
     
-    
+    //MARK: - Fetch Cart Items from coreData
     func getItems(){
         cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
-        print(cartItems.count)
-      
     }
     
+    //MARK: - Discount Code process
     @IBAction func applyCoupon(_ sender: UIButton) {
         
         if couponTextField.text == discountCodesArray[0].code  {
@@ -124,14 +122,13 @@ class PaymentViewController: UIViewController {
   
             totalPriceAfterDiscountLabel.text = " Total : \(subtotal) "
             self.finalTotal = "\(subtotal) "
-
-
+            
             Alert.displayAlert(title: "Invalid Coupon", message: "")
         }
         
     }
-        
-
+    
+        //MARK: - Continue to Checkout..
     @IBAction func continueToPaymentButtonPressed(_ sender: Any) {
         let paymentMethod = PaymentMethodsViewController()
         paymentMethod.totalAmount = finalTotal
@@ -140,6 +137,7 @@ class PaymentViewController: UIViewController {
     
 }
 
+//MARK: - Cart Items CollectionView
 extension PaymentViewController : UICollectionViewDelegate , UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return cartItems.count
@@ -155,7 +153,6 @@ extension PaymentViewController : UICollectionViewDelegate , UICollectionViewDat
         
     }
 }
-
 
 extension PaymentViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

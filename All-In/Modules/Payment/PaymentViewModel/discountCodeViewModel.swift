@@ -27,8 +27,8 @@ init(apiServices : ApiServices = NetworkManager()){
     self.apiService = apiServices
 }
     
-    func getDiscountCode(priceRule : String){
-        apiService.getDiscountCode(priceRule: priceRule) { discountCodes, error in
+    func getDiscountCode(){
+        apiService.getDiscountCode(priceRule: "1191661535446") { discountCodes, error in
             if let discountCodes = discountCodes {
                 self.discountCodesArray = discountCodes
                 print("getDiscountCodeFunction")
