@@ -14,8 +14,7 @@ class ProductInfoViewController: UIViewController {
     let appSelegate = UIApplication.shared.delegate as! AppDelegate
     var isAddedToCart = false
     var cartItems = [ShoppingCartDB]()
-    var productsArray = [Product]()
-    
+
     var productInfo : Product?
     var ProductIMGG : Image?
 
@@ -42,8 +41,8 @@ class ProductInfoViewController: UIViewController {
         
         super.viewDidLoad()
         CartBtn.layer.cornerRadius = 15
-
-    ProductDetailsCollection.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductDetailsCell")
+      fetchItem()
+      ProductDetailsCollection.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductDetailsCell")
         
         ProductPageControl.numberOfPages = (productInfo?.images.count)!
         ProductName1.text = productInfo?.title
@@ -51,24 +50,55 @@ class ProductInfoViewController: UIViewController {
         ProductDiscription.text = productInfo?.body_html
         startTimer()
         
-        
+        cartedItems()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        fetchItem()
+        print(cartItems.count)
+        print(cartItems)
+    }
+    
+    
+    func cartedItems(){
+        for item in cartItems {
+            if item.itemId == productInfo!.id{
+               isAddedToCart = true
+            }
+        }
+    }
+    
+    
+    func fetchItem(){
+        cartItems = cartDB.getItemToCart(appDelegate: appSelegate)
     }
     
     
 
-    
-
     @IBAction func AddToCartBtn(_ sender: UIButton) {
-      
-    
-        let itemImage = productInfo?.image.src
-        cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054)
+        if isAddedToCart {
+       
+            let alert = UIAlertController(title: "This item is already in cart", message: "Check your cart?", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Show cart", style: .default, handler: { [self] UIAlertAction in
         
-            let cart = ShoppingCartViewController()
-            navigationController?.pushViewController(cart, animated: true)
+                let cart = ShoppingCartViewController()
+                navigationController?.pushViewController(cart, animated: true)
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        } else{
 
-
+            let itemImage = productInfo?.image.src
+            cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054)
+            
+                let cart = ShoppingCartViewController()
+                navigationController?.pushViewController(cart, animated: true)
+              isAddedToCart = true
+        }
 }
+    
+    
     
     @IBAction func FavouriteProductDetailsBtn(_ sender: UIButton) {
         sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)

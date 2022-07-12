@@ -148,7 +148,6 @@ extension PaymentViewController : UICollectionViewDelegate , UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = itemsCollectionView.dequeueReusableCell(withReuseIdentifier: "itemsCell", for: indexPath) as! ItemsCollectionViewCell
-       // cell.itemName.text = cartItems[indexPath.row].title
         
         cell.cartedItems(cartItems[indexPath.row])
         

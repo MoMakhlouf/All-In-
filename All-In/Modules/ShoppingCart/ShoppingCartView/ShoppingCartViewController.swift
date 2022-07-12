@@ -24,6 +24,7 @@ class ShoppingCartViewController: UIViewController {
     let cartDB = ShoppingCartDBManager.sharedInstance
     var cartItems = [ShoppingCartDB]()
     var total = 0.0
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +32,7 @@ class ShoppingCartViewController: UIViewController {
         proceedToCheckoutButton.layer.cornerRadius = 12
         navigationItem.title = "Shopping Cart"
         
-     
-//        cartItems.forEach({ item in
-//            let price = Double(item.price ?? "5")
-//            total += (price! * Double(item.itemQuantity))
-//        })
+
   
         getItems()
         
@@ -114,6 +111,8 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
             self.totalPrice.text = "Total: \(self.total)"
             tableView.reloadRows(at: [indexPath], with: .none)
         }
+        
+        
         cell.didTapMin = { [weak self] in
             guard let self = self else {return}
             let item = self.cartItems[indexPath.row]
@@ -131,7 +130,11 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
         }
        return cell
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+       
+        }
 }
  
 //MARK: - Delete shopping cart items
@@ -141,32 +144,38 @@ extension ShoppingCartViewController : DeletionDelegate{
         
        cartItems.remove(at : indexPath.row)
         self.shoppingCartTableView.reloadData()
-        
-        self.totalPrice.text = "Total: \(self.total)"
+      //  self.totalPrice.text = "Total: \(self.total)"
 
         emptyCart()
     }
     
       func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-          print("before")
+      
         if editingStyle == .delete {
-            print("after")
-            
           
             let alert = UIAlertController(title: "Delete Item", message: "Are you want to delete this Item ?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [self] UIAlertAction in
-               
+                self.total = total -  ( Double(self.cartItems[indexPath.row].price!)! * Double(self.cartItems[indexPath.row].itemQuantity))
+                self.totalPrice.text = "Total: \(self.total)"
+                
                 shoppingCartTableView.beginUpdates()
                 
                 ShoppingCartDBManager.sharedInstance.deleteFromCart(cartItem: cartItems[indexPath.row], indexPath: indexPath, appDelegate: appDelegate, delegate: self)
                 shoppingCartTableView.deleteRows(at: [indexPath] ,with: .automatic)
+                               
                 shoppingCartTableView.endUpdates()
+              
             }))
             self.present(alert, animated: true, completion: nil)
             
+           
+           
+            
+
+
+            
             shoppingCartTableView.reloadData()
-            self.totalPrice.text = "Total: \(self.total)"
 
              emptyCart()
 

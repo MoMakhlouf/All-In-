@@ -154,11 +154,11 @@
                 <constraint firstItem="Cmm-AP-110" firstAttribute="top" secondItem="Hlm-4c-pB8" secondAttribute="bottom" constant="30" id="VRX-83-swt"/>
                 <constraint firstItem="guY-NI-MLQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Zb9-ta-b0b"/>
                 <constraint firstItem="Cmm-AP-110" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="czV-bB-lqM"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yTe-If-ebU" secondAttribute="bottom" constant="60" id="frH-Mw-uKC"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="guY-NI-MLQ" secondAttribute="bottom" id="iTr-XP-gK9"/>
                 <constraint firstItem="pCc-cP-Lys" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qsp-xB-RmM"/>
                 <constraint firstItem="UcZ-tD-gGm" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="r2N-dm-r7x"/>
                 <constraint firstItem="UcZ-tD-gGm" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="r7f-YY-b3J"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="yTe-If-ebU" secondAttribute="bottom" constant="60" id="rFg-w8-TOq"/>
                 <constraint firstItem="424-rb-PgF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="t5q-bT-KED"/>
                 <constraint firstItem="9jN-OG-Ad4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="tHx-1M-DSj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="424-rb-PgF" secondAttribute="trailing" constant="20" id="tcb-Ps-X9x"/>
@@ -168,7 +168,7 @@
         </view>
     </objects>
     <resources>
-        <image name="fireworks" width="128" height="128"/>
+        <image name="fireworks" width="341.33334350585938" height="341.33334350585938"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

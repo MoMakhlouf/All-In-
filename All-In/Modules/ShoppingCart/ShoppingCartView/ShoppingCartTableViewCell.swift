@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Kingfisher
+//import Kingfisher
 
 class ShoppingCartTableViewCell: UITableViewCell {
     @IBOutlet weak var shoppingCartCellView: UIView!

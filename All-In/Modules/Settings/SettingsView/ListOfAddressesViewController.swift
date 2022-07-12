@@ -32,11 +32,7 @@ class ListOfAddressesViewController: UIViewController {
     let userDefaults = UserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-       // UserDefaults.standard.removeObject(forKey: "fullAddress")
-
-     //   userDefaults.set("\(addressesArray[1].first_name ?? "NO Address added , Please add one")" , forKey: "fullAddress")
-
+        
         print(addressesArray.count)
     }
     
@@ -85,10 +81,13 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let address = addressesArray[indexPath.row]
         chooseAddressDelegate?.didSelectAddress(address: "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")")
-        
+           
     }
     
+    
+    
     //MARK: - DELETE AN ADDRESS
+    
      
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {

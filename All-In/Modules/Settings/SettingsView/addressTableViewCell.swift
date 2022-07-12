@@ -24,8 +24,13 @@ class addressTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        if selected {
+        addressView.layer.borderWidth = 1
+        addressView.layer.borderColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
+        }else{
+            addressView.layer.borderWidth = 0
 
-        // Configure the view for the selected state
+        }
     }
     
     func getFullAddress(address : Address){

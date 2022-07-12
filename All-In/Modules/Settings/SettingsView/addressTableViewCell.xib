@@ -63,7 +63,7 @@
                 <outlet property="fullAddress" destination="I4K-PH-aRg" id="haf-f6-HVp"/>
                 <outlet property="fullName" destination="wrC-SQ-rqC" id="10l-BU-TGT"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="129.91071428571428"/>
+            <point key="canvasLocation" x="-43" y="78"/>
         </tableViewCell>
     </objects>
     <resources>

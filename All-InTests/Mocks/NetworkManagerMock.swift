@@ -17,7 +17,7 @@ class NetworkManagerMock : NetworkManager{
     }
     
     
-    let jsonResponse : [String: [[String : Any]]] =
+    let jsonResponseCoupon : [String: [[String : Any]]] =
     ["discount_codes":
         [["id":15662475641046,"price_rule_id":1191661535446,"code":"SUMMERSALE50FF","usage_count":0,"created_at":"2022-07-01T02:14:01+02:00","updated_at":"2022-07-01T02:14:01+02:00"],["id":15662472560854,"price_rule_id":1191661535446,"code":"SUMMERSALE10OFF","usage_count":0,"created_at":"2022-07-01T02:08:12+02:00","updated_at":"2022-07-01T02:08:12+02:00"]
         ]
@@ -31,7 +31,7 @@ class NetworkManagerMock : NetworkManager{
         case true : completion(nil , NetworkError.failedFetchingData)
         
         case false :
-            if let data = try? JSONSerialization.data(withJSONObject: jsonResponse, options: .fragmentsAllowed) {
+            if let data = try? JSONSerialization.data(withJSONObject: jsonResponseCoupon, options: .fragmentsAllowed) {
                    if let decodedData = try? JSONDecoder().decode(DiscountCode.self, from: data){
                        completion(decodedData.discount_codes , nil)
                       

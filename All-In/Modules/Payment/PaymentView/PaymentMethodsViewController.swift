@@ -8,12 +8,12 @@
 import UIKit
 import WebKit
 import Braintree
-//import BraintreeDropIn
-
-
 
 class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
   
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let cartDB = ShoppingCartDBManager.sharedInstance
+    var cartItems = [ShoppingCartDB]()
     
   
     @IBOutlet weak var viewIsHiddenConstraints: NSLayoutConstraint!
@@ -32,30 +32,22 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     var braintreeAPIClient:BTAPIClient!
     let authorization = "sandbox_w3d87wk7_hc7cj2xjtg337ffs"
     @IBOutlet weak var creditCardWebView: WKWebView!
-    
     @IBOutlet weak var placeOrderIndicator: UIActivityIndicatorView!
     let userDefaults = UserDefaults()
     @IBOutlet weak var orderPlacedView: UIView!
-    
-    var cartItems = [ShoppingCartDB]()
+    var addressesArray = [Address]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
- 
+     
         orderPlacedView.isHidden = true
         totalAmountLabel.text = "Total: \(totalAmount)"
         placeOrderButton.layer.cornerRadius = 15
         continueShoppingButton.layer.cornerRadius = 15
-       hideView()
+        hideView()
         placeOrderButton.isEnabled = false
         placeOrderIndicator.hidesWhenStopped = true
-        
-      //  if let fullAddress = userDefaults.value(forKey: "fullAddress") as? String{
-        //    addressFullLabel.text = fullAddress
-
-        //}
-
-      
+              
     }
     
     func payPalCheckout (amount : String){
@@ -94,8 +86,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
         cashOnDeliveryButton.layer.borderColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         crediCardButton.layer.borderWidth = 0
         placeOrderButton.isEnabled = true
-      
-    
+        
     }
          
     @IBAction func creditCardButton(_ sender: UIButton) {
@@ -126,6 +117,13 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
         Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
             self.placeOrderIndicator.stopAnimating()
             self.orderPlacedView.isHidden = false
+        }
+        print("Delete All item from shopping cart")
+        print(cartItems.count)
+        if cartDB.deleteAll(appDelegate: appDelegate) {
+            cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
+            print(cartItems.count)
+          print("deleted")
         }
 
     }

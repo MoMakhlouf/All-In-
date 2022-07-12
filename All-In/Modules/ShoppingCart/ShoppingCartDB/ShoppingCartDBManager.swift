@@ -71,4 +71,20 @@ extension ShoppingCartDBManager{
             print("error")
         }
     }
+
+    //MARK: - Delete All items from db
+
+
+ func deleteAll(appDelegate : AppDelegate) -> Bool{
+    let context = appDelegate.persistentContainer.viewContext
+    let delete = NSBatchDeleteRequest(fetchRequest: ShoppingCartDB.fetchRequest())
+    
+    do{
+        try context.execute(delete)
+        return true
+    }catch{
+        return false
+    }
+ }
+    
 }
