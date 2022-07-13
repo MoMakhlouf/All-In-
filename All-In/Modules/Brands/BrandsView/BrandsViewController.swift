@@ -13,7 +13,8 @@ class BrandsViewController: UIViewController{
     
     var brandName: String?
     var productsArray = [Product]()
- //   var productPriceArray: [String] = []
+    var productsArray2 = [Product]()
+    //   var productPriceArray: [String] = []
     var productPriceArray2: [Float] = []
     var number: Float = 0.0
     @IBOutlet weak var brandsCollectionView: UICollectionView!
@@ -44,7 +45,9 @@ class BrandsViewController: UIViewController{
             if let products = products{
                 for product in products.products{
                     if product.vendor == self.brandName{
+                       // self.number = Float(product.variants[0].price)! * 20.0
                         self.productsArray.append(product)
+                        self.productsArray2.append(product)
                         self.number = Float(product.variants[0].price)!
                         self.productPriceArray2.append(self.number)
                     }
@@ -54,7 +57,8 @@ class BrandsViewController: UIViewController{
                 }
             }
             if let error = error{
-                print(error.localizedDescription)
+                Alert.displayAlert(title: "Error", message: error.localizedDescription)
+                //print(error.localizedDescription)
             }
         }
     }
@@ -64,18 +68,14 @@ class BrandsViewController: UIViewController{
         let filterVC = FilterViewController()
         navigationController?.pushViewController(filterVC, animated: true)
         //filterVC.productPriceArray = self.productPriceArray
-        //filterVC.productArray = self.productsArray
+        filterVC.productArray = self.productsArray
         filterVC.convert = self.productPriceArray2
         filterVC.delegate2 = self
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        DispatchQueue.main.async {
-            self.brandsCollectionView.reloadData()
-        }
-   
-  
+ 
     }
 
 
@@ -133,15 +133,21 @@ extension BrandsViewController: UICollectionViewDelegateFlowLayout{
 
 extension BrandsViewController: delegateFilter{
     func filterPrice(minn: Float, maxx: Float) {
-        let products = self.productsArray
-        self.productsArray = []
-        for x in products{
-            if Float(x.variants[0].price)! >= minn && Float(x.variants[0].price)!  <= maxx {
+        self.productsArray = self.productsArray2
+        self.productsArray = productsArray.filter { products in
+            Float(products.variants[0].price)! * 20 >= minn
+        }
+        DispatchQueue.main.async {
+            self.brandsCollectionView.reloadData()
+        }
+        //self.productsArray = []
+   /*     for x in products{
+            if Float(x.variants[0].price)! * 20 >= minn && Float(x.variants[0].price)! * 20 <= maxx {
                 self.productsArray.append(x)
                 DispatchQueue.main.async {
                     self.brandsCollectionView.reloadData()
                 }
             }
-        }
+        }*/
     }
 }
