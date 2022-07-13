@@ -96,3 +96,10 @@ extension ProfileViewController{
     }
     
 }
+//extension  ProfileViewController{
+//    func setUserInfo(){
+//        guard let userName = Helper.shared.getUserName(), let userEmail = Helper.shared.getUserEmail() else {return}
+//        self.userName.text = userName
+//        self.userEmail.text = userEmail
+//    }
+//}

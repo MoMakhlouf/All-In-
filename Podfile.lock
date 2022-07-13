@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.6.1)
   - Braintree (5.10.0):
     - Braintree/Card (= 5.10.0)
     - Braintree/Core (= 5.10.0)
@@ -13,18 +14,21 @@ PODS:
   - Kingfisher (4.10.1)
 
 DEPENDENCIES:
+  - Alamofire (~> 5.5)
   - Braintree (~> 5.0)
   - Kingfisher
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Braintree
     - Kingfisher
 
 SPEC CHECKSUMS:
+  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
   Braintree: a4df29b5453664ea01f89a04e0ae97397021c92f
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
 
-PODFILE CHECKSUM: 85b37ceab1cdffc10465bbb2430a228e94a103b6
+PODFILE CHECKSUM: 6c11f92f84fb1e8c11ca20f14f83fc4d43072220
 
 COCOAPODS: 1.11.3

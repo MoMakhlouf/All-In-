@@ -18,7 +18,7 @@ protocol ApiServices {
     
     func deleteAddress(customerID : String  , addressID : Int , completion : @escaping(Error?) ->())
     
-    func convertCurrency(amount : String , completion: @escaping ((Double?, Error?) -> Void))
+   // func convertCurrency(amount : String , completion: @escaping ((Double?, Error?) -> Void))
     
     func fetchBrands(completion: @escaping (SmartCollections?  , Error?) -> Void)
     func fetchProducts(completion: @escaping (Products?  , Error?) -> Void)

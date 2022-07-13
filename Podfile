@@ -10,7 +10,7 @@ target 'All-In' do
     
      pod 'Braintree', '~> 5.0'
      pod 'Kingfisher'
-
+     pod 'Alamofire', '~> 5.5'
    
 
 

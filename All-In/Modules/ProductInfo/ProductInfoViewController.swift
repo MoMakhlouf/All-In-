@@ -80,47 +80,66 @@ class ProductInfoViewController: UIViewController {
         cartItems = cartDB.getItemToCart(appDelegate: appSelegate)
     }
     
-    
+    func goToLoginPage(){
+        let loginVC = LoginViewController()
+        loginVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(loginVC, animated: true)
+    }
 
     @IBAction func AddToCartBtn(_ sender: UIButton) {
-        if isAddedToCart {
-       
-            let alert = UIAlertController(title: "This item is already in cart", message: "Check your cart?", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Show cart", style: .default, handler: { [self] UIAlertAction in
         
-                let cart = ShoppingCartViewController()
-                navigationController?.pushViewController(cart, animated: true)
-            }))
-            self.present(alert, animated: true, completion: nil)
-            
-        } else{
+        
+        Helper.shared.checkUserIsLogged { [self] userLogged in
+            if userLogged{
+                if isAddedToCart {
+               
+                    let alert = UIAlertController(title: "This item is already in cart", message: "Check your cart?", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Show cart", style: .default, handler: { [self] UIAlertAction in
+                
+                        let cart = ShoppingCartViewController()
+                        navigationController?.pushViewController(cart, animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                    
+                } else{
 
-            let itemImage = productInfo?.image.src
-            cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054)
-            
-          
-                let cart = ShoppingCartViewController()
-                navigationController?.pushViewController(cart, animated: true)
-            
-            
-              isAddedToCart = true
+                    let itemImage = self.productInfo?.image.src
+                    cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054)
+                    
+                  
+                        let cart = ShoppingCartViewController()
+                        navigationController?.pushViewController(cart, animated: true)
+                    
+                    
+                      isAddedToCart = true
+                }
+            }else{
+                self.goToLoginPage()
+                
+            }
         }
+        
 }
     
     
     
     @IBAction func FavouriteProductDetailsBtn(_ sender: UIButton) {
-         
+        Helper.shared.checkUserIsLogged { [self] userLogged in
+            if userLogged{
          sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         let db = DBManager.sharedInstance
         let  Img = productInfo?.image.src
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         db.addProduct(productName: ProductName1.text ?? "", productImage: Img ?? "", productPrice: ProducrPrice1.text ?? "", productDescription: ProductDiscription.text ?? "", appDelegate: appDelegate)
         
-            
+            }else{
+                self.goToLoginPage()
+                
+            }
         }
     
+}
 }
 extension ProductInfoViewController :UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
 {

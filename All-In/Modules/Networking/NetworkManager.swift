@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 class NetworkManager : ApiServices{
     
@@ -173,6 +174,7 @@ class NetworkManager : ApiServices{
             task.resume()
         }
     }
+}
    // 1191661535446
     
     //MARK: - Mohamed - Currency
@@ -221,75 +223,59 @@ class NetworkManager : ApiServices{
             //  semaphore.wait()
    }
 }
+
     
     //MARK: - Mahmoud Register
     
     
-    func registerCustomer(newCustomer: NewCustomr, completion: @escaping ((NewCustomr?, Error?) -> Void))
-    
-    {
-        print(Urls.registerUser())
-        if let url = URL(string: Urls.registerUser())
-        {
-            print(url)
-            
+    extension NetworkManager{
+        
+        func register(newCustomer:NewCustomr, completion:@escaping (Data?, URLResponse? , Error?)->()){
+            guard let url = URLs.shared.customersURl() else {return}
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
+            let session = URLSession.shared
+            request.httpShouldHandleCookies = false
             
+            do {
+                request.httpBody = try JSONSerialization.data(withJSONObject: newCustomer.asDictionary(), options: .prettyPrinted)
+                print(try! newCustomer.asDictionary())
+            } catch let error {
+                print(error.localizedDescription)
+            }
+            
+            //HTTP Headers
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             
-            request.httpShouldHandleCookies = false
-                
-            do{
-                request.httpBody =
-                try JSONSerialization.data(withJSONObject: newCustomer.asDictionary(), options: .prettyPrinted)
-            }
-            catch let error {
-                
-                print(error.localizedDescription)
-                
-                 }
-            URLSession.shared.dataTask(with: request){
-                data, response, error in
-                
-                if let error = error {
-                    completion(nil, error)
-                    return
-                }
-                
-                guard let data = data else { return }
-               print(data)
-                
-                let decoder = JSONDecoder()
-                
-                if let decodedData: NewCustomr = convertFromJson(data: data)
-                {
-                    
-                completion(decodedData, nil)
-                    
-                 print(decodedData)
-                    
-                }
+            session.dataTask(with: request) { (data, response, error) in
+                completion(data, response, error)
             }.resume()
-            
-            }
-        
-        
+        }
     }
 
-    
+extension NetworkManager{
+    func getAllCustomers(complition: @escaping (AllCustomers?, Error?)->Void){
+        guard let url = URLs.shared.customersURl() else {return}
+        AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).response { res in
+            switch res.result{
+            case .failure(let error):
+                print("error")
+                complition(nil, error)
+            case .success(_):
+                guard let data = res.data else { return }
+                do{
+                    let json = try JSONDecoder().decode(AllCustomers.self, from: data)
+                    complition(json, nil)
+                    print("success to get customers")
+                }catch let error{
+                    print("error when get customers")
+                    complition(nil, error)
+                }
+            }
+        }
+    }
+ 
+
 }
-
-
-//
-//extension Encodable {
-//    func asDictionary() throws -> [String: Any] {
-//        let data = try JSONEncoder().encode(self)
-//        guard let dictionary = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-//            throw NSError()
-//        }
-//        return dictionary
-//    }
-//}
+ 

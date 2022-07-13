@@ -28,3 +28,26 @@ class Alert {
     }
 
 }
+
+extension UIViewController{
+    func showAlertError(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .destructive, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+extension UIViewController {
+    func showAlertSheet(title:String, message:String,complition:@escaping (Bool)->Void){
+        let actionSheet = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
+        let logOut = UIAlertAction(title: "Log out", style: .destructive) { _ in
+            complition(true)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .default) { _ in
+            complition(false)
+        }
+        actionSheet.addAction(logOut)
+        actionSheet.addAction(cancel)
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+}

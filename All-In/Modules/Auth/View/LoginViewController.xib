@@ -68,6 +68,7 @@
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="SignUp"/>
                     <connections>
+                        <action selector="SignUp:" destination="-1" eventType="touchUpInside" id="wEc-mA-sPW"/>
                         <action selector="signUpButton:" destination="-1" eventType="touchUpInside" id="RwB-PD-KPO"/>
                     </connections>
                 </button>
