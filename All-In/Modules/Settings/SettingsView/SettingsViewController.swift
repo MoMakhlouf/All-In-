@@ -26,6 +26,15 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
+        showAlertSheet(title: "Do you want to log out?", message:
+            "if you pressed log out, we will miss you 💔") { succes in
+            if succes {
+                Helper.shared.setUserStatus(userIsLogged: false)
+                Helper.shared.setFoundAdress(isFoundAddress: false)
+                let logout = MyAccountViewController()
+                self.navigationController?.pushViewController(logout, animated: true)
+            }
+        }
         
     }
     

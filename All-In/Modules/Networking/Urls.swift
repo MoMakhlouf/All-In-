@@ -34,18 +34,19 @@ struct Urls {
     var deleteAddressUrl : String {
         return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-04/customers/\(customerId)/addresses/\(addressId).json"
     }
-        
-    //MARK: - Mahmoud
-    
-    static var baseUrl  : String {
-        
-        return "https://7d67dd63dc90e18fce08d1f7746e9f41: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@ios-q3-mansoura.myshopify.com/admin/api/2022-01/"
-
-    }
-    static func registerUser() ->String
-{
-    return "\(Urls.baseUrl)customers.json"
 }
+    //MARK: - Mahmoud
+struct URLs{
+    static let shared = URLs()
     
+     
+    let baseURL =
+    
+        "https://7d67dd63dc90e18fce08d1f7746e9f41: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@ios-q3-mansoura.myshopify.com/admin/api/2022-01/"
+
+   
+    func customersURl()-> URL?{
+        return URL(string: baseURL + "customers.json")
+}
 }
 

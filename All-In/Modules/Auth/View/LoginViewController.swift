@@ -12,49 +12,93 @@ class LoginViewController: UIViewController {
      
     @IBOutlet weak var SignLabel: UILabel!
     
- 
     @IBOutlet weak var txtEmail: UITextField!
-    
     
     @IBOutlet weak var txtPassword: UITextField!
     
     @IBOutlet weak var signIn: UIButton!
     
-    
- 
     @IBOutlet weak var SignUp: UIButton!
     
      
  
-    
+    let loginViewModel = LoginViewModel()
+
   
     override func viewDidLoad() {
         super.viewDidLoad()
       
         signIn.layer.cornerRadius = 15
         SignUp.layer.cornerRadius = 15
-       // let emailImage = UIImage(named: "mail")
-       // textFieldSetup(textfield: txtEmail,  Image: emailImage!)
-//        let PasswordImage = UIImage(named: "pass")
-//        textFieldSetup(textfield: txtPassword,  Image: PasswordImage!)
+        guard let id = Helper.shared.getUserID() else {return}
+        print(" id : \(id)")
     }
     
 
     @IBAction func signInButton(_ sender: UIButton) {
+        
+        login()
+      
+        Helper.shared.checkUserIsLogged { userLogged in
+            if userLogged{
+                self.goToProfile()
+            }else{
+                
+            }
+        }
+        }
+    func goToProfile(){
+        let profile = ProfileViewController()
+        navigationController?.pushViewController(profile, animated: true)
     }
-    
- 
-    @IBAction func signUpButton(_ sender: UIButton) {
-        let register = RgisterViewController()
-        navigationController?.pushViewController(register, animated: true)
+        
+    @IBAction func SignUp(_ sender: UIButton) {
+        let reg = RgisterViewController()
+        navigationController?.pushViewController(reg, animated: true)
+    }
+   
+    }
      
-    }
-    func textFieldSetup(textfield:UITextField , Image:UIImage)
-    {
-        let leftImg = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width:  Image.size.width, height:  Image.size.height))
-        leftImg.image = Image
-        textfield.leftView = leftImg
-        textfield.leftViewMode = .always
+ 
+    
+   
+
+extension LoginViewController{
+    func login(){
+        
+        guard let email = txtEmail.text, !email.isEmpty, let password = txtPassword.text, !password.isEmpty else {
+            
+            self.showAlertError(title: "please fill your infromation to login", message: "for login must fill all information")
+            return
+        }
+        loginViewModel.checkUserIsLogged(email: email, password: password) { [self] customerLogged in
+            
+            if customerLogged  != nil {
+                print("success to login")
+        
+                self.showAlertError(title: "Welcome", message: " Welcome \(txtEmail.text ?? "User") ")
+                 let profile = ProfileViewController()
+                navigationController?.pushViewController(profile, animated: true)
+        
+
+            }else{
+                Helper.shared.setUserStatus(userIsLogged: false)
+                self.showAlertError(title: "failed to login", message: "please check your email or password")
+                print("failed to login")
+            }
+        }
     }
 }
- 
+extension LoginViewController{
+    func setupViewWhenShowKeyboard(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardApear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisApear), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    @objc func keyboardApear(){
+        view.frame.origin.y = 0
+        view.frame.origin.y = view.frame.origin.y - 170
+    }
+    @objc func keyboardDisApear(){
+        view.frame.origin.y = 0
+    }
+}

@@ -29,6 +29,8 @@ class RgisterViewController: UIViewController {
     
     @IBOutlet weak var haveAccountLabel: UILabel!
     
+    var registerViewModel = RegisterViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,27 +41,102 @@ class RgisterViewController: UIViewController {
 
     @IBAction func signUpButton(_ sender: UIButton) {
         
-        let customer = NewCustomr(customer: Customr(first_name: txtNameSt.text, email:txtEmail1.text, tags: txtPassword1.text, id: nil, addresses: nil, lastName: txtName.text))
-        self.network.registerCustomer(newCustomer: customer) {data , error in
-            if let data = data {
-                print(data)
-            }
-        }
-        
+        checkBeforeRegister()
+        txtName.text = ""
+        txtNameSt.text = ""
+        txtEmail1.text = ""
+        txtPassword1.text = ""
+        txtPhone.text = ""
+        let login = LoginViewController()
+        navigationController?.pushViewController(login, animated: true)
         
     }
     
     @IBAction func signInButton(_ sender: UIButton) {
+        let login = LoginViewController()
+        navigationController?.pushViewController(login, animated: true)
     }
     
-//    func textFieldSetup(textfield:UITextField , Image:UIImage)
-//    {
-//        let leftImg = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width:  Image.size.width, height:  Image.size.height))
-//        leftImg.image = Image
-//        textfield.leftView = leftImg
-//        textfield.leftViewMode = .always
-//    }
-
+ 
 }
-  
+extension RgisterViewController{
+    func checkInfoBeforeRegister()->Bool{
+        
+        var checkIsSuccess = true
+        guard let firstName = txtNameSt.text, let lastName = txtName.text, let email = txtEmail1.text,
+              let password = txtPassword1.text, let confirmPassword = txtPhone.text else {return false}
+        
+        
+        self.registerViewModel.checkCustomerInfo(firstName: firstName, lastName: lastName, email: email, password: password, confirmPassword: confirmPassword) { message in
+            
+            switch message {
+            case "ErrorAllInfoIsNotFound":
+                checkIsSuccess = false
+                
+                self.showAlertError(title: "please fill your infromation to reister", message: "for register must fill all information")
+            case "ErrorPassword":
+                checkIsSuccess = false
+                
+                self.showAlertError(title: "There is a problem with the password", message: "please enter password again")
+            case "ErrorEmail":
+                checkIsSuccess = false
+                 
+                self.showAlertError(title: "your email is incorrect", message: "please enter correct email")
+            default:
+                checkIsSuccess = true
+            }
+        }
+        return checkIsSuccess
+    }
+}
+extension RgisterViewController{
+    func register(){
+        
+       
+        guard let firstName = txtNameSt.text, let lastName = txtName.text, let email = txtEmail1.text,
+              let password = txtPassword1.text else {return}
+        
+        let customer = Customr(first_name: firstName, email: email, tags: password, id: nil, addresses: nil, lastName: lastName)
+        let newCustomer = NewCustomr(customer: customer)
+        
+        registerViewModel.checkUserIsExist(email: email) { emailIsExist in
+            if !emailIsExist{
+                self.registerViewModel.createNewCustomer(newCustomer: newCustomer) { data, response, error in
+                    
+                    guard error == nil else {
+                        //register is not success
+                         
+                        return
+                    }
+                    //register is success
+                    
+                    print("register is success")
+                }
+            }else{
+              
+                self.showAlertError(title: "your email is already exist", message: "can you login!!")
+            }
+        }
+    }
+}
+extension RgisterViewController{
+    func checkBeforeRegister(){
+        if checkInfoBeforeRegister(){
+            register()
+        }
+    }
+}
 
+extension RgisterViewController{
+    func setupViewWhenShowKeyboard(){
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardApear), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisApear), name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+    @objc func keyboardApear(){
+        view.frame.origin.y = 0
+        view.frame.origin.y = view.frame.origin.y - 200
+    }
+    @objc func keyboardDisApear(){
+        view.frame.origin.y = 0
+    }
+}

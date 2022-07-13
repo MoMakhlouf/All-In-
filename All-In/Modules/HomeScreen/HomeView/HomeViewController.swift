@@ -190,21 +190,50 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
 extension HomeViewController{
     @objc func favoriteButton(){
         
-        let favorite = FavoriteViewController()
-        
-        navigationController?.pushViewController(favorite, animated: true)
+        Helper.shared.checkUserIsLogged { userLogged in
+            if userLogged{
+                self.goToFavoritePage()
+            }else{
+                self.goToLoginPage()
+            }
+        }
         
     }
     
     @objc func shoppingBagButton(){
         
-        let shoppingCart = ShoppingCartViewController()
-        navigationController?.pushViewController(shoppingCart, animated: true)
+        Helper.shared.checkUserIsLogged { userLogged in
+            if userLogged{
+                self.goToCartPage()
+            }else{
+                self.goToLoginPage()
+            }
+        }
         
     }
     
     @objc func searchButton(){
         
         
+    }
+}
+
+extension HomeViewController{
+    func goToFavoritePage(){
+        let FavoriteVC = FavoriteViewController()
+        FavoriteVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(FavoriteVC, animated: true)
+    }
+    
+    func goToCartPage(){
+        let cartVC = ShoppingCartViewController()
+        cartVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(cartVC, animated: true)
+    }
+    
+    func goToLoginPage(){
+        let loginVC = LoginViewController()
+        loginVC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(loginVC, animated: true)
     }
 }
