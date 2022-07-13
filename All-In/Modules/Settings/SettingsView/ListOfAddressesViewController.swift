@@ -27,13 +27,18 @@ class ListOfAddressesViewController: UIViewController {
             addNewAddressButton.layer.cornerRadius = 15
         }
     }
+    @IBOutlet weak var noAddressView: UIView!
     var addressesArray = [Address]()
     var chooseAddressDelegate : ChooseAddressDelegate?
     let userDefaults = UserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        noAddressView.isHidden = true
+        
         print(addressesArray.count)
+        emptyAddress()
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +50,7 @@ class ListOfAddressesViewController: UIViewController {
                 self.addressesArray = addresses
                 DispatchQueue.main.async {
                     self.addressTableView.reloadData()
+                    self.emptyAddress()
                 }
             }
             if let error = error {
@@ -57,10 +63,21 @@ class ListOfAddressesViewController: UIViewController {
         }
     }
     
+    func emptyAddress(){
+        if addressesArray.isEmpty {
+            noAddressView.isHidden = false
+        }else{
+            noAddressView.isHidden = true
+        }
+    }
+    
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
         
-        let add = AddNewAddressViewController()
-        navigationController?.pushViewController(add, animated: true)
+        //let add = AddNewAddressViewController()
+        //navigationController?.pushViewController(add, animated: true)
+    let setting = SettingsViewController()
+        navigationController?.pushViewController(setting, animated: true)
+    
     }
     
 }
@@ -116,6 +133,8 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
          
                     }
                 }
+            emptyAddress()
+
         }
     }
 

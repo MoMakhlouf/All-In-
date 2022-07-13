@@ -9,7 +9,9 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var currencySwitch: UISegmentedControl!
     @IBOutlet weak var logoutButton: UIButton!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,22 @@ class SettingsViewController: UIViewController {
         let adresses = ListOfAddressesViewController()
         navigationController?.pushViewController(adresses, animated: true)
     }
+    
+    
+    
+    @IBAction func currencySwitchControlPressed(_ sender: UISegmentedControl) {
+        
+        switch currencySwitch.selectedSegmentIndex {
+        
+        case 0 : Defaults.defaults.setCurrency(key: "currency", value: "USD")
+        case 1 : Defaults.defaults.setCurrency(key: "currency", value: "EGP")
+        
+        default:
+            break
+        }
+        print(currencySwitch.titleForSegment(at: currencySwitch.selectedSegmentIndex)!)
+    }
+    
     
     
     @IBAction func logOutButtonPressed(_ sender: UIButton) {

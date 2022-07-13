@@ -34,7 +34,7 @@ class AddressViewModel{
         apiService.getAddress(customerId: customerId) { addresses, error in
             if let addresses = addresses {
                 self.addressArray = addresses
-                print("gitadresssss")
+                print("getadresssss")
             }
             if let error = error {
                 print("errrrrrorrrr")

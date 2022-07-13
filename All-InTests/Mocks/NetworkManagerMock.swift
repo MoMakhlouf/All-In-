@@ -8,6 +8,10 @@
 import Foundation
  @testable import All_In
 
+enum NetworkError: Error {
+    case failedFetchingData
+}
+
 class NetworkManagerMock : NetworkManager{
     
     var shouldReturnError : Bool
@@ -19,7 +23,7 @@ class NetworkManagerMock : NetworkManager{
     
     let jsonResponseCoupon : [String: [[String : Any]]] =
     ["discount_codes":
-        [["id":15662475641046,"price_rule_id":1191661535446,"code":"SUMMERSALE50FF","usage_count":0,"created_at":"2022-07-01T02:14:01+02:00","updated_at":"2022-07-01T02:14:01+02:00"],["id":15662472560854,"price_rule_id":1191661535446,"code":"SUMMERSALE10OFF","usage_count":0,"created_at":"2022-07-01T02:08:12+02:00","updated_at":"2022-07-01T02:08:12+02:00"]
+        [["id":15662475641046,"price_rule_id":1191661535446,"code":"ALLIN5","usage_count":0,"created_at":"2022-07-01T02:14:01+02:00","updated_at":"2022-07-01T02:14:01+02:00"],["id":15662472560854,"price_rule_id":1191661535446,"code":"ALLIN10","usage_count":0,"created_at":"2022-07-01T02:08:12+02:00","updated_at":"2022-07-01T02:08:12+02:00"]
         ]
     ]
     
@@ -53,6 +57,4 @@ class NetworkManagerMock : NetworkManager{
     
 }
 
-enum NetworkError: Error {
-    case failedFetchingData
-}
+

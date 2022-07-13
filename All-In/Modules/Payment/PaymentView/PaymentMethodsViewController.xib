@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="addressFullLabel" destination="WnY-3S-FYm" id="RUa-dY-ebF"/>
                 <outlet property="cashOnDeliveryButton" destination="NCz-az-n2G" id="5ki-TT-h8q"/>
+                <outlet property="changeButton" destination="eeR-FT-mdz" id="exQ-N3-VAt"/>
                 <outlet property="continueShoppingButton" destination="GAH-Gz-ZZM" id="QrL-qL-Rlx"/>
                 <outlet property="crediCardButton" destination="LKO-5s-4KY" id="Vq7-WP-MYj"/>
                 <outlet property="crediCardDetailsView" destination="XtO-aE-TGB" id="14W-0p-cYh"/>

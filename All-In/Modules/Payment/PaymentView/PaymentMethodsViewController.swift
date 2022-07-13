@@ -35,7 +35,8 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     let userDefaults = UserDefaults()
     @IBOutlet weak var orderPlacedView: UIView!
     var addressesArray = [Address]()
-
+    @IBOutlet weak var changeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -59,8 +60,9 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
                         let address = self.addressesArray[0]
                         self.addressFullLabel.text = "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")"
                     } else{
-                        self.addressFullLabel.text = "Add new Address"
+                        self.addressFullLabel.text = "Please, add new Address"
                         self.placeOrderButton.isEnabled = false
+                        self.changeButton.titleLabel?.text = "Add"
                     }
                 }
             }

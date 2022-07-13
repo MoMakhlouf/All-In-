@@ -8,7 +8,7 @@
 import Foundation
 
 class NetworkManager : ApiServices{
-  
+    
     
   static let shared = NetworkManager()
   
@@ -86,7 +86,7 @@ class NetworkManager : ApiServices{
 
 //MARK: - Mohamed - Post Address
     
-    func postAddress(customerID: String, address: Address, completion: @escaping (Date?, URLResponse?, Error?) -> ()) {
+    func postAddress(customerID: String, address: Address, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         
         
         if let url = URL(string: Urls(customerId: customerID).postAddressUrl){
@@ -174,6 +174,53 @@ class NetworkManager : ApiServices{
         }
     }
    // 1191661535446
+    
+    //MARK: - Mohamed - Currency
+    func convertCurrency(amount: String , completion: @escaping ((Double?, Error?) -> Void)) {
+  //  var semaphore = DispatchSemaphore (value: 0)
+        if let url = URL(string: Urls(amount : amount).currencyUrl){
+               
+    var request = URLRequest(url: url ,timeoutInterval: Double.infinity)
+      request.httpMethod = "GET"
+      request.addValue("lQuu3oLhBMK9uv03G57xXqzVcuGCChaa", forHTTPHeaderField: "apikey")
+
+    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        
+       // if let data = data {
+            
+         //   let jsonData =  String(data: data , encoding: .utf8)!
+          //  print("111 \(jsonData.result)")
+            
+//            if let decodedData = try? JSONDecoder().decode(Currency.self, from: jsonData.data(using: .utf8)!){
+//                completion(decodedData.result , nil)
+//                print("www \(decodedData.result) w1234")
+//            }
+            
+            if let data = data {
+                do{
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+
+                    // if let decodedData = try? JSONDecoder().decode(Currency.self, from: json as! Data){
+                      //  completion(decodedData.result , nil)
+                        //          print("www \(decodedData.result) w1234")
+                             // }
+                    
+                    print(json)
+                    print("qwe")
+                }catch {
+                    print(error.localizedDescription)
+                }
+            
+            
+            print(String(data: data , encoding: .utf8)!)
+
+          //  semaphore.signal()
+           }
+       }
+              task.resume()
+            //  semaphore.wait()
+   }
+}
     
     //MARK: - Mahmoud Register
     

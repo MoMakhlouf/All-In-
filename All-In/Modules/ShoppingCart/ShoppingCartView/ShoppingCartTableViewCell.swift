@@ -24,6 +24,8 @@ class ShoppingCartTableViewCell: UITableViewCell {
         shoppingCartCellView.layer.cornerRadius = 15
         shoppingCartCellView.layer.borderWidth = 0.5
         shoppingCartCellView.layer.borderColor = UIColor.black.cgColor
+        
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

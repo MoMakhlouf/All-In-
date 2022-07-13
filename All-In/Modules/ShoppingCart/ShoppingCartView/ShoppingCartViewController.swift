@@ -19,21 +19,31 @@ class ShoppingCartViewController: UIViewController {
     }
     @IBOutlet weak var totalPrice: UILabel!
     
-   
+   // let apiService : ApiServices?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let cartDB = ShoppingCartDBManager.sharedInstance
     var cartItems = [ShoppingCartDB]()
     var total = 0.0
-   
+    var result = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let currencyViewModel = CurrencyViewModel()
+        currencyViewModel.convertCurrency(amount: "100")
+        currencyViewModel.bindingData = { result , error in
+            if let result = result{
+                self.result = result
+                    print("123456\(result)")
+            }
+            
+        }
+        
+        
         emptyCartView.isHidden = true
         proceedToCheckoutButton.layer.cornerRadius = 12
         navigationItem.title = "Shopping Cart"
         
-
-  
         getItems()
         
         DispatchQueue.main.async {
@@ -41,12 +51,19 @@ class ShoppingCartViewController: UIViewController {
         }
        
         emptyCart()
-      
+       // convertCurrency(amount: "200")
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         shoppingCartTableView.reloadData()
         emptyCart()
+    }
+    
+    func convertCurrency(amount : String){
+        let currency = CurrencyViewModel()
+        currency.convertCurrency(amount: amount)
     }
     
     
@@ -170,11 +187,6 @@ extension ShoppingCartViewController : DeletionDelegate{
             self.present(alert, animated: true, completion: nil)
             
            
-           
-            
-
-
-            
             shoppingCartTableView.reloadData()
 
              emptyCart()

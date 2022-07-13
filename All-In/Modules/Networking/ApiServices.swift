@@ -14,10 +14,11 @@ protocol ApiServices {
     
     func getAddress( customerId : String , completion : @escaping ( ([Address]? , Error?) -> Void))
     
-    func postAddress(customerID : String  , address : Address , completion : @escaping(Date? , URLResponse? , Error?) ->())
+    func postAddress(customerID : String  , address : Address , completion : @escaping(Data? , URLResponse? , Error?) ->())
     
     func deleteAddress(customerID : String  , addressID : Int , completion : @escaping(Error?) ->())
-
+    
+    func convertCurrency(amount : String , completion: @escaping ((Double?, Error?) -> Void))
     
     func fetchBrands(completion: @escaping (SmartCollections?  , Error?) -> Void)
     func fetchProducts(completion: @escaping (Products?  , Error?) -> Void)

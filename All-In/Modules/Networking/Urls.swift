@@ -12,6 +12,7 @@ struct Urls {
     var priceRule = ""
     var customerId = ""
     var addressId = 0
+    var amount = ""
 
     var baseUrl  : String {
         
@@ -33,6 +34,10 @@ struct Urls {
     
     var deleteAddressUrl : String {
         return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-04/customers/\(customerId)/addresses/\(addressId).json"
+    }
+    
+    var currencyUrl : String {
+        return "https://api.apilayer.com/currency_data/convert?to=EGP&from=USD&amount=\(amount)"
     }
         
     //MARK: - Mahmoud
