@@ -38,9 +38,15 @@ class ProductInfoViewController: UIViewController {
     @IBOutlet weak var lblMahmoud: UILabel!
     @IBOutlet weak var MahmoudRevirew: UILabel!
     @IBOutlet weak var CartBtn: UIButton!
+    var currency = ""
+    var usdValue = ""
+    var sendPrice = ""
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
+        
         CartBtn.layer.cornerRadius = 15
 
       fetchItem()
@@ -49,12 +55,24 @@ class ProductInfoViewController: UIViewController {
          
         //print(FavProduct)
    // ProductDetailsCollection.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductDetailsCell")
+        if currency == "USD" {
+            let price = Double((productInfo?.variants[0].price)!)
+            ProducrPrice1.text =  String(format: "%0.2f", price!) + "USD"
+             
+        }else{
+            let egpPrice = Double((productInfo?.variants[0].price)!)! * Double(usdValue)!
+            ProducrPrice1.text =  String(format: "%0.2f", egpPrice) + "EGP"
+        }
+        ProductName1.text = productInfo?.title
+        ProductPageControl.numberOfPages = (productInfo?.images.count)!
+        ProductDiscription.text = productInfo?.body_html
+       
+        let price = Double((productInfo?.variants[0].price)!)
+        sendPrice = String(price!)
+        print("send price is : \(sendPrice)")
 
         
-        ProductPageControl.numberOfPages = (productInfo?.images.count)!
-        ProductName1.text = productInfo?.title
-        ProducrPrice1.text =  "\(productInfo?.variants[0].price ?? "")"
-        ProductDiscription.text = productInfo?.body_html
+       
         startTimer()
         
         cartedItems()
@@ -105,7 +123,7 @@ class ProductInfoViewController: UIViewController {
                 } else{
                     // if customer id = db id
                     let itemImage = self.productInfo?.image.src
-                    cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: Int64(Helper.shared.getUserID()!))
+                    cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: sendPrice , itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: Int64(Helper.shared.getUserID()!))
                     
               
                     print(Helper.shared.getUserID())
@@ -132,7 +150,7 @@ class ProductInfoViewController: UIViewController {
         let db = DBManager.sharedInstance
         let  Img = productInfo?.image.src
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        db.addProduct(productName: ProductName1.text ?? "", productImage: Img ?? "", productPrice: ProducrPrice1.text ?? "", productDescription: ProductDiscription.text ?? "", appDelegate: appDelegate)
+        db.addProduct(productName: ProductName1.text ?? "", productImage: Img ?? "", productPrice: sendPrice, productDescription: ProductDiscription.text ?? "", appDelegate: appDelegate)
         
             }else{
                 self.goToLoginPage()

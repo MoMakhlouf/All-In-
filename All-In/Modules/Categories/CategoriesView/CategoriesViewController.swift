@@ -23,8 +23,15 @@ class CategoriesViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var categoriesCollection: UICollectionView!
 
+    var currency = ""
+    var usdValue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
+        
         categoriesCollection.delegate = self
         categoriesCollection.dataSource = self
         categoriesCollection.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categoryCell")
@@ -170,9 +177,16 @@ extension CategoriesViewController: UICollectionViewDataSource{
         let price: Float = (Float(menArray[indexPath.row].variants[0].price)! * 20.0)
         cell.priceProductLbl.text = String(price) + " EGP"
         cell.prouctImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))*/
-        
-        let price: Float = (Float(menArray[indexPath.row].variants[0].price)! * 20.0)
-        cell.categoryPriceLbl.text = String(price) + " EGP"
+        if currency == "USD" {
+        let price: Float = (Float(menArray[indexPath.row].variants[0].price)!)
+        cell.categoryPriceLbl.text = String(format: "%0.2f", price) + " USD"
+        }else{
+            let price: Float = (Float(menArray[indexPath.row].variants[0].price)! * Float(usdValue)!)
+            cell.categoryPriceLbl.text =  String(format: "%0.2f",  price) + " EGP"
+        }
+            
+            
+            
         cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))
         return cell
     }

@@ -16,8 +16,15 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemQuantity: UILabel!
     @IBOutlet weak var itemName: UILabel!
+        
+    var currency = ""
+    var usdValue = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
         
         itemView.layer.cornerRadius = 15
         itemView.layer.borderWidth = 0.3
@@ -31,7 +38,13 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     
     func cartedItems(_ shopping : ShoppingCartDB){
         itemName.text = shopping.title
-        itemPrice.text = shopping.price
+            if currency == "USD"{
+                itemPrice.text = shopping.price! + " USD"
+            }else{
+                let egpPrice = Double(shopping.price!)! * Double(usdValue)!
+                itemPrice.text = String(format: "%.2f",  egpPrice) + " EGP"
+
+            }
         itemQuantity.text = "\(shopping.itemQuantity)"
         itemImage.kf.setImage(with: URL(string: shopping.itemImage ?? ""))
      

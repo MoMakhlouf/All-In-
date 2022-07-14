@@ -629,7 +629,6 @@
 		A8D6E941286C324D00AF555B /* Orders */ = {
 			isa = PBXGroup;
 			children = (
-				A8D6E943286C652200AF555B /* Categories */,
 				437BCC2A286F9B2700B96CFC /* OrdersModel */,
 				437BCC29286F9B1400B96CFC /* OrdersModelView */,
 				437BCC28286F9AF900B96CFC /* OrdersView */,
@@ -653,6 +652,7 @@
 				A8D6E945286C661700AF555B /* ShoppingCart */,
 				A8D6E944286C660800AF555B /* Brands */,
 				A8D6E93F286C31EB00AF555B /* HomeScreen */,
+				A8D6E943286C652200AF555B /* Categories */,
 				A8D6E941286C324D00AF555B /* Orders */,
 			);
 			path = Modules;

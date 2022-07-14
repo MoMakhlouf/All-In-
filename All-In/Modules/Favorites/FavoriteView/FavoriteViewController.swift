@@ -22,9 +22,14 @@ class FavoriteViewController: UIViewController {
     }
     
     
+    var currency = ""
+    var usdValue = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
         
         emptyFavoriteView.isHidden = true
         
@@ -60,8 +65,9 @@ extension FavoriteViewController :UITableViewDelegate,UITableViewDataSource
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let FavoriteCell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as!FavoriteTableViewCell
-        FavoriteCell.faveName.text = fave[indexPath.row].productName
-        FavoriteCell.favePrice.text = fave[indexPath.row].productPrice
+        
+        FavoriteCell.favoriteCellItems(favorite: fave[indexPath.row])
+        
         FavoriteCell.FavImg.loadFromFave(URLAddress: fave[indexPath.row].productImage!)
         return FavoriteCell
     }

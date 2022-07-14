@@ -18,9 +18,18 @@ class ShoppingCartTableViewCell: UITableViewCell {
     
     var didTapPlus: (()->())?
     var didTapMin: (()->())?
+    
+    var currency = ""
+    var usdValue = ""
+    
+        
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
+        
         shoppingCartCellView.layer.cornerRadius = 15
         shoppingCartCellView.layer.borderWidth = 0.5
         shoppingCartCellView.layer.borderColor = UIColor.black.cgColor
@@ -35,7 +44,16 @@ class ShoppingCartTableViewCell: UITableViewCell {
     
     func itemsInCell(_ item : ShoppingCartDB){
         itemName.text = item.title
-        itemPrice.text = item.price
+        if currency == "USD" {
+            itemPrice.text = item.price! + " USD"
+        } else{
+             let price = Double(item.price!)! * Double(usdValue)!
+            itemPrice.text =  String(format: "%.2f",  price)  + " EGP"
+            //print("\(price)")
+           // itemPrice.text = item.price! + " EGP"
+
+        }
+          
         quantityLabel.text = String(item.itemQuantity)
         itemImage.kf.setImage(with: URL(string: item.itemImage ?? ""))
     }

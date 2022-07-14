@@ -31,16 +31,23 @@ class PaymentViewController: UIViewController {
     var subtotal = 0.0
     var discountCodesArray = [Discount_codes]()
     
+    var currency = ""
+    var usdValue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
     
+    
+        
         congratsView.isHidden = true
         view.addSubview(congratsView)
         congratsView.center = view.center
         indicatorView.hidesWhenStopped = true
         continueButton.layer.cornerRadius = 15
         
-        subTotalPriceLabel.text = "Sub Total : \(subtotal)"
         
         let discountCodeModel = DiscountCodeViewModel()
         discountCodeModel.getDiscountCode()
@@ -55,15 +62,33 @@ class PaymentViewController: UIViewController {
                 }
             }
         }
+        convertCurrency()
         
-        totalPriceAfterDiscountLabel.text = " Total : \(subtotal) "
-        self.finalTotal = "\(subtotal) "
-
         print(discountCodesArray.count)
         getItems()
         print(cartItems.count)
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        convertCurrency()
+    }
+    
+    
+    func convertCurrency(){
+        if currency == "USD" {
+        subTotalPriceLabel.text = "Sub Total : \(String(format: "%.2f", subtotal)) USD"
+            totalPriceAfterDiscountLabel.text = " Total : \(subtotal) USD"
+            self.finalTotal = "\(subtotal) "
+        }else{
+            let egpSubTotal = subtotal * Double(usdValue)!
+            subTotalPriceLabel.text = "Sub Total :\(String(format: "%.2f", egpSubTotal)) EGP"
+            let egpSub = subtotal * Double(usdValue)!
+            totalPriceAfterDiscountLabel.text = " Total :  \( String(format: "%.2f", egpSub)) EGP"
+            self.finalTotal = "\(subtotal) "
+        }
+    }
+    
     
     //MARK: - Fetch Cart Items from coreData
     func getItems(){
@@ -77,35 +102,26 @@ class PaymentViewController: UIViewController {
             indicatorView.startAnimating()
             Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
                 self.indicatorView.stopAnimating()
-                let discountAmount = String(format: "%.2f", self.subtotal * (5/100))
-                let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (5/100))
-                self.discountLabel.text = " \(discountAmount) EGP Discount"
-                self.applyButton.titleLabel?.text = "\(discountAmount) EGP Discount"
                 self.applyButton.isEnabled = false
-                self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
-                self.finalTotal = totalAfterDiscount
+              
+                self.convertDiscountProcess()
             }
-            
             congratsView.isHidden = false
             self.congratsViewLabel.text = "You Won a 5% OFF"
             Timer.scheduledTimer(withTimeInterval: 1 , repeats: false) { timer in
                 self.congratsView.isHidden = true
             }
             
+        //MARK: - 10% COUPON
+            
             } else if couponTextField.text == discountCodesArray[1].code {
             indicatorView.startAnimating()
-            Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
+                Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { [self] timer in
                 self.indicatorView.stopAnimating()
+                    self.applyButton.isEnabled = false
 
-                let discountAmount = String(format: "%.2f", self.subtotal * (10/100))
-                let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (10/100))
-                self.applyButton.titleLabel?.text = "\(discountAmount) EGP Discount"
-                self.applyButton.isEnabled = false
-                
-                self.discountLabel.text = " \(discountAmount) EGP Discount"
-                self.totalPriceAfterDiscountLabel.text = " Total : \(totalAfterDiscount) "
-                self.finalTotal = totalAfterDiscount
-
+                    convertDiscountProcess()
+              
             }
             
             congratsView.isHidden = false
@@ -127,6 +143,29 @@ class PaymentViewController: UIViewController {
         }
         
     }
+    
+    
+    func convertDiscountProcess(){
+        let discountAmount = String(format: "%.2f", self.subtotal * (10/100))
+        let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (10/100))
+            
+            if self.currency == "USD"{
+                self.discountLabel.text = "\(discountAmount) USD Discount"
+                self.totalPriceAfterDiscountLabel.text = "Total : \(totalAfterDiscount) USD "
+                self.finalTotal = "\(totalAfterDiscount) "
+            } else{
+                let egpDiscount = Double(discountAmount)! * Double(self.usdValue)!
+                let egpTotalAfterDiscount = Double(totalAfterDiscount)! * Double(self.usdValue)!
+
+                self.discountLabel.text = "\(String(format: "%.2f", egpDiscount)) EGP Discount"
+                self.totalPriceAfterDiscountLabel.text = "Total : \(String(format: "%.2f", egpTotalAfterDiscount)) EGP "
+                self.finalTotal = "\(totalAfterDiscount) "
+
+            }
+    }
+    
+    
+    
     
         //MARK: - Continue to Checkout..
     @IBAction func continueToPaymentButtonPressed(_ sender: Any) {

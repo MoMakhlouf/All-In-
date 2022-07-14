@@ -19,15 +19,20 @@ class ShoppingCartViewController: UIViewController {
     }
     @IBOutlet weak var totalPrice: UILabel!
     
-   // let apiService : ApiServices?
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let cartDB = ShoppingCartDBManager.sharedInstance
     var cartItems = [ShoppingCartDB]()
     var total = 0.0
-    var result = 0.0
+    
+    
+    var currency = ""
+    var usdValue = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
         
         emptyCartView.isHidden = true
         proceedToCheckoutButton.layer.cornerRadius = 12
@@ -36,24 +41,33 @@ class ShoppingCartViewController: UIViewController {
         getItems()
         
         DispatchQueue.main.async {
-            self.totalPrice.text = "Total: \(self.total)"
+            self.convert()
         }
        
         emptyCart()
-       // convertCurrency(amount: "200")
+      
         
         
+    }
+    //MARK: - CONVERT CURRENCY
+    func convert(){
+        if self.currency == "USD"{
+            self.totalPrice.text = "Total: \(String(format: "%.2f", self.total)) USD "
+        }else{
+            let totalValue = self.total * Double(self.usdValue)!
+            self.totalPrice.text = "Total: \(String(format: "%.2f", totalValue)) EGP"
+
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         shoppingCartTableView.reloadData()
+        convert()
         emptyCart()
     }
     
-    func convertCurrency(amount : String){
-        let currency = CurrencyViewModel()
-        currency.convertCurrency(amount: amount)
-    }
+  
     
     
     //MARK: - Get Items From CoreData
@@ -114,7 +128,7 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
             let price = Double(item.price ?? "1")
             self.total += price ?? 1
             self.cartItems[indexPath.row].itemQuantity += 1
-            self.totalPrice.text = "Total: \(self.total)"
+            self.convert()
             tableView.reloadRows(at: [indexPath], with: .none)
         }
         
@@ -131,7 +145,8 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
             let price = Double(item.price!)
             self.total -= price!
             self.cartItems[indexPath.row].itemQuantity -= 1
-            self.totalPrice.text = "Total: \(self.total)"
+            self.convert()
+
             tableView.reloadRows(at: [indexPath], with: .none)
         }
        return cell
@@ -163,8 +178,7 @@ extension ShoppingCartViewController : DeletionDelegate{
             alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
             alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { [self] UIAlertAction in
                 self.total = total -  ( Double(self.cartItems[indexPath.row].price!)! * Double(self.cartItems[indexPath.row].itemQuantity))
-                self.totalPrice.text = "Total: \(self.total)"
-                
+                convert()
                 shoppingCartTableView.beginUpdates()
                 
                 ShoppingCartDBManager.sharedInstance.deleteFromCart(cartItem: cartItems[indexPath.row], indexPath: indexPath, appDelegate: appDelegate, delegate: self)

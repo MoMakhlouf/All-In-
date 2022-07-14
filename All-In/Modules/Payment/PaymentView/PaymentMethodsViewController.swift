@@ -36,12 +36,19 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     @IBOutlet weak var orderPlacedView: UIView!
     var addressesArray = [Address]()
     @IBOutlet weak var changeButton: UIButton!
+   
+    var currency = ""
+    var usdValue = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        totalAmountLabel.text = totalAmount
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
      
+      
         orderPlacedView.isHidden = true
-        totalAmountLabel.text = "Total: \(totalAmount)"
         placeOrderButton.layer.cornerRadius = 15
         continueShoppingButton.layer.cornerRadius = 15
         hideView()
@@ -73,6 +80,17 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
                 }
             }
         }
+    
+//        if currency == "USD"{
+//        totalAmountLabel.text = "Total: \(totalAmount) USD"
+//        }else{
+//           let totalEgp = Double(totalAmount)! * Double(usdValue)!
+//            print("tot\(totalEgp)")
+//            totalAmountLabel.text = "Total: \(totalEgp) EGP"
+//
+//        }
+        
+    
     }
     
     override func viewWillDisappear(_ animated: Bool) {

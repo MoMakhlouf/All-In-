@@ -116,10 +116,10 @@ extension BrandsViewController: UICollectionViewDataSource{
         
         if currency == "USD"  {
             let price: Float = (Float(productsArray[indexPath.row].variants[0].price)!)
-            cell.priceProductLbl.text = String(price) + "USD"
+            cell.priceProductLbl.text = String(format: "%.2f", price) + " USD"
         } else{
             let price: Float = (Float(productsArray[indexPath.row].variants[0].price)! * Float(usdValue)!)
-            cell.priceProductLbl.text = String(price) + "EGP"
+            cell.priceProductLbl.text = String(format: "%.2f",  price) + " EGP"
         }
         
         
