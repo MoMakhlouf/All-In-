@@ -25,11 +25,21 @@ class HomeViewController: UIViewController {
 
     var timer : Timer?
     var currentCellIndex = 0
-    
+    var result = 0.0
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        let currencyViewModel = CurrencyViewModel()
+        currencyViewModel.convertCurrency(amount: "1")
+        currencyViewModel.bindingData = { result , error in
+            if let result = result{
+                self.result = result
+                    print("\(result)")
+                Defaults.defaults.setUsdValue(value:String(result), key: "usd")
+            }
+            
+        }
 //MARK: - bransHomeCollection
         brandsHomeCollection.dataSource = self
         brandsHomeCollection.delegate = self

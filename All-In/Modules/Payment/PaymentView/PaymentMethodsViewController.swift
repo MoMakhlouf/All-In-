@@ -50,7 +50,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
         
               //I will change it to becater produced by user defaults from address list
         let addressViewModel = AddressViewModel()
-        addressViewModel.getAdderss(customerId: "6261211300054")
+        addressViewModel.getAdderss(customerId: Helper.shared.getUserID()!)
         addressViewModel.bindingData = { addresses , error in
             
             if let addresses = addresses{

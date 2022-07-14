@@ -58,8 +58,10 @@ class AddNewAddressViewController: UIViewController {
           
           let jsonResponse : [String: [String : Any]] = ["address":
                                                           ["address1": moreDetailsAddressTextField.text!,"city": cityTextField.text!,"phone": mobileNumberTextField.text!,"province": governorateTextField.text! ,"country":countryTextField.text!,"zip":""]]
+             
+          print(Helper.shared.getUserID())
 
-          if let url = URL(string: Urls(customerId: "6261211300054").postAddressUrl){
+          if let url = URL(string: Urls(customerId: Helper.shared.getUserID()!).postAddressUrl){
               var request = URLRequest(url: url)
               request.httpMethod = "POST"
               request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -71,6 +73,7 @@ class AddNewAddressViewController: UIViewController {
 
               let task = URLSession.shared.dataTask(with: request) { data, response, error in
 
+                  print("sss\(data)")
                   if let data = data {
                       do{
                           let json = try JSONSerialization.jsonObject(with: data, options: [])

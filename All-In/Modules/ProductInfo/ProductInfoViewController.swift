@@ -103,10 +103,13 @@ class ProductInfoViewController: UIViewController {
                     self.present(alert, animated: true, completion: nil)
                     
                 } else{
-
+                    // if customer id = db id
                     let itemImage = self.productInfo?.image.src
-                    cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054)
+                    cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: Int64(Helper.shared.getUserID()!))
                     
+              
+                    print(Helper.shared.getUserID())
+                  //  6261211300054
                   
                         let cart = ShoppingCartViewController()
                         navigationController?.pushViewController(cart, animated: true)
@@ -121,8 +124,6 @@ class ProductInfoViewController: UIViewController {
         }
         
 }
-    
-    
     
     @IBAction func FavouriteProductDetailsBtn(_ sender: UIButton) {
         Helper.shared.checkUserIsLogged { [self] userLogged in

@@ -18,8 +18,18 @@ class BrandsViewController: UIViewController{
     var productPriceArray2: [Float] = []
     var number: Float = 0.0
     @IBOutlet weak var brandsCollectionView: UICollectionView!
+    
+    var currency = ""
+    var usdValue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
+        
+        print("123\(currency)")
+        
         brandsCollectionView.delegate = self
         brandsCollectionView.dataSource = self
         brandsCollectionView.register(UINib(nibName: "ProuctsBrandCollectionViewCell" , bundle: nil), forCellWithReuseIdentifier: "productsBrandCell")
@@ -103,8 +113,16 @@ extension BrandsViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = brandsCollectionView.dequeueReusableCell(withReuseIdentifier: "productsBrandCell", for: indexPath) as! ProuctsBrandCollectionViewCell
         cell.nameProductLbl.text = productsArray[indexPath.row].title + " \\" + productsArray[indexPath.row].variants[0].option2
-        let price: Float = (Float(productsArray[indexPath.row].variants[0].price)! * 20.0)
-        cell.priceProductLbl.text = String(price) + " EGP"
+        
+        if currency == "USD"  {
+            let price: Float = (Float(productsArray[indexPath.row].variants[0].price)!)
+            cell.priceProductLbl.text = String(price) + "USD"
+        } else{
+            let price: Float = (Float(productsArray[indexPath.row].variants[0].price)! * Float(usdValue)!)
+            cell.priceProductLbl.text = String(price) + "EGP"
+        }
+        
+        
         //cell.prouctImg.sd_setImage(with: URL(string: productsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
         cell.prouctImg.kf.setImage(with: URL(string: productsArray[indexPath.row].image.src))
         return cell

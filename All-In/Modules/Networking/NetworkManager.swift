@@ -87,7 +87,7 @@ class NetworkManager : ApiServices{
 
 //MARK: - Mohamed - Post Address
     
-    func postAddress(customerID: String, address: Address, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+    func postAddress(customerID: Int, address: Address, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         
         
         if let url = URL(string: Urls(customerId: customerID).postAddressUrl){
@@ -120,7 +120,7 @@ class NetworkManager : ApiServices{
     
     
     //MARK: - Mohamed - Get Address
-    func getAddress(customerId: String, completion: @escaping (([Address]?, Error?) -> Void)) {
+    func getAddress(customerId: Int, completion: @escaping (([Address]?, Error?) -> Void)) {
         if let url = URL(string: Urls(customerId: customerId).addressUrl){
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data{
@@ -138,7 +138,7 @@ class NetworkManager : ApiServices{
     
     //MARK: - Mohamed - Delete Address
     
-    func deleteAddress(customerID: String, addressID: Int, completion: @escaping (Error?) -> ()) {
+    func deleteAddress(customerID: Int, addressID: Int, completion: @escaping (Error?) -> ()) {
         
         if let url = URL(string: Urls(customerId: customerID , addressId: addressID).deleteAddressUrl){
             var request = URLRequest(url: url)
@@ -174,7 +174,7 @@ class NetworkManager : ApiServices{
             task.resume()
         }
     }
-}
+
    // 1191661535446
     
     //MARK: - Mohamed - Currency
@@ -188,32 +188,22 @@ class NetworkManager : ApiServices{
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         
-       // if let data = data {
-            
-         //   let jsonData =  String(data: data , encoding: .utf8)!
-          //  print("111 \(jsonData.result)")
-            
-//            if let decodedData = try? JSONDecoder().decode(Currency.self, from: jsonData.data(using: .utf8)!){
-//                completion(decodedData.result , nil)
-//                print("www \(decodedData.result) w1234")
-//            }
+   
             
             if let data = data {
                 do{
-                    let json = try JSONSerialization.jsonObject(with: data, options: [])
-
-                    // if let decodedData = try? JSONDecoder().decode(Currency.self, from: json as! Data){
-                      //  completion(decodedData.result , nil)
-                        //          print("www \(decodedData.result) w1234")
-                             // }
                     
-                    print(json)
-                    print("qwe")
+                    let json = try JSONSerialization.jsonObject(with: data, options: [])
+                    if let dictionary = json as? [String: Any] {
+                        if let result = dictionary["result"] as? Double{
+                            completion(result, nil)
+                            print("\(result)")
+                        }
+                    }
+
                 }catch {
                     print(error.localizedDescription)
                 }
-            
-            
             print(String(data: data , encoding: .utf8)!)
 
           //  semaphore.signal()
@@ -222,6 +212,7 @@ class NetworkManager : ApiServices{
               task.resume()
             //  semaphore.wait()
    }
+}
 }
 
     
@@ -252,7 +243,8 @@ class NetworkManager : ApiServices{
                 completion(data, response, error)
             }.resume()
         }
-    }
+}
+
 
 extension NetworkManager{
     func getAllCustomers(complition: @escaping (AllCustomers?, Error?)->Void){
@@ -275,7 +267,6 @@ extension NetworkManager{
             }
         }
     }
- 
-
 }
  
+

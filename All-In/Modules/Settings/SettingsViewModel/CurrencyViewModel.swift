@@ -32,7 +32,7 @@ class CurrencyViewModel {
 
 
      func convertCurrency(amount : String){
-      //   apiService.convertCurrency(amount: amount) { result, error in
+         apiService.convertCurrency(amount: amount) { result, error in
              
              if let result = result {
                  self.result = result
@@ -45,4 +45,4 @@ class CurrencyViewModel {
          }
          
         }
-
+}

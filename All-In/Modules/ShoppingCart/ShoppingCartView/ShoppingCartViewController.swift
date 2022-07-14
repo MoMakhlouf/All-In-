@@ -29,17 +29,6 @@ class ShoppingCartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let currencyViewModel = CurrencyViewModel()
-        currencyViewModel.convertCurrency(amount: "100")
-        currencyViewModel.bindingData = { result , error in
-            if let result = result{
-                self.result = result
-                    print("123456\(result)")
-            }
-            
-        }
-        
-        
         emptyCartView.isHidden = true
         proceedToCheckoutButton.layer.cornerRadius = 12
         navigationItem.title = "Shopping Cart"

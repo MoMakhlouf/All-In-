@@ -29,7 +29,18 @@ class Defaults {
         return currency ?? ""
     }
     
-//    func usdValue(value : )
+    
+    //MARK: -   currency
+    
+    func setUsdValue(value : String , key : String){
+        UserDefaults.standard.set(value, forKey: key )
+        print("usd")
+    }
+    
+    func getUsdValue(key : String) -> String {
+        return UserDefaults.standard.string(forKey: key) ?? ""
+    
+    }
     
     
 }

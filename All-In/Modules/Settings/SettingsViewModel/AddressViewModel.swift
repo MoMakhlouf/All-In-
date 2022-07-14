@@ -30,7 +30,7 @@ class AddressViewModel{
     }
     
     
-    func getAdderss(customerId : String){
+    func getAdderss(customerId : Int){
         apiService.getAddress(customerId: customerId) { addresses, error in
             if let addresses = addresses {
                 self.addressArray = addresses
