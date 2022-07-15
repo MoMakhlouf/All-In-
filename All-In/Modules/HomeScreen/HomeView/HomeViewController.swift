@@ -89,7 +89,8 @@ class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = searchBtn
         
         
-      
+        print("qqqq\(Helper.shared.getUserID())")
+
 
     
         let homeViewModel = HomeViewModel()

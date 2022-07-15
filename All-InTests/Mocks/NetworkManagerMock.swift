@@ -29,6 +29,9 @@ class NetworkManagerMock : NetworkManager{
     
     
     
+    
+    
+    
     func fetchCodes(completion : @escaping (([Discount_codes]? , Error?) -> Void)){
         
         switch shouldReturnError {

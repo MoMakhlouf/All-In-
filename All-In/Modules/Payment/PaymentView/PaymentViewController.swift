@@ -27,7 +27,7 @@ class PaymentViewController: UIViewController {
     var cartItems = [ShoppingCartDB]()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let cartDB = ShoppingCartDBManager.sharedInstance
-    var finalTotal = ""
+    var finalTotal = 0.0
     var subtotal = 0.0
     var discountCodesArray = [Discount_codes]()
     
@@ -79,13 +79,13 @@ class PaymentViewController: UIViewController {
         if currency == "USD" {
         subTotalPriceLabel.text = "Sub Total : \(String(format: "%.2f", subtotal)) USD"
             totalPriceAfterDiscountLabel.text = " Total : \(subtotal) USD"
-            self.finalTotal = "\(subtotal) "
+            self.finalTotal = subtotal
         }else{
             let egpSubTotal = subtotal * Double(usdValue)!
             subTotalPriceLabel.text = "Sub Total :\(String(format: "%.2f", egpSubTotal)) EGP"
             let egpSub = subtotal * Double(usdValue)!
             totalPriceAfterDiscountLabel.text = " Total :  \( String(format: "%.2f", egpSub)) EGP"
-            self.finalTotal = "\(subtotal) "
+            self.finalTotal = subtotal
         }
     }
     
@@ -137,7 +137,7 @@ class PaymentViewController: UIViewController {
             discountLabel.text = " "
   
             totalPriceAfterDiscountLabel.text = " Total : \(subtotal) "
-            self.finalTotal = "\(subtotal) "
+            self.finalTotal = subtotal
             
             Alert.displayAlert(title: "Invalid Coupon", message: "")
         }
@@ -152,14 +152,14 @@ class PaymentViewController: UIViewController {
             if self.currency == "USD"{
                 self.discountLabel.text = "\(discountAmount) USD Discount"
                 self.totalPriceAfterDiscountLabel.text = "Total : \(totalAfterDiscount) USD "
-                self.finalTotal = "\(totalAfterDiscount) "
+                self.finalTotal = Double(totalAfterDiscount)!
             } else{
                 let egpDiscount = Double(discountAmount)! * Double(self.usdValue)!
                 let egpTotalAfterDiscount = Double(totalAfterDiscount)! * Double(self.usdValue)!
 
                 self.discountLabel.text = "\(String(format: "%.2f", egpDiscount)) EGP Discount"
                 self.totalPriceAfterDiscountLabel.text = "Total : \(String(format: "%.2f", egpTotalAfterDiscount)) EGP "
-                self.finalTotal = "\(totalAfterDiscount) "
+                self.finalTotal = Double(totalAfterDiscount)!
 
             }
     }

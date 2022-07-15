@@ -45,7 +45,9 @@ class ShoppingCartViewController: UIViewController {
         }
        
         emptyCart()
-      
+        
+        
+              
         
         
     }
@@ -72,6 +74,7 @@ class ShoppingCartViewController: UIViewController {
     
     //MARK: - Get Items From CoreData
     func getItems(){
+
         cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
         print(cartItems.count)
           DispatchQueue.main.async {
@@ -113,9 +116,16 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = shoppingCartTableView.dequeueReusableCell(withIdentifier: "shopCartCell", for: indexPath) as! ShoppingCartTableViewCell
-
-        cell.itemsInCell(cartItems[indexPath.row])
+      
         
+//        for item in cartItems {
+//            if item.customerId == Helper.shared.getUserID()!{
+//                
+         
+
+        
+        cell.itemsInCell(cartItems[indexPath.row])
+
         cell.didTapPlus = { [weak self] in
             guard let self = self else {return}
             let item = self.cartItems[indexPath.row]
@@ -149,6 +159,8 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
 
             tableView.reloadRows(at: [indexPath], with: .none)
         }
+//            }
+//        }
        return cell
     }
     

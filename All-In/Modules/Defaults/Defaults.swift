@@ -42,5 +42,23 @@ class Defaults {
     
     }
     
+ 
+    
+    //MARK: - Address
+ 
+    func setAddress(value : String , key : String){
+        UserDefaults.standard.set(value, forKey: key )
+       
+    }
+    
+    func getAddress(key : String) -> String {
+        return UserDefaults.standard.string(forKey: key) ?? ""
+    
+    }
+    
+    
+    
     
 }
+
+

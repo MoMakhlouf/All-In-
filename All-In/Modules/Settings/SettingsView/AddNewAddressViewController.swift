@@ -20,6 +20,7 @@ class AddNewAddressViewController: UIViewController {
         navigationItem.title = "New Address"
         addNewAddressButton.layer.cornerRadius = 15
         
+        print("qqqq\(Helper.shared.getUserID())")
     }
 
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
@@ -59,7 +60,7 @@ class AddNewAddressViewController: UIViewController {
           let jsonResponse : [String: [String : Any]] = ["address":
                                                           ["address1": moreDetailsAddressTextField.text!,"city": cityTextField.text!,"phone": mobileNumberTextField.text!,"province": governorateTextField.text! ,"country":countryTextField.text!,"zip":""]]
              
-          print(Helper.shared.getUserID())
+          print("idddd \(Helper.shared.getUserID())")
 
           if let url = URL(string: Urls(customerId: Helper.shared.getUserID()!).postAddressUrl){
               var request = URLRequest(url: url)

@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol ChooseAddressDelegate {
-    func didSelectAddress(address : String)
-}
-
 class ListOfAddressesViewController: UIViewController {
 
     @IBOutlet weak var addressTableView: UITableView!{
@@ -29,7 +25,6 @@ class ListOfAddressesViewController: UIViewController {
     }
     @IBOutlet weak var noAddressView: UIView!
     var addressesArray = [Address]()
-    var chooseAddressDelegate : ChooseAddressDelegate?
     let userDefaults = UserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +33,7 @@ class ListOfAddressesViewController: UIViewController {
         
         print(addressesArray.count)
         emptyAddress()
+        
 
     }
     
@@ -73,8 +69,8 @@ class ListOfAddressesViewController: UIViewController {
     
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
         
-       // let add = AddNewAddressViewController()
-        //navigationController?.pushViewController(add, animated: true)
+      //  let add = AddNewAddressViewController()
+       // navigationController?.pushViewController(add, animated: true)
     let setting = SettingsViewController()
     navigationController?.pushViewController(setting, animated: true)
     
@@ -97,7 +93,8 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let address = addressesArray[indexPath.row]
-        chooseAddressDelegate?.didSelectAddress(address: "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")")
+       // chooseAddressDelegate?.didSelectAddress(address: "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")")
+        Defaults.defaults.setAddress(value: "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")", key: "address")
            
     }
     

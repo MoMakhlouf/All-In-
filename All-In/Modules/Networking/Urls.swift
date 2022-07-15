@@ -10,7 +10,7 @@ import Foundation
 struct Urls {
     
     var priceRule = ""
-    var customerId = 0
+    var customerId  = 0
     var addressId = 0
     var amount = ""
 

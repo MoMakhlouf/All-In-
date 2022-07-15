@@ -11,21 +11,37 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var currencySwitch: UISegmentedControl!
     @IBOutlet weak var logoutButton: UIButton!
-   
+    let userdefault = UserDefaults.standard
+
+    let segmentConvert = "segment"
+    let segmentUSD = "segmentUSD"
+    let segmentEGP = "segmentEGP"
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         navigationItem.title = "Settings"
         logoutButton.layer.cornerRadius = 15
-
+        updateSegment()
         // Do any additional setup after loading the view.
     }
+    
 
     @IBAction func AddressesButtonPressed(_ sender: UIButton) {
         let adresses = ListOfAddressesViewController()
         navigationController?.pushViewController(adresses, animated: true)
     }
     
+    func updateSegment(){
+        let  segment = userdefault.string(forKey: segmentConvert)
+        if    segment == segmentUSD {
+            currencySwitch.selectedSegmentIndex = 0
+        }else if segment == segmentEGP {
+            currencySwitch.selectedSegmentIndex = 1
+
+        }
+    }
     
     
     @IBAction func currencySwitchControlPressed(_ sender: UISegmentedControl) {
@@ -33,8 +49,16 @@ class SettingsViewController: UIViewController {
         switch currencySwitch.selectedSegmentIndex {
         
         case 0 : Defaults.defaults.setCurrency(key: "currency", value: "USD")
+            userdefault.set(segmentUSD , forKey: segmentConvert)
+          //   let home = HomeViewController()
+           // navigationController?.pushViewController(home, animated: true)
+            
         case 1 : Defaults.defaults.setCurrency(key: "currency", value: "EGP")
-        
+            userdefault.set(segmentEGP , forKey: segmentConvert)
+
+           // let home = HomeViewController()
+           //navigationController?.pushViewController(home, animated: true)
+           
         default:
             break
         }

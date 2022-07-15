@@ -9,7 +9,7 @@ import UIKit
 import WebKit
 import Braintree
 
-class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
+class PaymentMethodsViewController: UIViewController  {
   
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let cartDB = ShoppingCartDBManager.sharedInstance
@@ -25,7 +25,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     @IBOutlet weak var crediCardDetailsView: UIView!
     @IBOutlet weak var continueShoppingButton: UIButton!
     @IBOutlet weak var totalAmountLabel: UILabel!
-    var totalAmount = ""
+    var totalAmount = 0.0
     @IBOutlet weak var cashOnDeliveryButton: UIButton!
     @IBOutlet weak var crediCardButton: UIButton!
     var braintreeAPIClient:BTAPIClient!
@@ -43,7 +43,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        totalAmountLabel.text = totalAmount
+        totalAmountLabel.text = "\(totalAmount)"
         currency = Defaults.defaults.getCurrency(key: "currency")
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
      
@@ -55,42 +55,34 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
         placeOrderButton.isEnabled = false
         placeOrderIndicator.hidesWhenStopped = true
         
-              //I will change it to becater produced by user defaults from address list
-        let addressViewModel = AddressViewModel()
-        addressViewModel.getAdderss(customerId: Helper.shared.getUserID()!)
-        addressViewModel.bindingData = { addresses , error in
+
+        getChosenAddress()
+        
+           
+        if currency == "USD"{
+        totalAmountLabel.text = "Total: \(totalAmount) USD"
+        }else{
+           let totalEgp = totalAmount * Double(usdValue)!
             
-            if let addresses = addresses{
-                self.addressesArray = addresses
-                DispatchQueue.main.async {
-                    if self.addressesArray.isEmpty == false {
-                        let address = self.addressesArray[0]
-                        self.addressFullLabel.text = "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")"
-                    } else{
-                        self.addressFullLabel.text = "Please, add new Address"
-                        self.placeOrderButton.isEnabled = false
-                        self.changeButton.titleLabel?.text = "Add"
-                    }
-                }
-            }
-            if let error = error {
-                print(error)
-                DispatchQueue.main.async {
-                    Alert.displayAlert(title: "Error", message: "Failed To Apply Coupon")
-                }
-            }
+            totalAmountLabel.text = "Total: \( String(format: "%.2f", totalEgp)) EGP"
+
         }
-    
-//        if currency == "USD"{
-//        totalAmountLabel.text = "Total: \(totalAmount) USD"
-//        }else{
-//           let totalEgp = Double(totalAmount)! * Double(usdValue)!
-//            print("tot\(totalEgp)")
-//            totalAmountLabel.text = "Total: \(totalEgp) EGP"
-//
-//        }
+     
         
     
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+     getChosenAddress()
+        
+        if currency == "USD"{
+        totalAmountLabel.text = "Total: \(totalAmount) USD"
+        }else{
+           let totalEgp = totalAmount * Double(usdValue)!
+            
+            totalAmountLabel.text = "Total: \( String(format: "%.2f", totalEgp)) EGP"
+
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -102,6 +94,8 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
             let payPalDriver = BTPayPalDriver(apiClient: braintreeAPIClient)
             let request = BTPayPalCheckoutRequest(amount: amount)
             request.currencyCode = "USD"
+        request.displayName =  Helper.shared.getUserName()
+        
             var err:Error?
            payPalDriver.tokenizePayPalAccount(with: request) { [weak self] (tokenizedPayPalAccount, error) in
             if tokenizedPayPalAccount != nil {
@@ -116,6 +110,19 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
         }
     }
 
+    //MARK: - Calling address
+    
+    func getChosenAddress(){
+        addressFullLabel.text = Defaults.defaults.getAddress(key: "address")
+
+        if addressFullLabel.text == ""{
+            self.addressFullLabel.text = "Please, add new Address"
+               self.placeOrderButton.isEnabled = false
+               self.changeButton.titleLabel?.text = "Add"
+        }
+        
+    }
+    
 
     //MARK: - SELECTING CASH ON DELEIVERY
     @IBAction func cashOnDeliveryButton(_ sender: UIButton) {
@@ -130,7 +137,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     //MARK: - SELECTING PAYPAL
     @IBAction func creditCardButton(_ sender: UIButton) {
        
-        payPalCheckout(amount: totalAmount)
+        payPalCheckout(amount: "\(totalAmount)")
         cashOnDeliveryButton.layer.borderWidth = 0
         crediCardButton.layer.borderWidth = 1
         crediCardButton.layer.borderColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
@@ -145,7 +152,6 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     @IBAction func changeAddressButton(_ sender: UIButton) {
         let addresses = ListOfAddressesViewController()
         navigationController?.pushViewController(addresses, animated: true)
-        addresses.chooseAddressDelegate = self
     }
     
     
