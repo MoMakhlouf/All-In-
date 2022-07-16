@@ -10,6 +10,7 @@ import UIKit
 class FilterViewController: UIViewController {
     var minNum: Float = 0.0
     var maxNum: Float = 0.0
+    var lastValue: Float = 0.0
     
     var productPriceArray: Array<String> = []
     var convert: Array<Float> = []
@@ -53,8 +54,9 @@ class FilterViewController: UIViewController {
 }
 
 extension FilterViewController: UITableViewDelegate{
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        var height:CGFloat = CGFloat()
+  /*  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+     /*   var height:CGFloat = CGFloat()
         if indexPath.section == 0{
             if indexPath.row == 0{
                 height = 200
@@ -62,36 +64,26 @@ extension FilterViewController: UITableViewDelegate{
         }
         else{
             height = 100
-        }
-      /*  switch(indexPath.section){
-        case 0:
-            height = 200
-        case 1:
-            height = 100
-        default:
-            break
         }*/
- 
-        return height
-        
-    }
+        return 200.0
+    }*/
     
 }
 
 extension FilterViewController: UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch(section){
+      /*  switch(section){
         case 0:
             return 1
         case 1:
             return productType.count
         default:
             break
-        }
-        return 0
+        }*/
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -99,17 +91,21 @@ extension FilterViewController: UITableViewDataSource{
    
         switch(indexPath.section){
         case 0:
-            cell.fromPriceField.text = String(convert.min()! * 20)
-            cell.toPriceField.text = String(convert.max()! * 20)
+            cell.fromLbl.text = String(convert.min()! * 20)
+            cell.toLbl.text = String(convert.max()! * 20)
             cell.sliderPrice.maximumValue = convert.max()! * 20
             cell.sliderPrice.minimumValue = convert.min()! * 20
+            if lastValue != 0.0{
+            cell.sliderPrice.value = lastValue
+            cell.fromLbl.text = String(lastValue)
+            }
             cell.changePrice = { [weak self] in
                 guard let self = self else {return}
                 self.minNum = cell.sliderPrice.value
                
             }
             return cell
-        case 1:
+      /*  case 1:
             let cell1 = filterTableView.dequeueReusableCell(withIdentifier: "productType", for: indexPath) as! ProductTypeTableViewCell
             cell1.productTypeName.text = productType[indexPath.row]
          /*   cell1.productType = { [weak self] in
@@ -117,7 +113,7 @@ extension FilterViewController: UITableViewDataSource{
                 cell1.checkMarkBtn(UITableViewCell.AccessoryType.checkmark)
             }*/
             cell1.accessoryType = UITableViewCell.AccessoryType.checkmark
-            return cell1
+            return cell1*/
         default: break
             
         }
@@ -128,8 +124,8 @@ extension FilterViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch(section){
-            case 1:
-                return "Product Type"
+          /*  case 1:
+                return "Product Type"*/
             default:
                 return "Price"
         }

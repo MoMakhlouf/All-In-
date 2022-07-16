@@ -7,11 +7,10 @@ target 'All-In' do
 
   # Pods for All-In
 
-    
-     pod 'Braintree', '~> 5.0'
      pod 'Kingfisher'
-     pod 'Alamofire', '~> 5.5'
-   
+     pod 'Alamofire', '~> 5.5'	
+     pod 'Floaty', '~> 4.1.0'
+
 
 
 

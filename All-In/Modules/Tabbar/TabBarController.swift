@@ -26,12 +26,10 @@ class TabBarController: UITabBarController {
         
       // MARK:- ordersTabBar
         let ordersTabBarItem = UITabBarItem(title: "My Account", image: UIImage(systemName: "person.circle"), tag: 3)
-        let ordersController = MyAccountViewController()//OrdersViewController()
-        //let ordersController = ProfileViewController()
+       // let ordersController = MyAccountViewController()
+        let ordersController = ProfileViewController()
         let ordersNavigationController = UINavigationController(rootViewController: ordersController)
         ordersNavigationController.tabBarItem = ordersTabBarItem
-        
-        
         self.viewControllers = [homeNavigationController , caregoriesNavigationController, ordersNavigationController]
        
         tabBar.tintColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)

@@ -12,17 +12,19 @@ class ProuctsBrandCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var priceProductLbl: UILabel!
     @IBOutlet weak var nameProductLbl: UILabel!
-    @IBOutlet weak var pageControlImage: UIPageControl!
+    //@IBOutlet weak var pageControlImage: UIPageControl!
     @IBOutlet weak var favouriteBtn: UIButton!
     @IBOutlet weak var prouctImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+     //   self.prouctImg.layer.borderWidth = 1
+      //  self.prouctImg.layer.borderColor = UIColor.black.cgColor
     }
     
     
-    @IBAction func pageControlImage(_ sender: Any) {
-    }
+  /*  @IBAction func pageControlImage(_ sender: Any) {
+    }*/
     
     @IBAction func favouriteBtn(_ sender: Any) {
     }

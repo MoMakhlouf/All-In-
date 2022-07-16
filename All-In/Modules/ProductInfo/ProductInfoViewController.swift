@@ -89,7 +89,7 @@ class ProductInfoViewController: UIViewController {
     @IBAction func AddToCartBtn(_ sender: UIButton) {
         
         
-        Helper.shared.checkUserIsLogged { [self] userLogged in
+     /*   Helper.shared.checkUserIsLogged { [self] userLogged in
             if userLogged{
                 if isAddedToCart {
                
@@ -102,7 +102,7 @@ class ProductInfoViewController: UIViewController {
                     }))
                     self.present(alert, animated: true, completion: nil)
                     
-                } else{
+                } else{*/
 
                     let itemImage = self.productInfo?.image.src
                     cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054)
@@ -113,12 +113,12 @@ class ProductInfoViewController: UIViewController {
                     
                     
                       isAddedToCart = true
-                }
+      /*          }
             }else{
                 self.goToLoginPage()
                 
             }
-        }
+        }*/
         
 }
     

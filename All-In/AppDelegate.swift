@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import Braintree
+//import Braintree
 import CoreData
 
 @main
@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
          
-         BTAppContextSwitcher.setReturnURLScheme("-.All-In.payments")
+    //     BTAppContextSwitcher.setReturnURLScheme("-.All-In.payments")
         return true
     }
     
@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         if url.scheme?.localizedCaseInsensitiveCompare("-.All-In.payments") == .orderedSame {
-            return BTAppContextSwitcher.handleOpenURL(url)
+       //     return BTAppContextSwitcher.handleOpenURL(url)
         }
         return false
     }

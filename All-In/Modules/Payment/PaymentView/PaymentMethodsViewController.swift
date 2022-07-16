@@ -7,7 +7,8 @@
 
 import UIKit
 import WebKit
-import Braintree
+import Alamofire
+//import Braintree
 
 class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
   
@@ -28,13 +29,14 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     var totalAmount = ""
     @IBOutlet weak var cashOnDeliveryButton: UIButton!
     @IBOutlet weak var crediCardButton: UIButton!
-    var braintreeAPIClient:BTAPIClient!
+///    var braintreeAPIClient:BTAPIClient!
     let authorization = "sandbox_w3d87wk7_hc7cj2xjtg337ffs"
     @IBOutlet weak var creditCardWebView: WKWebView!
     @IBOutlet weak var placeOrderIndicator: UIActivityIndicatorView!
     let userDefaults = UserDefaults()
     @IBOutlet weak var orderPlacedView: UIView!
     var addressesArray = [Address]()
+    var address: Address?
     @IBOutlet weak var changeButton: UIButton!
     
     override func viewDidLoad() {
@@ -50,7 +52,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
         
               //I will change it to becater produced by user defaults from address list
         let addressViewModel = AddressViewModel()
-        addressViewModel.getAdderss(customerId: "6261211300054")
+        addressViewModel.getAdderss(customerId: "6277500960982")
         addressViewModel.bindingData = { addresses , error in
             
             if let addresses = addresses{
@@ -80,7 +82,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     }
     
     func payPalCheckout (amount : String){
-        self.braintreeAPIClient = BTAPIClient(authorization: authorization)
+/**        self.braintreeAPIClient = BTAPIClient(authorization: authorization)
             let payPalDriver = BTPayPalDriver(apiClient: braintreeAPIClient)
             let request = BTPayPalCheckoutRequest(amount: amount)
             request.currencyCode = "USD"
@@ -94,8 +96,8 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
 
             if err == nil{
                 print("")
-            }
-        }
+            }*/
+       // }
     }
 
 
@@ -133,6 +135,41 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     
     //MARK: - OREDER CONFIRMATION
     @IBAction func placeOrderButtonPressed(_ sender: UIButton) {
+        cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
+       // self.address = addressesArray[0]
+        var jsonResponse = [String : [String : Any]]()
+   //     var items = [Items]()
+        let item = cartItems[0]
+     /*   for item in cartItems{
+            var i = Items(id: Int(item.itemId), title: item.title!, price: item.price!, quantity: Int(item.itemQuantity), sku: item.itemImage!)
+            items.append(i)
+        }*/
+            
+        jsonResponse = ["order":["email":Helper.shared.getUserEmail() ?? "m@gmail.com","line_items":[["product_id": item.itemId,"title":item.title!,"price": item.price!,"quantity": item.itemQuantity,"sku":item.itemImage!]],"billing_address":["first_name":"m","last_name":"m","address1":"124" ,"phone":"12345","city":"jjj","province":"","country":"egypt","zip":"124"],"customer":["id":Helper.shared.getUserID()]]]
+        
+        print(jsonResponse)
+        if let url = URL(string: Urls().ordersUrl){
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpShouldHandleCookies = false
+            if let httpBody = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) {
+                print("json\(jsonResponse)")
+                request.httpBody = httpBody
+            }
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    do{
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        print(json)
+                    }catch {
+                        print("Errorrr\(error.localizedDescription)")
+                    }
+                }
+            }
+            task.resume()
+        }
+        
         placeOrderIndicator.startAnimating()
         Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
             self.placeOrderIndicator.stopAnimating()
@@ -173,7 +210,7 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     
 }
 
-
+/*
 extension PaymentMethodsViewController : BTViewControllerPresentingDelegate{
     func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
             
@@ -183,7 +220,7 @@ extension PaymentMethodsViewController : BTViewControllerPresentingDelegate{
         
     }
 }
-
+*/
 
 
 ///

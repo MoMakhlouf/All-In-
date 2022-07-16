@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCN-jA-gr3">
-                        <rect key="frame" x="105" y="15" width="153" height="55"/>
+                        <rect key="frame" x="90" y="15" width="208" height="55"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="55" id="y2u-wP-u1B"/>
                         </constraints>
@@ -26,12 +26,12 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fg5-q3-3H9">
-                        <rect key="frame" x="105" y="88" width="153" height="27"/>
+                        <rect key="frame" x="90" y="80" width="208" height="35"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Isw-ar-jer">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shoping" translatesAutoresizingMaskIntoConstraints="NO" id="Isw-ar-jer">
                         <rect key="frame" x="15" y="15" width="60" height="100"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="Go9-Va-0J2"/>
@@ -41,10 +41,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="fg5-q3-3H9" firstAttribute="bottom" secondItem="Isw-ar-jer" secondAttribute="bottom" id="DoA-XN-e00"/>
-                    <constraint firstItem="zCN-jA-gr3" firstAttribute="leading" secondItem="Isw-ar-jer" secondAttribute="trailing" constant="30" id="Nqb-sU-47t"/>
-                    <constraint firstAttribute="trailing" secondItem="zCN-jA-gr3" secondAttribute="trailing" constant="50" id="NzS-T9-kqJ"/>
+                    <constraint firstItem="zCN-jA-gr3" firstAttribute="leading" secondItem="Isw-ar-jer" secondAttribute="trailing" constant="15" id="Nqb-sU-47t"/>
+                    <constraint firstAttribute="trailing" secondItem="zCN-jA-gr3" secondAttribute="trailing" constant="10" id="NzS-T9-kqJ"/>
                     <constraint firstItem="Isw-ar-jer" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="d3g-zz-mBQ"/>
-                    <constraint firstItem="fg5-q3-3H9" firstAttribute="top" secondItem="zCN-jA-gr3" secondAttribute="bottom" constant="18" id="kuW-cW-oMz"/>
+                    <constraint firstItem="fg5-q3-3H9" firstAttribute="top" secondItem="zCN-jA-gr3" secondAttribute="bottom" constant="10" id="kuW-cW-oMz"/>
                     <constraint firstItem="zCN-jA-gr3" firstAttribute="top" secondItem="Isw-ar-jer" secondAttribute="top" id="p54-NS-eo1"/>
                     <constraint firstItem="fg5-q3-3H9" firstAttribute="trailing" secondItem="zCN-jA-gr3" secondAttribute="trailing" id="qOQ-VA-eIx"/>
                     <constraint firstItem="fg5-q3-3H9" firstAttribute="leading" secondItem="zCN-jA-gr3" secondAttribute="leading" id="sSx-Un-iqJ"/>
@@ -53,11 +53,14 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="dateOfOrder" destination="fg5-q3-3H9" id="673-Gk-Lot"/>
                 <outlet property="imgOfOrder" destination="Isw-ar-jer" id="Pdh-DA-FYW"/>
-                <outlet property="numberOfOrder" destination="zCN-jA-gr3" id="NmO-MR-soF"/>
+                <outlet property="nameOfProduct" destination="zCN-jA-gr3" id="iUP-EG-CXc"/>
+                <outlet property="priceOfOrder" destination="fg5-q3-3H9" id="NZd-pP-IIH"/>
             </connections>
             <point key="canvasLocation" x="123.18840579710145" y="92.745535714285708"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="shoping" width="2000" height="2000"/>
+    </resources>
 </document>

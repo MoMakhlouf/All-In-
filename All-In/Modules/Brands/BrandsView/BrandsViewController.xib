@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,11 +20,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="wYF-sI-ngp">
-                    <rect key="frame" x="0.0" y="125" width="414" height="737"/>
+                    <rect key="frame" x="0.0" y="139" width="414" height="723"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="T4q-EX-I0B">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hKw-Qc-XRi">
                         <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
@@ -39,14 +39,12 @@
             <color key="tintColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Msm-nZ-Bkp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="DYv-2d-YHg"/>
-                <constraint firstItem="wYF-sI-ngp" firstAttribute="leading" secondItem="Msm-nZ-Bkp" secondAttribute="leading" id="HKb-PN-M8X"/>
                 <constraint firstItem="Msm-nZ-Bkp" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="N4W-WA-yjb"/>
-                <constraint firstItem="wYF-sI-ngp" firstAttribute="trailing" secondItem="Msm-nZ-Bkp" secondAttribute="trailing" id="PWa-Mp-CJv"/>
                 <constraint firstItem="Msm-nZ-Bkp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Qfx-HO-37w"/>
+                <constraint firstItem="wYF-sI-ngp" firstAttribute="top" secondItem="Msm-nZ-Bkp" secondAttribute="bottom" id="RXm-4Q-E3v"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wYF-sI-ngp" secondAttribute="trailing" id="b3L-Wu-AhM"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="wYF-sI-ngp" secondAttribute="bottom" id="brO-Mc-Lxe"/>
                 <constraint firstItem="wYF-sI-ngp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hZd-X2-86B"/>
-                <constraint firstItem="wYF-sI-ngp" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="37" id="tgt-bN-mkE"/>
             </constraints>
             <nil key="simulatedBottomBarMetrics"/>
             <splitViewDetailSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

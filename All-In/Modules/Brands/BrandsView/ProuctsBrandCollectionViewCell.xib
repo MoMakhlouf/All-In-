@@ -60,15 +60,6 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="52d-in-95f">
-                        <rect key="frame" x="134" y="335" width="115.5" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="25" id="mGn-yE-pUH"/>
-                        </constraints>
-                        <connections>
-                            <action selector="pageControlImage:" destination="kti-NM-k7g" eventType="valueChanged" id="zYg-mx-xCO"/>
-                        </connections>
-                    </pageControl>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZpN-3G-xE0"/>
@@ -79,8 +70,6 @@
                 <constraint firstItem="6dE-3n-84X" firstAttribute="top" secondItem="vjc-pJ-3ZK" secondAttribute="top" id="BJ3-5i-hRJ"/>
                 <constraint firstItem="ygZ-de-8iN" firstAttribute="top" secondItem="Duu-gT-mh2" secondAttribute="bottom" constant="5" id="Gg9-jM-0Yd"/>
                 <constraint firstAttribute="bottom" secondItem="ygZ-de-8iN" secondAttribute="bottom" constant="10" id="Ig9-Xg-IXr"/>
-                <constraint firstItem="52d-in-95f" firstAttribute="top" secondItem="vjc-pJ-3ZK" secondAttribute="bottom" constant="-40" id="RCk-xE-iAa"/>
-                <constraint firstItem="52d-in-95f" firstAttribute="centerX" secondItem="vjc-pJ-3ZK" secondAttribute="centerX" id="jUz-mZ-Cj0"/>
                 <constraint firstAttribute="trailing" secondItem="6dE-3n-84X" secondAttribute="trailing" constant="30" id="qUj-AV-HSZ"/>
                 <constraint firstItem="ZpN-3G-xE0" firstAttribute="trailing" secondItem="Duu-gT-mh2" secondAttribute="trailing" constant="20" id="rTt-uq-L1L"/>
                 <constraint firstItem="Duu-gT-mh2" firstAttribute="leading" secondItem="kti-NM-k7g" secondAttribute="leading" constant="20" id="tdO-mM-bTM"/>
@@ -92,7 +81,6 @@
             <connections>
                 <outlet property="favouriteBtn" destination="6dE-3n-84X" id="bgm-Vr-XuV"/>
                 <outlet property="nameProductLbl" destination="Duu-gT-mh2" id="URW-BD-wbl"/>
-                <outlet property="pageControlImage" destination="52d-in-95f" id="oD1-9p-ulS"/>
                 <outlet property="priceProductLbl" destination="ygZ-de-8iN" id="8eL-CG-sQr"/>
                 <outlet property="prouctImg" destination="vjc-pJ-3ZK" id="gto-2C-f7C"/>
             </connections>

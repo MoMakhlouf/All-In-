@@ -23,7 +23,7 @@ class ProductTypeTableViewCell: UITableViewCell {
     
     @IBAction func checkMarkBtn(_ sender: Any) {
         
-        UITableViewCell.AccessoryType.checkmark
+      //  UITableViewCell.AccessoryType.checkmark
         productType?()
     }
 }

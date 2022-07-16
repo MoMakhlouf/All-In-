@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="orderHeaderTableView" customModule="All_In" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GLb-lK-ned">
+                    <rect key="frame" x="20" y="31" width="374" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMh-g6-zMR">
+                    <rect key="frame" x="20" y="0.0" width="374" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <accessibility key="accessibilityConfiguration">
+                <bool key="isElement" value="YES"/>
+            </accessibility>
+            <constraints>
+                <constraint firstItem="GLb-lK-ned" firstAttribute="top" secondItem="LMh-g6-zMR" secondAttribute="bottom" constant="10" id="3Ks-KL-fBc"/>
+                <constraint firstAttribute="trailing" secondItem="LMh-g6-zMR" secondAttribute="trailing" constant="20" id="E16-LG-rGp"/>
+                <constraint firstItem="GLb-lK-ned" firstAttribute="leading" secondItem="LMh-g6-zMR" secondAttribute="leading" id="QGh-zI-NQc"/>
+                <constraint firstItem="GLb-lK-ned" firstAttribute="trailing" secondItem="LMh-g6-zMR" secondAttribute="trailing" id="co1-Ia-hRL"/>
+                <constraint firstItem="LMh-g6-zMR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="fbz-44-cSW"/>
+                <constraint firstItem="LMh-g6-zMR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lJH-Ld-TsW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dateOfOrder" destination="GLb-lK-ned" id="ndc-w3-L03"/>
+                <outlet property="noOfOrder" destination="LMh-g6-zMR" id="qze-Jz-0Vi"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="26.785714285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

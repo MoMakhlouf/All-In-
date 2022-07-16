@@ -80,7 +80,7 @@ class HomeViewController: UIViewController {
         
         
       
-
+        
     
         let homeViewModel = HomeViewModel()
         homeViewModel.fetchData()
@@ -92,8 +92,11 @@ class HomeViewController: UIViewController {
                 }
             }
             if let error = error{
-                Alert.displayAlert(title: "Error", message: error.localizedDescription)
-                //print(error.localizedDescription)
+                
+                //vc.showAlertError(title: "Error", message: error.localizedDescription)
+             
+                //displayAlert(title: "Error", message: error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
     }
@@ -122,6 +125,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
        // navigationController?.setNavigationBarHidden(true, animated: true)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     /*
@@ -152,7 +156,6 @@ extension HomeViewController: UICollectionViewDataSource{
         if collectionView == adsCollectionView{
             return adsPhotos.count
         }
-        
         return brandsArray.count
     }
     
@@ -181,7 +184,7 @@ extension HomeViewController: UICollectionViewDataSource{
 extension HomeViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == brandsHomeCollection{
-            return CGSize(width: collectionView.frame.width , height: collectionView.frame.height * 0.5)
+            return CGSize(width: collectionView.frame.width * 0.48 , height: collectionView.frame.height * 0.5)
         }
         return CGSize(width: collectionView.frame.width , height: collectionView.frame.height)
     }
@@ -207,6 +210,7 @@ extension HomeViewController{
                 self.goToCartPage()
             }else{
                 self.goToLoginPage()
+                //self.goToCartPage()
             }
         }
         
