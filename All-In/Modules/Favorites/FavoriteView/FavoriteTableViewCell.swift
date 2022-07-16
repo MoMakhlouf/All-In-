@@ -28,6 +28,12 @@ class FavoriteTableViewCell: UITableViewCell {
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
         
         
+        FaveView.layer.cornerRadius
+        = 15
+        FaveView.layer.borderWidth  =
+        0.5
+        FaveView.layer.borderColor  = UIColor.black.cgColor
+       
     }
     
     

@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrandsViewController" customModule="All_In" customModuleProvider="target">
             <connections>
+                <outlet property="brandSearch" destination="Msm-nZ-Bkp" id="okm-gd-jzW"/>
                 <outlet property="brandsCollectionView" destination="wYF-sI-ngp" id="mK8-Rj-Epa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

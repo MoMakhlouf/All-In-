@@ -240,6 +240,9 @@
                                             </fragment>
                                         </attributedString>
                                     </buttonConfiguration>
+                                    <connections>
+                                        <action selector="LogOutBtnPressed:" destination="-1" eventType="touchUpInside" id="W0c-Hb-xXI"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

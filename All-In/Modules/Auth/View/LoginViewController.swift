@@ -50,11 +50,17 @@ class LoginViewController: UIViewController {
         
     }
     func goToProfile(){
-        let profile = ProfileViewController()
+        
+         
+        let profile = HomeViewController()
         navigationController?.pushViewController(profile, animated: true)
+         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
         
-    @IBAction func SignUp(_ sender: UIButton) {
+    @IBAction func SignUpButton(_ sender: UIButton) {
         let reg = RgisterViewController()
         navigationController?.pushViewController(reg, animated: true)
     }
