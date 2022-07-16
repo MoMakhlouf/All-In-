@@ -36,6 +36,8 @@ class CategoriesViewController: UIViewController {
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
         categoriesCollection.reloadData()
 
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 20.0)!]
+        
         segmentedControl.setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
 
         categoriesCollection.delegate = self
@@ -49,7 +51,7 @@ class CategoriesViewController: UIViewController {
         title = "Categories"
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         navigationController?.navigationBar.topItem?.backButtonTitle = " "
-        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
+      
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
 
         let favoriteBtn = UIBarButtonItem()

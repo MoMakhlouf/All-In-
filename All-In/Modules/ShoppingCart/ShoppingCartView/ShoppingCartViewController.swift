@@ -30,8 +30,7 @@ class ShoppingCartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.backgroundColor = view.backgroundColor
-
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 20.0)!]
         
         currency = Defaults.defaults.getCurrency(key: "currency")
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
@@ -48,10 +47,6 @@ class ShoppingCartViewController: UIViewController {
        
         emptyCart()
         
-        
-              
-        
-        
     }
     //MARK: - CONVERT CURRENCY
     func convert(){
@@ -65,7 +60,6 @@ class ShoppingCartViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         shoppingCartTableView.reloadData()
         convert()
         emptyCart()

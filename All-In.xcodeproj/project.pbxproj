@@ -554,6 +554,7 @@
 		A8BD82AB286F3539000DA1E6 /* SettingsView */ = {
 			isa = PBXGroup;
 			children = (
+				A8D6E910286C31B400AF555B /* ViewController.swift */,
 				A8BD82AC286F3588000DA1E6 /* SettingsViewController.swift */,
 				A8BD82AD286F3588000DA1E6 /* SettingsViewController.xib */,
 				A8BD82B0286F35B8000DA1E6 /* AddNewAddressViewController.swift */,
@@ -610,7 +611,6 @@
 				A8D6E942286C326800AF555B /* Modules */,
 				A8D6E90C286C31B400AF555B /* AppDelegate.swift */,
 				A8D6E90E286C31B400AF555B /* SceneDelegate.swift */,
-				A8D6E910286C31B400AF555B /* ViewController.swift */,
 				A8C5E16B2883069E00C43724 /* allInNew.gif */,
 				A8D6E912286C31B400AF555B /* Main.storyboard */,
 				437BCC2F286FB42500B96CFC /* NavigationViewController.swift */,

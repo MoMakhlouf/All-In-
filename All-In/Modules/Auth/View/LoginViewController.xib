@@ -56,7 +56,7 @@
                         <constraint firstAttribute="height" constant="50" id="gXL-KK-4Fv"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" textContentType="password"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bK-a6-4YQ">
                     <rect key="frame" x="30" y="505" width="354" height="60"/>

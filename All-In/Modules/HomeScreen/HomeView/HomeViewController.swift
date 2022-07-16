@@ -10,18 +10,24 @@ import Kingfisher
 
 class HomeViewController: UIViewController {
 
-    @IBOutlet weak var brandsHomeCollection: UICollectionView!
+    @IBOutlet weak var brandsHomeCollection: UICollectionView!{
+        didSet{
+            brandsHomeCollection.register(UINib(nibName: "BrandsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "brandCell")
+        }
+    }
     
     @IBOutlet weak var brandsView: UIView!
     
-    @IBOutlet weak var adsCollectionView: UICollectionView!
+    @IBOutlet weak var adsCollectionView: UICollectionView!{
+        didSet{
+            adsCollectionView.register(UINib(nibName: "AdsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "adsCell")
+        }
+    }
     @IBOutlet weak var adsView: UIView!
 
 
     var brandsArray = [SmartCollection]()
     var adsPhotos = [UIImage(named: "adidas") , UIImage(named: "nike") , UIImage(named: "timberland") , UIImage(named: "adidas") ,  UIImage(named: "nike")]
-
-
 
     var timer : Timer?
     var currentCellIndex = 0
@@ -40,14 +46,11 @@ class HomeViewController: UIViewController {
             }
             
         }
-//MARK: - bransHomeCollection
-        brandsHomeCollection.dataSource = self
-        brandsHomeCollection.delegate = self
-        brandsHomeCollection.register(UINib(nibName: "BrandsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "brandCell")
-//MARK: - salesCollectionView
-        adsCollectionView.dataSource = self
-        adsCollectionView.delegate = self
-        adsCollectionView.register(UINib(nibName: "AdsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "adsCell")
+        
+        [adsCollectionView,brandsHomeCollection].forEach {
+            $0?.delegate   = self
+            $0?.dataSource = self
+        }
         
         startTimer()
 //MARK: - brands & Sales border
@@ -65,9 +68,9 @@ class HomeViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         navigationController?.navigationBar.topItem?.backButtonTitle = " "
     
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
-        
-        tabBarController?.tabBarController?.hidesBottomBarWhenPushed = true
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 20.0)!]
+       
+       // tabBarController?.tabBarController?.hidesBottomBarWhenPushed = true
         title = "Home"
         let favoriteBtn = UIBarButtonItem()
         favoriteBtn.image = UIImage(systemName: "heart.fill")
@@ -81,14 +84,7 @@ class HomeViewController: UIViewController {
         shoppingBagBtn.target = self
         navigationItem.rightBarButtonItems = [favoriteBtn, shoppingBagBtn]
         
-        let searchBtn = UIBarButtonItem()
-        searchBtn.image = UIImage(systemName: "magnifyingglass")
-        searchBtn.action = #selector(searchButton)
-        searchBtn.target = self
-        navigationItem.leftBarButtonItem = searchBtn
-        
-        
-
+     
     
         let homeViewModel = HomeViewModel()
         homeViewModel.fetchData()
@@ -100,19 +96,15 @@ class HomeViewController: UIViewController {
                 }
             }
             if let error = error{
-                
                 //vc.showAlertError(title: "Error", message: error.localizedDescription)
              
                 //displayAlert(title: "Error", message: error.localizedDescription)
                 print(error.localizedDescription)
             }
         }
-        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
 
     }
-    
-   
-    
+ 
     
     //MARK: - Timer section for scrollable collectionView
     
@@ -132,23 +124,11 @@ class HomeViewController: UIViewController {
        
     }
 
-    
-
-    
     override func viewWillAppear(_ animated: Bool) {
        // navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 
 }
@@ -188,7 +168,6 @@ extension HomeViewController: UICollectionViewDataSource{
         cell.brandImg.kf.setImage(with: URL(string: brandsArray[indexPath.row].image.src))
 
         return cell
-        
     }
 }
 
@@ -228,12 +207,6 @@ extension HomeViewController{
         
     }
     
-    @objc func searchButton(){
-        
-        let product = BrandsViewController()
-        self.navigationController?.pushViewController(product, animated: true)
-        
-    }
 }
 
 extension HomeViewController{

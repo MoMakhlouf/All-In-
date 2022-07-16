@@ -26,8 +26,14 @@ class ProfileViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let fav = DBManager.sharedInstance
     
+    var currency = ""
+    var usdValue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
         
         isUserLogged()
         
@@ -37,7 +43,7 @@ class ProfileViewController: UIViewController {
     
       //  notLoginView.isHidden = true
       
-        self.userNameLbl.text = "Hi, " + Helper.shared.getUserName()!
+        self.userNameLbl.text = "Hi, " + (Helper.shared.getUserName() ?? "")
         
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
@@ -84,6 +90,7 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         isUserLogged()
+        self.userNameLbl.text = "Hi, " + (Helper.shared.getUserName() ?? "")
 
         favArray = fav.fetchData(appDelegate: appDelegate)
         self.emptyOrders()
@@ -178,7 +185,16 @@ extension ProfileViewController: UITableViewDataSource{
         if tableView == FavouriteTableView{
             let cell = FavouriteTableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as! FavoriteTableViewCell
             cell.faveName.text = favArray[indexPath.row].productName
-            cell.favePrice.text = favArray[indexPath.row].productPrice
+            
+            if currency == "USD"{
+                cell.favePrice.text = (favArray[indexPath.row].productPrice ?? "") + " USD"
+            }else{
+                let price = Double(favArray[indexPath.row].productPrice!)! * Double(usdValue)!
+                cell.favePrice.text = String(format: "%.2f", price) + " EGP"
+            }
+            
+            
+            
             cell.FavImg.loadFromFave(URLAddress: favArray[indexPath.row].productImage!)
             return cell
         }

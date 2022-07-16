@@ -224,7 +224,7 @@ class NetworkManager : ApiServices{
                
     var request = URLRequest(url: url ,timeoutInterval: Double.infinity)
       request.httpMethod = "GET"
-      request.addValue("2b97e06d1c4f59be80c05263dfb045d5", forHTTPHeaderField: "apikey")
+      request.addValue("KX1meTvjzo4EiW0WpUeioQ0culiolI4l", forHTTPHeaderField: "apikey")
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         

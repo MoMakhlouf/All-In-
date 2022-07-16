@@ -28,7 +28,6 @@ class ListOfAddressesViewController: UIViewController {
     let userDefaults = UserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
 
         noAddressView.isHidden = true
         
