@@ -73,7 +73,7 @@ class SettingsViewController: UIViewController {
             if succes {
                 Helper.shared.setUserStatus(userIsLogged: false)
                 Helper.shared.setFoundAdress(isFoundAddress: false)
-                let logout = MyAccountViewController()
+                let logout = HomeViewController()
                 self.navigationController?.pushViewController(logout, animated: true)
             }
         }

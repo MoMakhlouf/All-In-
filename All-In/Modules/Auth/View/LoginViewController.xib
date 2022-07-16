@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="All_In" customModuleProvider="target">
             <connections>
                 <outlet property="SignLabel" destination="vCF-Le-wUV" id="FBw-i2-igt"/>
-                <outlet property="SignUp" destination="7bK-a6-4YQ" id="X8C-fY-tNW"/>
+                <outlet property="SignUp" destination="7bK-a6-4YQ" id="pGd-kL-gxq"/>
                 <outlet property="signIn" destination="inF-Gi-B54" id="62l-au-BnV"/>
                 <outlet property="txtEmail" destination="v3e-1Y-ecV" id="ZAQ-RK-DMm"/>
                 <outlet property="txtPassword" destination="7ES-tQ-VaZ" id="7TO-qF-Baq"/>
@@ -68,8 +68,7 @@
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" title="SignUp"/>
                     <connections>
-                        <action selector="SignUp:" destination="-1" eventType="touchUpInside" id="wEc-mA-sPW"/>
-                        <action selector="signUpButton:" destination="-1" eventType="touchUpInside" id="RwB-PD-KPO"/>
+                        <action selector="SignUpButton:" destination="-1" eventType="touchUpInside" id="Ifu-IJ-Fwd"/>
                     </connections>
                 </button>
             </subviews>

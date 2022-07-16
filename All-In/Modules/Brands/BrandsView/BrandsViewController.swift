@@ -10,12 +10,17 @@ import Kingfisher
 
 class BrandsViewController: UIViewController{
     
+   
+    let searchController = UISearchController()
+    @IBOutlet weak var brandSearch: UISearchBar!
     
     var brandName: String?
     var productsArray = [Product]()
     var productsArray2 = [Product]()
     //   var productPriceArray: [String] = []
     var productPriceArray2: [Float] = []
+    var productList = [Product]()
+    var filterdProduct = [Product]()
     var number: Float = 0.0
     @IBOutlet weak var brandsCollectionView: UICollectionView!
     
@@ -24,7 +29,7 @@ class BrandsViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         currency = Defaults.defaults.getCurrency(key: "currency")
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
         
@@ -72,7 +77,7 @@ class BrandsViewController: UIViewController{
             }
         }
     }
-    
+     
     @objc func filterBrands(){
         
         let filterVC = FilterViewController()
@@ -102,17 +107,32 @@ class BrandsViewController: UIViewController{
 }
 extension BrandsViewController: UICollectionViewDelegate{
     
+    
 }
 
 extension BrandsViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if(searchController.isActive)
+        {
+            return filterdProduct.count
+        }
         return productsArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = brandsCollectionView.dequeueReusableCell(withReuseIdentifier: "productsBrandCell", for: indexPath) as! ProuctsBrandCollectionViewCell
+        
+        
+  
+        
+        
+        
+        
+        
+        
         cell.nameProductLbl.text = productsArray[indexPath.row].title + " \\" + productsArray[indexPath.row].variants[0].option2
+        
         
         if currency == "USD"  {
             let price: Float = (Float(productsArray[indexPath.row].variants[0].price)!)
@@ -123,8 +143,36 @@ extension BrandsViewController: UICollectionViewDataSource{
         }
         
         
+        
         //cell.prouctImg.sd_setImage(with: URL(string: productsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
         cell.prouctImg.kf.setImage(with: URL(string: productsArray[indexPath.row].image.src))
+        
+        cell.favClicked =
+        {[weak self]in
+            guard let self = self else {return}
+            Helper.shared.checkUserIsLogged { [self] userLogged in
+                       if userLogged{
+                           cell.favouriteBtn.imageView?.image
+                           = UIImage(named: "plus")
+                   let db = DBManager.sharedInstance
+                           let  Img =  self.productsArray[indexPath.row].image.src
+                   let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                           db.addProduct(productName: cell.nameProductLbl.text ?? "", productImage: Img , productPrice:self.productsArray[indexPath.row].variants[0].price ,  productDescription: "" , appDelegate: appDelegate)
+           
+                       }else{
+                           goToLoginPage()
+                       }
+                       func goToLoginPage(){
+                           let login = LoginViewController()
+                           self.navigationController?.pushViewController(login, animated: true)
+                       }
+                   }
+        }
+        
+        
+        
+        
+        
         return cell
     }
     
@@ -134,8 +182,10 @@ extension BrandsViewController: UICollectionViewDataSource{
         productDetails.productInfo = productsArray[indexPath.row]
         navigationController?.pushViewController(productDetails, animated: true)
     }
+    
+   
 }
-
+ 
 
 
 extension BrandsViewController: UICollectionViewDelegateFlowLayout{

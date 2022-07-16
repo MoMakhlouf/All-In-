@@ -184,7 +184,7 @@ class NetworkManager : ApiServices{
                
     var request = URLRequest(url: url ,timeoutInterval: Double.infinity)
       request.httpMethod = "GET"
-      request.addValue("1MbglPqUQN1RM5wwo7Z8q1yzg7QZyshJ", forHTTPHeaderField: "apikey")
+      request.addValue("XaGOO6Zq3YNHIxyk3ibbCnp7IuoI0te4", forHTTPHeaderField: "apikey")
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         

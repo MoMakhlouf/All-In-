@@ -225,6 +225,8 @@ extension HomeViewController{
     
     @objc func searchButton(){
         
+        let product = BrandsViewController()
+        self.navigationController?.pushViewController(product, animated: true)
         
     }
 }

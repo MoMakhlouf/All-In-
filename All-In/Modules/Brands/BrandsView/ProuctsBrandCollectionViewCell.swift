@@ -9,7 +9,9 @@ import UIKit
 
 class ProuctsBrandCollectionViewCell: UICollectionViewCell {
     
-    
+     
+    var favClicked: (()->())?
+    var productse:Product?
     @IBOutlet weak var priceProductLbl: UILabel!
     @IBOutlet weak var nameProductLbl: UILabel!
     @IBOutlet weak var pageControlImage: UIPageControl!
@@ -24,6 +26,29 @@ class ProuctsBrandCollectionViewCell: UICollectionViewCell {
     @IBAction func pageControlImage(_ sender: Any) {
     }
     
-    @IBAction func favouriteBtn(_ sender: Any) {
+ 
+    @IBAction func FavoriteBtnPressed(_ sender: UIButton) {
+        favClicked?()
+    
     }
+    
 }
+ 
+ 
+//        Helper.shared.checkUserIsLogged { [self] userLogged in
+//            if userLogged{
+//         sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//        let db = DBManager.sharedInstance
+//                let  Img = productInfo?.image.src
+//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//                db.addProduct(productName: nameProductLbl.text ?? "", productImage: Img ?? "", productPrice: priceProductLbl.text ?? "", productDescription: "goofd" , appDelegate: appDelegate)
+//
+//            }else{
+//                goToLoginPage()
+//            }
+//            func goToLoginPage(){
+//                let login = LoginViewController()
+//                self.navigationController?.pushViewController(login, animated: true)
+//            }
+//        }
+//

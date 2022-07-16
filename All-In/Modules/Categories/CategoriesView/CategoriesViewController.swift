@@ -188,13 +188,33 @@ extension CategoriesViewController: UICollectionViewDataSource{
             
             
         cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))
-        return cell
+         cell.favClicked =
+        {[weak self]in
+            guard let self = self else {return}
+            Helper.shared.checkUserIsLogged { [self] userLogged in
+                       if userLogged{
+                           
+                        let db = DBManager.sharedInstance
+                           let  Img =  self.menArray[indexPath.row].image.src
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                           db.addProduct(productName:"", productImage: Img , productPrice: self.menArray[indexPath.row].variants[0].price  , productDescription: "" , appDelegate: appDelegate)
+
+                       }else{
+                           goToLoginPage()
+                       
+                       }
+            }
+            func goToLoginPage(){
+                let login = LoginViewController()
+                self.navigationController?.pushViewController(login, animated: true)
+            }
+       
     }
-     
+        return cell
 
 }
     
-    
+}
 
 
 extension CategoriesViewController: UICollectionViewDelegateFlowLayout{

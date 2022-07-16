@@ -8,6 +8,9 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +29,15 @@ class TabBarController: UITabBarController {
         
       // MARK:- ordersTabBar
         let ordersTabBarItem = UITabBarItem(title: "My Account", image: UIImage(systemName: "person.circle"), tag: 3)
-        let ordersController = MyAccountViewController()//OrdersViewController()
-        //let ordersController = ProfileViewController()
-        let ordersNavigationController = UINavigationController(rootViewController: ordersController)
-        ordersNavigationController.tabBarItem = ordersTabBarItem
+                let Account = MyAccountViewController()
+                let AccountNavigationController = UINavigationController(rootViewController: Account)
+                
+                AccountNavigationController.tabBarItem = ordersTabBarItem
+        self.viewControllers = [homeNavigationController , caregoriesNavigationController, AccountNavigationController]
+                
         
-        
-        self.viewControllers = [homeNavigationController , caregoriesNavigationController, ordersNavigationController]
+
+         
        
         tabBar.tintColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
@@ -40,14 +45,9 @@ class TabBarController: UITabBarController {
         navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         navigationController?.isNavigationBarHidden = true
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+   
+    
+    
 }
+    
+ 

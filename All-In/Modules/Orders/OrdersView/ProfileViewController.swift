@@ -36,6 +36,10 @@ class ProfileViewController: UIViewController {
     }
     
 
+    @IBAction func LogOutBtnPressed(_ sender: Any) {
+        let home = HomeViewController()
+        navigationController?.pushViewController(home, animated: true)
+    }
     /*
     // MARK: - Navigation
 
