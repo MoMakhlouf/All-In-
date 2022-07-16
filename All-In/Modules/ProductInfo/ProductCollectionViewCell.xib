@@ -17,15 +17,15 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s07-kb-529">
-                        <rect key="frame" x="29" y="10" width="260" height="165"/>
+                        <rect key="frame" x="29" y="0.0" width="260" height="185"/>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="s07-kb-529" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="29" id="Td2-43-XXP"/>
-                <constraint firstItem="s07-kb-529" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="bxI-aO-dHO"/>
-                <constraint firstAttribute="bottom" secondItem="s07-kb-529" secondAttribute="bottom" constant="10" id="v8s-7l-vvb"/>
+                <constraint firstItem="s07-kb-529" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bxI-aO-dHO"/>
+                <constraint firstAttribute="bottom" secondItem="s07-kb-529" secondAttribute="bottom" id="v8s-7l-vvb"/>
                 <constraint firstAttribute="trailing" secondItem="s07-kb-529" secondAttribute="trailing" constant="28" id="vPp-L7-6gJ"/>
             </constraints>
             <size key="customSize" width="317" height="185"/>
@@ -34,10 +34,10 @@
                     <real key="value" value="25"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                    <real key="value" value="5"/>
+                    <real key="value" value="0.0"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                    <color key="value" red="0.95467649001579891" green="0.80415550115654222" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                     <real key="value" value="-1"/>

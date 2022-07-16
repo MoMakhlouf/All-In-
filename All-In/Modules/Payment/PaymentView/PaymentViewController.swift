@@ -53,6 +53,7 @@ class PaymentViewController: UIViewController {
         discountCodeModel.getDiscountCode()
         discountCodeModel.bindingData = { discounts , error in
             if let discounts = discounts{
+                print("www\(discounts)")
                 self.discountCodesArray = discounts
             }
             if let error = error {
@@ -67,6 +68,7 @@ class PaymentViewController: UIViewController {
         print(discountCodesArray.count)
         getItems()
         print(cartItems.count)
+       
 
     }
     

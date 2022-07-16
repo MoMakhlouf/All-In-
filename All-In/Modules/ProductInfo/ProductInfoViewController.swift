@@ -44,6 +44,8 @@ class ProductInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.backgroundColor = view.backgroundColor
+     
         currency = Defaults.defaults.getCurrency(key: "currency")
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
         
@@ -57,11 +59,11 @@ class ProductInfoViewController: UIViewController {
    // ProductDetailsCollection.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductDetailsCell")
         if currency == "USD" {
             let price = Double((productInfo?.variants[0].price)!)
-            ProducrPrice1.text =  String(format: "%0.2f", price!) + "USD"
+            ProducrPrice1.text =  String(format: "%0.2f", price!) + " USD"
              
         }else{
             let egpPrice = Double((productInfo?.variants[0].price)!)! * Double(usdValue)!
-            ProducrPrice1.text =  String(format: "%0.2f", egpPrice) + "EGP"
+            ProducrPrice1.text =  String(format: "%0.2f", egpPrice) + " EGP"
         }
         ProductName1.text = productInfo?.title
         ProductPageControl.numberOfPages = (productInfo?.images.count)!

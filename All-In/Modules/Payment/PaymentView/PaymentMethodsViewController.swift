@@ -46,8 +46,7 @@ class PaymentMethodsViewController: UIViewController  {
         totalAmountLabel.text = "\(totalAmount)"
         currency = Defaults.defaults.getCurrency(key: "currency")
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
-     
-      
+   
         orderPlacedView.isHidden = true
         placeOrderButton.layer.cornerRadius = 15
         continueShoppingButton.layer.cornerRadius = 15
@@ -55,21 +54,15 @@ class PaymentMethodsViewController: UIViewController  {
         placeOrderButton.isEnabled = false
         placeOrderIndicator.hidesWhenStopped = true
         
-
         getChosenAddress()
         
-           
         if currency == "USD"{
         totalAmountLabel.text = "Total: \(totalAmount) USD"
         }else{
            let totalEgp = totalAmount * Double(usdValue)!
             
             totalAmountLabel.text = "Total: \( String(format: "%.2f", totalEgp)) EGP"
-
         }
-     
-        
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {

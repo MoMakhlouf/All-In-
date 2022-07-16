@@ -29,22 +29,20 @@ class CategoriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currency = Defaults.defaults.getCurrency(key: "currency")
-        usdValue = Defaults.defaults.getUsdValue(key: "usd")
+       
         
         categoriesCollection.delegate = self
         categoriesCollection.dataSource = self
         categoriesCollection.register(UINib(nibName: "CategoryCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "categoryCell")
        
-        
+       
       //  categoriesCollection.register(UINib(nibName: "ProuctsBrandCollectionViewCell" , bundle: nil), forCellWithReuseIdentifier: "productsBrandCell")
         // MARK: - navigationBar
         
         title = "Categories"
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         navigationController?.navigationBar.topItem?.backButtonTitle = " "
-        self.navigationController?.navigationBar.barTintColor = .clear
-        navigationController?.navigationBar.backgroundColor = .clear
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
 
         let favoriteBtn = UIBarButtonItem()
@@ -106,7 +104,12 @@ class CategoriesViewController: UIViewController {
         }
     }
     
-
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
+        categoriesCollection.reloadData()
+    }
 
     @objc func favoriteButton(){
         
@@ -124,6 +127,7 @@ class CategoriesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        categoriesCollection.reloadData()
     }
     
     @IBAction func segmentedDidChange(_ sender: Any) {
@@ -172,7 +176,7 @@ extension CategoriesViewController: UICollectionViewDataSource{
       
 
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
- 
+        categoriesCollection.reloadItems(at: [indexPath])
      /*   cell.nameProductLbl.text = menArray[indexPath.row].title + " \\" + menArray[indexPath.row].variants[0].option2
         let price: Float = (Float(menArray[indexPath.row].variants[0].price)! * 20.0)
         cell.priceProductLbl.text = String(price) + " EGP"
@@ -181,10 +185,10 @@ extension CategoriesViewController: UICollectionViewDataSource{
         let price: Float = (Float(menArray[indexPath.row].variants[0].price)!)
         cell.categoryPriceLbl.text = String(format: "%0.2f", price) + " USD"
         }else{
-            let price: Float = (Float(menArray[indexPath.row].variants[0].price)! * Float(usdValue)!)
-            cell.categoryPriceLbl.text =  String(format: "%0.2f",  price) + " EGP"
+            let priceegp: Float = (Float(menArray[indexPath.row].variants[0].price)! * Float(usdValue)!)
+            cell.categoryPriceLbl.text =  String(format: "%0.2f",  priceegp) + " EGP"
         }
-            
+    
             
             
         cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))

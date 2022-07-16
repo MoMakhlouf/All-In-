@@ -28,7 +28,8 @@ class ListOfAddressesViewController: UIViewController {
     let userDefaults = UserDefaults()
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
+
         noAddressView.isHidden = true
         
         print(addressesArray.count)
@@ -69,10 +70,10 @@ class ListOfAddressesViewController: UIViewController {
     
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
         
-      //  let add = AddNewAddressViewController()
-       // navigationController?.pushViewController(add, animated: true)
-    let setting = SettingsViewController()
-    navigationController?.pushViewController(setting, animated: true)
+        let add = AddNewAddressViewController()
+        navigationController?.pushViewController(add, animated: true)
+    //let setting = SettingsViewController()
+    //navigationController?.pushViewController(setting, animated: true)
     
     }
     

@@ -9,6 +9,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var currencySwitch: UISegmentedControl!
     @IBOutlet weak var logoutButton: UIButton!
     let userdefault = UserDefaults.standard
@@ -19,12 +20,13 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        loadIndicator.hidesWhenStopped = true
         
         navigationItem.title = "Settings"
         logoutButton.layer.cornerRadius = 15
         updateSegment()
-        // Do any additional setup after loading the view.
+        
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
     }
     
 
@@ -45,23 +47,26 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func currencySwitchControlPressed(_ sender: UISegmentedControl) {
-        
         switch currencySwitch.selectedSegmentIndex {
         
         case 0 : Defaults.defaults.setCurrency(key: "currency", value: "USD")
             userdefault.set(segmentUSD , forKey: segmentConvert)
-          //   let home = HomeViewController()
-           // navigationController?.pushViewController(home, animated: true)
+            loadIndicator.startAnimating()
+            Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
+                self.navigationController?.popToRootViewController(animated: true)
+            }
             
         case 1 : Defaults.defaults.setCurrency(key: "currency", value: "EGP")
             userdefault.set(segmentEGP , forKey: segmentConvert)
-
-           // let home = HomeViewController()
-           //navigationController?.pushViewController(home, animated: true)
-           
+            loadIndicator.startAnimating()
+            Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
+                self.navigationController?.popToRootViewController(animated: true)
+            }
         default:
             break
         }
+        
+        
         print(currencySwitch.titleForSegment(at: currencySwitch.selectedSegmentIndex)!)
     }
     

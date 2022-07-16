@@ -49,6 +49,9 @@ extension ShoppingCartDBManager{
         var fetchedList : [ShoppingCartDB] = []
         let managedContext = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ShoppingCartDB")
+        
+//        let predicate = NSPredicate(format: "customerId == %@", Helper.shared.getUserID()!)
+//         fetchRequest.predicate = predicate
         do{
             fetchedList = try managedContext.fetch(fetchRequest) as! [ShoppingCartDB]
         } catch{

@@ -27,7 +27,8 @@ class LoginViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
+
         signIn.layer.cornerRadius = 15
         SignUp.layer.cornerRadius = 15
         guard let id = Helper.shared.getUserID() else {return}
@@ -46,7 +47,8 @@ class LoginViewController: UIViewController {
                 
             }
         }
-        }
+        
+    }
     func goToProfile(){
         let profile = ProfileViewController()
         navigationController?.pushViewController(profile, animated: true)
@@ -56,8 +58,8 @@ class LoginViewController: UIViewController {
         let reg = RgisterViewController()
         navigationController?.pushViewController(reg, animated: true)
     }
-   
-    }
+    
+}
      
  
     

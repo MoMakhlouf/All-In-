@@ -35,7 +35,6 @@ class HomeViewController: UIViewController {
         currencyViewModel.bindingData = { result , error in
             if let result = result{
                 self.result = result
-                    print("\(result)")
                 Defaults.defaults.setUsdValue(value:String(result), key: "usd")
             }
             
@@ -64,8 +63,7 @@ class HomeViewController: UIViewController {
         
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         navigationController?.navigationBar.topItem?.backButtonTitle = " "
-        self.navigationController?.navigationBar.barTintColor = .clear
-        navigationController?.navigationBar.backgroundColor = .clear
+    
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
         
         tabBarController?.tabBarController?.hidesBottomBarWhenPushed = true
@@ -89,7 +87,6 @@ class HomeViewController: UIViewController {
         navigationItem.leftBarButtonItem = searchBtn
         
         
-        print("qqqq\(Helper.shared.getUserID())")
 
 
     
@@ -107,6 +104,8 @@ class HomeViewController: UIViewController {
                 //print(error.localizedDescription)
             }
         }
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
+
     }
     
     
@@ -192,7 +191,7 @@ extension HomeViewController: UICollectionViewDataSource{
 extension HomeViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == brandsHomeCollection{
-            return CGSize(width: collectionView.frame.width , height: collectionView.frame.height * 0.5)
+            return CGSize(width: collectionView.frame.width * 0.48 , height: collectionView.frame.height * 0.5)
         }
         return CGSize(width: collectionView.frame.width , height: collectionView.frame.height)
     }
@@ -232,19 +231,19 @@ extension HomeViewController{
 extension HomeViewController{
     func goToFavoritePage(){
         let FavoriteVC = FavoriteViewController()
-        FavoriteVC.hidesBottomBarWhenPushed = true
+      //  FavoriteVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(FavoriteVC, animated: true)
     }
     
     func goToCartPage(){
         let cartVC = ShoppingCartViewController()
-        cartVC.hidesBottomBarWhenPushed = true
+       // cartVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(cartVC, animated: true)
     }
     
     func goToLoginPage(){
         let loginVC = LoginViewController()
-        loginVC.hidesBottomBarWhenPushed = true
+       // loginVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(loginVC, animated: true)
     }
 }

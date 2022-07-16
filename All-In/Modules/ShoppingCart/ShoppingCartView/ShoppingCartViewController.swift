@@ -30,6 +30,8 @@ class ShoppingCartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.backgroundColor = view.backgroundColor
+
         
         currency = Defaults.defaults.getCurrency(key: "currency")
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
@@ -74,8 +76,9 @@ class ShoppingCartViewController: UIViewController {
     
     //MARK: - Get Items From CoreData
     func getItems(){
-
+        
         cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
+       
         print(cartItems.count)
           DispatchQueue.main.async {
               
@@ -120,7 +123,7 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
         
 //        for item in cartItems {
 //            if item.customerId == Helper.shared.getUserID()!{
-//                
+              
          
 
         

@@ -71,6 +71,7 @@ class BrandsViewController: UIViewController{
                 //print(error.localizedDescription)
             }
         }
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
     }
     
     @objc func filterBrands(){
@@ -122,7 +123,7 @@ extension BrandsViewController: UICollectionViewDataSource{
             cell.priceProductLbl.text = String(format: "%.2f",  price) + " EGP"
         }
         
-        
+       
         //cell.prouctImg.sd_setImage(with: URL(string: productsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
         cell.prouctImg.kf.setImage(with: URL(string: productsArray[indexPath.row].image.src))
         return cell

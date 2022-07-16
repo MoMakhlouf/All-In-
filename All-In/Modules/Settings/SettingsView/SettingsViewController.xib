@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController" customModule="All_In" customModuleProvider="target">
             <connections>
                 <outlet property="currencySwitch" destination="WLt-V2-A1d" id="wCx-s7-8qA"/>
+                <outlet property="loadIndicator" destination="Y5g-8c-f1W" id="J37-Nu-u5C"/>
                 <outlet property="logoutButton" destination="oOc-8s-xY6" id="ROM-GF-r9N"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -87,12 +88,17 @@
                         <action selector="logOutButtonPressed:" destination="-1" eventType="touchUpInside" id="44P-3A-CNV"/>
                     </connections>
                 </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Y5g-8c-f1W">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemGray6Color"/>
             <constraints>
                 <constraint firstItem="pp4-Ie-keg" firstAttribute="top" secondItem="vWu-e9-HTu" secondAttribute="bottom" constant="40" id="JGi-cR-sON"/>
+                <constraint firstItem="Y5g-8c-f1W" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="L6K-Mh-Xqz"/>
                 <constraint firstItem="pp4-Ie-keg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="UBK-xD-XD6"/>
+                <constraint firstItem="Y5g-8c-f1W" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ank-aQ-SNX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="oOc-8s-xY6" secondAttribute="bottom" constant="100" id="hte-6J-tlp"/>
                 <constraint firstItem="vWu-e9-HTu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="j3w-qS-kCe"/>
                 <constraint firstItem="vWu-e9-HTu" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="70" id="u1f-Y9-Qdv"/>
@@ -100,7 +106,7 @@
                 <constraint firstItem="oOc-8s-xY6" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="xWl-Bt-L7o"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="pp4-Ie-keg" secondAttribute="trailing" constant="20" id="zyq-e9-sI5"/>
             </constraints>
-            <point key="canvasLocation" x="437.68115942028987" y="110.49107142857143"/>
+            <point key="canvasLocation" x="-542" y="116"/>
         </view>
     </objects>
     <resources>

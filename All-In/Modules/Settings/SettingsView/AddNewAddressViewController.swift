@@ -21,6 +21,8 @@ class AddNewAddressViewController: UIViewController {
         addNewAddressButton.layer.cornerRadius = 15
         
         print("qqqq\(Helper.shared.getUserID())")
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
+
     }
 
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
