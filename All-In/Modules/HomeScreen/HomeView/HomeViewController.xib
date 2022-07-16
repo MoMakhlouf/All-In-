@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -27,7 +27,7 @@
                     <rect key="frame" x="20" y="53.999999999999986" width="388" height="221.66666666666663"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="67Q-k2-OD1">
-                            <rect key="frame" x="15" y="15" width="358" height="191.66666666666666"/>
+                            <rect key="frame" x="0.0" y="0.0" width="388" height="221.66666666666666"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="yKW-k6-V46">
                                 <size key="itemSize" width="128" height="128"/>
@@ -35,17 +35,27 @@
                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="15"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </collectionView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <color key="tintColor" name="AccentColor"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="67Q-k2-OD1" secondAttribute="trailing" constant="15" id="E6x-Uc-6Tl"/>
+                        <constraint firstAttribute="trailing" secondItem="67Q-k2-OD1" secondAttribute="trailing" id="E6x-Uc-6Tl"/>
                         <constraint firstAttribute="width" secondItem="bfZ-Ro-jIm" secondAttribute="height" multiplier="7:4" id="csm-XS-Vwo"/>
-                        <constraint firstItem="67Q-k2-OD1" firstAttribute="top" secondItem="bfZ-Ro-jIm" secondAttribute="top" constant="15" id="hRU-Fu-DaP"/>
-                        <constraint firstAttribute="bottom" secondItem="67Q-k2-OD1" secondAttribute="bottom" constant="15" id="t3k-6o-4Yh"/>
-                        <constraint firstItem="67Q-k2-OD1" firstAttribute="leading" secondItem="bfZ-Ro-jIm" secondAttribute="leading" constant="15" id="th5-xn-7Di"/>
+                        <constraint firstItem="67Q-k2-OD1" firstAttribute="top" secondItem="bfZ-Ro-jIm" secondAttribute="top" id="hRU-Fu-DaP"/>
+                        <constraint firstAttribute="bottom" secondItem="67Q-k2-OD1" secondAttribute="bottom" id="t3k-6o-4Yh"/>
+                        <constraint firstItem="67Q-k2-OD1" firstAttribute="leading" secondItem="bfZ-Ro-jIm" secondAttribute="leading" id="th5-xn-7Di"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brands" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b4v-tf-zfD">
                     <rect key="frame" x="20" y="300.66666666666669" width="388" height="30"/>

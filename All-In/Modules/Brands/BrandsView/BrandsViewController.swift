@@ -18,11 +18,17 @@ class BrandsViewController: UIViewController{
     var productsArray = [Product]()
     var productsArray2 = [Product]()
     //   var productPriceArray: [String] = []
+    
+
     var productPriceArray2: [Float] = []
     var productList = [Product]()
     var filterdProduct = [Product]()
     var number: Float = 0.0
+    var minumVlaue: Float = 0.0
+
     @IBOutlet weak var brandsCollectionView: UICollectionView!
+        
+    
     
     var currency = ""
     var usdValue = ""
@@ -40,6 +46,10 @@ class BrandsViewController: UIViewController{
         brandsCollectionView.register(UINib(nibName: "ProuctsBrandCollectionViewCell" , bundle: nil), forCellWithReuseIdentifier: "productsBrandCell")
         self.brandsCollectionView.register(UINib(nibName: "BrandNameCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: "kind2", withReuseIdentifier: "brandNameCell")
         
+        //self.navigationController?.setNavigationBarHidden(true, animated: true)
+       // self.tabBarController?.tabBar.isHidden = true
+        
+        
         let filterBtn = UIBarButtonItem()
         filterBtn.image = UIImage(systemName: "line.3.horizontal.decrease")
         filterBtn.action = #selector(filterBrands)
@@ -47,12 +57,7 @@ class BrandsViewController: UIViewController{
         navigationItem.rightBarButtonItem = filterBtn
         navigationItem.title = "Brands"
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
-       // navigationController?.isNavigationBarHidden = true
-        
-        let tabbar = TabBarController()
-        tabbar.tabBarController?.tabBarController?.hidesBottomBarWhenPushed = true
-        tabbar.navigationController?.navigationBar.isHidden = true
-        //tabBarController?.navigationController?.isToolbarHidden = true
+    
         
         let brandsModelView = BrandsViewModel()
         brandsModelView.fetchData()
@@ -84,6 +89,7 @@ class BrandsViewController: UIViewController{
         let filterVC = FilterViewController()
         navigationController?.pushViewController(filterVC, animated: true)
         //filterVC.productPriceArray = self.productPriceArray
+        filterVC.lastValue = self.minumVlaue
         filterVC.productArray = self.productsArray
         filterVC.convert = self.productPriceArray2
         filterVC.delegate2 = self
@@ -132,7 +138,7 @@ extension BrandsViewController: UICollectionViewDataSource{
         
         
         
-        cell.nameProductLbl.text = productsArray[indexPath.row].title + " \\" + productsArray[indexPath.row].variants[0].option2
+        cell.nameProductLbl.text = productsArray[indexPath.row].title + " - " + productsArray[indexPath.row].variants[0].option2
         
         
         if currency == "USD"  {
@@ -190,7 +196,7 @@ extension BrandsViewController: UICollectionViewDataSource{
 
 extension BrandsViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width , height: collectionView.frame.height * 0.6)
+        return CGSize(width: collectionView.frame.width * 0.48 , height: collectionView.frame.height * 0.6)
     }
   /* func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
        let header = brandsCollectionView.dequeueReusableSupplementaryView(ofKind: kind , withReuseIdentifier: "brandNameCell", for: indexPath) as! BrandNameCollectionReusableView
@@ -201,6 +207,7 @@ extension BrandsViewController: UICollectionViewDelegateFlowLayout{
 
 extension BrandsViewController: delegateFilter{
     func filterPrice(minn: Float, maxx: Float) {
+        self.minumVlaue = minn
         self.productsArray = self.productsArray2
         self.productsArray = productsArray.filter { products in
             Float(products.variants[0].price)! * 20 >= minn
@@ -208,14 +215,5 @@ extension BrandsViewController: delegateFilter{
         DispatchQueue.main.async {
             self.brandsCollectionView.reloadData()
         }
-        //self.productsArray = []
-   /*     for x in products{
-            if Float(x.variants[0].price)! * 20 >= minn && Float(x.variants[0].price)! * 20 <= maxx {
-                self.productsArray.append(x)
-                DispatchQueue.main.async {
-                    self.brandsCollectionView.reloadData()
-                }
-            }
-        }*/
     }
 }

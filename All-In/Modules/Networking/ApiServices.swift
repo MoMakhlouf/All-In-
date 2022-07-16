@@ -25,5 +25,10 @@ protocol ApiServices {
     func fetchCollects(completion: @escaping (Collects?  , Error?) -> Void)
     func fetchCategories(completion: @escaping (CustomCollections?  , Error?) -> Void)
     
-
+    
+    func postOrder(customerID : Int  , line_items : [Items] , completion : @escaping(Data? , URLResponse? , Error?) ->())
+    
+    func getOrder(customerID : Int , completion : @escaping(Orders? , Error?) ->())
+    
+   // func getOrder(completion : @escaping(Orders? , Error?) ->())
 }

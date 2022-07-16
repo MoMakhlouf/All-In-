@@ -9,11 +9,28 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var allinGif: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let gif = UIImage.gifImageWithName("allInNew")
+        allinGif.image = gif
+        navigationController?.navigationBar.isHidden = true
+
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
+            
+            self.push()
+        }
+        
     }
 
+    
+    
+    func push(){
+        let tabbar = TabBarController()
+
+        self.navigationController?.pushViewController(tabbar, animated: true)
+    }
+    
 
 }
 

@@ -11,24 +11,28 @@ PODS:
     - Braintree/Core
     - Braintree/PayPalDataCollector
   - Braintree/PayPalDataCollector (5.10.0)
-  - Kingfisher (4.10.1)
+  - Floaty (4.1.0)
+  - Kingfisher (7.3.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.5)
   - Braintree (~> 5.0)
+  - Floaty (~> 4.1.0)
   - Kingfisher
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Braintree
+    - Floaty
     - Kingfisher
 
 SPEC CHECKSUMS:
   Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
   Braintree: a4df29b5453664ea01f89a04e0ae97397021c92f
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Floaty: 1a4e213f3512cf3045ef9cb0c1ff456226d1f66a
+  Kingfisher: cdb1189a9223b1bc028816bd47c8b8101a58831c
 
-PODFILE CHECKSUM: 6c11f92f84fb1e8c11ca20f14f83fc4d43072220
+PODFILE CHECKSUM: 92a34e1ce2a3b7717a0392f4de887e6ca1ee0df0
 
 COCOAPODS: 1.11.3

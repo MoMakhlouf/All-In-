@@ -18,6 +18,9 @@ class FillterTableViewCell: UITableViewCell{
     var changePrice: (()->())?
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        fromPriceField.isHidden = true
+        toPriceField.isHidden = true
     }
     
     
@@ -32,7 +35,7 @@ class FillterTableViewCell: UITableViewCell{
    
     }
     @IBAction func sliderPrice(_ sender: UISlider) {
-        self.fromPriceField.text = String( self.sliderPrice.value)
+        self.fromLbl.text = String( self.sliderPrice.value)
         changePrice?()
         
     }

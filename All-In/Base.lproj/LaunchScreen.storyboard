@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AllIN" translatesAutoresizingMaskIntoConstraints="NO" id="ddi-uy-BWL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ddi-uy-BWL">
                                 <rect key="frame" x="57" y="300" width="300" height="296"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="296" id="9vV-6B-bii"/>
@@ -38,7 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AllIN" width="1024" height="1024"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

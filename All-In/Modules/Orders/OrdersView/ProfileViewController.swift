@@ -9,18 +9,37 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    
+    @IBOutlet weak var userNameLbl: UILabel!
     @IBOutlet weak var moreBtnOrders: UIButton!
+    @IBOutlet weak var emptyOrder: UIView!
     @IBOutlet weak var ordersTableView: UITableView!
-    
-    
     @IBOutlet weak var moreBtnFavourite: UIButton!
+    
+    @IBOutlet weak var emptyFavorite: UIView!
     @IBOutlet weak var FavouriteTableView: UITableView!
+    
+    @IBOutlet weak var notLoginView: UIView!
+    
+    @IBOutlet weak var profileScrollView: UIScrollView!
+    var ordersArray = [Order]()
+    var favArray = [FavouriteDB]()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let fav = DBManager.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ordersTableView.register(UINib(nibName: "OrdersTableViewCell", bundle: nil), forCellReuseIdentifier: "orderCell")
+        isUserLogged()
         
+        emptyOrder.isHidden = false
+        ordersTableView.register(UINib(nibName: "OrdersTableViewCell", bundle: nil), forCellReuseIdentifier: "orderCell")
+        FavouriteTableView.register(UINib(nibName: "FavoriteTableViewCell", bundle: nil), forCellReuseIdentifier: "FavoriteCell")
+    
+      //  notLoginView.isHidden = true
+      
+        self.userNameLbl.text = "Hi, " + Helper.shared.getUserName()!
+        
+        self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
         let settingBtn = UIBarButtonItem()
         settingBtn.image = UIImage(systemName: "gearshape.fill")
@@ -33,22 +52,93 @@ class ProfileViewController: UIViewController {
         shoppingBagBtn.action = #selector(shoppingBagButton)
         shoppingBagBtn.target = self
         navigationItem.rightBarButtonItems = [settingBtn, shoppingBagBtn]
+        
+        favArray = fav.fetchData(appDelegate: appDelegate)
+        self.emptyFav()
+        
+        
+        
+        let ordersViewModel = OrdersModelView()
+        ordersViewModel.fetchData(customerID: Helper.shared.getUserID()!)
+        ordersViewModel.bindingData = { orders , error in
+            if let orders = orders{
+                self.ordersArray = orders.orders
+                DispatchQueue.main.async {
+                    self.ordersTableView.reloadData()
+                    self.emptyOrders()
+                }
+            }
+            if let error = error{
+               // Alert.displayAlert(title: "Error", message: "Orders can't be loaded")
+                print(error.localizedDescription)
+            }
+           
+        }
+        print("zzz\(ordersArray)")
+        
+        
+        self.emptyOrders()
+        self.emptyFav()
+  
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isUserLogged()
+
+        favArray = fav.fetchData(appDelegate: appDelegate)
+        self.emptyOrders()
+        self.emptyFav()
+        DispatchQueue.main.async {
+            self.FavouriteTableView.reloadData()
+            self.ordersTableView.reloadData()
+        }
+        
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    func isUserLogged() {
+        
+        Helper.shared.checkUserIsLogged { userLogged in
+            if userLogged{
+                self.profileScrollView.isHidden = false
+                self.navigationController?.navigationBar.isHidden = false
+
+            }else{
+                self.profileScrollView.isHidden = true
+                self.navigationController?.navigationBar.isHidden = true
+            }
+        }
+        
+    }
+    
+    
+    @IBAction func signInIfNotLogin(_ sender: UIButton) {
+        let login = LoginViewController()
+        navigationController?.pushViewController(login, animated: true)
+    }
+    
+    @IBAction func registerIfNotLogin(_ sender: UIButton) {
+        let register = RgisterViewController()
+        navigationController?.pushViewController(register, animated: true)
+    }
+    
+    
+/*    override func viewDidAppear(_ animated: Bool) {
+      
+        favArray = fav.fetchData(appDelegate: appDelegate)
+        self.emptyOrders()
+        self.emptyFav()
+    }
+    */
 
     @IBAction func LogOutBtnPressed(_ sender: Any) {
         let home = HomeViewController()
         navigationController?.pushViewController(home, animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
  
     @IBAction func moreBtnOrders(_ sender: Any) {
@@ -60,6 +150,7 @@ class ProfileViewController: UIViewController {
         let favoriteVC = FavoriteViewController()
         navigationController?.pushViewController(favoriteVC, animated: true)
     }
+    
 }
 
 
@@ -70,20 +161,33 @@ extension ProfileViewController: UITableViewDelegate {
 extension ProfileViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == ordersTableView{
-            return 2
+            if ordersArray.count < 2{
+                return ordersArray.count
+            }else{
+                return 2
+            }
         }
-        return 4
-        
+        if favArray.count < 4{
+            return favArray.count
+        }else{
+            return 4
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if tableView == FavouriteTableView{
+            let cell = FavouriteTableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath) as! FavoriteTableViewCell
+            cell.faveName.text = favArray[indexPath.row].productName
+            cell.favePrice.text = favArray[indexPath.row].productPrice
+            cell.FavImg.loadFromFave(URLAddress: favArray[indexPath.row].productImage!)
+            return cell
+        }
         let cell = ordersTableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as! OrdersTableViewCell
-        cell.numberOfOrder.text = "1234568" + "mdgjk"
-        cell.dateOfOrder.text = "12/5/6"
+        cell.nameOfProduct.text = String(ordersArray[indexPath.row].id)
+        cell.priceOfOrder.text = ordersArray[indexPath.row].current_total_price
+        cell.imgOfOrder.image = UIImage(named: "shoping")
         return cell
     }
-    
-    
 }
 
 
@@ -91,9 +195,8 @@ extension ProfileViewController{
     @objc func settingButton(){
         let settingVC = SettingsViewController()
         navigationController?.pushViewController(settingVC, animated: true)
-        
     }
-    
+
     @objc func shoppingBagButton(){
         let shoppingCart = ShoppingCartViewController()
         navigationController?.pushViewController(shoppingCart, animated: true)
@@ -107,3 +210,24 @@ extension ProfileViewController{
 //        self.userEmail.text = userEmail
 //    }
 //}
+
+extension ProfileViewController{
+    func emptyOrders(){
+        if ordersArray.isEmpty {
+            ordersTableView.isHidden = true
+        }else{
+            ordersTableView.isHidden = false
+        }
+    }
+    
+    func emptyFav(){
+        if favArray.isEmpty {
+            FavouriteTableView.isHidden = true
+        }else{
+            FavouriteTableView.isHidden = false
+        }
+    }
+    
+}
+
+

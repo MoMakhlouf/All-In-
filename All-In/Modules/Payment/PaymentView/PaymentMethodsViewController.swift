@@ -4,7 +4,6 @@
 //
 //  Created by Mohamed Makhlouf Ahmed on 30/06/2022.
 //
-
 import UIKit
 import WebKit
 import Braintree
@@ -55,19 +54,17 @@ class PaymentMethodsViewController: UIViewController  {
         placeOrderIndicator.hidesWhenStopped = true
         
         getChosenAddress()
-        
-        if currency == "USD"{
-        totalAmountLabel.text = "Total: \(totalAmount) USD"
-        }else{
-           let totalEgp = totalAmount * Double(usdValue)!
-            
-            totalAmountLabel.text = "Total: \( String(format: "%.2f", totalEgp)) EGP"
-        }
+        chosenCurrency()
     }
     
     override func viewWillAppear(_ animated: Bool) {
      getChosenAddress()
         
+       chosenCurrency()
+    }
+    
+    //MARK: - convert currency
+    func chosenCurrency(){
         if currency == "USD"{
         totalAmountLabel.text = "Total: \(totalAmount) USD"
         }else{
@@ -77,6 +74,7 @@ class PaymentMethodsViewController: UIViewController  {
 
         }
     }
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
@@ -157,6 +155,36 @@ class PaymentMethodsViewController: UIViewController  {
             self.navigationController?.navigationBar.isHidden = true
         }
        
+        cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
+               // self.address = addressesArray[0]
+                var jsonResponse = [String : [String : Any]]()
+                let item = cartItems[0]
+        
+        jsonResponse = ["order":["email":Helper.shared.getUserEmail() ?? "m@gmail.com","line_items":[["product_id": item.itemId,"title":item.title!,"price": item.price!,"quantity": item.itemQuantity,"sku":item.itemImage!]],"billing_address":["first_name": Helper.shared.getUserName(),"last_name":" ","address1": addressFullLabel.text ,"phone":"12345","city":"jjj","province":"","country":"egypt","zip":"124"],"customer":["id":Helper.shared.getUserID()]]]
+                
+                print(jsonResponse)
+                if let url = URL(string: Urls().ordersUrl){
+                    var request = URLRequest(url: url)
+                    request.httpMethod = "POST"
+                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+                    request.httpShouldHandleCookies = false
+                    if let httpBody = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) {
+                        print("json\(jsonResponse)")
+                        request.httpBody = httpBody
+                    }
+                    let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                        if let data = data {
+                            do{
+                                let json = try JSONSerialization.jsonObject(with: data, options: [])
+                                print(json)
+                            }catch {
+                                print("Errorrr\(error.localizedDescription)")
+                            }
+                        }
+                    }
+                    task.resume()
+                }
+        
 
         print("Delete All item from shopping cart")
         print(cartItems.count)
@@ -203,4 +231,6 @@ extension PaymentMethodsViewController : BTViewControllerPresentingDelegate{
 
 
 
+
 ///
+

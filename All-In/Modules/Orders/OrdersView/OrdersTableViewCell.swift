@@ -9,15 +9,18 @@ import UIKit
 
 class OrdersTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var numberOfOrder: UILabel!
+ 
+    @IBOutlet weak var nameOfProduct: UILabel!
     
-    @IBOutlet weak var dateOfOrder: UILabel!
+
+    @IBOutlet weak var priceOfOrder: UILabel!
     
     @IBOutlet weak var imgOfOrder: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        imgOfOrder.layer.borderWidth = 1
+        imgOfOrder.layer.borderColor = UIColor.black.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

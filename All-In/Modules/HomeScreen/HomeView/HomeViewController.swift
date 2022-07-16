@@ -29,6 +29,7 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         let currencyViewModel = CurrencyViewModel()
         currencyViewModel.convertCurrency(amount: "1")
@@ -88,7 +89,6 @@ class HomeViewController: UIViewController {
         
         
 
-
     
         let homeViewModel = HomeViewModel()
         homeViewModel.fetchData()
@@ -100,13 +100,18 @@ class HomeViewController: UIViewController {
                 }
             }
             if let error = error{
-                Alert.displayAlert(title: "Error", message: error.localizedDescription)
-                //print(error.localizedDescription)
+                
+                //vc.showAlertError(title: "Error", message: error.localizedDescription)
+             
+                //displayAlert(title: "Error", message: error.localizedDescription)
+                print(error.localizedDescription)
             }
         }
         navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
 
     }
+    
+   
     
     
     //MARK: - Timer section for scrollable collectionView
@@ -132,6 +137,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
        // navigationController?.setNavigationBarHidden(true, animated: true)
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     /*
@@ -162,7 +168,6 @@ extension HomeViewController: UICollectionViewDataSource{
         if collectionView == adsCollectionView{
             return adsPhotos.count
         }
-        
         return brandsArray.count
     }
     
@@ -217,6 +222,7 @@ extension HomeViewController{
                 self.goToCartPage()
             }else{
                 self.goToLoginPage()
+                //self.goToCartPage()
             }
         }
         
@@ -233,19 +239,18 @@ extension HomeViewController{
 extension HomeViewController{
     func goToFavoritePage(){
         let FavoriteVC = FavoriteViewController()
-      //  FavoriteVC.hidesBottomBarWhenPushed = true
+     
         self.navigationController?.pushViewController(FavoriteVC, animated: true)
     }
     
     func goToCartPage(){
         let cartVC = ShoppingCartViewController()
-       // cartVC.hidesBottomBarWhenPushed = true
+       
         self.navigationController?.pushViewController(cartVC, animated: true)
     }
     
     func goToLoginPage(){
         let loginVC = LoginViewController()
-       // loginVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(loginVC, animated: true)
     }
 }

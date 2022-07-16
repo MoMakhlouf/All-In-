@@ -13,6 +13,7 @@ struct Urls {
     var customerId  = 0
     var addressId = 0
     var amount = ""
+     
 
     var baseUrl  : String {
         
@@ -39,6 +40,14 @@ struct Urls {
     
     var currencyUrl : String {
         return "https://api.apilayer.com/currency_data/convert?to=EGP&from=USD&amount=\(amount)"
+    }
+    
+    var customerOrdersUrl: String{
+        return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/customers/\(customerId)/orders.json?access_token=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"
+    }
+    
+    var ordersUrl: String{
+        return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/orders.json?access_token=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"
     }
         
 

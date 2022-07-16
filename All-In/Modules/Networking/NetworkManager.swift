@@ -9,11 +9,53 @@ import Foundation
 import Alamofire
 
 class NetworkManager : ApiServices{
-    
-    
-  static let shared = NetworkManager()
   
+ 
+  static let shared = NetworkManager()
     
+    
+    func postOrder(customerID : Int  , line_items : [Items] , completion : @escaping(Data? , URLResponse? , Error?) ->()){
+        if let url = URL(string: Urls().ordersUrl){
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpShouldHandleCookies = false
+            if let httpBody = try? JSONSerialization.data(withJSONObject: line_items, options: []) {
+                
+                request.httpBody = httpBody
+            }
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                
+                if let data = data {
+                    do{
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        
+                        print(json)
+                        print("post")
+                    }catch {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+            task.resume()
+        }
+        
+    }
+    
+    func getOrder(customerID: Int, completion: @escaping (Orders?, Error?) -> ()) {
+            if let url = URL(string: Urls(customerId: customerID).customerOrdersUrl){
+               URLSession.shared.dataTask(with: url) { data, response, error in
+                    if let data = data{
+                        let decodJson = JSONDecoder()
+                        let decodedArray = try? decodJson.decode(Orders.self, from: data)
+                            completion(decodedArray , nil)
+                        }
+                    if let error = error {
+                        completion(nil,error)
+                    }
+               }.resume()
+            }
+        }
     
     func fetchCategories(completion: @escaping (CustomCollections?, Error?) -> Void) {
         if let url = URL(string: "https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/custom_collections.json?access_token=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"){
@@ -61,12 +103,8 @@ class NetworkManager : ApiServices{
         }
     }
 
-
-
-        
  
     func fetchBrands(completion: @escaping (SmartCollections?, Error?) -> Void) {
-  //  https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/smart_collections.json?7d67dd63dc90e18fce08d1f7746e9f41-Shopfiy-access_token=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
         if let url = URL(string:"https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/smart_collections.json?access_token=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"){
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data {
@@ -117,6 +155,8 @@ class NetworkManager : ApiServices{
         }
         
     }
+    
+
     
     
     //MARK: - Mohamed - Get Address
@@ -184,7 +224,7 @@ class NetworkManager : ApiServices{
                
     var request = URLRequest(url: url ,timeoutInterval: Double.infinity)
       request.httpMethod = "GET"
-      request.addValue("XaGOO6Zq3YNHIxyk3ibbCnp7IuoI0te4", forHTTPHeaderField: "apikey")
+      request.addValue("2b97e06d1c4f59be80c05263dfb045d5", forHTTPHeaderField: "apikey")
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         

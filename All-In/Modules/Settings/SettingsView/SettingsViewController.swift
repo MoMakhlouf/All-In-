@@ -53,6 +53,8 @@ class SettingsViewController: UIViewController {
             userdefault.set(segmentUSD , forKey: segmentConvert)
             loadIndicator.startAnimating()
             Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
+              //  let vc = ViewController()
+                //self.navigationController?.popToViewController(vc, animated: true)
                 self.navigationController?.popToRootViewController(animated: true)
             }
             
@@ -60,6 +62,8 @@ class SettingsViewController: UIViewController {
             userdefault.set(segmentEGP , forKey: segmentConvert)
             loadIndicator.startAnimating()
             Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
+                //  let vc = ViewController()
+                  //self.navigationController?.popToViewController(vc, animated: true)
                 self.navigationController?.popToRootViewController(animated: true)
             }
         default:
