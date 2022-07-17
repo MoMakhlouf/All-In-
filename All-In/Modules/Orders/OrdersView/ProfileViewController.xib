@@ -46,6 +46,11 @@
                                     <buttonConfiguration key="configuration" style="gray" title="Register">
                                         <fontDescription key="titleFontDescription" type="system" pointSize="23"/>
                                     </buttonConfiguration>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="15"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
                                     <connections>
                                         <action selector="registerIfNotLogin:" destination="-1" eventType="touchUpInside" id="y3x-er-mwX"/>
                                     </connections>
@@ -64,10 +69,13 @@
                                     </buttonConfiguration>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="value" red="0.4431372549" green="0.16078431369999999" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
                                         </userDefinedRuntimeAttribute>
                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                            <real key="value" value="0.0"/>
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="15"/>
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
@@ -131,7 +139,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwN-fb-34h">
-                            <rect key="frame" x="0.0" y="55" width="414" height="250"/>
+                            <rect key="frame" x="0.0" y="55" width="414" height="295"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="94V-fg-ioF" userLabel="HeaderOrderView">
                                     <rect key="frame" x="23" y="5" width="368" height="30"/>
@@ -195,7 +203,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bp4-d3-zyr">
-                                    <rect key="frame" x="23" y="40" width="368" height="170"/>
+                                    <rect key="frame" x="23" y="40" width="368" height="215"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="But-Oe-ZNK">
                                             <rect key="frame" x="157" y="49.5" width="52" height="51"/>
@@ -228,8 +236,8 @@
                                         <constraint firstItem="But-Oe-ZNK" firstAttribute="top" secondItem="bp4-d3-zyr" secondAttribute="top" constant="50" id="hlQ-Ue-jJF"/>
                                     </constraints>
                                 </view>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Cxg-GF-yda" userLabel="OrderTable View">
-                                    <rect key="frame" x="23" y="40" width="368" height="170"/>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="110" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Cxg-GF-yda" userLabel="OrderTable View">
+                                    <rect key="frame" x="23" y="40" width="368" height="215"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="K5F-SU-UoF"/>
@@ -243,7 +251,7 @@
                                 <constraint firstItem="94V-fg-ioF" firstAttribute="leading" secondItem="xwN-fb-34h" secondAttribute="leading" constant="23" id="7HA-zU-yhC"/>
                                 <constraint firstItem="bp4-d3-zyr" firstAttribute="centerX" secondItem="Cxg-GF-yda" secondAttribute="centerX" id="7NU-05-W73"/>
                                 <constraint firstItem="Cxg-GF-yda" firstAttribute="trailing" secondItem="94V-fg-ioF" secondAttribute="trailing" id="7gg-3L-XcK"/>
-                                <constraint firstAttribute="height" constant="250" id="KQ1-jJ-7K1"/>
+                                <constraint firstAttribute="height" constant="295" id="KQ1-jJ-7K1"/>
                                 <constraint firstItem="94V-fg-ioF" firstAttribute="top" secondItem="xwN-fb-34h" secondAttribute="top" constant="5" id="LL0-T0-Npg"/>
                                 <constraint firstAttribute="trailing" secondItem="94V-fg-ioF" secondAttribute="trailing" constant="23" id="Y58-nC-dBY"/>
                                 <constraint firstItem="bp4-d3-zyr" firstAttribute="trailing" secondItem="Cxg-GF-yda" secondAttribute="trailing" id="ZFd-9I-d8u"/>
@@ -255,7 +263,7 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dw-XZ-eJC">
-                            <rect key="frame" x="0.0" y="313" width="414" height="350"/>
+                            <rect key="frame" x="0.0" y="358" width="414" height="400"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLB-7y-zRv" userLabel="HeaderFavouriteView">
                                     <rect key="frame" x="23" y="5" width="368" height="30"/>
@@ -318,7 +326,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZv-i2-eIE">
-                                    <rect key="frame" x="23" y="39" width="368" height="272"/>
+                                    <rect key="frame" x="23" y="39" width="368" height="322"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wt2-sI-Rqy">
                                             <rect key="frame" x="159" y="50" width="50" height="50"/>
@@ -344,7 +352,7 @@
                                     </constraints>
                                 </view>
                                 <tableView clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cho-xT-gCm" userLabel="FavouriteTable View">
-                                    <rect key="frame" x="23" y="39" width="368" height="272"/>
+                                    <rect key="frame" x="23" y="39" width="368" height="322"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="u9n-OA-RFT"/>
                                         <outlet property="delegate" destination="-1" id="8rg-KW-xE0"/>
@@ -353,7 +361,7 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="350" id="05h-AQ-BrC"/>
+                                <constraint firstAttribute="height" constant="400" id="05h-AQ-BrC"/>
                                 <constraint firstItem="cho-xT-gCm" firstAttribute="leading" secondItem="vLB-7y-zRv" secondAttribute="leading" id="2Ly-as-qKA"/>
                                 <constraint firstItem="rZv-i2-eIE" firstAttribute="centerX" secondItem="cho-xT-gCm" secondAttribute="centerX" id="3mg-09-Yqd"/>
                                 <constraint firstAttribute="trailing" secondItem="vLB-7y-zRv" secondAttribute="trailing" constant="23" id="9LG-SJ-dKA"/>
@@ -369,6 +377,7 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="zvv-nd-XK4" firstAttribute="leading" secondItem="ENY-ee-7Nd" secondAttribute="leading" id="4AS-Va-P3N"/>
                         <constraint firstItem="1dw-XZ-eJC" firstAttribute="trailing" secondItem="zvv-nd-XK4" secondAttribute="trailing" id="5rf-ZF-Cwm"/>

@@ -62,10 +62,19 @@ class ProfileViewController: UIViewController {
         favArray = fav.fetchData(appDelegate: appDelegate)
         self.emptyFav()
         
+     
+        print("userId\(Helper.shared.getUserID())")
+        print("zzz\(ordersArray)")
         
+        self.emptyOrders()
+        self.emptyFav()
+  
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        let ordersViewModel = OrdersModelView()
-        ordersViewModel.fetchData(customerID: Helper.shared.getUserID()!)
+        let ordersViewModel = OrdersModelView() //6279471923414
+        ordersViewModel.fetchData(customerID: Helper.shared.getUserID() ?? 1)
         ordersViewModel.bindingData = { orders , error in
             if let orders = orders{
                 self.ordersArray = orders.orders
@@ -80,15 +89,7 @@ class ProfileViewController: UIViewController {
             }
            
         }
-        print("zzz\(ordersArray)")
         
-        
-        self.emptyOrders()
-        self.emptyFav()
-  
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         isUserLogged()
         self.userNameLbl.text = "Hi, " + (Helper.shared.getUserName() ?? "")
 
@@ -150,6 +151,7 @@ class ProfileViewController: UIViewController {
  
     @IBAction func moreBtnOrders(_ sender: Any) {
         let orderVC = OrdersViewController()
+        orderVC.ordersArray = self.ordersArray
         navigationController?.pushViewController(orderVC, animated: true)
         
     }
@@ -193,15 +195,19 @@ extension ProfileViewController: UITableViewDataSource{
                 cell.favePrice.text = String(format: "%.2f", price) + " EGP"
             }
             
-            
-            
             cell.FavImg.loadFromFave(URLAddress: favArray[indexPath.row].productImage!)
             return cell
         }
         let cell = ordersTableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as! OrdersTableViewCell
-        cell.nameOfProduct.text = String(ordersArray[indexPath.row].id)
-        cell.priceOfOrder.text = ordersArray[indexPath.row].current_total_price
-        cell.imgOfOrder.image = UIImage(named: "shoping")
+        cell.nameOfProduct.text = "Order No: \(String(ordersArray[indexPath.row].id))"
+       
+        if currency == "USD"{
+        cell.priceOfOrder.text = ordersArray[indexPath.row].current_total_price + " USD"
+        }else{
+            let egpPrice = Double(ordersArray[indexPath.row].current_total_price)! * Double(usdValue)!
+            cell.priceOfOrder.text = "Total: " + String(format: "%.2f", egpPrice) + " EGP"
+        }
+        cell.imgOfOrder.kf.setImage(with: URL(string: ordersArray[indexPath.row].line_items[0].sku))
         return cell
     }
 }

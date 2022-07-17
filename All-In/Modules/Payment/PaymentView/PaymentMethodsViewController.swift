@@ -122,7 +122,6 @@ class PaymentMethodsViewController: UIViewController  {
         cashOnDeliveryButton.layer.borderColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         crediCardButton.layer.borderWidth = 0
         placeOrderButton.isEnabled = true
-        
     }
     
     //MARK: - SELECTING PAYPAL
@@ -148,44 +147,24 @@ class PaymentMethodsViewController: UIViewController  {
     
     //MARK: - OREDER CONFIRMATION
     @IBAction func placeOrderButtonPressed(_ sender: UIButton) {
-        placeOrderIndicator.startAnimating()
-        Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
-            self.placeOrderIndicator.stopAnimating()
-            self.orderPlacedView.isHidden = false
-            self.navigationController?.navigationBar.isHidden = true
-        }
+        if Reachability.isConnectedToNetwork(){
        
-        cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
-               // self.address = addressesArray[0]
-                var jsonResponse = [String : [String : Any]]()
-                let item = cartItems[0]
-        
-        jsonResponse = ["order":["email":Helper.shared.getUserEmail() ?? "m@gmail.com","line_items":[["product_id": item.itemId,"title":item.title!,"price": item.price!,"quantity": item.itemQuantity,"sku":item.itemImage!]],"billing_address":["first_name": Helper.shared.getUserName(),"last_name":" ","address1": addressFullLabel.text ,"phone":"12345","city":"jjj","province":"","country":"egypt","zip":"124"],"customer":["id":Helper.shared.getUserID()]]]
+            if addressFullLabel.text == "" || addressFullLabel.text == "Please, add new Address" {
+                Alert.displayAlert(title: "Address required", message: "Please, add your address")
+            } else{
                 
-                print(jsonResponse)
-                if let url = URL(string: Urls().ordersUrl){
-                    var request = URLRequest(url: url)
-                    request.httpMethod = "POST"
-                    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-                    request.httpShouldHandleCookies = false
-                    if let httpBody = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) {
-                        print("json\(jsonResponse)")
-                        request.httpBody = httpBody
-                    }
-                    let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                        if let data = data {
-                            do{
-                                let json = try JSONSerialization.jsonObject(with: data, options: [])
-                                print(json)
-                            }catch {
-                                print("Errorrr\(error.localizedDescription)")
-                            }
-                        }
-                    }
-                    task.resume()
+                placeOrderIndicator.startAnimating()
+                Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
+                    self.placeOrderIndicator.stopAnimating()
+                    self.orderPlacedView.isHidden = false
+                    self.navigationController?.navigationBar.isHidden = true
                 }
+       
+       // cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
+    
+                postOrder()
         
-
+                
         print("Delete All item from shopping cart")
         print(cartItems.count)
         if cartDB.deleteAll(appDelegate: appDelegate) {
@@ -193,9 +172,11 @@ class PaymentMethodsViewController: UIViewController  {
             print(cartItems.count)
           print("deleted")
         }
-
     }
-    
+      } else{
+            Alert.displayAlert(title: "Check Network", message: "No internet conncetion")
+        }
+}
     
     func hideView(){
         crediCardDetailsView.isHidden = true
@@ -229,7 +210,79 @@ extension PaymentMethodsViewController : BTViewControllerPresentingDelegate{
     }
 }
 
+extension PaymentMethodsViewController{
 
+    func postOrder(){
+
+        cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
+
+        var jsonResponse = [String : [String : Any]]()
+
+        var items = [[String:Any]]()
+
+           for item in cartItems{
+
+               var i = ["product_id": Int(item.itemId), "price": item.price ?? "", "quantity":item.itemQuantity, "title":item.title ?? "" , "sku": item.itemImage ?? ""] as [String : Any]
+
+            items.append(i)
+
+            
+
+        }
+
+        jsonResponse = ["order":["line_items":items,"customer":["id":Helper.shared.getUserID()],"billing_address":["address1": addressFullLabel.text]]]
+
+        
+
+        
+
+        if let url = URL(string: Urls().ordersUrl){
+
+            var request = URLRequest(url: url)
+
+            request.httpMethod = "POST"
+
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+            request.httpShouldHandleCookies = false
+
+            if let httpBody = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) {
+
+                print("json\(jsonResponse)")
+
+                request.httpBody = httpBody
+
+            }
+
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+
+                if let data = data {
+
+                    do{
+
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+
+                        print(json)
+
+                    }catch {
+
+                        print("Errorrr\(error.localizedDescription)")
+
+                    }
+
+                }
+
+            }
+
+            task.resume()
+
+        }
+
+        
+
+    }
+
+}
 
 
 ///

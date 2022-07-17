@@ -9,6 +9,10 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let cartDB = ShoppingCartDBManager.sharedInstance
+    var cartItems = [ShoppingCartDB]()
+    
     @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var currencySwitch: UISegmentedControl!
     @IBOutlet weak var logoutButton: UIButton!
@@ -25,8 +29,18 @@ class SettingsViewController: UIViewController {
         navigationItem.title = "Settings"
         logoutButton.layer.cornerRadius = 15
         updateSegment()
-        navigationController?.navigationBar.backgroundColor = UIColor.white
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
+
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+
     }
     
 
@@ -82,6 +96,15 @@ class SettingsViewController: UIViewController {
             if succes {
                 Helper.shared.setUserStatus(userIsLogged: false)
                 Helper.shared.setFoundAdress(isFoundAddress: false)
+
+                print("Delete All item from shopping cart")
+                print(self.cartItems.count)
+                if self.cartDB.deleteAll(appDelegate: self.appDelegate) {
+                    self.cartItems = self.cartDB.getItemToCart(appDelegate: self.appDelegate)
+                    print(self.cartItems.count)
+                  print("deleted")
+                }
+                
                 self.afterConvertCurrency()
             }
         }

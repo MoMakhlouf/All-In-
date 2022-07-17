@@ -9,9 +9,9 @@ import UIKit
 import Kingfisher
 import Floaty
 
-class CategoriesViewController: UIViewController {
+class CategoriesViewController: UIViewController , UISearchBarDelegate {
   
-  //  let searchController = UISearchController()
+    let searchProduct = UISearchController(searchResultsController: nil)
     var array: Array<Int> = []
     var productsArray = [Product]()
     var collectsArray = [Collect]()
@@ -20,6 +20,8 @@ class CategoriesViewController: UIViewController {
     var womenArray: [String] = []
     var kidArray : [String] = []
     var arrayProduct = [Product]()
+    var filterdProduct = [Product]()
+
     
     
     @IBOutlet weak var emptyView: UIView!
@@ -35,7 +37,9 @@ class CategoriesViewController: UIViewController {
         currency = Defaults.defaults.getCurrency(key: "currency")
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
         categoriesCollection.reloadData()
-
+        
+        filterdProduct = menArray
+        initSearchController()
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 20.0)!]
         
         segmentedControl.setTitleTextAttributes( [NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
@@ -65,14 +69,7 @@ class CategoriesViewController: UIViewController {
         shoppingBagBtn.target = self
         navigationItem.rightBarButtonItems = [favoriteBtn, shoppingBagBtn]
         
-        let searchBtn = UIBarButtonItem()
-        searchBtn.image = UIImage(systemName: "magnifyingglass")
-        searchBtn.action = #selector(searchButton)
-        searchBtn.target = self
-        navigationItem.leftBarButtonItem = searchBtn
-        
 
-        
         let productsViewModel = BrandsViewModel()
         productsViewModel.fetchData()
         productsViewModel.bindingData = {products , error in
@@ -116,6 +113,44 @@ class CategoriesViewController: UIViewController {
         emptyProduct()
         getFilter()
     }
+    
+    func initSearchController()
+       {   searchProduct.loadViewIfNeeded()
+           searchProduct.obscuresBackgroundDuringPresentation = false
+           searchProduct.searchBar.enablesReturnKeyAutomatically = false
+           searchProduct.searchBar.returnKeyType = UIReturnKeyType.done
+           definesPresentationContext = true
+           navigationItem.searchController = searchProduct
+           navigationItem.hidesSearchBarWhenScrolling = false
+           searchProduct.searchBar.delegate = self
+           searchProduct.searchBar.placeholder = "Search Product By Name"
+       }
+    
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+
+            filterdProduct = []
+            if searchText == ""
+            {
+                filterdProduct  = menArray
+            }
+
+            for product in menArray
+            {
+                if product.title.contains(searchText.uppercased())
+
+                {
+                    filterdProduct.append(product)
+
+                }
+            }
+            categoriesCollection.reloadData()
+        }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        categoriesCollection.reloadData()
+    }
 
     
     override func viewDidAppear(_ animated: Bool) {
@@ -155,15 +190,7 @@ class CategoriesViewController: UIViewController {
          }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+  
 
     // MARK: - Search
     
@@ -183,58 +210,55 @@ extension CategoriesViewController: UICollectionViewDelegate{
 extension CategoriesViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
   
-       
-        return menArray.count//customCollectionsArray.count
+        if(searchProduct.isActive)
+
+        {
+        return filterdProduct.count
+
+        }else{
+        return menArray.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-      
-
         let cell = categoriesCollection.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as! CategoryCollectionViewCell
+        
+        if(searchProduct.isActive){
+        
         categoriesCollection.reloadItems(at: [indexPath])
-     /*   cell.nameProductLbl.text = menArray[indexPath.row].title + " \\" + menArray[indexPath.row].variants[0].option2
-        let price: Float = (Float(menArray[indexPath.row].variants[0].price)! * 20.0)
-        cell.priceProductLbl.text = String(price) + " EGP"
-        cell.prouctImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))*/
+    
         if currency == "USD" {
-        let price: Float = (Float(menArray[indexPath.row].variants[0].price)!)
+        let price: Float = (Float(filterdProduct[indexPath.row].variants[0].price)!)
         cell.categoryPriceLbl.text = String(format: "%0.2f", price) + " USD"
         }else{
-            let priceegp: Float = (Float(menArray[indexPath.row].variants[0].price)! * Float(usdValue)!)
+            let priceegp: Float = (Float(filterdProduct[indexPath.row].variants[0].price)! * Float(usdValue)!)
             cell.categoryPriceLbl.text =  String(format: "%0.2f",  priceegp) + " EGP"
         }
-    
-            
-            
-        cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))
-         cell.favClicked =
-        {[weak self]in
-            guard let self = self else {return}
-            Helper.shared.checkUserIsLogged { [self] userLogged in
-                       if userLogged{
-                           
-                        let db = DBManager.sharedInstance
-                           let  Img =  self.menArray[indexPath.row].image.src
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                           db.addProduct(productName:"", productImage: Img , productPrice: self.menArray[indexPath.row].variants[0].price  , productDescription: "" , appDelegate: appDelegate)
+        cell.categoryImg.kf.setImage(with: URL(string: filterdProduct[indexPath.row].image.src))
 
-                       }else{
-                           goToLoginPage()
-                       
-                       }
+        }else{
+            categoriesCollection.reloadItems(at: [indexPath])
+        
+            if currency == "USD" {
+            let price: Float = (Float(menArray[indexPath.row].variants[0].price)!)
+            cell.categoryPriceLbl.text = String(format: "%0.2f", price) + " USD"
+            }else{
+                let priceegp: Float = (Float(menArray[indexPath.row].variants[0].price)! * Float(usdValue)!)
+                cell.categoryPriceLbl.text =  String(format: "%0.2f",  priceegp) + " EGP"
             }
-            func goToLoginPage(){
-                let login = LoginViewController()
-                self.navigationController?.pushViewController(login, animated: true)
-            }
-       
-    }
+            cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))
+        }
+        
         return cell
 
-}
+    }
+ 
+    
     
 }
+
+
 
 
 extension CategoriesViewController: UICollectionViewDelegateFlowLayout{

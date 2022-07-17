@@ -104,7 +104,9 @@ class HomeViewController: UIViewController {
         }
 
     }
- 
+    
+   
+
     
     //MARK: - Timer section for scrollable collectionView
     
@@ -125,12 +127,10 @@ class HomeViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-       // navigationController?.setNavigationBarHidden(true, animated: true)
         self.tabBarController?.tabBar.isHidden = false
     }
     
-
-
+   
 }
 
 extension HomeViewController: UICollectionViewDelegate{

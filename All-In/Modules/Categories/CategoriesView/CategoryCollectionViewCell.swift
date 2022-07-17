@@ -15,8 +15,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     var favClicked: (()->())?
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.categoryImg.layer.borderWidth = 1
-        self.categoryImg.layer.borderColor = UIColor.black.cgColor
+        self.categoryImg.layer.borderWidth = 0.4
+        self.categoryImg.layer.borderColor = UIColor.gray.cgColor
         
     }
 

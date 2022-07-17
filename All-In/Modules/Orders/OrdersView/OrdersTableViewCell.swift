@@ -19,8 +19,7 @@ class OrdersTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imgOfOrder.layer.borderWidth = 1
-        imgOfOrder.layer.borderColor = UIColor.black.cgColor
+       
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

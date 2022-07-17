@@ -64,22 +64,21 @@ class ShoppingCartViewController: UIViewController {
         convert()
         emptyCart()
     }
-    
-  
+      
     
     
     //MARK: - Get Items From CoreData
     func getItems(){
-        
+      
         cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
-       
+
         print(cartItems.count)
           DispatchQueue.main.async {
               
               self.cartItems.forEach({ item in
                   let price = Double(item.price ?? " ")
                   self.total += (price! * Double(item.itemQuantity))
-                 
+                  
               })
               
             self.shoppingCartTableView.reloadData()
@@ -114,14 +113,7 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = shoppingCartTableView.dequeueReusableCell(withIdentifier: "shopCartCell", for: indexPath) as! ShoppingCartTableViewCell
       
-        
-//        for item in cartItems {
-//            if item.customerId == Helper.shared.getUserID()!{
-              
-         
-
-        
-        cell.itemsInCell(cartItems[indexPath.row])
+            cell.itemsInCell(cartItems[indexPath.row])
 
         cell.didTapPlus = { [weak self] in
             guard let self = self else {return}
@@ -161,10 +153,7 @@ extension ShoppingCartViewController : UITableViewDelegate , UITableViewDataSour
        return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-       
-        }
+  
 }
  
 //MARK: - Delete shopping cart items
@@ -173,8 +162,10 @@ extension ShoppingCartViewController : DeletionDelegate{
     func deleteCartItem(indexPath: IndexPath) {
         
        cartItems.remove(at : indexPath.row)
-        self.shoppingCartTableView.reloadData()
-      //  self.totalPrice.text = "Total: \(self.total)"
+   
+        DispatchQueue.main.async {
+            self.shoppingCartTableView.reloadData()
+        }
 
         emptyCart()
     }
@@ -194,11 +185,9 @@ extension ShoppingCartViewController : DeletionDelegate{
                 shoppingCartTableView.deleteRows(at: [indexPath] ,with: .automatic)
                                
                 shoppingCartTableView.endUpdates()
-              
-            }))
+             }))
             self.present(alert, animated: true, completion: nil)
             
-           
             shoppingCartTableView.reloadData()
 
              emptyCart()

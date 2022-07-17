@@ -8,10 +8,10 @@
 import UIKit
 import Kingfisher
 
-class BrandsViewController: UIViewController{
+class BrandsViewController: UIViewController , UISearchBarDelegate{
     
    
-    let searchController = UISearchController()
+    let searchController = UISearchController(searchResultsController: nil)
     @IBOutlet weak var brandSearch: UISearchBar!
     
     var brandName: String?
@@ -19,6 +19,9 @@ class BrandsViewController: UIViewController{
     var productsArray2 = [Product]()
     //   var productPriceArray: [String] = []
     
+    let searchProduct = UISearchController(searchResultsController: nil)
+   
+
 
     var productPriceArray2: [Float] = []
     var productList = [Product]()
@@ -35,12 +38,12 @@ class BrandsViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        filterdProduct = productsArray
         currency = Defaults.defaults.getCurrency(key: "currency")
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
         
         print("123\(currency)")
-        
+        initSearchController()
         brandsCollectionView.delegate = self
         brandsCollectionView.dataSource = self
         brandsCollectionView.register(UINib(nibName: "ProuctsBrandCollectionViewCell" , bundle: nil), forCellWithReuseIdentifier: "productsBrandCell")
@@ -81,7 +84,7 @@ class BrandsViewController: UIViewController{
                 //print(error.localizedDescription)
             }
         }
-        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
+      
     }
      
     @objc func filterBrands(){
@@ -100,16 +103,44 @@ class BrandsViewController: UIViewController{
  
     }
 
+    func initSearchController()
+       {
+           searchProduct.loadViewIfNeeded()
+           searchProduct.obscuresBackgroundDuringPresentation = false
+           searchProduct.searchBar.enablesReturnKeyAutomatically = false
+           searchProduct.searchBar.returnKeyType = UIReturnKeyType.done
+           definesPresentationContext = true
+           navigationItem.searchController = searchProduct
+           navigationItem.hidesSearchBarWhenScrolling = false
+           searchProduct.searchBar.delegate = self
+           searchProduct.searchBar.placeholder = "Search Product By Name"
+       }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
-    /*
-    // MARK: - Navigation
+            filterdProduct = []
+            if searchText == ""
+            {
+                filterdProduct  = productsArray
+            }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            for product in productsArray
+            {
+                if product.title.contains(searchText.uppercased())
+
+                {
+                    filterdProduct.append(product)
+
+                }
+            }
+            brandsCollectionView.reloadData()
+        }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        brandsCollectionView.reloadData()
     }
-    */
+
 
 }
 extension BrandsViewController: UICollectionViewDelegate{
@@ -120,68 +151,98 @@ extension BrandsViewController: UICollectionViewDelegate{
 extension BrandsViewController: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if(searchController.isActive)
+        if(searchProduct.isActive)
+
         {
-            return filterdProduct.count
-        }
+        return filterdProduct.count
+
+        }else{
         return productsArray.count
+        }
     }
+
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = brandsCollectionView.dequeueReusableCell(withReuseIdentifier: "productsBrandCell", for: indexPath) as! ProuctsBrandCollectionViewCell
         
+        if(searchProduct.isActive){
+            cell.nameProductLbl.text = filterdProduct[indexPath.row].title + " - " + filterdProduct[indexPath.row].variants[0].option2
         
-  
-        
-        
-        
-        
-        
-        
-        cell.nameProductLbl.text = productsArray[indexPath.row].title + " - " + productsArray[indexPath.row].variants[0].option2
-        
-        
-        if currency == "USD"  {
-            let price: Float = (Float(productsArray[indexPath.row].variants[0].price)!)
-            cell.priceProductLbl.text = String(format: "%.2f", price) + " USD"
-        } else{
-            let price: Float = (Float(productsArray[indexPath.row].variants[0].price)! * (Float(usdValue)!))
-            cell.priceProductLbl.text = String(format: "%.2f",  price) + " EGP"
-        }
-        
+            if currency == "USD"  {
+                let price: Float = (Float(filterdProduct[indexPath.row].variants[0].price)!)
+                cell.priceProductLbl.text = String(format: "%.2f", price) + " USD"
+            } else{
+                let price: Float = (Float(filterdProduct[indexPath.row].variants[0].price)! * (Float(usdValue)!))
+                cell.priceProductLbl.text = String(format: "%.2f",  price) + " EGP"
+            }
+            
 
-        //cell.prouctImg.sd_setImage(with: URL(string: productsArray[indexPath.row].image.src), placeholderImage: UIImage(named: "placeholder.png"))
-        cell.prouctImg.kf.setImage(with: URL(string: productsArray[indexPath.row].image.src))
+            cell.prouctImg.kf.setImage(with: URL(string: filterdProduct[indexPath.row].image.src))
+            
+            cell.favClicked =
+            {[weak self]in
+                guard let self = self else {return}
+                Helper.shared.checkUserIsLogged { [self] userLogged in
+                           if userLogged{
+                               cell.favouriteBtn.imageView?.image
+                               = UIImage(named: "plus")
+                       let db = DBManager.sharedInstance
+                               let  Img =  self.filterdProduct[indexPath.row].image.src
+                       let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                               db.addProduct(productName: cell.nameProductLbl.text ?? "", productImage: Img , productPrice:self.filterdProduct[indexPath.row].variants[0].price ,  productDescription: "" , appDelegate: appDelegate)
+               
+                           }else{
+                               goToLoginPage()
+                           }
+                           func goToLoginPage(){
+                               let login = LoginViewController()
+                               self.navigationController?.pushViewController(login, animated: true)
+                           }
+                       }
+            }
+            
+            
+        }else{
+            cell.nameProductLbl.text = productsArray[indexPath.row].title + " - " + productsArray[indexPath.row].variants[0].option2
         
-        cell.favClicked =
-        {[weak self]in
-            guard let self = self else {return}
-            Helper.shared.checkUserIsLogged { [self] userLogged in
-                       if userLogged{
-                           cell.favouriteBtn.imageView?.image
-                           = UIImage(named: "plus")
-                   let db = DBManager.sharedInstance
-                           let  Img =  self.productsArray[indexPath.row].image.src
-                   let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                           db.addProduct(productName: cell.nameProductLbl.text ?? "", productImage: Img , productPrice:self.productsArray[indexPath.row].variants[0].price ,  productDescription: "" , appDelegate: appDelegate)
-           
-                       }else{
-                           goToLoginPage()
-                       }
-                       func goToLoginPage(){
-                           let login = LoginViewController()
-                           self.navigationController?.pushViewController(login, animated: true)
-                       }
-                   }
+            if currency == "USD"  {
+                let price: Float = (Float(productsArray[indexPath.row].variants[0].price)!)
+                cell.priceProductLbl.text = String(format: "%.2f", price) + " USD"
+            } else{
+                let price: Float = (Float(productsArray[indexPath.row].variants[0].price)! * (Float(usdValue)!))
+                cell.priceProductLbl.text = String(format: "%.2f",  price) + " EGP"
+            }
+            
+
+            cell.prouctImg.kf.setImage(with: URL(string: productsArray[indexPath.row].image.src))
+            
+            cell.favClicked =
+            {[weak self]in
+                guard let self = self else {return}
+                Helper.shared.checkUserIsLogged { [self] userLogged in
+                           if userLogged{
+                               cell.favouriteBtn.imageView?.image
+                               = UIImage(named: "plus")
+                       let db = DBManager.sharedInstance
+                               let  Img =  self.productsArray[indexPath.row].image.src
+                       let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                               db.addProduct(productName: cell.nameProductLbl.text ?? "", productImage: Img , productPrice:self.productsArray[indexPath.row].variants[0].price ,  productDescription: "" , appDelegate: appDelegate)
+               
+                           }else{
+                               goToLoginPage()
+                           }
+                           func goToLoginPage(){
+                               let login = LoginViewController()
+                               self.navigationController?.pushViewController(login, animated: true)
+                 }
+               }
+            }
         }
-        
-        
-        
-        
         
         return cell
     }
     
+ 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let productDetails = ProductInfoViewController()
@@ -189,11 +250,8 @@ extension BrandsViewController: UICollectionViewDataSource{
         navigationController?.pushViewController(productDetails, animated: true)
     }
     
-   
 }
  
-
-
 extension BrandsViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width * 0.48 , height: collectionView.frame.height * 0.6)
@@ -209,11 +267,22 @@ extension BrandsViewController: delegateFilter{
     func filterPrice(minn: Float, maxx: Float) {
         self.minumVlaue = minn
         self.productsArray = self.productsArray2
-        self.productsArray = productsArray.filter { products in
-            Float(products.variants[0].price)! * 20 >= minn
+        
+         if currency == "USD"{
+            self.productsArray = productsArray.filter { products in
+                
+                Float(products.variants[0].price)! >= minn
+            }
+        }
+        else{
+            self.productsArray = productsArray.filter { products in
+            Float(products.variants[0].price)! * (Float(usdValue) ?? 1) >= minn
+        }
         }
         DispatchQueue.main.async {
             self.brandsCollectionView.reloadData()
         }
     }
 }
+
+

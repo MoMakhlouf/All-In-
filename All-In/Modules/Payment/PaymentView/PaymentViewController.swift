@@ -106,7 +106,7 @@ class PaymentViewController: UIViewController {
                 self.indicatorView.stopAnimating()
                 self.applyButton.isEnabled = false
               
-                self.convertDiscountProcess()
+                self.convertDiscountFiveProcess()
             }
             congratsView.isHidden = false
             self.congratsViewLabel.text = "You Won a 5% OFF"
@@ -122,8 +122,8 @@ class PaymentViewController: UIViewController {
                 self.indicatorView.stopAnimating()
                     self.applyButton.isEnabled = false
 
-                    convertDiscountProcess()
-              
+                    self.convertDiscountTenProcess()
+
             }
             
             congratsView.isHidden = false
@@ -147,7 +147,7 @@ class PaymentViewController: UIViewController {
     }
     
     
-    func convertDiscountProcess(){
+    func convertDiscountTenProcess(){
         let discountAmount = String(format: "%.2f", self.subtotal * (10/100))
         let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (10/100))
             
@@ -165,6 +165,27 @@ class PaymentViewController: UIViewController {
 
             }
     }
+    
+    
+    func convertDiscountFiveProcess(){
+        let discountAmount = String(format: "%.2f", self.subtotal * (5/100))
+        let totalAfterDiscount = String(format: "%.2f", self.subtotal - self.subtotal * (5/100))
+            
+            if self.currency == "USD"{
+                self.discountLabel.text = "\(discountAmount) USD Discount"
+                self.totalPriceAfterDiscountLabel.text = "Total : \(totalAfterDiscount) USD "
+                self.finalTotal = Double(totalAfterDiscount)!
+            } else{
+                let egpDiscount = Double(discountAmount)! * Double(self.usdValue)!
+                let egpTotalAfterDiscount = Double(totalAfterDiscount)! * Double(self.usdValue)!
+
+                self.discountLabel.text = "\(String(format: "%.2f", egpDiscount)) EGP Discount"
+                self.totalPriceAfterDiscountLabel.text = "Total : \(String(format: "%.2f", egpTotalAfterDiscount)) EGP "
+                self.finalTotal = Double(totalAfterDiscount)!
+
+            }
+    }
+
     
     
     

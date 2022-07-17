@@ -18,8 +18,16 @@ class FilterViewController: UIViewController {
     var productType = [String]()
     var delegate2: delegateFilter?
     @IBOutlet weak var filterTableView: UITableView!
+   
+    var currency = ""
+    var usdValue = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        currency = Defaults.defaults.getCurrency(key: "currency")
+        usdValue = Defaults.defaults.getUsdValue(key: "usd")
+        
+        
         filterTableView.delegate = self
         filterTableView.dataSource = self
         filterTableView.register(UINib(nibName: "FillterTableViewCell", bundle: nil), forCellReuseIdentifier: "filterCell")
@@ -91,10 +99,21 @@ extension FilterViewController: UITableViewDataSource{
    
         switch(indexPath.section){
         case 0:
-            cell.fromLbl.text = String(convert.min()! * 20)
-            cell.toLbl.text = String(convert.max()! * 20)
-            cell.sliderPrice.maximumValue = convert.max()! * 20
-            cell.sliderPrice.minimumValue = convert.min()! * 20
+            if currency == "USD"{
+            cell.fromLbl.text = String(convert.min()!)
+            cell.toLbl.text = String(convert.max()!)
+            cell.sliderPrice.maximumValue = convert.max()!
+            cell.sliderPrice.minimumValue = convert.min()!
+            }else{
+                cell.fromLbl.text = String(convert.min()! * Float(usdValue)!)
+                cell.toLbl.text = String(convert.max()! * Float(usdValue)!)
+                cell.sliderPrice.maximumValue = convert.max()! * Float(usdValue)!
+                cell.sliderPrice.minimumValue = convert.min()! * Float (usdValue)!
+            }
+            
+            
+            
+            
             if lastValue != 0.0{
             cell.sliderPrice.value = lastValue
             cell.fromLbl.text = String(lastValue)
@@ -102,6 +121,7 @@ extension FilterViewController: UITableViewDataSource{
             cell.changePrice = { [weak self] in
                 guard let self = self else {return}
                 self.minNum = cell.sliderPrice.value
+                self.maxNum = cell.sliderPrice.maximumValue
                
             }
             return cell
@@ -137,7 +157,7 @@ extension FilterViewController: UITableViewDataSource{
 extension FilterViewController{
     @objc func saveFilter(_ sender: UIButton){
         if let d = delegate2{
-            d.filterPrice(minn: minNum , maxx: convert.max()! * 20)
+            d.filterPrice(minn: minNum , maxx: maxNum)
         }
         navigationController?.popViewController(animated: true)
     }
