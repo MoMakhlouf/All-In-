@@ -9,8 +9,8 @@
 import Foundation
  
 
-class Helper{
-    static let shared = Helper()
+class UserDefault{
+    static let shared = UserDefault()
     var reachability: Reachability?
     
     func setUserStatus(userIsLogged: Bool){

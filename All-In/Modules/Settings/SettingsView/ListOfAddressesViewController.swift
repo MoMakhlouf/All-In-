@@ -39,7 +39,7 @@ class ListOfAddressesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let addressViewModel = AddressViewModel()
-        addressViewModel.getAdderss(customerId: Helper.shared.getUserID()!)
+        addressViewModel.getAdderss(customerId: UserDefault.shared.getUserID()!)
         addressViewModel.bindingData = { addresses , error in
             
             if let addresses = addresses{
@@ -108,7 +108,7 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
             
                 print("delete Address")
                 let address =  addressesArray[indexPath.row].id
-            NetworkManager.shared.deleteAddress(customerID: Helper.shared.getUserID()! , addressID: address ?? 0 ) { error in
+            NetworkManager.shared.deleteAddress(customerID: UserDefault.shared.getUserID()! , addressID: address ?? 0 ) { error in
                     if let error = error {
                         print(error.localizedDescription)
                         print("error")

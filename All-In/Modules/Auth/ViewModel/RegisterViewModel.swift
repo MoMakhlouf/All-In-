@@ -41,10 +41,10 @@ class RegisterViewModel{
                 let customerFirstName = customer?["first_name"] as? String ?? ""
                 let customerLastName = customer?["last_name"] as? String ?? ""
                 let customerEmail = customer?["email"] as? String ?? ""
-                Helper.shared.setUserID(customerID: customerID)
-                Helper.shared.setUserName(userName: "\(customerFirstName) \(customerLastName)")
-                Helper.shared.setUserEmail(userEmail: customerEmail)
-                Helper.shared.setUserStatus(userIsLogged: true)
+                UserDefault.shared.setUserID(customerID: customerID)
+                UserDefault.shared.setUserName(userName: "\(customerFirstName) \(customerLastName)")
+                UserDefault.shared.setUserEmail(userEmail: customerEmail)
+                UserDefault.shared.setUserStatus(userIsLogged: true)
                 completion(data, response, nil)
             }else{
                 completion(nil, nil, error)

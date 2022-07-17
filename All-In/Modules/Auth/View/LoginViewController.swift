@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
 
         signIn.layer.cornerRadius = 15
         SignUp.layer.cornerRadius = 15
-        guard let id = Helper.shared.getUserID() else {return}
+        guard let id = UserDefault.shared.getUserID() else {return}
         print(" id : \(id)")
     }
     
@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
         
         login()
       
-        Helper.shared.checkUserIsLogged { userLogged in
+        UserDefault.shared.checkUserIsLogged { userLogged in
             if userLogged{
                 self.goToProfile()
             }else{
@@ -87,10 +87,11 @@ extension LoginViewController{
                 self.showAlertError(title: "Welcome", message: " Welcome \(txtEmail.text ?? "User") ")
                  let profile = ProfileViewController()
                 navigationController?.pushViewController(profile, animated: true)
+               // UserDefault.shared.setUserID(customerID: cus)
         
 
             }else{
-                Helper.shared.setUserStatus(userIsLogged: false)
+                UserDefault.shared.setUserStatus(userIsLogged: false)
                 self.showAlertError(title: "failed to login", message: "please check your email or password")
                 print("failed to login")
             }

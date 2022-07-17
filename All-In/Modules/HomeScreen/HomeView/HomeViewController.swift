@@ -184,7 +184,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
 extension HomeViewController{
     @objc func favoriteButton(){
         
-        Helper.shared.checkUserIsLogged { userLogged in
+        UserDefault.shared.checkUserIsLogged { userLogged in
             if userLogged{
                 self.goToFavoritePage()
             }else{
@@ -196,7 +196,7 @@ extension HomeViewController{
     
     @objc func shoppingBagButton(){
         
-        Helper.shared.checkUserIsLogged { userLogged in
+        UserDefault.shared.checkUserIsLogged { userLogged in
             if userLogged{
                 self.goToCartPage()
             }else{

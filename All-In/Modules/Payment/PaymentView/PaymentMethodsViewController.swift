@@ -85,7 +85,7 @@ class PaymentMethodsViewController: UIViewController  {
             let payPalDriver = BTPayPalDriver(apiClient: braintreeAPIClient)
             let request = BTPayPalCheckoutRequest(amount: amount)
             request.currencyCode = "USD"
-        request.displayName =  Helper.shared.getUserName()
+        request.displayName =  UserDefault.shared.getUserName()
         
             var err:Error?
            payPalDriver.tokenizePayPalAccount(with: request) { [weak self] (tokenizedPayPalAccount, error) in
@@ -160,7 +160,7 @@ class PaymentMethodsViewController: UIViewController  {
                 var jsonResponse = [String : [String : Any]]()
                 let item = cartItems[0]
         
-        jsonResponse = ["order":["email":Helper.shared.getUserEmail() ?? "m@gmail.com","line_items":[["product_id": item.itemId,"title":item.title!,"price": item.price!,"quantity": item.itemQuantity,"sku":item.itemImage!]],"billing_address":["first_name": Helper.shared.getUserName(),"last_name":" ","address1": addressFullLabel.text ,"phone":"12345","city":"jjj","province":"","country":"egypt","zip":"124"],"customer":["id":Helper.shared.getUserID()]]]
+        jsonResponse = ["order":["email":UserDefault.shared.getUserEmail() ?? "m@gmail.com","line_items":[["product_id": item.itemId,"title":item.title!,"price": item.price!,"quantity": item.itemQuantity,"sku":item.itemImage!]],"billing_address":["first_name": UserDefault.shared.getUserName(),"last_name":" ","address1": addressFullLabel.text ,"phone":"12345","city":"jjj","province":"","country":"egypt","zip":"124"],"customer":["id":UserDefault.shared.getUserID()]]]
                 
                 print(jsonResponse)
                 if let url = URL(string: Urls().ordersUrl){

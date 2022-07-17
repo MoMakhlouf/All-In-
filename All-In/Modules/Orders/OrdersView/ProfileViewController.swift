@@ -43,7 +43,7 @@ class ProfileViewController: UIViewController {
     
       //  notLoginView.isHidden = true
       
-        self.userNameLbl.text = "Hi, " + (Helper.shared.getUserName() ?? "")
+        self.userNameLbl.text = "Hi, " + (UserDefault.shared.getUserName() ?? "")
         
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController {
         
         
         let ordersViewModel = OrdersModelView()
-        ordersViewModel.fetchData(customerID: Helper.shared.getUserID()!)
+        ordersViewModel.fetchData(customerID: UserDefault.shared.getUserID()!)
         ordersViewModel.bindingData = { orders , error in
             if let orders = orders{
                 self.ordersArray = orders.orders
@@ -90,7 +90,7 @@ class ProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         isUserLogged()
-        self.userNameLbl.text = "Hi, " + (Helper.shared.getUserName() ?? "")
+        self.userNameLbl.text = "Hi, " + (UserDefault.shared.getUserName() ?? "")
 
         favArray = fav.fetchData(appDelegate: appDelegate)
         self.emptyOrders()
@@ -108,7 +108,7 @@ class ProfileViewController: UIViewController {
     
     func isUserLogged() {
         
-        Helper.shared.checkUserIsLogged { userLogged in
+        UserDefault.shared.checkUserIsLogged { userLogged in
             if userLogged{
                 self.profileScrollView.isHidden = false
                 self.navigationController?.navigationBar.isHidden = false

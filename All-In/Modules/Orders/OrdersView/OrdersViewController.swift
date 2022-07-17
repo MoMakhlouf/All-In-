@@ -25,7 +25,7 @@ class OrdersViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
         let ordersViewModel = OrdersModelView()
-        ordersViewModel.fetchData(customerID: Helper.shared.getUserID()!)
+        ordersViewModel.fetchData(customerID: UserDefault.shared.getUserID()!)
         ordersViewModel.bindingData = { orders , error in
             if let orders = orders{
                 self.ordersArray = orders.orders

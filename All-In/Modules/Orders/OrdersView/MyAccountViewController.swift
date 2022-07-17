@@ -74,7 +74,7 @@ class MyAccountViewController: UIViewController {
 //        }
 //    }
     override func viewDidAppear(_ animated: Bool) {
-        Helper.shared.checkUserIsLogged { isLoggedIn in
+        UserDefault.shared.checkUserIsLogged { isLoggedIn in
                     if isLoggedIn{
                         let home = ProfileViewController()
                         self.navigationController?.pushViewController(home, animated: true)

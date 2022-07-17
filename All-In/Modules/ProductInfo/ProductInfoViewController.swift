@@ -15,10 +15,11 @@ class ProductInfoViewController: UIViewController {
     var isAddedToCart = false
     var cartItems = [ShoppingCartDB]()
 
+    @IBOutlet weak var Fvritebtn: UIButton!
     var productInfo : Product?
-    var FavProduct  : FavouriteDB?
-      var Isfavorite  = false
-
+    var FavProduct = [FavouriteDB]()
+    var IsAddedfavorite  = false
+    let favoriteDB =  DBManager.sharedInstance
     var CurrentCellIndex = 0
     var timer :Timer?
     @IBOutlet weak var ProductDetailsCollection: UICollectionView!
@@ -76,14 +77,18 @@ class ProductInfoViewController: UIViewController {
         
        
         startTimer()
-        
         cartedItems()
+        favoriteItem()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchItem()
         print(cartItems.count)
         print(cartItems)
+        fetchproduct()
+        favoriteItem()
+         
     }
     
     
@@ -91,13 +96,33 @@ class ProductInfoViewController: UIViewController {
         for item in cartItems {
             if item.itemId == productInfo!.id{
                isAddedToCart = true
+                
             }
+        }
+    }
+    
+    func favoriteItem()
+    {
+        for item in FavProduct
+        {
+            if item.productName == productInfo?.title{
+                IsAddedfavorite = true
+                 
+                Fvritebtn.imageView?.image =
+                UIImage(systemName: "heart.fill")
+                
+            }
+         
         }
     }
     
     
     func fetchItem(){
         cartItems = cartDB.getItemToCart(appDelegate: appSelegate)
+    }
+    func fetchproduct()
+    {
+        FavProduct = favoriteDB.fetchData(appDelegate: appSelegate)
     }
     
     func goToLoginPage(){
@@ -109,14 +134,18 @@ class ProductInfoViewController: UIViewController {
     @IBAction func AddToCartBtn(_ sender: UIButton) {
         
         
-        Helper.shared.checkUserIsLogged { [self] userLogged in
+        UserDefault.shared.checkUserIsLogged { [self] userLogged in
             if userLogged{
+              
                 if isAddedToCart {
                
                     let alert = UIAlertController(title: "This item is already in cart", message: "Check your cart?", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
                     alert.addAction(UIAlertAction(title: "Show cart", style: .default, handler: { [self] UIAlertAction in
-                
+                        
+                        Fvritebtn.imageView?.image =
+                        UIImage(systemName: "heart.fill")
+                        
                         let cart = ShoppingCartViewController()
                         navigationController?.pushViewController(cart, animated: true)
                     }))
@@ -125,15 +154,16 @@ class ProductInfoViewController: UIViewController {
                 } else{
                     // if customer id = db id
                     let itemImage = self.productInfo?.image.src
-                    cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: sendPrice , itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: Int64(Helper.shared.getUserID()!))
+                    cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: sendPrice , itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: Int64(UserDefault.shared.getUserID()!))
                     
               
-                    print(Helper.shared.getUserID())
+                    print(UserDefault.shared.getUserID())
                   //  6261211300054
                   
                         let cart = ShoppingCartViewController()
                         navigationController?.pushViewController(cart, animated: true)
                     
+               
                     
                       isAddedToCart = true
                 }
@@ -146,14 +176,40 @@ class ProductInfoViewController: UIViewController {
 }
     
     @IBAction func FavouriteProductDetailsBtn(_ sender: UIButton) {
-        Helper.shared.checkUserIsLogged { [self] userLogged in
+        UserDefault.shared.checkUserIsLogged { [self] userLogged in
             if userLogged{
-         sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        let db = DBManager.sharedInstance
-        let  Img = productInfo?.image.src
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        db.addProduct(productName: ProductName1.text ?? "", productImage: Img ?? "", productPrice: sendPrice, productDescription: ProductDiscription.text ?? "", appDelegate: appDelegate)
+                if IsAddedfavorite{
+                    
+                    let alert = UIAlertController(title: "This product is already in Favorite", message: "Check your Favorite", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Show Favorite", style: .default, handler: { [self] UIAlertAction in
+                
+                        Fvritebtn.imageView?.image =
+                        UIImage(systemName: "heart.fill")
+                        
+                        let favorites = FavoriteViewController()
+                        navigationController?.pushViewController(favorites, animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                    
         
+                }else{
+                    
+                    sender.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                   
+                    let  Img = self.productInfo?.image.src
+                    favoriteDB.addProduct(productName: ProductName1.text ?? "", productImage:  Img ?? "", productPrice: sendPrice, productDescription: ProductDiscription.text ?? "", productId:  Int64(productInfo!.id)
+                      , customerId: Int64(UserDefault.shared.getUserID()!), appDelegate: appSelegate)
+                    
+                     print( "ProductID : \(productInfo!.id)")
+                    
+                    print(UserDefault.shared.getUserID())
+                    
+//                    let favorites = FavoriteViewController()
+//                    navigationController?.pushViewController(favorites, animated: true)
+                    
+                    IsAddedfavorite = true
+                }
             }else{
                 self.goToLoginPage()
                 

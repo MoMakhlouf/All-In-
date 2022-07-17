@@ -20,7 +20,7 @@ class AddNewAddressViewController: UIViewController {
         navigationItem.title = "New Address"
         addNewAddressButton.layer.cornerRadius = 15
         
-        print("qqqq\(Helper.shared.getUserID())")
+        print("qqqq\(UserDefault.shared.getUserID())")
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 20.0)!]
 
@@ -63,9 +63,9 @@ class AddNewAddressViewController: UIViewController {
           let jsonResponse : [String: [String : Any]] = ["address":
                                                           ["address1": moreDetailsAddressTextField.text!,"city": cityTextField.text!,"phone": mobileNumberTextField.text!,"province": governorateTextField.text! ,"country":countryTextField.text!,"zip":""]]
              
-          print("idddd \(Helper.shared.getUserID())")
+          print("idddd \(UserDefault.shared.getUserID())")
 
-          if let url = URL(string: Urls(customerId: Helper.shared.getUserID()!).postAddressUrl){
+          if let url = URL(string: Urls(customerId: UserDefault.shared.getUserID()!).postAddressUrl){
               var request = URLRequest(url: url)
               request.httpMethod = "POST"
               request.addValue("application/json", forHTTPHeaderField: "Content-Type")

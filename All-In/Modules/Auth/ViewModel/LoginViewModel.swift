@@ -19,13 +19,13 @@ class LoginViewModel{
             }
             
             if filetr.count != 0{
-                Helper.shared.setUserStatus(userIsLogged: true)
+                UserDefault.shared.setUserStatus(userIsLogged: true)
                 guard let customerID = filetr[0].id, let userFirstName = filetr[0].first_name, let userLastName = filetr[0].lastName, let userEmail = filetr[0].email  else {return}
-                Helper.shared.setUserID(customerID: customerID)
-                Helper.shared.setUserName(userName: "\(userFirstName) \(userLastName)")
-                Helper.shared.setUserEmail(userEmail: userEmail)
+                UserDefault.shared.setUserID(customerID: customerID)
+                UserDefault.shared.setUserName(userName: "\(userFirstName) \(userLastName)")
+                UserDefault.shared.setUserEmail(userEmail: userEmail)
                 if !filetr[0].addresses!.isEmpty {
-                    Helper.shared.setFoundAdress(isFoundAddress: true)
+                    UserDefault.shared.setFoundAdress(isFoundAddress: true)
                 }
                 completion(filetr[0])
             }else{

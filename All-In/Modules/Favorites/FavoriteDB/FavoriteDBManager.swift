@@ -21,7 +21,7 @@ class DBManager{
 extension DBManager{
 
 
-    func addProduct(productName: String, productImage: String,productPrice:String,productDescription:String,appDelegate: AppDelegate){
+    func addProduct(productName: String, productImage: String,productPrice:String,productDescription:String,productId : Int64 , customerId : Int64,appDelegate: AppDelegate){
         let managedContext = appDelegate.persistentContainer.viewContext
         if let entity = NSEntityDescription.entity(forEntityName: "FavouriteDB", in: managedContext){
             let product = NSManagedObject(entity: entity, insertInto: managedContext)
@@ -29,6 +29,8 @@ extension DBManager{
             product.setValue(productImage,forKey: "productImage")
             product.setValue(productPrice,forKey: "productPrice")
             product.setValue(productDescription,forKey:"productDescription")
+            product.setValue(productId, forKey: "productId")
+            product.setValue(customerId, forKey: "customerId")
             print("Set Data")
             do {
                 try managedContext.save()

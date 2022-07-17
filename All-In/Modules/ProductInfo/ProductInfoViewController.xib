@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="CartBtn" destination="Be9-zI-FEm" id="tFV-NY-7rS"/>
                 <outlet property="Description1" destination="UzN-be-qJe" id="3Lt-0l-GN3"/>
+                <outlet property="Fvritebtn" destination="Qop-rP-and" id="TLI-Iv-AFw"/>
                 <outlet property="MahmoudRevirew" destination="TNy-se-b4Y" id="OWp-wM-Key"/>
                 <outlet property="ProducrPrice1" destination="wTp-61-S5F" id="w0J-a8-ADL"/>
                 <outlet property="ProductDetailsCollection" destination="kaq-xJ-SI0" id="owD-Z2-wtb"/>
