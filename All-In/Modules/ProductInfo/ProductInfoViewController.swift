@@ -63,7 +63,7 @@ class ProductInfoViewController: UIViewController {
             ProducrPrice1.text =  String(format: "%0.2f", price!) + " USD"
              
         }else{
-            let egpPrice = Double((productInfo?.variants[0].price)!)! * Double(usdValue)!
+            let egpPrice = Double((productInfo?.variants[0].price)!)! * (Double(usdValue) ?? 18.8)
             ProducrPrice1.text =  String(format: "%0.2f", egpPrice) + " EGP"
         }
         ProductName1.text = productInfo?.title

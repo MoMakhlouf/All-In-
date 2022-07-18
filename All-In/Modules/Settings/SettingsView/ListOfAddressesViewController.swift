@@ -33,11 +33,11 @@ class ListOfAddressesViewController: UIViewController {
         
         print(addressesArray.count)
         emptyAddress()
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
+
         let addressViewModel = AddressViewModel()
         addressViewModel.getAdderss(customerId: Helper.shared.getUserID()!)
         addressViewModel.bindingData = { addresses , error in
@@ -52,11 +52,14 @@ class ListOfAddressesViewController: UIViewController {
             if let error = error {
                 print(error)
                 DispatchQueue.main.async {
-                    Alert.displayAlert(title: "Error", message: "Failed To Apply Coupon")
+                    Alert.displayAlert(title: "Wrong Address data", message: "Failed To Add Address")
                 }
             }
-            
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.backgroundColor = UIColor.white
     }
     
     func emptyAddress(){
@@ -95,14 +98,10 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
         let address = addressesArray[indexPath.row]
        // chooseAddressDelegate?.didSelectAddress(address: "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")")
         Defaults.defaults.setAddress(value: "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")", key: "address")
-           
     }
-    
-    
     
     //MARK: - DELETE AN ADDRESS
     
-     
      func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
@@ -127,11 +126,9 @@ extension ListOfAddressesViewController : UITableViewDelegate , UITableViewDataS
                             self.addressTableView.deleteRows(at: [indexPath], with: .fade)
                         }))
                         self.present(alert, animated: true, completion: nil)
-         
                     }
                 }
             emptyAddress()
-
         }
     }
 

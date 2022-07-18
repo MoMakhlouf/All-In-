@@ -209,7 +209,7 @@ extension BrandsViewController: UICollectionViewDataSource{
                 let price: Float = (Float(productsArray[indexPath.row].variants[0].price)!)
                 cell.priceProductLbl.text = String(format: "%.2f", price) + " USD"
             } else{
-                let price: Float = (Float(productsArray[indexPath.row].variants[0].price)! * (Float(usdValue)!))
+                let price: Float = (Float(productsArray[indexPath.row].variants[0].price)! * (Float(usdValue) ?? 18.8))
                 cell.priceProductLbl.text = String(format: "%.2f",  price) + " EGP"
             }
             

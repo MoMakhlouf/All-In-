@@ -27,14 +27,12 @@ class LoginViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
-
+    
         signIn.layer.cornerRadius = 15
         SignUp.layer.cornerRadius = 15
         guard let id = Helper.shared.getUserID() else {return}
         print(" id : \(id)")
     }
-    
 
     @IBAction func signInButton(_ sender: UIButton) {
         
@@ -50,11 +48,8 @@ class LoginViewController: UIViewController {
         
     }
     func goToProfile(){
-        
-         
         let profile = HomeViewController()
         navigationController?.pushViewController(profile, animated: true)
-         
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -67,9 +62,6 @@ class LoginViewController: UIViewController {
     
 }
      
- 
-    
-   
 
 extension LoginViewController{
     func login(){
@@ -83,11 +75,10 @@ extension LoginViewController{
             
             if customerLogged  != nil {
                 print("success to login")
-        
+                
                 self.showAlertError(title: "Welcome", message: " Welcome \(txtEmail.text ?? "User") ")
                  let profile = ProfileViewController()
                 navigationController?.pushViewController(profile, animated: true)
-        
 
             }else{
                 Helper.shared.setUserStatus(userIsLogged: false)

@@ -34,16 +34,11 @@ class addressTableViewCell: UITableViewCell {
     }
     
     func getFullAddress(address : Address){
-        
         fullAddress.text =  "\(address.country ?? ""), \(address.province ?? ""), \(address.city ?? ""), \(address.address1 ?? "") ,\(address.phone ?? "")"
         fullName.text = "\(address.first_name ?? "") \(address.last_name ?? "")"
-    
-       
     }
     
     func cellSelected() {
      didSelectCell?()
     }
-    
-    
 }

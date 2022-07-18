@@ -22,19 +22,14 @@ class ViewController: UIViewController {
         Timer.scheduledTimer(withTimeInterval: 2, repeats: false) { timer in
             self.push()
         }
-        
     }
 
- 
     func push(){
         let tabbar = TabBarController()
 
         self.navigationController?.pushViewController(tabbar, animated: true)
     }
-    
-
 }
-
 
 
 import ImageIO
@@ -50,8 +45,6 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     return false
   }
 }
-
-
 
 extension UIImage {
     

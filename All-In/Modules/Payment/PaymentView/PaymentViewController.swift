@@ -40,8 +40,6 @@ class PaymentViewController: UIViewController {
         currency = Defaults.defaults.getCurrency(key: "currency")
         usdValue = Defaults.defaults.getUsdValue(key: "usd")
     
-    
-        
         congratsView.isHidden = true
         view.addSubview(congratsView)
         congratsView.center = view.center
@@ -83,9 +81,9 @@ class PaymentViewController: UIViewController {
             totalPriceAfterDiscountLabel.text = " Total : \(subtotal) USD"
             self.finalTotal = subtotal
         }else{
-            let egpSubTotal = subtotal * Double(usdValue)!
+            let egpSubTotal = subtotal * (Double(usdValue) ?? 18.8)
             subTotalPriceLabel.text = "Sub Total :\(String(format: "%.2f", egpSubTotal)) EGP"
-            let egpSub = subtotal * Double(usdValue)!
+            let egpSub = subtotal * (Double(usdValue) ?? 18.8)
             totalPriceAfterDiscountLabel.text = " Total :  \( String(format: "%.2f", egpSub)) EGP"
             self.finalTotal = subtotal
         }
@@ -156,8 +154,8 @@ class PaymentViewController: UIViewController {
                 self.totalPriceAfterDiscountLabel.text = "Total : \(totalAfterDiscount) USD "
                 self.finalTotal = Double(totalAfterDiscount)!
             } else{
-                let egpDiscount = Double(discountAmount)! * Double(self.usdValue)!
-                let egpTotalAfterDiscount = Double(totalAfterDiscount)! * Double(self.usdValue)!
+                let egpDiscount = Double(discountAmount)! * (Double(self.usdValue) ?? 18.8)
+                let egpTotalAfterDiscount = Double(totalAfterDiscount)! * (Double(self.usdValue) ?? 18.8)
 
                 self.discountLabel.text = "\(String(format: "%.2f", egpDiscount)) EGP Discount"
                 self.totalPriceAfterDiscountLabel.text = "Total : \(String(format: "%.2f", egpTotalAfterDiscount)) EGP "
@@ -176,8 +174,8 @@ class PaymentViewController: UIViewController {
                 self.totalPriceAfterDiscountLabel.text = "Total : \(totalAfterDiscount) USD "
                 self.finalTotal = Double(totalAfterDiscount)!
             } else{
-                let egpDiscount = Double(discountAmount)! * Double(self.usdValue)!
-                let egpTotalAfterDiscount = Double(totalAfterDiscount)! * Double(self.usdValue)!
+                let egpDiscount = Double(discountAmount)! * (Double(self.usdValue) ?? 18.8)
+                let egpTotalAfterDiscount = Double(totalAfterDiscount)! * (Double(self.usdValue) ?? 18.8)
 
                 self.discountLabel.text = "\(String(format: "%.2f", egpDiscount)) EGP Discount"
                 self.totalPriceAfterDiscountLabel.text = "Total : \(String(format: "%.2f", egpTotalAfterDiscount)) EGP "

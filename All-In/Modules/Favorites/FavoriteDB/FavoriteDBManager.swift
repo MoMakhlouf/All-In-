@@ -70,4 +70,16 @@ extension DBManager{
         }
         
     }
+    
+    func deleteAll(appDelegate : AppDelegate) -> Bool{
+       let context = appDelegate.persistentContainer.viewContext
+       let delete = NSBatchDeleteRequest(fetchRequest: FavouriteDB.fetchRequest())
+       
+       do{
+           try context.execute(delete)
+           return true
+       }catch{
+           return false
+       }
+    }
 }

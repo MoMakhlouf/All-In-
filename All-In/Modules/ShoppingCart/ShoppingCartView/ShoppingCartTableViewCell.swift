@@ -47,11 +47,8 @@ class ShoppingCartTableViewCell: UITableViewCell {
         if currency == "USD" {
             itemPrice.text = item.price! + " USD"
         } else{
-             let price = Double(item.price!)! * Double(usdValue)!
+            let price = Double(item.price!)! * (Double(usdValue) ?? 18.8)
             itemPrice.text =  String(format: "%.2f",  price)  + " EGP"
-            //print("\(price)")
-           // itemPrice.text = item.price! + " EGP"
-
         }
           
         quantityLabel.text = String(item.itemQuantity)

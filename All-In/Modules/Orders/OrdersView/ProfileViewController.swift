@@ -133,14 +133,6 @@ class ProfileViewController: UIViewController {
         navigationController?.pushViewController(register, animated: true)
     }
     
-    
-/*    override func viewDidAppear(_ animated: Bool) {
-      
-        favArray = fav.fetchData(appDelegate: appDelegate)
-        self.emptyOrders()
-        self.emptyFav()
-    }
-    */
 
     @IBAction func LogOutBtnPressed(_ sender: Any) {
         let home = HomeViewController()
@@ -191,7 +183,7 @@ extension ProfileViewController: UITableViewDataSource{
             if currency == "USD"{
                 cell.favePrice.text = (favArray[indexPath.row].productPrice ?? "") + " USD"
             }else{
-                let price = Double(favArray[indexPath.row].productPrice!)! * Double(usdValue)!
+                let price = Double(favArray[indexPath.row].productPrice!)! * (Double(usdValue) ?? 18.8)
                 cell.favePrice.text = String(format: "%.2f", price) + " EGP"
             }
             
@@ -202,9 +194,9 @@ extension ProfileViewController: UITableViewDataSource{
         cell.nameOfProduct.text = "Order No: \(String(ordersArray[indexPath.row].id))"
        
         if currency == "USD"{
-        cell.priceOfOrder.text = ordersArray[indexPath.row].current_total_price + " USD"
+        cell.priceOfOrder.text = "Total: " + ordersArray[indexPath.row].current_total_price + " USD"
         }else{
-            let egpPrice = Double(ordersArray[indexPath.row].current_total_price)! * Double(usdValue)!
+            let egpPrice = Double(ordersArray[indexPath.row].current_total_price)! * (Double(usdValue) ?? 18.8)
             cell.priceOfOrder.text = "Total: " + String(format: "%.2f", egpPrice) + " EGP"
         }
         cell.imgOfOrder.kf.setImage(with: URL(string: ordersArray[indexPath.row].line_items[0].sku))
@@ -225,13 +217,6 @@ extension ProfileViewController{
     }
     
 }
-//extension  ProfileViewController{
-//    func setUserInfo(){
-//        guard let userName = Helper.shared.getUserName(), let userEmail = Helper.shared.getUserEmail() else {return}
-//        self.userName.text = userName
-//        self.userEmail.text = userEmail
-//    }
-//}
 
 extension ProfileViewController{
     func emptyOrders(){

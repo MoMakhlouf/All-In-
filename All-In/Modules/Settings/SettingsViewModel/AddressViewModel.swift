@@ -34,10 +34,13 @@ class AddressViewModel{
         apiService.getAddress(customerId: customerId) { addresses, error in
             if let addresses = addresses {
                 self.addressArray = addresses
-                print("getadresssss")
+                print("get address")
             }
             if let error = error {
-                print("errrrrrorrrr")
+                print("errorr")
+                DispatchQueue.main.async {
+                    Alert.displayAlert(title: "Error in Address", message: "Write a right address")
+                }
                 self.error = error
             }
         }

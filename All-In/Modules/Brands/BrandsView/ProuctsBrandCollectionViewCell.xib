@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="5" width="383" height="370"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6dE-3n-84X">
-                        <rect key="frame" x="293" y="5" width="60" height="25"/>
+                        <rect key="frame" x="303" y="5" width="60" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="UFj-JZ-RN0"/>
                             <constraint firstAttribute="height" constant="25" id="e3q-TI-Mcu"/>
@@ -70,7 +70,7 @@
                 <constraint firstItem="6dE-3n-84X" firstAttribute="top" secondItem="vjc-pJ-3ZK" secondAttribute="top" id="BJ3-5i-hRJ"/>
                 <constraint firstItem="ygZ-de-8iN" firstAttribute="top" secondItem="Duu-gT-mh2" secondAttribute="bottom" constant="5" id="Gg9-jM-0Yd"/>
                 <constraint firstAttribute="bottom" secondItem="ygZ-de-8iN" secondAttribute="bottom" constant="10" id="Ig9-Xg-IXr"/>
-                <constraint firstAttribute="trailing" secondItem="6dE-3n-84X" secondAttribute="trailing" constant="30" id="qUj-AV-HSZ"/>
+                <constraint firstAttribute="trailing" secondItem="6dE-3n-84X" secondAttribute="trailing" constant="20" id="qUj-AV-HSZ"/>
                 <constraint firstItem="ZpN-3G-xE0" firstAttribute="trailing" secondItem="Duu-gT-mh2" secondAttribute="trailing" constant="20" id="rTt-uq-L1L"/>
                 <constraint firstItem="Duu-gT-mh2" firstAttribute="leading" secondItem="kti-NM-k7g" secondAttribute="leading" constant="20" id="tdO-mM-bTM"/>
                 <constraint firstItem="ygZ-de-8iN" firstAttribute="trailing" secondItem="Duu-gT-mh2" secondAttribute="trailing" id="vcV-Tu-MGm"/>

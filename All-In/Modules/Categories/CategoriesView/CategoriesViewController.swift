@@ -190,11 +190,6 @@ class CategoriesViewController: UIViewController , UISearchBarDelegate {
          }
     }
     
-  
-
-    // MARK: - Search
-    
-
 }
 
 extension CategoriesViewController: UICollectionViewDelegate{
@@ -244,7 +239,7 @@ extension CategoriesViewController: UICollectionViewDataSource{
             let price: Float = (Float(menArray[indexPath.row].variants[0].price)!)
             cell.categoryPriceLbl.text = String(format: "%0.2f", price) + " USD"
             }else{
-                let priceegp: Float = (Float(menArray[indexPath.row].variants[0].price)! * Float(usdValue)!)
+                let priceegp: Float = (Float(menArray[indexPath.row].variants[0].price)! * (Float(usdValue) ?? 18.8) )
                 cell.categoryPriceLbl.text =  String(format: "%0.2f",  priceegp) + " EGP"
             }
             cell.categoryImg.kf.setImage(with: URL(string: menArray[indexPath.row].image.src))
@@ -253,12 +248,7 @@ extension CategoriesViewController: UICollectionViewDataSource{
         return cell
 
     }
- 
-    
-    
 }
-
-
 
 
 extension CategoriesViewController: UICollectionViewDelegateFlowLayout{

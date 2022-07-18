@@ -11,22 +11,12 @@ class RgisterViewController: UIViewController {
     
     let network = NetworkManager()
     @IBOutlet weak var signInLabel: UILabel!
-    
     @IBOutlet weak var txtNameSt: UITextField!
-    
-    
     @IBOutlet weak var txtName: UITextField!
-    
-    
     @IBOutlet weak var txtEmail1: UITextField!
-    
-   
     @IBOutlet weak var txtPassword1: UITextField!
-    
     @IBOutlet weak var txtPhone: UITextField!
-    
     @IBOutlet weak var signUpbtn: UIButton!
-    
     @IBOutlet weak var haveAccountLabel: UILabel!
     
     var registerViewModel = RegisterViewModel()

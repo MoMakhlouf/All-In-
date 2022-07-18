@@ -27,7 +27,7 @@ class HomeViewController: UIViewController {
 
 
     var brandsArray = [SmartCollection]()
-    var adsPhotos = [UIImage(named: "adidas") , UIImage(named: "nike") , UIImage(named: "timberland") , UIImage(named: "adidas") ,  UIImage(named: "nike")]
+    var adsPhotos = [UIImage(named: "adidas") , UIImage(named: "nike") , UIImage(named: "timberland") , UIImage(named: "adidas") ,  UIImage(named: "nike") , UIImage(named: "superStar") , UIImage(named: "timberland2")]
 
     var timer : Timer?
     var currentCellIndex = 0
@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+    // get the result of one dollar and save it to userDefaults
         let currencyViewModel = CurrencyViewModel()
         currencyViewModel.convertCurrency(amount: "1")
         currencyViewModel.bindingData = { result , error in
@@ -44,9 +44,8 @@ class HomeViewController: UIViewController {
                 self.result = result
                 Defaults.defaults.setUsdValue(value:String(result), key: "usd")
             }
-            
         }
-        
+
         [adsCollectionView,brandsHomeCollection].forEach {
             $0?.delegate   = self
             $0?.dataSource = self
@@ -102,7 +101,6 @@ class HomeViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-
     }
     
    

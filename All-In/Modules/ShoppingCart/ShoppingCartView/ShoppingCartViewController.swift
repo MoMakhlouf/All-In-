@@ -53,7 +53,7 @@ class ShoppingCartViewController: UIViewController {
         if self.currency == "USD"{
             self.totalPrice.text = "Total: \(String(format: "%.2f", self.total)) USD "
         }else{
-            let totalValue = self.total * Double(self.usdValue)!
+            let totalValue = self.total * (Double(self.usdValue) ?? 18.8)
             self.totalPrice.text = "Total: \(String(format: "%.2f", totalValue)) EGP"
 
         }

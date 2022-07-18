@@ -60,7 +60,7 @@ extension OrdersViewController: UITableViewDelegate{
             footerView.totalPrice.text = ordersArray[section].current_total_price + " USD"
         }else{
            
-            let egpPrice = Double(ordersArray[section].current_total_price)! * Double(usdValue)!
+            let egpPrice = Double(ordersArray[section].current_total_price)! * (Double(usdValue) ?? 18.8)
             
             footerView.totalPrice.text = String(format: "%.2f", egpPrice) + " EGP"
 
@@ -93,7 +93,7 @@ extension OrdersViewController: UITableViewDataSource{
             cell.priceOfOrder.text = ordersArray[indexPath.section].line_items[indexPath.row].price + " USD"
 
         } else{
-             let egpPrice = Double(ordersArray[indexPath.section].line_items[indexPath.row].price)! * Double(usdValue)!
+            let egpPrice = Double(ordersArray[indexPath.section].line_items[indexPath.row].price)! * (Double(usdValue) ?? 18.8)
 
             cell.priceOfOrder.text = String(format: "%.2f", egpPrice) + " EGP"
         }

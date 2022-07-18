@@ -224,12 +224,13 @@ class NetworkManager : ApiServices{
                
     var request = URLRequest(url: url ,timeoutInterval: Double.infinity)
       request.httpMethod = "GET"
-      request.addValue("RbK8s3WtyAUy8db7oEyUzhLARVdQ4Qmx", forHTTPHeaderField: "apikey")
+      request.addValue("ztSN7awkHsccKQu8ZDpCCcYDVSttigIr", forHTTPHeaderField: "apikey") 
+          
 
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         
-   
-            
+        
+
             if let data = data {
                 do{
                     

@@ -100,13 +100,13 @@ extension FilterViewController: UITableViewDataSource{
         switch(indexPath.section){
         case 0:
             if currency == "USD"{
-            cell.fromLbl.text = String(convert.min()!)
-            cell.toLbl.text = String(convert.max()!)
+            cell.fromLbl.text = String(format: "%.2f", convert.min()!)
+            cell.toLbl.text = String(format: "%.2f", convert.max()!)
             cell.sliderPrice.maximumValue = convert.max()!
             cell.sliderPrice.minimumValue = convert.min()!
             }else{
-                cell.fromLbl.text = String(convert.min()! * Float(usdValue)!)
-                cell.toLbl.text = String(convert.max()! * Float(usdValue)!)
+                cell.fromLbl.text = String(format: "%.2f", convert.min()! * Float(usdValue)!)
+                cell.toLbl.text = String(format: "%.2f", convert.max()! * Float(usdValue)!)
                 cell.sliderPrice.maximumValue = convert.max()! * Float(usdValue)!
                 cell.sliderPrice.minimumValue = convert.min()! * Float (usdValue)!
             }

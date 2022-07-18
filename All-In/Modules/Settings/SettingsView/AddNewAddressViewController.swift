@@ -20,16 +20,22 @@ class AddNewAddressViewController: UIViewController {
         navigationItem.title = "New Address"
         addNewAddressButton.layer.cornerRadius = 15
         
-        print("qqqq\(Helper.shared.getUserID())")
+        print("User ID :\(Helper.shared.getUserID())")
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 20.0)!]
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
+
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.backgroundColor = UIColor.white
+    }
 
     @IBAction func addNewAddressButtonPressed(_ sender: UIButton) {
-        
          validData()
-     
     }
     
     func validData() {
@@ -63,7 +69,7 @@ class AddNewAddressViewController: UIViewController {
           let jsonResponse : [String: [String : Any]] = ["address":
                                                           ["address1": moreDetailsAddressTextField.text!,"city": cityTextField.text!,"phone": mobileNumberTextField.text!,"province": governorateTextField.text! ,"country":countryTextField.text!,"zip":""]]
              
-          print("idddd \(Helper.shared.getUserID())")
+          print("user id : \(Helper.shared.getUserID())")
 
           if let url = URL(string: Urls(customerId: Helper.shared.getUserID()!).postAddressUrl){
               var request = URLRequest(url: url)
@@ -77,33 +83,42 @@ class AddNewAddressViewController: UIViewController {
               
               let task = URLSession.shared.dataTask(with: request) { data, response, error in
 
-                  print("sss\(data)")
+                  print("Address Data :\(data)")
                   if let data = data {
                       do{
                           let json = try JSONSerialization.jsonObject(with: data, options: [])
 
-                          print(json)
-                          print("post")
+                          if let dictionary = json as? [String: Any] {
+                              if let error = dictionary["errors"]{
+                                  print("123\(error)")
+                                  DispatchQueue.main.async {
+                                      Alert.displayAlert(title: "Wrong country or governorate name ", message: "Please, Add a true address")
+                                  }
+                              }else{
+                                  DispatchQueue.main.async {
+                                      self.navigationController?.popViewController(animated: true)
+                                      print(json)
+                                      print("post")
+                                      self.countryTextField.text = ""
+                                      self.cityTextField.text = ""
+                                      self.governorateTextField.text = ""
+                                      self.mobileNumberTextField.text = ""
+                                      self.moreDetailsAddressTextField.text = ""
+                                  }
+                              }
+                          }
+                        
+                         
                       }catch {
                           print(error.localizedDescription)
+                          DispatchQueue.main.async {
+                              Alert.displayAlert(title: "Wrong Address Format", message: "Write a true address")
+                          }
                       }
                   }
               }
               task.resume()
           }
-          
-      
-       //   let addressesList = ListOfAddressesViewController()
-         // navigationController?.pushViewController(addressesList, animated: true)
-          
-          navigationController?.popViewController(animated: true)
-          
-          countryTextField.text = ""
-          cityTextField.text = ""
-          governorateTextField.text = ""
-          mobileNumberTextField.text = ""
-          moreDetailsAddressTextField.text = ""
-          
       }
         
     }

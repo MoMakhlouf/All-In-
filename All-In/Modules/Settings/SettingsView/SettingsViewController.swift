@@ -12,7 +12,9 @@ class SettingsViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let cartDB = ShoppingCartDBManager.sharedInstance
     var cartItems = [ShoppingCartDB]()
-    
+    var favoriteItems = [FavouriteDB]()
+    var favoritDB = DBManager.sharedInstance
+
     @IBOutlet weak var loadIndicator: UIActivityIndicatorView!
     @IBOutlet weak var currencySwitch: UISegmentedControl!
     @IBOutlet weak var logoutButton: UIButton!
@@ -35,12 +37,10 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.backgroundColor = UIColor.systemGray6
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.backgroundColor = UIColor.white
-
     }
     
 
@@ -69,9 +69,6 @@ class SettingsViewController: UIViewController {
             Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
                 
                 self.afterConvertCurrency()
-        
-                
-              //  self.navigationController?.popToRootViewController(animated: true)
             }
             
         case 1 : Defaults.defaults.setCurrency(key: "currency", value: "EGP")
@@ -83,20 +80,17 @@ class SettingsViewController: UIViewController {
         default:
             break
         }
-        
-        
         print(currencySwitch.titleForSegment(at: currencySwitch.selectedSegmentIndex)!)
     }
     
     
-    
     @IBAction func logOutButtonPressed(_ sender: UIButton) {
         showAlertSheet(title: "Do you want to log out?", message:
-            "if you pressed log out, we will miss you 💔") { succes in
+            "") { succes in
             if succes {
                 Helper.shared.setUserStatus(userIsLogged: false)
                 Helper.shared.setFoundAdress(isFoundAddress: false)
-
+    //Delete All carted items
                 print("Delete All item from shopping cart")
                 print(self.cartItems.count)
                 if self.cartDB.deleteAll(appDelegate: self.appDelegate) {
@@ -105,10 +99,12 @@ class SettingsViewController: UIViewController {
                   print("deleted")
                 }
                 
+                if self.favoritDB.deleteAll(appDelegate: self.appDelegate){
+                    self.favoriteItems = self.favoritDB.fetchData(appDelegate: self.appDelegate)
+                }
                 self.afterConvertCurrency()
             }
         }
-        
     }
     
     

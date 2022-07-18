@@ -68,7 +68,7 @@ class PaymentMethodsViewController: UIViewController  {
         if currency == "USD"{
         totalAmountLabel.text = "Total: \(totalAmount) USD"
         }else{
-           let totalEgp = totalAmount * Double(usdValue)!
+            let totalEgp = totalAmount * (Double(usdValue) ?? 18.8)
             
             totalAmountLabel.text = "Total: \( String(format: "%.2f", totalEgp)) EGP"
 
@@ -194,9 +194,7 @@ class PaymentMethodsViewController: UIViewController  {
     @IBAction func continueShoppingButtonPressed(_ sender: UIButton) {
         let homeVc = HomeViewController()
         navigationController?.pushViewController(homeVc, animated: true)
-      
     }
-    
 }
 
 
@@ -223,65 +221,35 @@ extension PaymentMethodsViewController{
            for item in cartItems{
 
                var i = ["product_id": Int(item.itemId), "price": item.price ?? "", "quantity":item.itemQuantity, "title":item.title ?? "" , "sku": item.itemImage ?? ""] as [String : Any]
-
             items.append(i)
-
-            
-
         }
 
         jsonResponse = ["order":["line_items":items,"customer":["id":Helper.shared.getUserID()],"billing_address":["address1": addressFullLabel.text]]]
 
-        
-
-        
-
         if let url = URL(string: Urls().ordersUrl){
-
             var request = URLRequest(url: url)
-
             request.httpMethod = "POST"
-
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
             request.httpShouldHandleCookies = false
-
             if let httpBody = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) {
-
                 print("json\(jsonResponse)")
-
                 request.httpBody = httpBody
-
             }
-
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
-
                 if let data = data {
-
                     do{
-
                         let json = try JSONSerialization.jsonObject(with: data, options: [])
 
                         print(json)
-
                     }catch {
-
                         print("Errorrr\(error.localizedDescription)")
-
                     }
-
                 }
-
             }
 
             task.resume()
-
         }
-
-        
-
     }
-
 }
 
 

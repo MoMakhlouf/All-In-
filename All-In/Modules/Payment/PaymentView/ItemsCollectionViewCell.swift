@@ -41,7 +41,7 @@ class ItemsCollectionViewCell: UICollectionViewCell {
             if currency == "USD"{
                 itemPrice.text = shopping.price! + " USD"
             }else{
-                let egpPrice = Double(shopping.price!)! * Double(usdValue)!
+                let egpPrice = Double(shopping.price!)! * (Double(usdValue) ?? 18.8)
                 itemPrice.text = String(format: "%.2f",  egpPrice) + " EGP"
 
             }

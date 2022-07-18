@@ -31,7 +31,7 @@ class Defaults {
     
     
     //MARK: -   currency
-    
+     // set from home amount of 1 dollar in egp
     func setUsdValue(value : String , key : String){
         UserDefaults.standard.set(value, forKey: key )
         print("usd")
@@ -42,9 +42,7 @@ class Defaults {
     
     }
     
- 
-    
-    //MARK: - Address
+    //MARK: -  set Address from list of address "did select" to label in checkout payment
  
     func setAddress(value : String , key : String){
         UserDefaults.standard.set(value, forKey: key )
@@ -55,10 +53,6 @@ class Defaults {
         return UserDefaults.standard.string(forKey: key) ?? ""
     
     }
-    
-    
-    
-    
 }
 
 
