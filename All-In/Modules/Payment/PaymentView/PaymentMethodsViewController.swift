@@ -135,40 +135,8 @@ class PaymentMethodsViewController: UIViewController , ChooseAddressDelegate  {
     
     //MARK: - OREDER CONFIRMATION
     @IBAction func placeOrderButtonPressed(_ sender: UIButton) {
-        cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
-       // self.address = addressesArray[0]
-        var jsonResponse = [String : [String : Any]]()
-   //     var items = [Items]()
-        let item = cartItems[0]
-     /*   for item in cartItems{
-            var i = Items(id: Int(item.itemId), title: item.title!, price: item.price!, quantity: Int(item.itemQuantity), sku: item.itemImage!)
-            items.append(i)
-        }*/
-            
-        jsonResponse = ["order":["email":Helper.shared.getUserEmail() ?? "m@gmail.com","line_items":[["product_id": item.itemId,"title":item.title!,"price": item.price!,"quantity": item.itemQuantity,"sku":item.itemImage!]],"billing_address":["first_name":"m","last_name":"m","address1":"124" ,"phone":"12345","city":"jjj","province":"","country":"egypt","zip":"124"],"customer":["id":Helper.shared.getUserID()]]]
-        
-        print(jsonResponse)
-        if let url = URL(string: Urls().ordersUrl){
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.httpShouldHandleCookies = false
-            if let httpBody = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) {
-                print("json\(jsonResponse)")
-                request.httpBody = httpBody
-            }
-            let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                if let data = data {
-                    do{
-                        let json = try JSONSerialization.jsonObject(with: data, options: [])
-                        print(json)
-                    }catch {
-                        print("Errorrr\(error.localizedDescription)")
-                    }
-                }
-            }
-            task.resume()
-        }
+        self.postOrder()
+      
         
         placeOrderIndicator.startAnimating()
         Timer.scheduledTimer(withTimeInterval: 1.5 , repeats: false) { timer in
@@ -224,3 +192,43 @@ extension PaymentMethodsViewController : BTViewControllerPresentingDelegate{
 
 
 ///
+extension PaymentMethodsViewController{
+    func postOrder(){
+        cartItems = cartDB.getItemToCart(appDelegate: appDelegate)
+        var jsonResponse = [String : [String : Any]]()
+        var items = [[String:Int]]()
+      //  let item = cartItems[0]
+      //  var item2 = [["variant_id": 43130731593942,"quantity":1],["variant_id": 43130731593942,"quantity":1]]
+        
+        for item in cartItems{
+            var i = ["variant_id": item.variantsId,"quantity":item.itemQuantity] as [String : Int]
+            items.append(i)
+          
+        }
+            
+        jsonResponse = ["order":["email":Helper.shared.getUserEmail() ?? "m@gmail.com","line_items":items,"customer":["id":Helper.shared.getUserID()]]]
+        
+        if let url = URL(string: Urls().ordersUrl){
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.httpShouldHandleCookies = false
+            if let httpBody = try? JSONSerialization.data(withJSONObject: jsonResponse, options: []) {
+                print("json\(jsonResponse)")
+                request.httpBody = httpBody
+            }
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    do{
+                        let json = try JSONSerialization.jsonObject(with: data, options: [])
+                        print(json)
+                    }catch {
+                        print("Errorrr\(error.localizedDescription)")
+                    }
+                }
+            }
+            task.resume()
+        }
+        
+    }
+}

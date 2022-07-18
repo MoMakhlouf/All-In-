@@ -13,7 +13,7 @@ struct Urls {
     var customerId = ""
     var addressId = 0
     var amount = ""
-
+    var customerId1 = 0
     var baseUrl  : String {
         
         return "https://7d67dd63dc90e18fce08d1f7746e9f41:shpat_8e5e99a392f4a8e210bd6c4261b93 50e@ios-q3-mansoura.myshopify.com/admin/api/2022-01/"
@@ -42,7 +42,7 @@ struct Urls {
     }
     
     var customerOrdersUrl: String{
-        return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/customers/\(customerId)/orders.json?access_token=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"
+        return "https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/customers/\(customerId1)/orders.json?access_token=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"
     }
     
     var ordersUrl: String{

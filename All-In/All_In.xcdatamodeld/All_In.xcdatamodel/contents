@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="20G624" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="FavouriteDB" representedClassName="FavouriteDB" syncable="YES" codeGenerationType="class">
         <attribute name="productDescription" optional="YES" attributeType="String"/>
         <attribute name="productImage" optional="YES" attributeType="String"/>
@@ -13,9 +13,17 @@
         <attribute name="itemQuantity" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="price" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="variantsId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="VarientsDB" representedClassName="VarientsDB" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="products_Id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="String"/>
+        <relationship name="relationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShoppingCartDB"/>
     </entity>
     <elements>
-        <element name="FavouriteDB" positionX="-54" positionY="126" width="128" height="89"/>
-        <element name="ShoppingCartDB" positionX="-54" positionY="81" width="128" height="119"/>
+        <element name="FavouriteDB" positionX="-304.287353515625" positionY="179.7877807617188" width="128" height="89"/>
+        <element name="ShoppingCartDB" positionX="-54" positionY="81" width="128" height="134"/>
+        <element name="VarientsDB" positionX="-310.2635498046875" positionY="44.10682678222656" width="128" height="103"/>
     </elements>
 </model>

@@ -105,7 +105,7 @@ class ProductInfoViewController: UIViewController {
                 } else{*/
 
                     let itemImage = self.productInfo?.image.src
-                    cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054)
+        cartDB.saveItemToDB(appDelegate: appSelegate, title: ProductName1.text!, itemQuantity: 1 , price: ProducrPrice1.text ?? "", itemImage: itemImage ?? "" , itemId: Int64(productInfo!.id) , customerId: 6261211300054, variantsId: Int64(productInfo?.variants[0].id ?? 0))
                     
                   
                         let cart = ShoppingCartViewController()

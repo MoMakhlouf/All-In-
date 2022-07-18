@@ -28,10 +28,11 @@ class ProfileViewController: UIViewController {
         emptyOrder.isHidden =  false
         ordersTableView.register(UINib(nibName: "OrdersTableViewCell", bundle: nil), forCellReuseIdentifier: "orderCell")
         FavouriteTableView.register(UINib(nibName: "FavoriteTableViewCell", bundle: nil), forCellReuseIdentifier: "FavoriteCell")
-    
-      
-        self.userNameLbl.text = "Hi.. " + Helper.shared.getUserEmail()!
+        self.userNameLbl.text = "Hi.. " + Helper.shared.getUserName()!
         
+        
+        title = "My Account"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) ]//, .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
         self.navigationController?.navigationBar.tintColor =  #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
         let settingBtn = UIBarButtonItem()
@@ -48,11 +49,9 @@ class ProfileViewController: UIViewController {
         
         favArray = fav.fetchData(appDelegate: appDelegate)
         self.emptyFav()
-        
-        
-        
+
         let ordersViewModel = OrdersModelView()
-        ordersViewModel.fetchData(customerID: "6277923504342")
+        ordersViewModel.fetchData(customerID: Helper.shared.getUserID()!)
         ordersViewModel.bindingData = { orders , error in
             if let orders = orders{
                 self.ordersArray = orders.orders
@@ -62,8 +61,8 @@ class ProfileViewController: UIViewController {
                 }
             }
             if let error = error{
-               // Alert.displayAlert(title: "Error", message: error.localizedDescription)
                 print(error.localizedDescription)
+              
             }
         }
         
@@ -73,6 +72,23 @@ class ProfileViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        let ordersViewModel = OrdersModelView()
+        ordersViewModel.fetchData(customerID: Helper.shared.getUserID()!)
+        ordersViewModel.bindingData = { orders , error in
+            if let orders = orders{
+                self.ordersArray = orders.orders
+                DispatchQueue.main.async {
+                    self.ordersTableView.reloadData()
+                    self.emptyOrders()
+                }
+            }
+            if let error = error{
+                print(error.localizedDescription)
+              
+            }
+        }
         
         favArray = fav.fetchData(appDelegate: appDelegate)
         self.emptyOrders()
@@ -108,6 +124,7 @@ class ProfileViewController: UIViewController {
  
     @IBAction func moreBtnOrders(_ sender: Any) {
         let orderVC = OrdersViewController()
+        orderVC.ordersArray = self.ordersArray
         navigationController?.pushViewController(orderVC, animated: true)
         
     }
@@ -150,6 +167,7 @@ extension ProfileViewController: UITableViewDataSource{
         let cell = ordersTableView.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as! OrdersTableViewCell
         cell.nameOfProduct.text = String(ordersArray[indexPath.row].id)
         cell.priceOfOrder.text = ordersArray[indexPath.row].current_total_price
+        cell.imgOfOrder.kf.setImage(with: URL(string: ordersArray[indexPath.row].line_items[0].sku))
         cell.imgOfOrder.image = UIImage(named: "shoping")
         return cell
     }

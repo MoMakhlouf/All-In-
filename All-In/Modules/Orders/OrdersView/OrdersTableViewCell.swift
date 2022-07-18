@@ -19,7 +19,7 @@ class OrdersTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        imgOfOrder.layer.borderWidth = 1
+        imgOfOrder.layer.borderWidth = 0.4
         imgOfOrder.layer.borderColor = UIColor.black.cgColor
     }
 

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class OrdersViewController: UIViewController {
     var ordersArray = [Order]()
@@ -21,25 +22,12 @@ class OrdersViewController: UIViewController {
 
         
         title = "Orders"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) , .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1) ]//, .font: UIFont(name: "Helvetica Neue", size: 25.0)!]
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.4431372549, green: 0.1607843137, blue: 0.4235294118, alpha: 1)
         
-        let ordersViewModel = OrdersModelView()
-        ordersViewModel.fetchData(customerID: "6277500960982")
-        ordersViewModel.bindingData = { orders , error in
-            if let orders = orders{
-                self.ordersArray = orders.orders
-                DispatchQueue.main.async {
-                    self.ordersTable.reloadData()
-                    self.emptyOrders()
-                }
-            }
-            if let error = error{
-               // Alert.displayAlert(title: "Error", message: error.localizedDescription)
-                print(error.localizedDescription)
-            }
-        }
+
         self.emptyOrders()
+       
         
     }
     
@@ -64,13 +52,14 @@ extension OrdersViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "orderHeaderTableView") as! orderHeaderTableView
-        headerView.noOfOrder.text = "Order " + String(ordersArray[section].id)
+        headerView.noOfOrder.text =  String(ordersArray[section].id)
       
-        headerView.dateOfOrder.text = "Placed On " + ordersArray[section].created_at
+      
+      //  headerView.dateOfOrder.text = "Placed On " + ordersArray[section].created_at
         return headerView
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 30
     }
 
 }
@@ -87,9 +76,10 @@ extension OrdersViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ordersTable.dequeueReusableCell(withIdentifier: "orderCell", for: indexPath) as! OrdersTableViewCell
         
-        cell.nameOfProduct.text = ordersArray[indexPath.section].line_items[0].title
-        cell.priceOfOrder.text = ordersArray[indexPath.section].current_total_price + ordersArray[indexPath.section].currency
+        cell.nameOfProduct.text = String( ordersArray[indexPath.section].line_items[0].title)
+        cell.priceOfOrder.text = ordersArray[indexPath.section].current_total_price + " " + ordersArray[indexPath.section].currency
         cell.imgOfOrder.image = UIImage(named: "shoping")
+        cell.imgOfOrder.kf.setImage(with: URL(string: ordersArray[indexPath.section].line_items[0].sku))
         return cell
     }
     

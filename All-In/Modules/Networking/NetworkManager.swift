@@ -9,6 +9,8 @@ import Foundation
 import Alamofire
 
 class NetworkManager : ApiServices{
+   
+ 
   
     
     
@@ -16,7 +18,26 @@ class NetworkManager : ApiServices{
   static let shared = NetworkManager()
     
     
-    func postOrder(customerID : String  , line_items : [Items] , completion : @escaping(Data? , URLResponse? , Error?) ->()){
+  //  func getOrder(completion: @escaping (Orders?, Error?) -> ()) {
+        
+//        if let url = URL(string: "https://ios-q3-mansoura.myshopify.com/admin/api/2022-01/customers/6278043893974/orders.json?access_token=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"){
+//           URLSession.shared.dataTask(with: url) { data, response, error in
+//                if let data = data{
+//                    let decodJson = JSONDecoder()
+//                    let decodedArray = try? decodJson.decode(Orders.self, from: data)
+//                        completion(decodedArray , nil)
+//                    print("network manager")
+//                    }
+//                if let error = error {
+//                    completion(nil,error)
+//                    print("errorrrrrrr")
+//                }
+//           }.resume()
+//        }
+//
+//    }
+//
+    func postOrder(customerID: Int, line_items: [Items], completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         if let url = URL(string: Urls().ordersUrl){
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
@@ -44,8 +65,11 @@ class NetworkManager : ApiServices{
         
     }
     
-    func getOrder(customerID: String, completion: @escaping (Orders?, Error?) -> ()) {
-        if let url = URL(string: Urls(customerId: customerID).customerOrdersUrl){
+    
+
+    
+    func getOrder(customerID: Int, completion: @escaping (Orders?, Error?) -> ()) {
+        if let url = URL(string: Urls(customerId1: customerID).customerOrdersUrl){
            URLSession.shared.dataTask(with: url) { data, response, error in
                 if let data = data{
                     let decodJson = JSONDecoder()
@@ -225,7 +249,7 @@ class NetworkManager : ApiServices{
                
     var request = URLRequest(url: url ,timeoutInterval: Double.infinity)
       request.httpMethod = "GET"
-      request.addValue("XaGOO6Zq3YNHIxyk3ibbCnp7IuoI0te4", forHTTPHeaderField: "apikey")
+      request.addValue("y74r6BOlgKDOoaMtz714xQRukKvUL2jF", forHTTPHeaderField: "apikey")
             //lQuu3oLhBMK9uv03G57xXqzVcuGCChaa
     let task = URLSession.shared.dataTask(with: request) { data, response, error in
         
