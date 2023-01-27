@@ -5,7 +5,6 @@ Pods : Alamofire , BrainTree, Kingfisher and Floaty
 
 
 
-<img width="500" alt="Screenshot 2023-01-27 at 7 02 51 PM" src="https://user-images.githubusercontent.com/45856711/215154027-5d4e2586-712e-438f-bff6
 <img width="500" alt="Screenshot 2023-01-27 at 7 04 27 PM" src="https://user-images.githubusercontent.com/45856711/215154224-f49e375a-f68b-4f7f-b71e-b15a74b5da0b.png">
 -991633c90985.png">
 
