@@ -1,25 +1,8 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2636
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 \
-Marwa Maher Mohamed :  Set1 - Brands, Categories, Orders and Home \
-Mohamed Makhlouf Ahmed : Set2 - Shopping Cart, Payment, discounts code, Ads, Address and Settings\
-Mahmoud Saad Lotfy Saad : Set3 - Product info, search, Favorites, and Auth\
-\
-GitHub link :  https://github.com/MoMakhlouf/All-In-\
-\
-Trello link :  https://trello.com/b/cCclogM1/all-in
-\f1 \uc0\u55357 \u57042 
-\f0 \
-\
-Design pattern used : MVVM\
-\
-Pods : Alamofire , BrainTree, Kingfisher and Floaty\
-}
+Design pattern used : MVVM
+
+Pods : Alamofire , BrainTree, Kingfisher and Floaty
+
 
 
 <img width="500" alt="Screenshot 2023-01-27 at 7 02 51 PM" src="https://user-images.githubusercontent.com/45856711/215154027-5d4e2586-712e-438f-bff6
